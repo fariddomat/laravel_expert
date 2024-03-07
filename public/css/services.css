@@ -1,0 +1,183 @@
+.list-text {
+  color: #25bbcc;
+  padding-right: 15px;
+  font-size: 18px;
+}
+.list-icon i {
+  color: #25bbcc;
+}
+
+.flip-box {
+  border-radius: 20px;
+  background-color: transparent;
+  height: 140px;
+  border: 1px solid #f1f1f1;
+  perspective: 1000px; /* Remove this if you don't want the 3D effect */
+  box-shadow: 5px 5px 50px 0px rgb(23 119 136 / 10%);
+}
+
+.flip-box-inner {
+  border-radius: 20px;
+  position: relative;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  transform-style: preserve-3d;
+}
+
+.flip-box:hover .flip-box-front {
+  opacity: 0;
+  transition: visibility 0.5s 0.5s, opacity 0.5s 0.5s linear;
+}
+.flip-box:hover .flip-box-back {
+  opacity: 1;
+  transition: visibility 0.5s 0.5s, opacity 0.5s 0.5s linear;
+}
+
+/* Position the front and back side */
+.flip-box-front,
+.flip-box-back {
+  border-radius: 20px;
+  padding: 40px;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  -webkit-backface-visibility: hidden; /* Safari */
+  backface-visibility: hidden;
+}
+
+/* Style the front side */
+.flip-box-front {
+  opacity: 1;
+  border-radius: 20px;
+  background-color: rgba(2, 1, 1, 0);
+  color: #177788;
+}
+
+/* Style the back side */
+.flip-box-back {
+  border-radius: 20px;
+  font-size: 18px;
+  background-color: transparent;
+  background-image: linear-gradient(90deg, #25bbcc 0%, #177788 100%);
+  color: #fff;
+  opacity: 0;
+  transition: visibility 0.5s 0.5s, opacity 0.5s 0.5s linear;
+}
+
+.wrapper1 {
+  height: 140px;
+  background-color: transparent;
+  background-image: linear-gradient(220deg, #177788 0%, #25bbcc 100%);
+  box-shadow: 5px 5px 50px 0px rgb(23 119 136 / 15%);
+  /* transition: background .3s,border .3s,border-radius .3s,box-shadow .3s; */
+  margin-top: 0;
+  margin-bottom: 0;
+  padding: 20px 0;
+  border-radius: 20px;
+  width: 100%;
+}
+.wrapper1-a {
+  display: inline-block;
+  fill: #177788;
+  color: #177788;
+  background-color: #fff;
+  box-shadow: 0px 0px 10px 0px rgb(255 255 255 / 30%);
+  border-radius: 50px;
+  font-size: 16px;
+  padding: 15px 30px;
+  width: auto;
+  font-weight: 800;
+  -webkit-transition: transform 0.3s;
+  transition: transform 0.3s;
+  line-height: 1;
+}
+
+.wrapper1-a:hover {
+  color: #177788;
+  transform: scale(1.1);
+  -webkit-transform: scale(1.1);
+}
+
+.accordion1 {
+  background-color: transparent;
+  font-weight: 500;
+  font-family: Tajawal;
+  color: #177788;
+  cursor: pointer;
+  padding: 18px;
+  width: 100%;
+  outline: none;
+  font-size: 15px;
+  transition: 0.4s;
+  border-color: rgba(199, 217, 221, 0.51);
+  font-weight: 700;
+  line-height: 1;
+  margin: 0;
+  padding: 15px;
+  border-bottom: 1px solid #d4d4d4;
+  cursor: pointer;
+  outline: none;
+}
+
+.active1,
+.accordion1:hover {
+  color: #25bbcc;
+}
+.active1 {
+  border: none;
+}
+
+.panel1 {
+  color: #202223;
+  font-weight: 500;
+  padding: 0 18px;
+  background-color: white;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.2s ease-out;
+  border-color: rgba(199, 217, 221, 0.51);
+}
+
+.service-main-title {
+  color: #25bbcc;
+}
+
+.service-index-name {
+  color: #177788;
+}
+
+.service-section-title {
+  color: #177788;
+}
+
+p {
+  color: #202223;
+}
+
+.service-section-image {
+  border-radius: 20px;
+  box-shadow: 5px 5px 50px 0px rgb(23 119 136 / 15%);
+  vertical-align: middle;
+  display: inline-block;
+}
+
+.service-section-image-caption {
+  color: #c7d9dd;
+}
+
+.other-service-container {
+  height: 100%;
+  padding: 40px 20px;
+  background-color: #fff;
+  border-radius: 20px;
+  box-shadow: 5px 5px 50px 0px rgb(23 119 136 / 10%);
+}
+
+.service-primary-color {
+  color: #177788;
+}
+.service-detail-link {
+  color: #25bbcc;
+  font-size: 17px;
+}

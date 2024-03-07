@@ -1,0 +1,289 @@
+/*============================================
+
+NOTE:
+-----
+Please DO NOT EDIT THIS CSS, you may need to use "custom.css" file for writing your custom css.
+We may release future updates so it will overwrite this file. it's better and safer to use "custom.css".
+
+=============================================*/
+
+/* Color Switcher */
+.ColorSwitcher {
+    left: auto;
+    right: -260px;
+    transition: right .2s;
+}
+.ColorSwitcher--open {
+    right: 0;
+}
+.ColorSwitcher__control {
+    left: 0;
+    right: 100%;
+    box-shadow: -5px 0 7px rgba(0,0,0,.15);
+}
+
+/* Default classes */
+.list-inline:not(.text-right) > li:not(:last-child) {
+    margin-right: inherit;
+    margin-left: 1rem;
+}
+.list-inline.text-right > li:not(:first-child) {
+    margin-right: 1rem;
+    margin-left: inherit;
+}
+.parsley-errors-list {
+    left: auto;
+    right: 0;
+}
+
+/* Header menu */
+.header-menu > ul ul {
+    text-align: right;
+}
+.header-menu > ul > li + li {
+    margin-left: 0;
+    margin-right: 40px;
+}
+.header-menu > ul > li + li:before {
+    left: auto;
+    right: -25px;
+}
+.header-menu ul ul {
+    left: auto;
+    right: -9999px;
+}
+.header-menu > ul > li:hover > ul {
+    right: auto;
+    left: inherit;
+}
+.header-menu ul ul li a:before, 
+.header-menu ul ul li.active a:before, 
+.header-menu ul ul li:hover > a:before {
+    left: auto;
+    right: 10px;
+}
+.header-menu ul ul li a:hover:before, 
+.header-menu ul ul li.active a:before, 
+.header-menu ul ul li:hover > a:before {
+    left: auto;
+    right: 20px;
+}
+.header-menu ul ul > li:hover > ul {
+    left: auto;
+    right: 188px;
+}
+.header-menu ul ul ul:before {
+    left: auto;
+    right: -7px;
+    -webkit-transform: rotate(180deg);
+            transform: rotate(180deg);
+}
+.header-menu ul ul ul:after {
+    left: auto;
+    right: -10px;
+}
+.header-menu ul ul li a svg {
+    right: auto;
+    left: 15px;
+}
+
+/* Blog */
+.single-post > a svg {
+    margin-left: 0;
+    margin-right: 0.3rem;
+}
+.single-widget button[type=submit] {
+    right: auto;
+    left: 0;
+}
+.widget-categories span {
+    padding-right: 0;
+    padding-left: 0.25rem;
+}
+.widget-categories span + span {
+    float: left;
+    padding-left: 0;
+    padding-right: 0.25rem;
+}
+.social-share.text-lg-right > li {
+    margin-left: 0 !important;
+}
+.social-share.text-lg-right > li:not(:first-child) {
+    margin-right: 2px !important;
+}
+.prev-next li:last-child svg {
+    margin-left: 0;
+    margin-right: 0.3125rem;
+}
+.prev-next li:first-child svg {
+    margin-right: 0;
+    margin-left: 0.3125rem;
+}
+.comment-content a {
+    right: auto;
+    left: 0;
+}
+.comment-author img {
+    margin-right: 0;
+    margin-left: 1rem;
+}
+.sub-comment {
+    padding-left: 0;
+    padding-right: 66px;
+}
+
+/* Others */
+.header-info li:not(:first-child) {
+    padding-right: 1rem;
+    padding-left: inherit;
+}
+.header-info li:not(:first-child):before {
+    left: auto;
+    right: 0;
+}
+.banner-content h2 {
+    border-right: 0.1875rem solid #5dbd53;
+    border-left: 0;
+    padding-right: 0.4375rem;
+    padding-left: 0;
+}
+.banner-content li a svg {
+    margin-left: 0;
+    margin-right: 3px;
+}
+.swiper-slide-next .single-pricing-plan {
+    position: absolute;
+    right: auto;
+    left: 0;
+}
+.list-item li svg {
+    margin-right: 0;
+    margin-left: 0.625rem;
+}
+.single-review-slide h4 svg {
+    right: 1rem;
+    left: 0;
+}
+.server-btn svg {
+    margin-left: 0;
+    margin-right: 0.5rem;
+}
+.footer-contacts li {
+    padding-left: 0;
+    padding-right: 1.5rem;
+}
+.footer-contacts svg {
+    left: auto;
+    right: 0;
+}
+.single-footer-post > a {
+    margin-right: 0;
+    margin-left: 1rem;
+}
+.footer-posts a svg {
+    margin-left: 0;
+    margin-right: 3px;
+}
+.subscribe-submit span {
+    margin-left: 0;
+    margin-right: 0.625rem;
+}
+.world-map svg {
+    right: auto;
+    left: 0;
+}
+.image-hover-content .list-inline:not(.text-right) > li:not(:last-child) {
+    margin-right: 0;
+    margin-left: 0.5rem;
+}
+.single-step {
+    padding-right: 0;
+    padding-left: 50px;
+}
+.single-step svg {
+    right: auto;
+    left: 10px;
+}
+.custom-breadcrumb li {
+    float: right;
+}
+.single-faq-wrap h4 svg {
+    margin-right: 0;
+    margin-left: 0.375rem;
+}
+.single-member-info span {
+    border-left: 0;
+    border-right: 3px solid #5dbd53;
+    padding-left: 0;
+    padding-right: 0.5rem;
+}
+.single-theme-feature svg {
+    margin-right: 0;
+    margin-left: 0.5rem;
+}
+
+.fa-caret-right,
+.fa-caret-left,
+.fa-angle-double-right,
+.fa-angle-double-left,
+.fa-reply,
+.single-step svg {
+    -webkit-transform: scaleX(-1);
+            transform: scaleX(-1);
+}
+
+/* Responsive fix */
+@media (max-width: 1199.98px){
+    .header-menu > ul > li + li {
+        margin-right: 1.5rem;
+    }
+    .image-hover-content .list-inline:not(.text-right) > li:not(:last-child) {
+        margin-left: 0.3rem;
+    }
+    .our-clients li:not(:first-child) {
+        margin-left: 0;
+        margin-right: 10px;
+    }
+}
+
+@media (max-width: 991.98px) {
+    .header-menu ul, .header-menu ul ul, .header-menu ul ul ul, .header-menu > ul, .header-menu.align-center > ul, .header-menu > ul > li > ul, .header-menu > ul > li:hover > ul, .header-menu ul ul li:hover > ul {
+        text-align: right;
+    }
+    .header-menu .submenu-button {
+        right: auto;
+        left: 0;
+        border-left: 0;
+        border-right: 1px solid rgba(120, 120, 120, 0.2);
+    }
+    .header-menu ul ul li a {
+        padding-left: 15px !important;
+        padding-right: 30px !important;
+    }
+    .header-menu ul ul ul li a {
+        padding-left: 15px !important;
+        padding-right: 45px !important;
+    }
+    .header-menu > ul > li + li {
+        margin-right: 0;
+    }
+    .header-menu ul ul > li:hover > ul {
+        right: 0;
+    }
+    .header-menu {
+        text-align: left;
+    }
+}
+
+@media (max-width: 767.98px) {
+    
+}
+
+@media (max-width: 575.98px) {
+    .header-menu {
+        text-align: left;
+    }
+    .world-map svg {
+        left: -110px;
+    }
+}

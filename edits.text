@@ -1,0 +1,35 @@
+edits
+
+views/layouts/site.blade.php #
+
+Font Awesome Free 5.15.1
+
+controllers
+SiteController #
+dashboard\ContactUsController # 
+dashboard\ServiceController # 
+
+ar\site.php # 
+ar\validation.php # 
+en\site.php #
+
+
+views\service.blade.php #
+contact.blade.php  #
+order_service.blade.php  #
+dashboard\cotact-us\index.blade.php #
+
+
+mail.blade.php @
+
+
+controller
+BlockedContactController #
+modle 
+BlockedContact.php #
+migration
+2023_01_07_104356_create_blocked_contacts_table #
+
+view\ dash\ blocked_contacts #
+
+web.php # 
