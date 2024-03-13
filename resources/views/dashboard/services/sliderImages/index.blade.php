@@ -6,10 +6,13 @@
     <div class="card-header">سلايدر الصور ل <a href="{{route('dashboard.services.edit',$service->id)}}">{{ $service->title }}</a></div>
 </div>
 <div class="container">
+
+    <div class="row justify-content-center">
+        <div class="card-block">
         <div class="row mb-3">
             <form action="{{ route('dashboard.services.sliderImages.slider', $service) }}" method="post" class="row">
                 @csrf
-                <label for="">الاسماء:</label>
+                <label for="" class="col-md-12">الاسماء:</label>
                 <div class="col-md-3">
                     <input type="text" class="form-control" name="slider1" value="{{ $service->slider1 }}" placeholder="slider 1 name">
                 </div>
@@ -24,6 +27,8 @@
                 </div>
             </form>
         </div>
+        </div>
+    </div>
             <hr>
     <div class="row justify-content-center">
 

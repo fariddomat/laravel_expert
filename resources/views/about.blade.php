@@ -3,58 +3,88 @@
 @section('title', trans('site.about'))
 @section('styles')
     <style>
-        #section-about-us-4 .image-container {
-            background: url(../images/background/bg-side-3.jpg);
+        .headsection {
+            background: url("http://127.0.0.1:8000/home/img/travel.jpg");
+            background-attachment: fixed;
+            position: relative;
+            background-repeat: no-repeat;
+            opacity: 1;
+            transition: opacity 0.5s, transform 0.5s;
+            z-index: 1;
+            background-size: cover;
+        }
+
+        .section1 {
+            /* background-image: url('http://127.0.0.1:8000/photos/home/icon.png'); */
+
+
+            position: absolute;
+            top: 20px;
+            /* Adjust as needed */
+            left: 20px;
+            /* Adjust as needed */
+            width: 200px;
+            /* Adjust as needed */
+            z-index: 1000;
+            /* background-attachment: fixed; */
+
+
+            /* Ensure the background stays behind the content */
+            transition: opacity 0.5s;
+        }
+
+        .section2 {
+            background: linear-gradient(rgba(255, 255, 255, .9), rgba(255, 255, 255, .5)), url("http://127.0.0.1:8000/home/img/icons/ticket.png");
+            background-attachment: fixed;
+            background-position: center;
+            background-repeat: no-repeat;
+            opacity: 1;
+            transition: opacity 0.5s, transform 0.5s;
+            z-index: 1;
+            transition: opacity 0.5s;
             background-size: auto;
-            min-height: 450px;
         }
 
-        #section-about-us-4 {
-            border-radius: 0 0 15px 0;
-        }
-
-        @media screen and (max-width: 460px) {
-            .side-bg .image-container img {
-
-                padding: 0 25px;
-                margin-top: 15px !important;
-            }
-
-            #section-about-us-4 .image-container {
-                margin-bottom: 15px !important;
-            }
-
-            .de_light #content {
-                padding-top: 50px !important;
-            }
-
-            .inner-padding {
-                padding-top: 0 !important;
-            }
-
-            #view-all-projects,
-            #call-to-action,
-            #view-all-services {
-                padding: 60px 0 25px 0;
-            }
-
-            #section-testimonial-architecture {
-                padding: 30px 15px 25px;
-            }
-
-            #partner {
-                padding: 25px
-            }
+        .section3 {
+            background: linear-gradient(rgba(255, 255, 255, .5), rgba(255, 255, 255, .5)), url("http://127.0.0.1:8000/home/img/icons/airplane.png");
+            background-attachment: fixed;
+            background-position: center;
+            background-repeat: no-repeat;
+            opacity: 1;
+            transition: opacity 0.5s, transform 0.5s;
+            z-index: 1;
+            transition: opacity 0.5s;
+            background-size: auto;
         }
     </style>
 @endsection
 @section('scripts')
 
+
+    <script>
+        var lastScrollTop = 0;
+
+        window.addEventListener("scroll", function() {
+            var currentScroll = window.pageYOffset || document.documentElement.scrollTop;
+            var img = document.getElementById('section3');
+            if (currentScroll > lastScrollTop) {
+                // Scrolling down
+                img.style.backgroundImage =
+                "url('http://127.0.0.1:8000/home/img/icons/airplane.png')"; // Replace with your image path
+            } else {
+                // Scrolling up
+                img.style.backgroundImage =
+                "url('http://127.0.0.1:8000/home/img/icons/airplane2.png')"; // Replace with your image path
+            }
+
+            lastScrollTop = currentScroll <= 0 ? 0 : currentScroll; // For Mobile or negative scrolling
+        }, false);
+    </script>
 @endsection
 @section('content')
 
-    <!-- Page title -->
-    <section class="page-title-wrap position-relative bg-light">
+    <!-- Page title  -->
+    <section class="page-title-wrap position-relative bg-light"  data-bg-img="{{ asset($info->about_header_image) }}">
         <div id="particles_js"></div>
         <div class="container">
             <div class="row">
@@ -84,8 +114,8 @@
             <div class="row justify-content-center">
                 <div class="col-md-11">
                     <div class="about-us-title text-center">
-                        <h2 data-animate="fadeInUp" data-delay=".1">@lang('about.who')</h2>
-                        <p data-animate="fadeInUp" data-delay=".2"> {!! $about->who_are_we !!}</p>
+                        <h2 data-animate="fadeInUp" data-delay="1.5">@lang('about.who')</h2>
+                        <p data-animate="fadeInUp" data-delay="1.7"> {!! $about->who_are_we !!}</p>
                     </div>
                 </div>
             </div>
@@ -136,13 +166,113 @@
             </div>
 
             <!-- Members -->
-            <div class="row">
+            <div class="row justify-content-center">
 
 
                 <div class="col-lg-3 col-md-4 col-sm-6">
                     <div class="single-member" data-animate="fadeInUp" data-delay=".1">
                         <div class="image-hover-wrap">
-                            <img src="img/members/member2.jpg" alt="">
+                            <img src="{{ asset('home/img/members/member2.jpg') }}" alt="">
+                            <div class="image-hover-content d-flex justify-content-center align-items-center text-center">
+                                <ul class="list-inline">
+                                    <li><a href="#" target="_blank"><i class="fab fa-facebook-f"></i></a></li>
+                                    <li><a href="#" target="_blank"><i class="fab fa-twitter"></i></a></li>
+                                    <li><a href="#" target="_blank"><i class="fab fa-google-plus-g"></i></a></li>
+                                    <li><a href="#" target="_blank"><i class="fab fa-linkedin-in"></i></a></li>
+                                    <li><a href="#" target="_blank"><i class="fab fa-vk"></i></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="single-member-info">
+                            <h4>Marie S. Higginbotham</h4>
+                            <span>Senior Marketing Officer</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-4 col-sm-6">
+                    <div class="single-member" data-animate="fadeInUp" data-delay=".1">
+                        <div class="image-hover-wrap">
+                            <img src="{{ asset('home/img/members/member2.jpg') }}" alt="">
+                            <div class="image-hover-content d-flex justify-content-center align-items-center text-center">
+                                <ul class="list-inline">
+                                    <li><a href="#" target="_blank"><i class="fab fa-facebook-f"></i></a></li>
+                                    <li><a href="#" target="_blank"><i class="fab fa-twitter"></i></a></li>
+                                    <li><a href="#" target="_blank"><i class="fab fa-google-plus-g"></i></a></li>
+                                    <li><a href="#" target="_blank"><i class="fab fa-linkedin-in"></i></a></li>
+                                    <li><a href="#" target="_blank"><i class="fab fa-vk"></i></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="single-member-info">
+                            <h4>Marie S. Higginbotham</h4>
+                            <span>Senior Marketing Officer</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-4 col-sm-6">
+                    <div class="single-member" data-animate="fadeInUp" data-delay=".1">
+                        <div class="image-hover-wrap">
+                            <img src="{{ asset('home/img/members/member2.jpg') }}" alt="">
+                            <div class="image-hover-content d-flex justify-content-center align-items-center text-center">
+                                <ul class="list-inline">
+                                    <li><a href="#" target="_blank"><i class="fab fa-facebook-f"></i></a></li>
+                                    <li><a href="#" target="_blank"><i class="fab fa-twitter"></i></a></li>
+                                    <li><a href="#" target="_blank"><i class="fab fa-google-plus-g"></i></a></li>
+                                    <li><a href="#" target="_blank"><i class="fab fa-linkedin-in"></i></a></li>
+                                    <li><a href="#" target="_blank"><i class="fab fa-vk"></i></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="single-member-info">
+                            <h4>Marie S. Higginbotham</h4>
+                            <span>Senior Marketing Officer</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-4 col-sm-6">
+                    <div class="single-member" data-animate="fadeInUp" data-delay=".1">
+                        <div class="image-hover-wrap">
+                            <img src="{{ asset('home/img/members/member2.jpg') }}" alt="">
+                            <div class="image-hover-content d-flex justify-content-center align-items-center text-center">
+                                <ul class="list-inline">
+                                    <li><a href="#" target="_blank"><i class="fab fa-facebook-f"></i></a></li>
+                                    <li><a href="#" target="_blank"><i class="fab fa-twitter"></i></a></li>
+                                    <li><a href="#" target="_blank"><i class="fab fa-google-plus-g"></i></a></li>
+                                    <li><a href="#" target="_blank"><i class="fab fa-linkedin-in"></i></a></li>
+                                    <li><a href="#" target="_blank"><i class="fab fa-vk"></i></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="single-member-info">
+                            <h4>Marie S. Higginbotham</h4>
+                            <span>Senior Marketing Officer</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-4 col-sm-6">
+                    <div class="single-member" data-animate="fadeInUp" data-delay=".1">
+                        <div class="image-hover-wrap">
+                            <img src="{{ asset('home/img/members/member2.jpg') }}" alt="">
+                            <div class="image-hover-content d-flex justify-content-center align-items-center text-center">
+                                <ul class="list-inline">
+                                    <li><a href="#" target="_blank"><i class="fab fa-facebook-f"></i></a></li>
+                                    <li><a href="#" target="_blank"><i class="fab fa-twitter"></i></a></li>
+                                    <li><a href="#" target="_blank"><i class="fab fa-google-plus-g"></i></a></li>
+                                    <li><a href="#" target="_blank"><i class="fab fa-linkedin-in"></i></a></li>
+                                    <li><a href="#" target="_blank"><i class="fab fa-vk"></i></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="single-member-info">
+                            <h4>Marie S. Higginbotham</h4>
+                            <span>Senior Marketing Officer</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-4 col-sm-6">
+                    <div class="single-member" data-animate="fadeInUp" data-delay=".1">
+                        <div class="image-hover-wrap">
+                            <img src="{{ asset('home/img/members/member2.jpg') }}" alt="">
                             <div class="image-hover-content d-flex justify-content-center align-items-center text-center">
                                 <ul class="list-inline">
                                     <li><a href="#" target="_blank"><i class="fab fa-facebook-f"></i></a></li>
@@ -167,30 +297,27 @@
 
 
     <!-- Servers -->
-    <section class="servers pt-7 bg-light">
+    <section id="section3" class="servers pt-7 bg-light section3">
         <div class="container">
             <div class="row">
-                <div class="col-xl-4 col-lg-5">
+                <div class="col-xl-7 col-lg-5">
                     <div class="section-title">
-                        <h2 data-animate="fadeInUp" data-delay=".1">865 Server In 197 Country</h2>
-                        <p data-animate="fadeInUp" data-delay=".2">There are many variations of passages of Lorem Ipsum
-                            ailable, but the majority have suffered hmour</p>
+                        <h2 data-animate="fadeInUp" data-delay=".1">سافر لكل مكان</h2>
+                        <p data-animate="fadeInUp" data-delay=".2">يمكن أن نقوم بمساعدتك باختيار الوجهة المناسبة لك</p>
                     </div>
                     <ul class="data-centers list-unstyled list-item clearfix">
-                        <li data-animate="fadeInUp" data-delay=".1"><i class="fas fa-caret-right"></i>North America (201)
+                        <li data-animate="fadeInUp" data-delay=".1"><i class="fas fa-caret-right"></i>ألمانيا (201)
                         </li>
-                        <li data-animate="fadeInUp" data-delay=".2"><i class="fas fa-caret-right"></i>South America (169)
+                        <li data-animate="fadeInUp" data-delay=".2"><i class="fas fa-caret-right"></i>الإمارات (169)
                         </li>
-                        <li data-animate="fadeInUp" data-delay=".3"><i class="fas fa-caret-right"></i>Europe (151)</li>
-                        <li data-animate="fadeInUp" data-delay=".4"><i class="fas fa-caret-right"></i>Australia/Oceania
+                        <li data-animate="fadeInUp" data-delay=".3"><i class="fas fa-caret-right"></i>رومانيا (151)</li>
+                        <li data-animate="fadeInUp" data-delay=".4"><i class="fas fa-caret-right"></i>هنغاريا
                             (142)</li>
-                        <li data-animate="fadeInUp" data-delay=".5"><i class="fas fa-caret-right"></i>Asia (70)</li>
-                        <li data-animate="fadeInUp" data-delay=".6"><i class="fas fa-caret-right"></i>Africa (40)</li>
+                        <li data-animate="fadeInUp" data-delay=".5"><i class="fas fa-caret-right"></i>آسيا (70)</li>
+                        <li data-animate="fadeInUp" data-delay=".6"><i class="fas fa-caret-right"></i>افريقيا (40)</li>
                     </ul>
-                    <a href="#" class="btn server-btn" data-animate="fadeInUp" data-delay=".7">View Payment Method
-                        <i class="fas fa-caret-right"></i></a>
                 </div>
-                <div class="col-xl-8 col-lg-7 d-none d-lg-block">
+                <div class="col-xl-5 col-lg-7 d-none d-lg-block">
                     <div class="server-map">
                         <img src="{{ asset('home/img/servers.png') }}" alt="">
                     </div>

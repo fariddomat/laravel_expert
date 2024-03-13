@@ -36,7 +36,7 @@
 @section('content')
 
     <!-- Page title -->
-    <section class="page-title-wrap position-relative bg-light">
+    <section class="page-title-wrap position-relative bg-light"  data-bg-img="{{ asset($info->blog_header_image) }}">
         <div id="particles_js"></div>
         <div class="container">
             <div class="row">
@@ -51,11 +51,6 @@
                         <h1 data-animate="fadeInUp" data-delay="1.3">@lang('site.blogs')</h1>
                     </div>
                 </div>
-                <div class="col-1">
-                    <div class="world-map position-relative">
-                        <img src="img/map.svg" alt="" alt="" data-no-retina class="svg">>
-                    </div>
-                </div>
             </div>
         </div>
     </section>
@@ -68,7 +63,7 @@
             <div class="row">
                 @foreach ($blogs as $index => $blog)
                     <div class="col-lg-4 col-md-6">
-                        <div class="single-post" data-animate="fadeInUp" data-delay="{{ 0.1 + $index / 10 }}">
+                        <div class="single-post" data-animate="fadeInUp" data-delay="{{ 1.5 + $index / 10 }}">
                             <div class="image-hover-wrap">
                                 <img src="{{ asset($blog->image) }}" alt="">
                                 <div

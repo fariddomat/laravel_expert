@@ -86,9 +86,9 @@
                     <input type="file" name="about_me_image_en" class="form-control about-me-image-en">
                 </div> --}}
 
-                <div class="form-group mb-3">
+                {{-- <div class="form-group mb-3">
                     <img src="{{ isset($info) ? asset($info->about_me_image_en) : '#' }}" style="width: 300px;" class="img-thumbnail about-me-image-en-preview" alt="">
-                </div>
+                </div> --}}
 
 
                 <div class="form-group mb-3">

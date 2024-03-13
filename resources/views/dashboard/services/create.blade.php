@@ -63,18 +63,18 @@
                     </div> --}}
 
 
-                    <div class="form-check mb-3">
-                        <input class="form-check-input" type="checkbox" value="1" id="showed" name="showed"
+                    <div class="form-group mb-3">
+                        <input class="" type="checkbox" value="1" id="showed" name="showed"
                             {{ old('showed') == '1' ? 'checked' : '' }}>
-                        <label class="form-check-label" for="showed">
+                        <label class="" for="showed">
                             عرض
                         </label>
                     </div>
 
-                    <div class="form-check mb-3">
-                        <input class="form-check-input" type="checkbox" value="1" id="show_at_home"
+                    <div class="form-group mb-3">
+                        <input class="t" type="checkbox" value="1" id="show_at_home"
                             name="show_at_home" {{ old('show_at_home') == '1' ? 'checked' : '' }}>
-                        <label class="form-check-label" for="show_at_home">
+                        <label class="" for="show_at_home">
                             عرض في الصفحة الرئيسية
                         </label>
                     </div>

@@ -2,6 +2,9 @@
 @section('title', trans('site.home'))
 @section('styles')
     <style>
+        .services-title{
+            background-size: contain !important;
+        }
         .headsection {
             background: url("http://127.0.0.1:8000/home/img/travel.jpg");
             background-attachment: fixed;
@@ -58,21 +61,27 @@
     </style>
 @endsection
 @section('scripts')
+
+
     <script>
-        window.addEventListener('scroll', function() {
-            var stickyImage = document.getElementById('section1');
-            var sectionRect = document.getElementById('headsection').getBoundingClientRect();
+        var lastScrollTop = 0;
 
-            if (sectionRect.top <= 0) {
-                stickyImage.style.position = 'fixed';
-                stickyImage.style.top = '0';
+        window.addEventListener("scroll", function() {
+            var currentScroll = window.pageYOffset || document.documentElement.scrollTop;
+            var img = document.getElementById('section3');
+            if (currentScroll > lastScrollTop) {
+                // Scrolling down
+                img.style.backgroundImage =
+                "url('http://127.0.0.1:8000/home/img/icons/airplane.png')"; // Replace with your image path
             } else {
-                stickyImage.style.position = 'absolute';
-                stickyImage.style.top = '20px'; // Adjust as needed
+                // Scrolling up
+                img.style.backgroundImage =
+                "url('http://127.0.0.1:8000/home/img/icons/airplane2.png')"; // Replace with your image path
             }
-        });
-    </script>
 
+            lastScrollTop = currentScroll <= 0 ? 0 : currentScroll; // For Mobile or negative scrolling
+        }, false);
+    </script>
 @endsection
 @section('content')
 
@@ -175,7 +184,7 @@
 
     <!-- Our services -->
     <section class="">
-        <div class="services-title position-relative pt-7" data-bg-img="img/buildings.jpg">
+        <div class="services-title position-relative pt-7" data-bg-img="{{ asset($info->service_image) }}" style="">
             <div class="container">
                 <div class="row justify-content-center">
                     <div class="col-xl-6 col-lg-8">
@@ -234,7 +243,7 @@
 
 
     <!-- Servers -->
-    <section class="servers pt-7 bg-light section3">
+    <section id="section3" class="servers pt-7 bg-light section3">
         <div class="container">
             <div class="row">
                 <div class="col-xl-7 col-lg-5">

@@ -34,11 +34,11 @@
 @section('content')
 
    <!-- Page title -->
-   <section class="page-title-wrap position-relative bg-light">
+   <section class="page-title-wrap position-relative bg-light"  data-bg-img="{{ asset($info->service_image) }}">
     <div id="particles_js"></div>
     <div class="container">
         <div class="row">
-            <div class="col-11">
+            <div class="col-12">
                 <div class="page-title position-relative pt-5 pb-5">
                     <ul class="custom-breadcrumb roboto list-unstyled mb-0 clearfix" data-animate="fadeInUp" data-delay="1.2">
                         <li><a href="{{ route('home') }}">@lang('site.home')</a></li>
@@ -48,11 +48,7 @@
                     <h1 data-animate="fadeInUp" data-delay="1.3">@lang('site.services')</h1>
                 </div>
             </div>
-            <div class="col-1">
-                <div class="world-map position-relative">
-                    <img src="img/map.svg" alt="" alt="" data-no-retina class="svg">
-                </div>
-            </div>
+
         </div>
     </div>
 </section>
@@ -65,7 +61,7 @@
         <div class="row">
             @foreach ($services as $index=>$service)
             <div class="col-lg-4 col-md-6">
-                <div class="single-post" data-animate="fadeInUp" data-delay="{{ .1+($index/10) }}">
+                <div class="single-post" data-animate="fadeInUp" data-delay="{{ 1.5+($index/10) }}">
                     <div class="image-hover-wrap">
                         <img src="{{ asset($service->image) }}" alt="">
                         <div class="image-hover-content d-flex justify-content-center align-items-center text-center">

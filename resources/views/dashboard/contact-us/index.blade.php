@@ -25,11 +25,11 @@
     <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
         <div class="card-header">اتصل بنا</div>
     </div>
-    <div class="container">
-        <a href="{{ route('dashboard.blocked_contact.index') }}" class="btn btn-primary"> Manage Blocked Contacts</a>
-        <div class="row justify-content-center">
+    <div class="container"> <div class="row justify-content-center">
             <div class="card-block">
-                <table id="contactsTable" class="table table-hover display responsive nowrap" width="100%">
+        <a href="{{ route('dashboard.blocked_contact.index') }}" class="btn btn-primary mb-3"> إدارة الحسابات المحظورة</a>
+
+                <table id="contactsTable" class="table table-hover display responsive nowrap mt-3" width="100%">
                     <thead>
                         <tr>
                             <th>#</th>

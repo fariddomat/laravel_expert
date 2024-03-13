@@ -94,22 +94,22 @@
 
                 <div class="form-group mb-3">
                     <label for="category" class="form-label">اختر تصنيف</label>
-                    <select class="form-select" name="category" id="category">
+                    <select class="form-control" name="category" id="category">
                         @foreach($categories as $category)
                         <option value="{{$category->id}}" {{ $blog->blog_category_id == $category->id ? 'selected' : '' }}>{{$category->name}}</option>
                         @endforeach
                     </select>
                 </div>
 
-                <div class="form-check mb-3">
-                    <input class="form-check-input" type="checkbox" value="1" id="showed" name="showed" {{ $blog->showed  == 1 ? 'checked' : '' }}>
+                <div class="form-group mb-3">
+                    <input class="" type="checkbox" value="1" id="showed" name="showed" {{ $blog->showed  == 1 ? 'checked' : '' }}>
                     <label class="form-check-label" for="showed">
                       عرض
                     </label>
                 </div>
 
-                <div class="form-check mb-3">
-                    <input class="form-check-input" type="checkbox" value="1" id="show_at_home" name="show_at_home" {{ $blog->show_at_home  == 1 ? 'checked' : '' }}>
+                <div class="form-group mb-3">
+                    <input class="" type="checkbox" value="1" id="show_at_home" name="show_at_home" {{ $blog->show_at_home  == 1 ? 'checked' : '' }}>
                     <label class="form-check-label" for="show_at_home">
                       عرض في الصفحة الرئيسية
                     </label>
