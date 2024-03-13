@@ -33,6 +33,9 @@
     <link rel="stylesheet" href="{{ asset('home/css/colors/theme-color-12.css') }}">
     <link rel="stylesheet" href="{{ asset('home/css/custom.css') }}">
 
+    <link rel="stylesheet" href="{{ asset('css/owl.carousel.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/owl.theme.default.min.css') }}">
+
 
     <link href="{{ asset('css/fonts.css') }}" rel="stylesheet">
     <link
@@ -248,6 +251,8 @@
     <script src="{{ asset('home/js/menu.min.js') }}"></script>
     <script src="{{ asset('home/js/scripts.js') }}"></script>
     <script src="{{ asset('home/js/custom.js') }}"></script>
+
+    <script src="{{ asset('js/owl.carousel.min.js') }}"></script>
 
     @include('partials._session')
     @yield('scripts')
