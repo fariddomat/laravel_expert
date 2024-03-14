@@ -204,11 +204,11 @@
     <!-- End of Banner -->
 
     <!-- Blog -->
-    <section class="blog pt-7 pb-7">
+    <section class=" blog pt-7 pb-7">
         <div class="container">
             <div class="row">
                 <div class="col-md-8">
-                    <div class="post-details" data-animate="fadeInUp" data-delay=".1">
+                    <div class="post-details" data-animate="fadeInUp" data-delay="1.5">
                         <div class="post-content">
                             <img src="{{ asset($blog->image) }}" alt="" data-animate="fadeInUp" data-delay=".2">
                             <span data-animate="fadeInUp" data-delay=".3">تاريخ النشر: <a href="#">{{ $blog->updated_at->diffForHumans() }}</a> / بواسطة: <a href="#">{{ $blog->author_title }}</a>
@@ -351,7 +351,7 @@
                 </div>
 
                 <!-- Sidebar -->
-                <div class="col-md-4">
+                <div class="col-md-4" data-animate="fadeInUp" data-delay="1.5">
                     <aside>
                         <div class="single-widget" data-animate="fadeInUp" data-delay=".1">
                             <form action="#">
@@ -366,10 +366,10 @@
                             <h3 data-animate="fadeInUp" data-delay=".2">تصنيفات المدونة</h3>
                             <ul class="widget-categories list-unstyled mb-0">
                                 @foreach ($categories as $category)
+   <li data-animate="fadeInUp" data-delay=".25"><a href="#"><span>{{ $category->name }}</span><span class="count">{{ $category->blogs->count() }}</span></a></li>
 
                                 @endforeach
-                                <li data-animate="fadeInUp" data-delay=".25"><a href="#"><span>{{ $category->name }}</span><span class="count">{{ $category->blogs->count() }}</span></a></li>
-                            </ul>
+                               </ul>
                         </div>
 
                         <div class="single-widget" data-animate="fadeInUp" data-delay=".1">

@@ -327,9 +327,10 @@ class SiteController extends Controller
     public function blogs()
     {
         $info = Info::first();
-        $blogCategories = BlogCategory::where('showed', 1)->orderBy('position', 'asc')->get();
-        $blogs = Blog::with(['category'])->where('showed', 1)->get();
-        return view('blogs', compact('blogs', 'blogCategories', 'info'));
+        $categories = BlogCategory::all();
+        $blogs = Blog::with(['category'])->where('showed', 1)->latest()->get();
+        $latestBlogs=Blog::latest()->limit(5);
+        return view('blogs', compact('blogs', 'categories', 'info', 'latestBlogs'));
     }
 
     public function profile()

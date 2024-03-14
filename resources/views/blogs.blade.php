@@ -40,7 +40,7 @@
 
         #customers-testimonials .item {
             text-align: center;
-            padding: 50px;
+            padding: 5px;
             margin-bottom: 80px;
             opacity: .2;
             transform: scale3d(0.8, 0.8, 1);
@@ -141,11 +141,11 @@
 
 
     <!-- Service -->
-    <section class="testimonials blog" dir="ltr">
+    <section class="blog  pt-7 pb-7">
         <div class="container">
 
             <div class="row">
-                <div class="col-sm-12">
+                <div class="col-md-8" dir="ltr">
                     <div id="customers-testimonials" class="owl-carousel " data-animate="fadeInUp" data-delay="1.5">
 
                         @foreach ($blogs as $index => $blog)
@@ -158,7 +158,8 @@
                                             <div
                                                 class="image-hover-content d-flex justify-content-center align-items-center text-center">
                                                 <ul class="list-inline">
-                                                    <li><a href="{{ route('blog', $blog->slug) }}"><i class="fas fa-link"></i></a></li>
+                                                    <li><a href="{{ route('blog', $blog->slug) }}"><i
+                                                                class="fas fa-link"></i></a></li>
                                                     {{-- <li><a href="#"><i class="fas fa-share-alt"></i></a></li> --}}
                                                 </ul>
                                             </div>
@@ -174,13 +175,114 @@
 
                                 </div>
                                 <div class="testimonial-name" style="background-color: #DF1F26">
-                                    <a href="{{ route('blog', $blog->slug) }}"
-                                        class="btn btn-secondary">@lang('site.read_more')<i class="fas fa-caret-right"></i></a>
+                                    <a href="{{ route('blog', $blog->slug) }}" class="btn btn-secondary">@lang('site.read_more')<i
+                                            class="fas fa-caret-right"></i></a>
                                 </div>
                             </div>
                             <!--END OF TESTIMONIAL 1 -->
                         @endforeach
                     </div>
+                </div>
+                <!-- Sidebar -->
+                <div class="col-md-4" data-animate="fadeInUp" data-delay="1.5">
+                    <aside>
+                        <div class="single-widget" data-animate="fadeInUp" data-delay=".1">
+                            <form action="#">
+                                <div class="form-group position-relative mb-0">
+                                    <input class="form-control" type="text" placeholder="البحث"
+                                        data-parsley-required-message="Please type at least one word."
+                                        data-parsley-minlength="3"
+                                        data-parsley-minlength-message="Please type at least one word." required>
+                                    <button type="submit"><i class="fas fa-search"></i></button>
+                                </div>
+                            </form>
+                        </div>
+
+                        <div class="single-widget" data-animate="fadeInUp" data-delay=".1">
+                            <h3 data-animate="fadeInUp" data-delay=".2">تصنيفات المدونة</h3>
+                            <ul class="widget-categories list-unstyled mb-0">
+                                @foreach ($categories as $category)
+                                    <li data-animate="fadeInUp" data-delay=".25"><a
+                                            href="#"><span>{{ $category->name }}</span><span
+                                                class="count">{{ $category->blogs->count() }}</span></a></li>
+                                @endforeach
+                            </ul>
+                        </div>
+
+                        <div class="single-widget" data-animate="fadeInUp" data-delay=".1">
+                            <h3 data-animate="fadeInUp" data-delay=".2">@lang('site.related_blogs')</h3>
+                            <ul class="recent-posts list-unstyled mb-0">
+                                @foreach ($latestBlogs as $blog)
+                                    <li data-animate="fadeInUp" data-delay=".25"><a
+                                            href="{{ route('blog', $blog->slug) }}">{{ $blog->title }}</a>
+                                        <br>
+                                        <span>{{ $blog->updated_at->format('d F Y') }}</span>
+                                    </li>
+                                @endforeach
+
+                            </ul>
+                        </div>
+
+                        <div class="single-widget" data-animate="fadeInUp" data-delay=".1">
+                            <h3 data-animate="fadeInUp" data-delay=".2">تابعنا على مواقع التواصل الاجتماعي</h3>
+                            <ul class="row half-gutters follow-us list-unstyled">
+                                <li class="col-4" data-animate="fadeInUp" data-delay=".25">
+                                    <a class="facebook" href="#">
+                                        <i class="fab fa-facebook-f"></i>
+                                        <span>Like 23.5k</span>
+                                    </a>
+                                </li>
+                                <li class="col-4" data-animate="fadeInUp" data-delay=".3">
+                                    <a class="twitter" href="#">
+                                        <i class="fab fa-twitter"></i>
+                                        <span>Follow 4.5k</span>
+                                    </a>
+                                </li>
+                                <li class="col-4" data-animate="fadeInUp" data-delay=".35">
+                                    <a class="google" href="#">
+                                        <i class="fab fa-google-plus-g"></i>
+                                        <span>Like 82.5k</span>
+                                    </a>
+                                </li>
+                                <li class="col-4" data-animate="fadeInUp" data-delay=".4">
+                                    <a class="pinterest" href="#">
+                                        <i class="fab fa-pinterest-p"></i>
+                                        <span>Follow 6.9k</span>
+                                    </a>
+                                </li>
+                                <li class="col-4" data-animate="fadeInUp" data-delay=".45">
+                                    <a class="rss" href="#">
+                                        <i class="fas fa-rss"></i>
+                                        <span>follow 2.8k</span>
+                                    </a>
+                                </li>
+                                <li class="col-4" data-animate="fadeInUp" data-delay=".5">
+                                    <a class="linkedin" href="#">
+                                        <i class="fab fa-linkedin-in"></i>
+                                        <span>follow 3.5k</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div class="single-widget" data-animate="fadeInUp" data-delay=".1">
+                            <h3 data-animate="fadeInUp" data-delay=".2">Tags</h3>
+                            <ul class="tags roboto list-inline mb-0">
+                                <li data-animate="fadeInUp" data-delay=".25"><a href="#">#Technology</a></li>
+                                <li data-animate="fadeInUp" data-delay=".3"><a href="#">#Envato</a></li>
+                                <li data-animate="fadeInUp" data-delay=".35"><a href="#">#ThemeForest</a></li>
+                                <li data-animate="fadeInUp" data-delay=".4"><a href="#">#Domain</a></li>
+                                <li data-animate="fadeInUp" data-delay=".45"><a href="#">#VPNet</a></li>
+                                <li data-animate="fadeInUp" data-delay=".6"><a href="#">#CloudHostion</a></li>
+                                <li data-animate="fadeInUp" data-delay=".65"><a href="#">#WordPress</a></li>
+                            </ul>
+                        </div>
+
+                        {{-- <div class="single-widget text-center" data-animate="fadeInUp" data-delay=".1">
+                            <h3 data-animate="fadeInUp" data-delay=".2">Advertisement</h3>
+                            <img src="img/camera.jpg" alt="" data-animate="fadeInUp" data-delay=".25">
+                        </div> --}}
+                    </aside>
                 </div>
             </div>
         </div>
