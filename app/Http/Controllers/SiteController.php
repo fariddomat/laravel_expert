@@ -52,10 +52,10 @@ class SiteController extends Controller
         $contactInfo = ContactInfo::find(1);
         $allServices = Service::where('showed', 1)->get();
         $contactInfo = ContactInfo::find(1);
-        $homeSlider=HomeSlider::all();
-        $experinceSlider=ExperinceSlider::all();
+        $homeSlider = HomeSlider::all();
+        $experinceSlider = ExperinceSlider::all();
 
-        $packages=Packagee::all();
+        $packages = Packagee::all();
         return view('home', compact('info', 'about', 'aboutFields', 'workCategories', 'works', 'clients', 'blogs', 'blogCategories', 'services', 'contactInfo', 'allServices', 'contactInfo', 'homeSlider', 'experinceSlider', 'packages'));
     }
 
@@ -67,9 +67,9 @@ class SiteController extends Controller
         $aboutImages = AboutImage::where('showed', 1)->orderBy('id')->get();
         // dd($aboutImages);
         $counter = range($aboutImages->count(), 1);
-        $teams=Team::all();
-        $partnerSlider=PartnerSlider::all();
-        $experinceSlider=ExperinceSlider::all();
+        $teams = Team::all();
+        $partnerSlider = PartnerSlider::all();
+        $experinceSlider = ExperinceSlider::all();
 
         return view('about', compact('about', 'aboutImages', 'counter', 'teams', 'partnerSlider', 'experinceSlider', 'info'));
     }
@@ -317,9 +317,11 @@ class SiteController extends Controller
             ->where('showed', 1)
             ->where('blog_category_id', $blog->blog_category_id)
             ->where('id', '!=', $blog->id)
+            ->limit(5)
             ->get();
-            $socialMedias=SocialMedia::all();
-        return view('blog', compact('blog', 'relatedBlogs', 'socialMedias'));
+        $socialMedias = SocialMedia::all();
+        $categories = BlogCategory::all();
+        return view('blog', compact('blog', 'relatedBlogs', 'socialMedias', 'categories'));
     }
 
     public function blogs()

@@ -1,345 +1,453 @@
-@extends('layouts.site' )
+@extends('layouts.site')
 @section('title')
-{{$blog->title}}
+    {{ $blog->title }}
 @endsection
 
 @section('styles')
-<style>
-    .fs-25 {
-        font-size: 25px;
-    }
-
-    img {
-        width: 100% !important;
-        /* height: auto !important; */
-    }
-
-    p{
-        /* font-family: 'Al-Jazeera-Arabic-Regular'; */
-    }
-
-    .relatedBlogs {
-        position: sticky;
-        position: -webkit-sticky;
-        top: 5px;
-        max-height: 100vh;
-        overflow-y: scroll;
-        overflow-x: hidden;
-        padding-left: 15px;
-        padding-right: 15px;
-        padding-bottom: 5px;
-    }
-    .gorman-page{
-        overflow: unset;
-    }
-
-    @media (max-width: 576px) {
-        .pt-2, .py-2 {
-  padding-top: 2.2rem !important;
-}
-        .relatedBlogs {
-            max-height: unset;
+    <style>
+        .fs-25 {
+            font-size: 25px;
         }
-        .gorman-page{
+
+        img {
+            width: 100% !important;
+            /* height: auto !important; */
+        }
+
+        p {
+            /* font-family: 'Al-Jazeera-Arabic-Regular'; */
+        }
+
+        .relatedBlogs {
+            position: sticky;
+            position: -webkit-sticky;
+            top: 5px;
+            max-height: 100vh;
+            overflow-y: scroll;
+            overflow-x: hidden;
+            padding-left: 15px;
+            padding-right: 15px;
+            padding-bottom: 5px;
+        }
+
+        .gorman-page {
+            overflow: unset;
+        }
+
+        @media (max-width: 576px) {
+
+            .pt-2,
+            .py-2 {
+                padding-top: 2.2rem !important;
+            }
+
+            .relatedBlogs {
+                max-height: unset;
+            }
+
+            .gorman-page {
+                overflow: hidden;
+            }
+        }
+
+        .follow-a {
+            display: flex;
+            align-items: stretch;
+            margin-left: 22px;
+            background: #fff;
+            border: 2px solid #fff;
+            border-radius: 6px;
+            box-shadow: 0 2px 10px 0 rgb(0 0 0 / 15%);
+            transition: box-shadow;
+            transition-duration: .25s;
+            transition-timing-function: ease-out;
+        }
+
+        .follow-a:hover {
+            color: #005cb1;
+            box-shadow: 0 4px 20px 0 rgb(0 0 0 / 15%);
+            border-color: rgba(0, 92, 177, .5);
+        }
+
+        .follow-a:hover .follow-span {
+            border-color: rgba(0, 92, 177, .7);
+        }
+
+        .follow-a-div-icon {
+            position: relative;
+            flex: none;
+            width: 50px;
+            height: 50px;
+            margin-left: -5px;
+            margin-bottom: -3px;
+            z-index: 1;
+            padding: 0.625rem 0.8125rem 0.625rem 0.5rem;
+            margin-top: auto;
+            margin-bottom: auto;
+        }
+
+        .follow-a-div-content {
+            padding: 0.625rem 0.8125rem 0.625rem 0.5rem;
+            min-width: 0;
             overflow: hidden;
         }
-    }
-    .follow-a{
-        display: flex;
-        align-items: stretch;
-        margin-left: 22px;
-        background: #fff;
-        border: 2px solid #fff;
-        border-radius: 6px;
-        box-shadow: 0 2px 10px 0 rgb(0 0 0 / 15%);
-        transition: box-shadow;
-        transition-duration: .25s;
-        transition-timing-function: ease-out;
-    }
-    .follow-a:hover{
-        color: #005cb1;
-        box-shadow: 0 4px 20px 0 rgb(0 0 0 / 15%);
-        border-color: rgba(0,92,177,.5);
-    }
-    .follow-a:hover .follow-span{
-        border-color: rgba(0,92,177,.7);
-    }
-    .follow-a-div-icon{
-        position: relative;
-        flex: none;
-        width: 50px;
-        height: 50px;
-        margin-left: -5px;
-        margin-bottom: -3px;
-        z-index: 1;
-        padding: 0.625rem 0.8125rem 0.625rem 0.5rem;
-        margin-top: auto;
-        margin-bottom: auto;
-    }
-    .follow-a-div-content{
-        padding: 0.625rem 0.8125rem 0.625rem 0.5rem;
-        min-width: 0;
-        overflow: hidden;
-    }
-    .follow-h3{
-        color: #007ef3;
-        display: block;
-        margin: 0;
-        font-size: 1.125rem;
-        line-height: 1.3;
-        font-weight: 400;
-        font-family: "proxima-nova",sans-serif;
-    }
-    .follow-span{
-        border-bottom: 1px solid rgba(0,126,243,.4);
-        line-height: 1.6;
-    }
-    .blog-content h1,
-    .blog-content h2,
-    .blog-content h3,
-    .blog-content h4,
-    .blog-content h5,
-    .blog-content h6 {
-        line-height: 1;
-    }
 
-    ul{
-        list-style-type: initial;
-    }
-    h1,h2,h3,h4,h5,h6,p,body,strong{
-        color: unset;
-    }
-
-    .share-div {
-        font-size: 20px;
-        margin: auto;
-    }
-
-    @media (max-width: 576px) {
-        h1 {
-            font-size: 20px;
+        .follow-h3 {
+            color: #007ef3;
+            display: block;
+            margin: 0;
+            font-size: 1.125rem;
+            line-height: 1.3;
+            font-weight: 400;
+            font-family: "proxima-nova", sans-serif;
         }
+
         .follow-span {
-            font-size: 1rem;
+            border-bottom: 1px solid rgba(0, 126, 243, .4);
+            line-height: 1.6;
         }
-        .order-service {
-            font-size: 13px;
+
+        .blog-content h1,
+        .blog-content h2,
+        .blog-content h3,
+        .blog-content h4,
+        .blog-content h5,
+        .blog-content h6 {
+            line-height: 1;
         }
+
+        ul {
+            list-style-type: initial;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6,
+        p,
+        body,
+        strong {
+            color: unset;
+        }
+
         .share-div {
-            font-size: 16px;
-        }
-        .fs-25 {
             font-size: 20px;
+            margin: auto;
         }
-    }
-    .author_image {
-        width: 100px !important;
-        height: 100px !important;
-        object-fit: cover;
-    }
-    @media (max-width: 576px) {
+
+        @media (max-width: 576px) {
+            h1 {
+                font-size: 20px;
+            }
+
+            .follow-span {
+                font-size: 1rem;
+            }
+
+            .order-service {
+                font-size: 13px;
+            }
+
+            .share-div {
+                font-size: 16px;
+            }
+
+            .fs-25 {
+                font-size: 20px;
+            }
+        }
+
         .author_image {
-            width: 75px !important;
-            height: 75px !important;
+            width: 100px !important;
+            height: 100px !important;
+            object-fit: cover;
         }
-    }
-</style>
+
+        @media (max-width: 576px) {
+            .author_image {
+                width: 75px !important;
+                height: 75px !important;
+            }
+        }
+    </style>
 @endsection
 @section('scripts')
-<script src="{{asset('js/blog.js')}}"></script>
+    <script src="{{ asset('js/blog.js') }}"></script>
 @endsection
 
 @section('content')
-<div class="related-blogs section-padding" style="padding-top: 45px; background-color: #fff;padding-left: 25px; padding-right: 25px">
-    <div class="container-fluid">
-
-        <div class="row">
-            <div class="col-12 col-md-8 col-xl-8">
-                <div class="animate-box" data-animate-effect="fadeInUp">
-                    <div class="border mb-2 p-2 d-block d-md-none">
-                        <h1 style="font-family: '29ltbukralight';">{{$blog->title}}</h1>
-                    </div>
-                    <div class="post-img mb-30">
-                        <div class="img"><img src="{{asset($blog->image)}}" alt=""></div>
-                    </div>
-                    <div class="row mt-2 mb-2 d-none d-md-flex">
-                        <div class="col-12 col-md-12 col-xl-12">
-                            <div class="border p-2">
-                                <h1 style="font-family: '29ltbukralight';">{{$blog->title}}</h1>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="cont blog-content">
-                        <div class="p-3" style="background-color: #f6f6f6; border-right: 4px solid; border-color: #104071">{!! $blog->introduction !!}</div>
-                        <div class="pb-3 mt-3">{!! $blog->content_table !!}</div>
-                        <div class="p-3" style="background-color: rgba(96,125,139,0.12); border-radius: 10px;">{!! $blog->first_paragraph !!}</div>
-                        <div class="mt-3">{!!$blog->description!!}</div>
-                        <div class="mt-3" style="background-color: rgba(96,125,139,0.12); border-radius: 10px;">
-                            <div class="row p-4">
-                                <div class="col-4 col-md-3">
-                                    <img class="author_image rounded-circle" src="{{asset($blog->author_image)}}" />
-                                </div>
-                                <div class="col-8 col-md-9">
-                                    <h3>{{ $blog->author_name}}</h3>
-                                    <p>{{ $blog->author_title}}</p>
-                                </div>
-                                <div class="col-3 mt-3 d-none d-md-block"></div>
-                                <div class="col-12 col-md-9 mt-3 text-center text-md-left">
-                                    @if($blog->author_instagram)
-                                    <a target="_blank" href="{{$blog->author_instagram}}">
-                                        <i class="fa-brands fa-instagram fa-2x" style="color: #e1306c;"></i>
-                                    </a>
-                                    @endif
-
-                                    @if($blog->author_snapchat)
-                                    <a target="_blank" href="{{$blog->author_snapchat}}" class="ml-2">
-                                        <i class="fa-brands fa-snapchat fa-2x" style="color: #fffc00;"></i>
-                                    </a>
-                                    @endif
-
-                                    @if($blog->author_twitter)
-                                    <a target="_blank" href="{{$blog->author_twitter}}" class="ml-2">
-                                        <i class="fa-brands fa-x-twitter fa-2x" ></i>
-                                    </a>
-                                    @endif
-
-                                    @if($blog->author_tiktok)
-                                    <a target="_blank" href="{{$blog->author_tiktok}}" class="ml-2">
-                                        <i class="fa-brands fa-tiktok fa-2x" style="color: #000000;"></i>
-                                    </a>
-                                    @endif
-
-                                    @if($blog->author_linkedin)
-                                    <a target="_blank" href="{{$blog->author_linkedin}}" class="ml-2">
-                                        <i class="fa-brands fa-linkedin fa-2x" style="color: #0072b1;"></i>
-                                    </a>
-                                    @endif
-                                </div>
-                            </div>
-                        </div>
-                        <div class="mt-5 mb-4">
-                            <div class="mb-3">
-                                <a target="_blank" href="{{ $socialMedias->where('name', 'Facebook')->first()->link}}" class="follow-a">
-                                    <div class="follow-a-div-icon text-center">
-                                        <i class="fa-brands fa-facebook fa-2x" style="color: #4267b2;"></i>
-                                    </div>
-                                    <div class="follow-a-div-content">
-                                        <h3 class="follow-h3">
-                                            <span class="follow-span">
-                                                @lang('site.blog_social.facebook')
-                                            </span>
-                                        </h3>
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="mb-3">
-                                <a target="_blank" href="{{ $socialMedias->where('name', 'Instagram')->first()->link}}" class="follow-a">
-                                    <div class="follow-a-div-icon text-center">
-                                        <i class="fa fa-brands fa-instagram fa-2x" style="color: #e1306c;"></i>
-                                    </div>
-                                    <div class="follow-a-div-content">
-                                        <h3 class="follow-h3">
-                                            <span class="follow-span">
-                                                @lang('site.blog_social.instagram')
-                                            </span>
-                                        </h3>
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="mb-3">
-                                <a target="_blank" href="{{ $socialMedias->where('name', 'Twitter')->first()->link}}" class="follow-a">
-                                    <div class="follow-a-div-icon text-center">
-                                        <i class="fa-brands fa-x-twitter fa-2x" style=""></i>
-                                    </div>
-                                    <div class="follow-a-div-content">
-                                        <h3 class="follow-h3">
-                                            <span class="follow-span">
-                                                @lang('site.blog_social.twitter')
-                                            </span>
-                                        </h3>
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="mb-3">
-                                <a target="_blank" href="{{ $socialMedias->where('name', 'Youtube')->first()->link}}" class="follow-a">
-                                    <div class="follow-a-div-icon text-center">
-                                        <i class="fa-brands fa-youtube fa-2x" style="color: #ff0000;"></i>
-                                    </div>
-                                    <div class="follow-a-div-content">
-                                        <h3 class="follow-h3">
-                                            <span class="follow-span">
-                                                @lang('site.blog_social.youtube')
-                                            </span>
-                                        </h3>
-                                    </div>
-                                </a>
-                            </div>
-                        </div>
-
-                        <div class="border rounded border-secondary p-3" style="margin-top: 35px">
-                            <div class="mt-2 d-flex flex-column flex-md-row justify-content-between">
-                                <div class="mb-4 d-flex justify-content-between">
-                                    <div>
-                                        <a href="{{route('downloadBlog',$blog->slug)}}" class="order-service">
-                                            <i class="fa fa-download"></i>
-                                            <span>@lang('site.download_pdf')</span>
-                                        </a>
-                                    </div>
-                                    <div class="d-inline d-md-none">
-                                        <a href="{{route('contact')}}" class="order-service px-4">
-                                            @lang('site.order_now')
-                                        </a>
-                                    </div>
-                                </div>
-                                <div class="d-flex flex-row mb-4 share-div">
-                                    <div>
-                                        @lang('site.share_this_blog')
-                                    </div>
-                                    <div class="ml-4">
-                                        <a href="https://www.facebook.com/sharer/sharer.php?u={{Request::url()}}" target="_blank"><i class="fa fa-facebook-f"></i></a>
-                                        <a href="https://twitter.com/share?text={{Request::url()}}" target="_blank"><i class="fa fa-twitter"></i></a>
-                                        <a href="http://www.linkedin.com/shareArticle?mini=true&url={{Request::url()}}" target="_blank"><i class="fa fa-linkedin"></i></a>
-                                    </div>
-                                </div>
-                                <div class="mb-4 d-none d-md-block">
-                                    <a href="{{route('contact')}}"
-                                        class="order-service px-5">@lang('site.order_now')</a>
-                                </div>
-                            </div>
-                        </div>
+      <!-- Page title -->
+      <section class="page-title-wrap position-relative bg-light">
+        <div id="particles_js"></div>
+        <div class="container">
+            <div class="row">
+                <div class="col-11">
+                    <div class="page-title position-relative pt-5 pb-5">
+                        <ul class="custom-breadcrumb roboto list-unstyled mb-0 clearfix" data-animate="fadeInUp" data-delay="1.2">
+                            <li><a href="{{ route('home') }}">الرئيسية</a></li>
+                            <li><i class="fas fa-angle-double-right"></i></li>
+                            <li><a href="#">تفاصيل المقال</a></li>
+                        </ul>
+                        <h1 data-animate="fadeInUp" data-delay="1.3">{{ $blog->title }}</h1>
                     </div>
                 </div>
-            </div>
-            <div class="col-12 col-md-4 col-xl-3 mt-5 mt-md-0">
-
-                <div id="sidebar">
-                    <div class="widget widget-post ">
-                        <h4 class="border p-3" style="text-align: center">@lang('site.related_blogs')</h4>
-                        <div class="small-border"></div>
-
-                        <ul class="de-bloglist-type-1 border" style="  direction: ltr;">
-                            @foreach($relatedBlogs as $blog)
-                            <li style="padding: 15px;">
-                                <div class="d-image">
-                                    <img src="{{asset($blog->image)}}" alt="">
-                                </div>
-                                <div class="d-content" style="border-bottom: unset"> <div class="d-date">{{$blog->updated_at->format('d F
-                                        Y')}}</div>
-
-
-                                </div>
-                                <div class="pt-2" style="border-bottom: solid 1px rgba(0, 0, 0, .1);"><a href="{{route('blog',$blog->slug)}}">{{$blog->title}}</a></div>
-                            </li>
-                            @endforeach
-
-                        </ul>
+                <div class="col-1">
+                    <div class="world-map position-relative">
+                        <img src="img/map.svg" alt="" alt="" data-no-retina class="svg">
                     </div>
-
-
                 </div>
             </div>
         </div>
-    </div>
-</div>
+    </section>
+    <!-- End of Banner -->
 
+    <!-- Blog -->
+    <section class="blog pt-7 pb-7">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8">
+                    <div class="post-details" data-animate="fadeInUp" data-delay=".1">
+                        <div class="post-content">
+                            <img src="{{ asset($blog->image) }}" alt="" data-animate="fadeInUp" data-delay=".2">
+                            <span data-animate="fadeInUp" data-delay=".3">تاريخ النشر: <a href="#">{{ $blog->updated_at->diffForHumans() }}</a> / بواسطة: <a href="#">{{ $blog->author_title }}</a>
+                                <br> التصنيف: <a href="{{ route('blogs', $blog->category->slug) }}">{{ $blog->category->name }}</a></span>
+                            <h2 data-animate="fadeInUp" data-delay=".4">
+                                {{ $blog->title }}
+                            </h2>
+                            <p data-animate="fadeInUp" data-delay=".1">
+                                {!! $blog->introduction !!}
+                            </p>
+
+                            <blockquote data-animate="fadeInUp" data-delay=".1">
+                                <span><i class="fas fa-quote-right"></i></span>
+
+                                {!! $blog->content_table !!}
+                            </blockquote>
+
+                            <p data-animate="fadeInUp" data-delay=".1">{!! $blog->first_paragraph !!}</p>
+
+
+                            <p data-animate="fadeInUp" data-delay=".1">{!! $blog->description !!}</p>
+                        </div>
+
+                        <div class="row align-items-center half-gutters mb-5 tag-and-share">
+                            {{-- <div class="col-xl-7 col-lg-6">
+                                <ul class="tags roboto list-inline mb-lg-0 mb-md-3">
+                                    <li data-animate="fadeInUp" data-delay=".1"><i class="fas fa-tags"></i></li>
+                                    <li data-animate="fadeInUp" data-delay=".15"><a href="#">#Technology</a></li>
+                                    <li data-animate="fadeInUp" data-delay=".2"><a href="#">#Envato</a></li>
+                                    <li data-animate="fadeInUp" data-delay=".25"><a href="#">#Themeforest</a></li>
+                                    <li data-animate="fadeInUp" data-delay=".3"><a href="#">#Domain</a></li>
+
+                                </ul>
+                            </div> --}}
+                            <div class="col-xl-5 col-lg-6">
+                                <ul class="social-share list-inline mb-0 text-lg-right">
+                                    <li data-animate="fadeInUp" data-delay=".4"><a class="pinterest" href="#"><i class="fab fa-pinterest-p"></i></a></li>
+                                    <li data-animate="fadeInUp" data-delay=".45"><a class="rss" href="#"><i class="fas fa-rss"></i></a></li>
+                                    <li data-animate="fadeInUp" data-delay=".5"><a class="linkedin" href="#"><i class="fab fa-linkedin-in"></i></a></li>
+                                    <li data-animate="fadeInUp" data-delay=".55"><a class="google" href="#"><i class="fab fa-google-plus-g"></i></a></li>
+                                    <li data-animate="fadeInUp" data-delay=".6"><a class="twitter" href="#"><i class="fab fa-twitter"></i></a></li>
+                                    <li data-animate="fadeInUp" data-delay=".65"><a class="facebook" href="#"><i class="fab fa-facebook-f"></i></a></li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <!-- Author info -->
+                        <div class="d-flex align-items-center author-info-wrap">
+                            <img class="mr-3" src="{{ asset( $blog->author_image ) }}" alt="" data-animate="fadeInUp" data-delay=".1">
+                            <div class="author-info">
+                                <h4 data-animate="fadeInUp" data-delay=".2">كتب المقال بواسطة: <a href="#">{{ $blog->author_name }}</a></h4>
+                                <p data-animate="fadeInUp" data-delay=".3">{{ $blog->author_title }}</p>
+                                <a class="roboto text-uppercase" href="#" data-animate="fadeInUp" data-delay=".4">مشاهدة كل مقالات الكاتب <i class="fas fa-caret-right"></i></a>
+                            </div>
+                        </div>
+
+                        <!-- Next/Previous Post -->
+                        <ul class="prev-next roboto d-flex justify-content-between list-unstyled mt-5 mb-5">
+                            <li data-animate="fadeInUp" data-delay=".1">
+                                <a href="#"><i class="fas fa-caret-left"></i> Prev Post</a>
+                                <span>How to Watch Smith VS Holzken Live Online From Anywhere</span>
+                            </li>
+                            <li class="text-right" data-animate="fadeInUp" data-delay=".2">
+                                <a href="#">Next Post <i class="fas fa-caret-right"></i></a>
+                                <span>In Major Hiring Push, Web Hosting Powerhouse Go Daddy to</span>
+                            </li>
+                        </ul>
+
+                        <!-- Comments -->
+                        {{-- <div class="comments">
+                            <h3 data-animate="fadeInUp" data-delay=".1">03 Comments</h3>
+                            <ul class="main-comment list-unstyled">
+                                <li data-animate="fadeInUp" data-delay=".2">
+                                    <div class="single-comment">
+                                        <div class="comment-author float-left">
+                                            <img src="img/authors/comment-author1.png" alt="">
+                                        </div>
+                                        <div class="comment-content">
+                                            <h4>Alice R. Leopard</h4>
+                                            <a href="#"><i class="fas fa-reply"></i> Reply</a>
+                                            <span>Jan 05, 2018 at 04:30 pm</span>
+                                            <p>Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae.</p>
+                                        </div>
+                                    </div>
+                                </li>
+
+                                <li data-animate="fadeInUp" data-delay=".3">
+                                    <div class="single-comment">
+                                        <div class="comment-author float-left">
+                                            <img src="img/authors/comment-author2.png" alt="">
+                                        </div>
+                                        <div class="comment-content">
+                                            <h4>Brian C. Cook</h4>
+                                            <a href="#"><i class="fas fa-reply"></i> Reply</a>
+                                            <span>Jan 05, 2018 at 04:30 pm</span>
+                                            <p>Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae.</p>
+                                        </div>
+                                    </div>
+
+                                    <ul class="sub-comment list-unstyled">
+                                        <li data-animate="fadeInUp" data-delay=".4">
+                                            <div class="single-comment">
+                                                <div class="comment-author float-left">
+                                                    <img src="img/authors/comment-author3.png" alt="">
+                                                </div>
+                                                <div class="comment-content">
+                                                    <h4>Cheryl E. Smith</h4>
+                                                    <a href="#"><i class="fas fa-reply"></i> Reply</a>
+                                                    <span>Jan 05, 2018 at 04:30 pm</span>
+                                                    <p>Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae.</p>
+                                                </div>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div> --}}
+                        <!-- End of Comments -->
+
+                        <!-- Comment Form -->
+                        {{-- <div class="comment-form mt-5">
+                            <h3 class="mb-4 font-weight-bold" data-animate="fadeInUp" data-delay=".1">Leave a Comment</h3>
+                            <form action="#">
+                                <textarea name="text" class="form-control" placeholder="Write your text" data-animate="fadeInUp" data-delay=".2" required></textarea>
+                                <div class="form-row">
+                                    <div class="col-md-4">
+                                        <input type="text" class="form-control" placeholder="Name" data-animate="fadeInUp" data-delay=".3" required>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <input type="email" class="form-control" placeholder="E-mail" data-animate="fadeInUp" data-delay=".4" required>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <input type="text" class="form-control" placeholder="Website" data-animate="fadeInUp" data-delay=".5">
+                                    </div>
+                                </div>
+                                <button class="btn btn-square btn-primary mt-3" data-animate="fadeInUp" data-delay=".6">Leave Comment</button>
+                            </form>
+                        </div> --}}
+                    </div>
+                </div>
+
+                <!-- Sidebar -->
+                <div class="col-md-4">
+                    <aside>
+                        <div class="single-widget" data-animate="fadeInUp" data-delay=".1">
+                            <form action="#">
+                                <div class="form-group position-relative mb-0">
+                                    <input class="form-control" type="text" placeholder="البحث" data-parsley-required-message="Please type at least one word." data-parsley-minlength="3" data-parsley-minlength-message="Please type at least one word." required>
+                                    <button type="submit"><i class="fas fa-search"></i></button>
+                                </div>
+                            </form>
+                        </div>
+
+                        <div class="single-widget" data-animate="fadeInUp" data-delay=".1">
+                            <h3 data-animate="fadeInUp" data-delay=".2">تصنيفات المدونة</h3>
+                            <ul class="widget-categories list-unstyled mb-0">
+                                @foreach ($categories as $category)
+
+                                @endforeach
+                                <li data-animate="fadeInUp" data-delay=".25"><a href="#"><span>{{ $category->name }}</span><span class="count">{{ $category->blogs->count() }}</span></a></li>
+                            </ul>
+                        </div>
+
+                        <div class="single-widget" data-animate="fadeInUp" data-delay=".1">
+                            <h3 data-animate="fadeInUp" data-delay=".2">@lang('site.related_blogs')</h3>
+                            <ul class="recent-posts list-unstyled mb-0">
+                                @foreach ($relatedBlogs as $blog)
+                                <li data-animate="fadeInUp" data-delay=".25"><a href="{{ route('blog', $blog->slug) }}">{{ $blog->title }}</a>
+                                <br>
+                                <span>{{ $blog->updated_at->format('d F Y') }}</span>
+                                </li>
+                                @endforeach
+
+                            </ul>
+                        </div>
+
+                        <div class="single-widget" data-animate="fadeInUp" data-delay=".1">
+                            <h3 data-animate="fadeInUp" data-delay=".2">تابعنا على مواقع التواصل الاجتماعي</h3>
+                            <ul class="row half-gutters follow-us list-unstyled">
+                                <li class="col-4" data-animate="fadeInUp" data-delay=".25">
+                                    <a class="facebook" href="#">
+                                        <i class="fab fa-facebook-f"></i>
+                                        <span>Like 23.5k</span>
+                                    </a>
+                                </li>
+                                <li class="col-4" data-animate="fadeInUp" data-delay=".3">
+                                    <a class="twitter" href="#">
+                                        <i class="fab fa-twitter"></i>
+                                        <span>Follow 4.5k</span>
+                                    </a>
+                                </li>
+                                <li class="col-4" data-animate="fadeInUp" data-delay=".35">
+                                    <a class="google" href="#">
+                                        <i class="fab fa-google-plus-g"></i>
+                                        <span>Like 82.5k</span>
+                                    </a>
+                                </li>
+                                <li class="col-4" data-animate="fadeInUp" data-delay=".4">
+                                    <a class="pinterest" href="#">
+                                        <i class="fab fa-pinterest-p"></i>
+                                        <span>Follow 6.9k</span>
+                                    </a>
+                                </li>
+                                <li class="col-4" data-animate="fadeInUp" data-delay=".45">
+                                    <a class="rss" href="#">
+                                        <i class="fas fa-rss"></i>
+                                        <span>follow 2.8k</span>
+                                    </a>
+                                </li>
+                                <li class="col-4" data-animate="fadeInUp" data-delay=".5">
+                                    <a class="linkedin" href="#">
+                                        <i class="fab fa-linkedin-in"></i>
+                                        <span>follow 3.5k</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div class="single-widget" data-animate="fadeInUp" data-delay=".1">
+                            <h3 data-animate="fadeInUp" data-delay=".2">Tags</h3>
+                            <ul class="tags roboto list-inline mb-0">
+                                <li data-animate="fadeInUp" data-delay=".25"><a href="#">#Technology</a></li>
+                                <li data-animate="fadeInUp" data-delay=".3"><a href="#">#Envato</a></li>
+                                <li data-animate="fadeInUp" data-delay=".35"><a href="#">#ThemeForest</a></li>
+                                <li data-animate="fadeInUp" data-delay=".4"><a href="#">#Domain</a></li>
+                                <li data-animate="fadeInUp" data-delay=".45"><a href="#">#VPNet</a></li>
+                                <li data-animate="fadeInUp" data-delay=".6"><a href="#">#CloudHostion</a></li>
+                                <li data-animate="fadeInUp" data-delay=".65"><a href="#">#WordPress</a></li>
+                            </ul>
+                        </div>
+
+                        {{-- <div class="single-widget text-center" data-animate="fadeInUp" data-delay=".1">
+                            <h3 data-animate="fadeInUp" data-delay=".2">Advertisement</h3>
+                            <img src="img/camera.jpg" alt="" data-animate="fadeInUp" data-delay=".25">
+                        </div> --}}
+                    </aside>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- End of Blog -->
 @endsection

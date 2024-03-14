@@ -10,4 +10,8 @@ class BlogCategory extends Model implements TranslatableContract
 {
     use Translatable;
     public $translatedAttributes = ['name'];
+
+    public function blogs(){
+        return $this->hasMany(Blog::class);
+    }
 }
