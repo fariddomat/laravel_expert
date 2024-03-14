@@ -237,32 +237,35 @@
 @endsection
 
 @section('content')
-    <!-- subheader -->
-    <section id="subheader" data-speed="8" data-type="background"
-        style="background: url({{ asset($info->service_image) }}) top !important;background-position: unset !important;
-        background-repeat: no-repeat !important; background-size: cover !important; ">
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-md-12">
-                    <h1 class="service-main-title">{{ $service->main_title }}</h1>
 
-                    <ul class="crumb" style="margin-top: 60px">
-                        <li><a href="{{ route('home') }}">@lang('site.home')</a></li>
-                        <li class="sep">/</li>
-                        <li>@lang('site.services')</li>
-                        <li class="sep">/</li>
-                        <li>{{ $service->title }}</li>
-                    </ul>
+    <!-- Page title -->
+    <section class="page-title-wrap position-relative bg-light" data-bg-img="{{ asset($info->service_image) }}">
+        <div id="particles_js"></div>
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="page-title position-relative pt-5 pb-5">
+                        <ul class="custom-breadcrumb roboto list-unstyled mb-0 clearfix" data-animate="fadeInUp"
+                            data-delay="1.2">
+                            <li><a href="{{ route('home') }}">@lang('site.home')</a></li>
+                            <li><i class="fas fa-angle-double-right"></i></li>
+                            <li><a href="{{ route('services') }}">@lang('site.services')</a></li>
+                            <li><i class="fas fa-angle-double-right"></i></li>
+                            <li><a href="">@lang('site.service_detail')</a></li>
+                        </ul>
+                        <h1 data-animate="fadeInUp" data-delay="1.3">{{ $service->title }}</h1>
+                    </div>
                 </div>
+
             </div>
         </div>
     </section>
-    <!-- subheader close -->
+    <!-- End of Banner -->
 
 
     <div id="content" class="nopadding">
         <section id="section-content">
-            <div class="container-fluid">
+            <div class="container">
                 <div class="row">
 
                     <div class="col-md-6 wow fadeInUp" data-wow-delay=".3s" style="margin-top:50px">
@@ -323,8 +326,8 @@
                     </div>
                 </div>
 
-                <section style="padding: 0">
 
+                <section style="padding: 0">
                     @if ($service->getSlider(1)->count() > 0)
                         <h3>{{ $service->slider1 }}</h3>
                         <!-- slider 1 -->
@@ -386,10 +389,9 @@
         </section>
 
         <!-- section begin -->
-        <section id="view-all-projects" class="call-to-action bg-color  text-center" data-speed="5" data-type="background"
-            aria-label="view-all-projects">
-            <a href="{{ route('service.order', $service->slug) }}" class="btn-line btn-big btn-h"
-                style="color: #fff">@lang('site.order_now')</a>
+        <section id="" class="call-to-action bg-color  text-center  pt-7 pb-7">
+            <a href="{{ route('service.order', $service->slug) }}" class="btn btn-secondary"
+                style="color: #fff; padding: 15px 50px">@lang('site.order_now')</a>
         </section>
         <!-- logo carousel section close -->
 

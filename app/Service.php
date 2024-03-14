@@ -38,7 +38,7 @@ class Service extends Model implements TranslatableContract
 
     public function getSlider($slider)
     {
-        $s=ServiceSliderImage::where('service_id',$this->id)->where('slider',$slider)->get();
+        $s=ServiceSliderImage::where('service_id',$this->id)->where('slider_id',$slider)->get();
         return $s;
     }
     public function sliderHeaderImages()
