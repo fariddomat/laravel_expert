@@ -2,96 +2,6 @@
 @section('title', trans('site.home'))
 @section('styles')
     <style>
-        button,
-        hr,
-        input {
-            overflow: visible
-        }
-
-        audio,
-        canvas,
-        progress,
-        video {
-            display: inline-block
-        }
-
-        progress,
-        sub,
-        sup {
-            vertical-align: baseline
-        }
-
-        html {
-            font-family: sans-serif;
-            line-height: 1.15;
-            -ms-text-size-adjust: 100%;
-            -webkit-text-size-adjust: 100%
-        }
-
-        body {
-            margin: 0
-        }
-
-        menu,
-        article,
-        aside,
-        details,
-        footer,
-        header,
-        nav,
-        section {
-            display: block
-        }
-
-        h1 {
-            font-size: 2em;
-            margin: .67em 0
-        }
-
-        figcaption,
-        figure,
-        main {
-            display: block
-        }
-
-        figure {
-            margin: 1em 40px
-        }
-
-        hr {
-            box-sizing: content-box;
-            height: 0
-        }
-
-        code,
-        kbd,
-        pre,
-        samp {
-            font-family: monospace, monospace;
-            font-size: 1em
-        }
-
-        a {
-            background-color: transparent;
-            -webkit-text-decoration-skip: objects
-        }
-
-        a:active,
-        a:hover {
-            outline-width: 0
-        }
-
-        abbr[title] {
-            border-bottom: none;
-            text-decoration: underline;
-            text-decoration: underline dotted
-        }
-
-        b,
-        strong {
-            font-weight: bolder
-        }
-
         dfn {
             font-style: italic
         }
@@ -129,35 +39,7 @@
             border-style: none
         }
 
-        svg:not(:root) {
-            overflow: hidden
-        }
 
-        button,
-        input,
-        optgroup,
-        select,
-        textarea {
-            font-family: sans-serif;
-            font-size: 100%;
-            line-height: 1.15;
-            margin: 0
-        }
-
-        button,
-        input {}
-
-        button,
-        select {
-            text-transform: none
-        }
-
-        [type=submit],
-        [type=reset],
-        button,
-        html [type=button] {
-            -webkit-appearance: button
-        }
 
         [type=button]::-moz-focus-inner,
         [type=reset]::-moz-focus-inner,
@@ -174,12 +56,6 @@
             outline: ButtonText dotted 1px
         }
 
-        fieldset {
-            border: 1px solid silver;
-            margin: 0 2px;
-            padding: .35em .625em .75em
-        }
-
         legend {
             box-sizing: border-box;
             color: inherit;
@@ -189,11 +65,6 @@
             white-space: normal
         }
 
-        progress {}
-
-        textarea {
-            overflow: auto
-        }
 
         [type=checkbox],
         [type=radio] {
@@ -241,7 +112,7 @@
 
         .section-wrapper .container {
             position: relative;
-            height: 100%;
+            /* height: 100%; */
         }
 
         .section-wrapper .shielding-layer {
@@ -250,34 +121,34 @@
             height: 169%;
             position: absolute;
             top: -37%;
-            left: -6%;
+            right: -6%;
             z-index: 3;
             pointer-events: none;
             transform: rotate(16deg);
         }
 
-        .section-wrapper .shielding-layer:before {
-            content: "";
-            width: 71%;
-            height: 100%;
-            position: absolute;
-            top: 0;
-            left: 0;
-            z-index: 3;
-            background-color: rgba(249, 249, 254, 0.97);
-        }
+        /* .section-wrapper .shielding-layer:after {
+                    content: "";
+                    width: 71%;
+                    height: 100%;
+                    position: absolute;
+                    top: 0;
+                    right: 0;
+                    z-index: 3;
+                    background: linear-gradient(90deg, rgba(249, 249, 254, 0) rgba(249, 249, 254, 0.97) 0,);
+                }
 
-        .section-wrapper .shielding-layer:after {
-            pointer-events: none;
-            content: "";
-            width: calc(29% + 1px);
-            height: 100%;
-            position: absolute;
-            top: 0;
-            right: 0;
-            z-index: 3;
-            background: linear-gradient(90deg, rgba(249, 249, 254, 0.97) 0, rgba(249, 249, 254, 0));
-        }
+                .section-wrapper .shielding-layer:before {
+                    pointer-events: none;
+                    content: "";
+                    width: calc(29% + 1px);
+                    height: 100%;
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    z-index: 3;
+                    background: linear-gradient(90deg, rgba(249, 249, 254, 0.97) 0, rgba(249, 249, 254, 0));
+                } */
 
         .section-wrapper:before {
             content: "";
@@ -306,11 +177,11 @@
             flex-direction: column;
             justify-content: center;
             align-items: flex-start;
-            width: 44%;
-            max-width: 600px;
+            width: 100%;
+            /* max-width: 600px; */
             position: absolute;
             top: 0;
-            left: 0;
+            right: 0;
             z-index: 4;
         }
 
@@ -328,13 +199,7 @@
             line-height: 20px;
         }
 
-        .section-wrapper .content .btn {
-            padding: 14px 28px;
-            font-size: 18px;
-            color: #fff;
-            line-height: 27px;
-            display: inline-block;
-        }
+
 
         .section-wrapper .template-wall {
             width: 100%;
@@ -385,16 +250,6 @@
             transform: scale(1.2);
         }
 
-        .btn {
-            background-color: rgba(0, 0, 0, 0.8);
-            cursor: pointer;
-            text-align: center;
-            color: #fff;
-            border-radius: 6px;
-            font-family: Poppins, "Segoe UI", Avenir, Helvetica, Arial, sans-serif;
-            font-weight: 600;
-            transition: transform 0.3s ease-in-out;
-        }
 
         @-webkit-keyframes myimg-data-v-4d0e073a {
             0% {
@@ -564,6 +419,7 @@
             background-size: auto;
         }
     </style>
+
 @endsection
 @section('scripts')
 
@@ -590,34 +446,251 @@
 @endsection
 @section('content')
 
-    <section class="position-relative bg-light pt-4 pb-4 headsection" id="headsection" style="min-height: 100vh">
+    <div class="section-wrapper headsection" id="headsection">
+        <div class="shielding-layer"></div>
+        <div class="">
+            <div class="content">
+            <div id="particles_js"></div>
+                <div class="container">
+                    <div class=" row align-items-center" style="">
+                        <div class="col-lg-7">
+                            <!-- Banner content -->
+                            <div class="banner-content">
+                                <h1 data-animate="fadeInUp" data-delay="1.2">{{ $info->title }}</h1>
+                                <h2 data-animate="fadeInUp" data-delay="1.3"><span
+                                        class="">{{ $info->description }}</span>
+                                </h2>
+                                <ul class="list-inline" data-animate="fadeInUp" data-delay="1.4">
+                                    <li><a href="#" class="btn btn-primary"
+                                            style="padding: 10px 25px">@lang('site.about_me')</a>
+                                    </li>
 
-        <div id="particles_js"></div>
-        <div class="container">
-            <div class="row align-items-center" style="padding-top: 120px">
-                <div class="col-lg-6">
-                    <!-- Banner content -->
-                    <div class="banner-content">
-                        <h1 data-animate="fadeInUp" data-delay="1.2">{{ $info->title }}</h1>
-                        <h2 data-animate="fadeInUp" data-delay="1.3"><span class="">{{ $info->description }}</span>
-                        </h2>
-                        <ul class="list-inline" data-animate="fadeInUp" data-delay="1.4">
-                            <li><a href="#" class="btn btn-primary" style="padding: 10px 25px">@lang('site.about_me')</a>
-                            </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-lg-5 " style=""  data-animate="fadeInUp" data-delay="1.4">>
+                            <!-- Banner image -->
+                            <div class="template-wall">
+                                <div class="column index-0" >
+                                    <div class="wall-box">
+                                        <img alt="perfectcod" class="icon hoverable" src="{{ asset('home/icon/1.png') }}"
+                                            style="width: 163px; height: 92px; margin-right: 5px;">
+                                        <div class="shelter"></div>
+                                    </div>
+                                    <div class="wall-box">
+                                        <img alt="perfectcod" class="icon hoverable" src="{{ asset('home/icon/2.png') }}"
+                                            style="width: 163px; height: 92px; margin-right: 5px;">
+                                        <div class="shelter"></div>
+                                    </div>
+                                    <div class="wall-box">
+                                        <img alt="perfectcod" class="icon hoverable" src="{{ asset('home/icon/3.png') }}"
+                                            style="width: 163px; height: 92px; margin-right: 5px;">
+                                        <div class="shelter"></div>
+                                    </div>
+                                    <div class="wall-box">
+                                        <img alt="perfectcod" class="icon hoverable" src="{{ asset('home/icon/4.png') }}"
+                                            style="width: 163px; height: 92px; margin-right: 5px;">
+                                        <div class="shelter"></div>
+                                    </div>
+                                    <div class="wall-box">
+                                        <img alt="perfectcod" class="icon hoverable" src="{{ asset('home/icon/5.png') }}"
+                                            style="width: 163px; height: 92px; margin-right: 5px;">
+                                        <div class="shelter"></div>
+                                    </div>
+                                    <div class="wall-box">
+                                        <img alt="perfectcod" class="icon hoverable" src="{{ asset('home/icon/11.png') }}"
+                                            style="width: 163px; height: 92px; margin-right: 5px;">
+                                        <div class="shelter"></div>
+                                    </div>
+                                    <div class="wall-box">
+                                        <img alt="perfectcod" class="icon hoverable" src="{{ asset('home/icon/7.png') }}"
+                                            style="width: 163px; height: 92px; margin-right: 5px;">
+                                        <div class="shelter"></div>
+                                    </div>
+                                    <div class="wall-box">
+                                        <img alt="perfectcod" class="icon hoverable" src="{{ asset('home/icon/8.png') }}"
+                                            style="width: 163px; height: 92px; margin-right: 5px;">
+                                        <div class="shelter"></div>
+                                    </div>
+                                    <div class="wall-box">
+                                        <img alt="perfectcod" class="icon hoverable" src="{{ asset('home/icon/9.png') }}"
+                                            style="width: 163px; height: 92px; margin-right: 5px;">
+                                        <div class="shelter"></div>
+                                    </div>
+                                </div>
+                                <div class="column index-2">
+                                    <div class="wall-box">
+                                        <img alt="perfectcod" class="icon hoverable"
+                                            src="{{ asset('home/icon/13.png') }}"
+                                            style="width: 163px; height: 92px; margin-right: 5px;">
+                                        <div class="shelter"></div>
+                                    </div>
+                                    <div class="wall-box">
+                                        <img alt="perfectcod" class="icon hoverable"
+                                            src="{{ asset('home/icon/14.png') }}"
+                                            style="width: 163px; height: 92px; margin-right: 5px;">
+                                        <div class="shelter"></div>
+                                    </div>
+                                    <div class="wall-box">
+                                        <img alt="perfectcod" class="icon hoverable"
+                                            src="{{ asset('home/icon/15.png') }}"
+                                            style="width: 163px; height: 92px; margin-right: 5px;">
+                                        <div class="shelter"></div>
+                                    </div>
+                                    <div class="wall-box">
+                                        <img alt="perfectcod" class="icon hoverable"
+                                            src="{{ asset('home/icon/16.png') }}"
+                                            style="width: 163px; height: 92px; margin-right: 5px;">
+                                        <div class="shelter"></div>
+                                    </div>
+                                    <div class="wall-box">
+                                        <img alt="perfectcod" class="icon hoverable"
+                                            src="{{ asset('home/icon/17.png') }}"
+                                            style="width: 163px; height: 92px; margin-right: 5px;">
+                                        <div class="shelter"></div>
+                                    </div>
+                                    <div class="wall-box">
+                                        <img alt="perfectcod" class="icon hoverable"
+                                            src="{{ asset('home/icon/18.png') }}"
+                                            style="width: 163px; height: 92px; margin-right: 5px;">
+                                        <div class="shelter"></div>
+                                    </div>
+                                    <div class="wall-box">
+                                        <img alt="perfectcod" class="icon hoverable"
+                                            src="{{ asset('home/icon/19.png') }}"
+                                            style="width: 163px; height: 92px; margin-right: 5px;">
+                                        <div class="shelter"></div>
+                                    </div>
+                                    <div class="wall-box">
+                                        <img alt="perfectcod" class="icon hoverable"
+                                            src="{{ asset('home/icon/20.png') }}"
+                                            style="width: 163px; height: 92px; margin-right: 5px;">
+                                        <div class="shelter"></div>
+                                    </div>
+                                    <div class="wall-box">
+                                        <img alt="perfectcod" class="icon hoverable"
+                                            src="{{ asset('home/icon/13.png') }}"
+                                            style="width: 163px; height: 92px; margin-right: 5px;">
+                                        <div class="shelter"></div>
+                                    </div>
+                                </div>
+                                <div class="column index-1">
+                                    <div class="wall-box">
+                                        <img alt="perfectcod" class="icon hoverable" src="{{ asset('home/icon/10.png') }}"
+                                            style="width: 163px; height: 92px; margin-right: 5px;">
+                                        <div class="shelter"></div>
+                                    </div>
+                                    <div class="wall-box">
+                                        <img alt="perfectcod" class="icon hoverable" src="{{ asset('home/icon/11.png') }}"
+                                            style="width: 163px; height: 92px; margin-right: 5px;">
+                                        <div class="shelter"></div>
+                                    </div>
+                                    <div class="wall-box">
+                                        <img alt="perfectcod" class="icon hoverable" src="{{ asset('home/icon/12.png') }}"
+                                            style="width: 163px; height: 92px; margin-right: 5px;">
+                                        <div class="shelter"></div>
+                                    </div>
+                                    <div class="wall-box">
+                                        <img alt="perfectcod" class="icon hoverable" src="{{ asset('home/icon/8.png') }}"
+                                            style="width: 163px; height: 92px; margin-right: 5px;">
+                                        <div class="shelter"></div>
+                                    </div>
+                                    <div class="wall-box">
+                                        <img alt="perfectcod" class="icon hoverable"
+                                            src="{{ asset('home/icon/7.png') }}"
+                                            style="width: 163px; height: 92px; margin-right: 5px;">
+                                        <div class="shelter"></div>
+                                    </div>
+                                    <div class="wall-box">
+                                        <img alt="perfectcod" class="icon hoverable"
+                                            src="{{ asset('home/icon/11.png') }}"
+                                            style="width: 163px; height: 92px; margin-right: 5px;">
+                                        <div class="shelter"></div>
+                                    </div>
+                                    <div class="wall-box">
+                                        <img alt="perfectcod" class="icon hoverable"
+                                            src="{{ asset('home/icon/5.png') }}"
+                                            style="width: 163px; height: 92px; margin-right: 5px;">
+                                        <div class="shelter"></div>
+                                    </div>
+                                    <div class="wall-box">
+                                        <img alt="perfectcod" class="icon hoverable"
+                                            src="{{ asset('home/icon/4.png') }}"
+                                            style="width: 163px; height: 92px; margin-right: 5px;">
+                                        <div class="shelter"></div>
+                                    </div>
+                                    <div class="wall-box">
+                                        <img alt="perfectcod" class="icon hoverable"
+                                            src="{{ asset('home/icon/3.png') }}"
+                                            style="width: 163px; height: 92px; margin-right: 5px;">
+                                        <div class="shelter"></div>
+                                    </div>
+                                </div>
+                                <div class="column index-3">
+                                    <div class="wall-box">
+                                        <img alt="perfectcod" class="icon hoverable"
+                                            src="{{ asset('home/icon/21.png') }}"
+                                            style="width: 163px; height: 92px; margin-right: 5px;">
+                                        <div class="shelter"></div>
+                                    </div>
+                                    <div class="wall-box">
+                                        <img alt="perfectcod" class="icon hoverable"
+                                            src="{{ asset('home/icon/22.png') }}"
+                                            style="width: 163px; height: 92px; margin-right: 5px;">
+                                        <div class="shelter"></div>
+                                    </div>
+                                    <div class="wall-box">
+                                        <img alt="perfectcod" class="icon hoverable"
+                                            src="{{ asset('home/icon/23.png') }}"
+                                            style="width: 163px; height: 92px; margin-right: 5px;">
+                                        <div class="shelter"></div>
+                                    </div>
+                                    <div class="wall-box">
+                                        <img alt="perfectcod" class="icon hoverable"
+                                            src="{{ asset('home/icon/24.png') }}"
+                                            style="width: 163px; height: 92px; margin-right: 5px;">
+                                        <div class="shelter"></div>
+                                    </div>
+                                    <div class="wall-box">
+                                        <img alt="perfectcod" class="icon hoverable"
+                                            src="{{ asset('home/icon/25.webp') }}"
+                                            style="width: 163px; height: 92px; margin-right: 5px;">
+                                        <div class="shelter"></div>
+                                    </div>
+                                    <div class="wall-box">
+                                        <img alt="perfectcod" class="icon hoverable"
+                                            src="{{ asset('home/icon/26.png') }}"
+                                            style="width: 163px; height: 92px; margin-right: 5px;">
+                                        <div class="shelter"></div>
+                                    </div>
+                                    <div class="wall-box">
+                                        <img alt="perfectcod" class="icon hoverable"
+                                            src="{{ asset('home/icon/27.png') }}"
+                                            style="width: 163px; height: 92px; margin-right: 5px;">
+                                        <div class="shelter"></div>
+                                    </div>
+                                    <div class="wall-box">
+                                        <img alt="perfectcod" class="icon hoverable"
+                                            src="{{ asset('home/icon/21.png') }}"
+                                            style="width: 163px; height: 92px; margin-right: 5px;">
+                                        <div class="shelter"></div>
+                                    </div>
+                                    <div class="wall-box">
+                                        <img alt="perfectcod" class="icon hoverable"
+                                            src="{{ asset('home/icon/27.png') }}"
+                                            style="width: 163px; height: 92px; margin-right: 5px;">
+                                        <div class="shelter"></div>
+                                    </div>
+                                </div>
 
-                        </ul>
-                    </div>
-                </div>
-                <div class="col-lg-6 d-none d-lg-block" style="">
-                    <!-- Banner image -->
-                    <div class="banner-image">
-                        <img class="section1" id src="{{ asset($info->about_me_image) }}" alt=""
-                            data-animate="fadeInUp" data-delay="1.5" data-depth="0.2" style="margin: 0 auto; ">
+
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </section>
+    </div>
     <!-- End of Banner -->
 
     <!-- Features -->
@@ -628,8 +701,8 @@
                 <div class="row">
                     <div class="col-md-4">
                         <div class="single-feature text-center" data-animate="fadeInUp" data-delay=".1">
-                            <img src="{{ asset('home/img/icons/vpn.svg') }}" alt="" alt="" data-no-retina
-                                class="svg">
+                            <img src="{{ asset('home/img/icons/vpn.svg') }}" alt="" alt=""
+                                data-no-retina class="svg">
                             <h3>عنون1</h3>
                             <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium
                                 voluptatum.</p>
@@ -677,8 +750,8 @@
                     </div>
                     <div class="col-md-5 offset-md-1" data-animate="fadeInUp" data-delay=".4">
                         <div class="about-img animate-box" data-animate-effect="fadeInUp">
-                            <div class="img" style="  text-align: center;"> <img src="{{ asset($info->about_me_image) }}"
-                                    alt=""> </div>
+                            <div class="img" style="  text-align: center;"> <img
+                                    src="{{ asset($info->about_me_image) }}" alt=""> </div>
                         </div>
                     </div>
                 </div>
@@ -689,14 +762,16 @@
 
     <!-- Our services -->
     <section class="">
-        <div class="services-title position-relative pt-7" data-bg-img="{{ asset($info->service_image) }}" style="">
+        <div class="services-title position-relative pt-7" data-bg-img="{{ asset($info->service_image) }}"
+            style="">
             <div class="container">
                 <div class="row justify-content-center">
                     <div class="col-xl-6 col-lg-8">
                         <!-- Section title -->
                         <div class="section-title text-center">
                             <h2 class="text-white" data-animate="fadeInUp" data-delay=".1">لماذا تحتاج خدماتنا؟ </h2>
-                            <p class="text-white" data-animate="fadeInUp" data-delay=".3">هناك حقيقة مثبتة منذ زمن طويل وهي
+                            <p class="text-white" data-animate="fadeInUp" data-delay=".3">هناك حقيقة مثبتة منذ زمن طويل
+                                وهي
                                 أن المحتوى المقروء لصفحة ما سيلهي القارئ عن التركيز على الشكل الخارجي للنص أو شكل توضع
                                 الفقرات في الصفحة التي يقرأها.</p>
                         </div>
@@ -748,7 +823,7 @@
 
 
     <!-- Servers -->
-    <section id="section3" class="servers pt-7 bg-light section3">
+    <section id="section3" class="servers pt-7 bg-light section3 ">
         <div class="container">
             <div class="row">
                 <div class="col-xl-7 col-lg-5">

@@ -2,7 +2,7 @@
 @section('title', trans('site.services'))
 @section('styles')
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
-
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
     <style>
         #customers-testimonials.owl-carousel .owl-dots .owl-dot span {
             background: #DF1F26 !important;
@@ -114,6 +114,9 @@
             });
         });
     </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script></script>
 @endsection
 @section('content')
 
@@ -139,11 +142,10 @@
     </section>
     <!-- End of Banner -->
 
-
     <!-- Service -->
     <section class="testimonials blog" dir="ltr">
         <div class="container">
-
+           
             <div class="row">
                 <div class="col-sm-12">
                     <div id="customers-testimonials" class="owl-carousel " data-animate="fadeInUp" data-delay="1.5">
