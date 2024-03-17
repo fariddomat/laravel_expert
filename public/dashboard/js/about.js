@@ -1,72 +1,89 @@
 $(function() {
-    CKEDITOR.replace("about_me", {
+    CKEDITOR.replace("ar[about_me]", {
         filebrowserBrowseUrl: imageGalleryBrowseUrl,
         filebrowserUploadUrl:
             imageGalleryUploadUrl +
             "?_token=" +
             $("meta[name=csrf-token]").attr("content"),
-        removeButtons: "About"
+        removeButtons: "About",
+        contentsLangDirection: 'rtl'
     });
 
-    CKEDITOR.replace("brief", {
+    CKEDITOR.replace("ar[brief]", {
         filebrowserBrowseUrl: imageGalleryBrowseUrl,
         filebrowserUploadUrl:
             imageGalleryUploadUrl +
             "?_token=" +
             $("meta[name=csrf-token]").attr("content"),
-        removeButtons: "About"
+        removeButtons: "About",
+        contentsLangDirection: 'rtl'
     });
 
-    CKEDITOR.replace("who", {
+    CKEDITOR.replace("ar[who]", {
         filebrowserBrowseUrl: imageGalleryBrowseUrl,
         filebrowserUploadUrl:
             imageGalleryUploadUrl +
             "?_token=" +
             $("meta[name=csrf-token]").attr("content"),
-        removeButtons: "About"
+        removeButtons: "About",
+        contentsLangDirection: 'rtl'
     });
 
 
-    CKEDITOR.replace("history", {
+    CKEDITOR.replace("ar[history]", {
         filebrowserBrowseUrl: imageGalleryBrowseUrl,
         filebrowserUploadUrl:
             imageGalleryUploadUrl +
             "?_token=" +
             $("meta[name=csrf-token]").attr("content"),
-        removeButtons: "About"
+        removeButtons: "About",
+        contentsLangDirection: 'rtl'
     });
 
 
-    CKEDITOR.replace("massage", {
+    CKEDITOR.replace("ar[massage]", {
         filebrowserBrowseUrl: imageGalleryBrowseUrl,
         filebrowserUploadUrl:
             imageGalleryUploadUrl +
             "?_token=" +
             $("meta[name=csrf-token]").attr("content"),
-        removeButtons: "About"
+        removeButtons: "About",
+        contentsLangDirection: 'rtl'
     });
 
 
-    CKEDITOR.replace("goals", {
+    CKEDITOR.replace("ar[goals]", {
         filebrowserBrowseUrl: imageGalleryBrowseUrl,
         filebrowserUploadUrl:
             imageGalleryUploadUrl +
             "?_token=" +
             $("meta[name=csrf-token]").attr("content"),
-        removeButtons: "About"
+        removeButtons: "About",
+        contentsLangDirection: 'rtl'
     });
 
 
-    CKEDITOR.replace("vision", {
+    CKEDITOR.replace("ar[vision]", {
         filebrowserBrowseUrl: imageGalleryBrowseUrl,
         filebrowserUploadUrl:
             imageGalleryUploadUrl +
             "?_token=" +
             $("meta[name=csrf-token]").attr("content"),
-        removeButtons: "About"
+        removeButtons: "About",
+        contentsLangDirection: 'rtl'
     });
 
-    CKEDITOR.replace("ambition", {
+    CKEDITOR.replace("ar[ambition]", {
+        filebrowserBrowseUrl: imageGalleryBrowseUrl,
+        filebrowserUploadUrl:
+            imageGalleryUploadUrl +
+            "?_token=" +
+            $("meta[name=csrf-token]").attr("content"),
+        removeButtons: "About",
+        contentsLangDirection: 'rtl'
+    });
+
+    CKEDITOR.replace("ar[values]", {
         filebrowserBrowseUrl: imageGalleryBrowseUrl,
         filebrowserUploadUrl:
             imageGalleryUploadUrl +

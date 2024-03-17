@@ -4,6 +4,9 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
 
     <style>
+        .owl-carousel .owl-item img {
+  max-width: unset !important;
+        }
         #customers-testimonials.owl-carousel .owl-dots .owl-dot span {
             background: #DF1F26 !important;
             margin-bottom: 25px !important;

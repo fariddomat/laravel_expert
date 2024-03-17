@@ -1,5 +1,5 @@
 $(function() {
-    CKEDITOR.replace("description", {
+    CKEDITOR.replace("ar[description]", {
         filebrowserBrowseUrl: imageGalleryBrowseUrl,
         filebrowserUploadUrl:
             imageGalleryUploadUrl +
@@ -9,18 +9,18 @@ $(function() {
         contentsLangDirection: 'rtl'
     });
 
-    CKEDITOR.replace("introduction", {
+    CKEDITOR.replace("ar[introduction]", {
         removeButtons: "About",
         contentsLangDirection: 'rtl'
     });
 
 
-    CKEDITOR.replace("content_table", {
+    CKEDITOR.replace("ar[content_table]", {
         removeButtons: "About",
         contentsLangDirection: 'rtl'
     });
 
-    CKEDITOR.replace("first_paragraph", {
+    CKEDITOR.replace("ar[first_paragraph]", {
         removeButtons: "About",
         contentsLangDirection: 'rtl'
     });

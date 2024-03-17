@@ -153,7 +153,7 @@
 
                     <div class="col-md-6 wow fadeInUp" data-wow-delay=".3s" style="margin-top:50px">
 
-                        <div>{{ $service->brief }}</div>
+                        <div>{!! $service->brief !!}</div>
                         <div class="row" style="margin-top:35px">
                             @foreach ($service->indexItems as $item)
                                 <div class="col-12 col-md-12">
@@ -278,6 +278,7 @@
         </section>
         <!-- logo carousel section close -->
 
+        @if ($service->subServices->count() > 0)
         <section class="testimonials blog" dir="ltr">
             <div class="container">
 
@@ -303,7 +304,7 @@
                                                 </div>
                                             </div>
                                             <h3>{{ $service->title }}</h3>
-                                            <h4>{{ Str::limit($service->brief, 140) }}</h4>
+                                            <h4>{!! Str::limit( Helper::removeSpecialCharacter($service->brief),140 ) !!}</h4>
 
                                         </div>
 
@@ -320,6 +321,6 @@
                 </div>
             </div>
         </section>
-
+        @endif
 
 @endsection

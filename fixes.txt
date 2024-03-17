@@ -12,3 +12,9 @@ remove author social
 
 
 blog search
+
+team rols
+
+team
+
+textarea editor

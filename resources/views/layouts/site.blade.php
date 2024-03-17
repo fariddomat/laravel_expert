@@ -170,7 +170,7 @@
                         <div class="single-footer-post clearfix" data-animate="fadeInUp" data-delay="{{ .55+($index/10) }}">
 
                             <h4 class="cabin font-weight-normal"><a href="{{route('service',$service->slug)}}">{{ $service->title }}</a></h4>
-                            <p>{{ Str::limit( $service->brief,100 ) }}</p>
+                            <p>{!! Str::limit( Helper::removeSpecialCharacter($service->brief),100 ) !!}</p>
                         </div>
 
                         @endforeach

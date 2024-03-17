@@ -4,6 +4,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
     <style>
+        .owl-carousel .owl-item img {
+  max-width: unset ;}
         #customers-testimonials.owl-carousel .owl-dots .owl-dot span {
             background: #DF1F26 !important;
             margin-bottom: 25px !important;
@@ -145,7 +147,7 @@
     <!-- Service -->
     <section class="testimonials blog" dir="ltr">
         <div class="container">
-           
+
             <div class="row">
                 <div class="col-sm-12">
                     <div id="customers-testimonials" class="owl-carousel " data-animate="fadeInUp" data-delay="1.5">
@@ -168,7 +170,9 @@
                                             </div>
                                         </div>
                                         <h3>{{ $service->title }}</h3>
-                                        <h4>{{ Str::limit($service->brief, 140) }}</h4>
+                                        <h4>
+                                            {!! Str::limit( Helper::removeSpecialCharacter($service->brief),140 ) !!}
+                                        </h4>
 
                                     </div>
 

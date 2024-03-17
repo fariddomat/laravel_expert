@@ -7,6 +7,23 @@
 @endsection
 
 @section('scripts')
+<script src="{{ asset('ckeditor/ckeditor.js') }}"></script>
+    <script>
+
+    var imageGalleryBrowseUrl = "{{ route('dashboard.imageGallery.browser') }}";
+    var imageGalleryUploadUrl = "{{ route('dashboard.imageGallery.uploader') }}";
+        $(function() {
+            CKEDITOR.replace("ar[brief]", {
+                filebrowserBrowseUrl: imageGalleryBrowseUrl,
+                filebrowserUploadUrl: imageGalleryUploadUrl +
+                    "?_token=" +
+                    $("meta[name=csrf-token]").attr("content"),
+                removeButtons: "About",
+                contentsLangDirection: 'rtl'
+            });
+
+        });
+    </script>
     <script src="{{ asset('dashboard/js/image_preview.js') }}"></script>
     <script>
         $(function() {
@@ -51,6 +68,7 @@
         });
     });
 </script>
+
 @endsection
 
 @section('content')

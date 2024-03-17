@@ -57,6 +57,266 @@
             background-size: auto;
         }
     </style>
+    <style>
+        .our-team {
+            text-align: center;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .our-team img {
+            width: 100%;
+            height: auto;
+        }
+
+        .our-team .team-content {
+            width: 100%;
+            background: #3f2b4f;
+            color: #fff;
+            padding: 15px 0 10px 0;
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            z-index: 1;
+            transition: all 0.3s ease 0s;
+        }
+
+        .our-team:hover .team-content {
+            padding-bottom: 40px;
+        }
+
+        .our-team .team-content:before,
+        .our-team .team-content:after {
+            content: "";
+            width: 60%;
+            height: 38px;
+            background: #3f2b4f;
+            position: absolute;
+            top: -18px;
+            transform: rotate(15deg);
+            z-index: -1;
+        }
+
+        .our-team .team-content:before {
+            left: -3%;
+        }
+
+        .our-team .team-content:after {
+            right: -3%;
+            transform: rotate(-15deg);
+        }
+
+        .our-team .title {
+            font-size: 20px;
+            font-weight: 600;
+            text-transform: capitalize;
+            margin: 0 0 7px 0;
+            position: relative;
+        }
+
+        .our-team .title:before,
+        .our-team .title:after {
+            content: "";
+            width: 7px;
+            height: 93px;
+            background: #ff5543;
+            position: absolute;
+            top: -78px;
+            z-index: -2;
+            transform: rotate(-74deg);
+        }
+
+        .our-team .title:before {
+            left: 32%;
+        }
+
+        .our-team .title:after {
+            right: 32%;
+            transform: rotate(74deg);
+        }
+
+        .our-team .post {
+            display: block;
+            font-size: 13px;
+            text-transform: capitalize;
+            margin-bottom: 8px;
+        }
+
+        .our-team .social-links {
+            list-style: none;
+            padding: 0 0 15px 0;
+            margin: 0;
+            position: absolute;
+            bottom: -40px;
+            right: 0;
+            left: 0;
+            transition: all 0.5s ease 0s;
+        }
+
+        .our-team:hover .social-links {
+            bottom: 0;
+        }
+
+        .our-team .social-links li {
+            display: inline-block;
+        }
+
+        .our-team .social-links li a {
+            display: block;
+            font-size: 16px;
+            color: #aad6e1;
+            margin-right: 6px;
+            transition: all 0.5s ease 0s;
+        }
+
+        .our-team .social-links li:last-child a {
+            margin-right: 0;
+        }
+
+        .our-team .social-links li a:hover {
+            color: #ff5543;
+        }
+
+        @media only screen and (max-width: 990px) {
+            .our-team {
+                margin-bottom: 30px;
+            }
+
+            .our-team .team-content:before,
+            .our-team .team-content:after {
+                height: 50px;
+                top: -24px;
+            }
+
+            .our-team .title:before,
+            .our-team .title:after {
+                top: -85px;
+                height: 102px;
+            }
+
+            .our-team .title:before {
+                left: 35%;
+            }
+
+            .our-team .title:after {
+                right: 35%;
+            }
+        }
+
+        @media only screen and (max-width: 767px) {
+
+            .our-team .team-content:before,
+            .our-team .team-content:after {
+                height: 75px;
+            }
+
+            .our-team .team-content:before {
+                transform: rotate(8deg);
+            }
+
+            .our-team .team-content:after {
+                transform: rotate(-8deg);
+            }
+
+            .our-team .title:before,
+            .our-team .title:after {
+                width: 10px;
+                top: -78px;
+                height: 102px;
+            }
+
+            .our-team .title:before {
+                left: 42.5%;
+                transform: rotate(-82deg);
+            }
+
+            .our-team .title:after {
+                right: 42.5%;
+                transform: rotate(82deg);
+            }
+        }
+
+        @media only screen and (max-width: 480px) {
+
+            .our-team .title:before,
+            .our-team .title:after {
+                top: -83px;
+            }
+        }
+    </style>
+
+    <style>
+        .card {
+            width: 100%;
+            height: 350px;
+            perspective: 1000px;
+            cursor: pointer;
+            border-radius: 10px;
+            background-color: unset;
+            border: unset;
+            margin-bottom: 35px;
+
+        }
+
+        .card img {
+            width: 250px;
+            height: 250px;
+            object-fit: cover;
+            border-radius: 50%;
+        }
+
+        .card-container {
+            width: 100%;
+            height: 100%;
+            transform-style: preserve-3d;
+            transition: transform 0.5s;
+            box-shadow: 0 4px 8px 0 rba(0, 0, 0, 0.2);
+            border-radius: 10px;
+
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            background: #fff;
+        }
+
+        .card:hover .card-container {
+            transform: rotateY(180deg);
+        }
+
+        .card-face {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            backface-visibility: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            background: #fff;
+            z-index: 5;
+        }
+
+        .container-about {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            gap: 10px;
+            margin: 20px 0 0 0;
+            padding: 20px;
+        }
+
+        .front-face {
+            transform: rotateY(0deg);
+        }
+
+        .back-face {
+            display: flex;
+            transform: rotateY(180deg);
+            padding-top: 50px
+        }
+    </style>
 @endsection
 @section('scripts')
 
@@ -70,27 +330,71 @@
             if (currentScroll > lastScrollTop) {
                 // Scrolling down
                 img.style.backgroundImage =
-                "url('http://127.0.0.1:8000/home/img/icons/airplane.png')"; // Replace with your image path
+                    "url('http://127.0.0.1:8000/home/img/icons/airplane.png')"; // Replace with your image path
             } else {
                 // Scrolling up
                 img.style.backgroundImage =
-                "url('http://127.0.0.1:8000/home/img/icons/airplane2.png')"; // Replace with your image path
+                    "url('http://127.0.0.1:8000/home/img/icons/airplane2.png')"; // Replace with your image path
             }
 
             lastScrollTop = currentScroll <= 0 ? 0 : currentScroll; // For Mobile or negative scrolling
         }, false);
     </script>
+    <script>
+        $(document).ready(function() {
+            // Owl Carousel for team gallery
+            $('.team-gallery').owlCarousel({
+                loop: true,
+                margin: 10,
+                responsive: {
+                    0: {
+                        items: 1,
+                    },
+                    600: {
+                        items: 2,
+                    },
+                    1000: {
+                        items: 3,
+                    }
+                }
+            });
+
+            // Filter team members based on category
+            $('.filter-category li a').click(function(e) {
+                e.preventDefault();
+
+                var filter = $(this).data('filter');
+
+                $('.team-member').each(function() {
+                    var category = $(this).data('category');
+
+                    if (filter === 'all' || filter === category) {
+                        $(this).show();
+                    } else {
+                        $(this).hide();
+                    }
+                });
+
+                // Update active class for navigation
+                $(this).closest('li').addClass('active').siblings().removeClass('active');
+            });
+
+            // Initially show all team members
+            $('.team-member').show();
+        });
+    </script>
 @endsection
 @section('content')
 
     <!-- Page title  -->
-    <section class="page-title-wrap position-relative bg-light"  data-bg-img="{{ asset($info->about_header_image) }}">
+    <section class="page-title-wrap position-relative bg-light" data-bg-img="{{ asset($info->about_header_image) }}">
         <div id="particles_js"></div>
         <div class="container">
             <div class="row">
                 <div class="col-11">
                     <div class="page-title position-relative pt-5 pb-5">
-                        <ul class="custom-breadcrumb roboto list-unstyled mb-0 clearfix" data-animate="fadeInUp" data-delay="1.2">
+                        <ul class="custom-breadcrumb roboto list-unstyled mb-0 clearfix" data-animate="fadeInUp"
+                            data-delay="1.2">
                             <li><a href="{{ route('home') }}">@lang('site.home')</a></li>
                             <li><i class="fas fa-angle-double-right"></i></li>
                             <li><a href="#">>@lang('site.about')</a></li>
@@ -145,7 +449,8 @@
                     <div class="col-lg-8">
                         <h2 data-animate="fadeInUp" data-delay=".1">@lang('contact.connect')</h2>
                         {{-- <p data-animate="fadeInUp" data-delay=".2">@lang('contact.get_in_touch')</p> --}}
-                        <a href="{{ route('contact') }}" class="btn btn-primary" data-animate="fadeInUp" data-delay=".3">@lang('site.contact_us')</a>
+                        <a href="{{ route('contact') }}" class="btn btn-primary" data-animate="fadeInUp"
+                            data-delay=".3">@lang('site.contact_us')</a>
                     </div>
                 </div>
             </div>
@@ -164,137 +469,269 @@
                     </div>
                 </div>
             </div>
+            <div class="row justify-content-center mb-4">
+                <div class="col-md-auto">
+                    <ul class="nav nav-pills filter-category">
+                        <li class="nav-item">
+                            <a class="nav-link btn btn-secondary active" data-filter="all" href="#">All</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link btn btn-dark ml-2" data-filter="developers" href="#">Developers</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link btn btn-dark ml-2" data-filter="designers" href="#">Designers</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
 
             <!-- Members -->
             <div class="row justify-content-center">
+                <div class="col-md-3 col-sm-6 team-member" data-category="developers" data-animate="fadeInUp"
+                    data-delay="0.1">
+                    <div class="card">
+                        <div class="card-container">
+                            <div class="card-face front-face">
+                                <img src="{{ asset('home/img/members/member2.jpg') }}" alt>
+                                4121 Tom Nomec
+                                Web dev/h3
+                            </div>
+                            <div class="card-Face back-face">
+                                <div class="container about">
+                                    About me:
+                                    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit, molestiae
+                                        assumenda lure sit enim quo nostrum temporibus eos sapiente nam eum cupiditate
+                                        quiden et placeat deleniti ullam nisi hic dolore.</p>
+                                    <div class="ca href target blant" classhi fo bi-facebook">
+                                        <a href target blans class-hi ig bi-instagram">
+                                            <a href" target="blank" class="bi git si-github">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 col-sm-6 team-member" data-category="designers" data-animate="fadeInUp"
+                    data-delay="0.2">
+                    <div class="card">
+                        <div class="card-container">
+                            <div class="card-face front-face">
+                                <img src="{{ asset('home/img/members/member2.jpg') }}" alt>
+                                4121 Tom Nomec
+                                Web dev/h3
+                            </div>
+                            <div class="card-Face back-face">
+                                <div class="container about">
+                                    About me:
+                                    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit, molestiae
+                                        assumenda lure sit enim quo nostrum temporibus eos sapiente nam eum cupiditate
+                                        quiden et placeat deleniti ullam nisi hic dolore.</p>
+                                    <div class="ca href target blant" classhi fo bi-facebook">
+                                        <a href target blans class-hi ig bi-instagram">
+                                            <a href" target="blank" class="bi git si-github">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 col-sm-6 team-member" data-category="developers" data-animate="fadeInUp"
+                    data-delay="0.1">
+                    <div class="card">
+                        <div class="card-container">
+                            <div class="card-face front-face">
+                                <img src="{{ asset('home/img/members/member2.jpg') }}" alt>
+                                4121 Tom Nomec
+                                Web dev/h3
+                            </div>
+                            <div class="card-Face back-face">
+                                <div class="container about">
+                                    About me:
+                                    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit, molestiae
+                                        assumenda lure sit enim quo nostrum temporibus eos sapiente nam eum cupiditate
+                                        quiden et placeat deleniti ullam nisi hic dolore.</p>
+                                    <div class="ca href target blant" classhi fo bi-facebook">
+                                        <a href target blans class-hi ig bi-instagram">
+                                            <a href" target="blank" class="bi git si-github">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 col-sm-6 team-member" data-category="designers" data-animate="fadeInUp"
+                    data-delay="0.2">
+                    <div class="card">
+                        <div class="card-container">
+                            <div class="card-face front-face">
+                                <img src="{{ asset('home/img/members/member2.jpg') }}" alt>
+                                4121 Tom Nomec
+                                Web dev/h3
+                            </div>
+                            <div class="card-Face back-face">
+                                <div class="container about">
+                                    About me:
+                                    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit, molestiae
+                                        assumenda lure sit enim quo nostrum temporibus eos sapiente nam eum cupiditate
+                                        quiden et placeat deleniti ullam nisi hic dolore.</p>
+                                    <div class="ca href target blant" classhi fo bi-facebook">
+                                        <a href target blans class-hi ig bi-instagram">
+                                            <a href" target="blank" class="bi git si-github">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 col-sm-6 team-member" data-category="developers" data-animate="fadeInUp"
+                    data-delay="0.1">
+                    <div class="card">
+                        <div class="card-container">
+                            <div class="card-face front-face">
+                                <img src="{{ asset('home/img/members/member2.jpg') }}" alt>
+                                4121 Tom Nomec
+                                Web dev/h3
+                            </div>
+                            <div class="card-Face back-face">
+                                <div class="container about">
+                                    About me:
+                                    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit, molestiae
+                                        assumenda lure sit enim quo nostrum temporibus eos sapiente nam eum cupiditate
+                                        quiden et placeat deleniti ullam nisi hic dolore.</p>
+                                    <div class="ca href target blant" classhi fo bi-facebook">
+                                        <a href target blans class-hi ig bi-instagram">
+                                            <a href" target="blank" class="bi git si-github">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 col-sm-6 team-member" data-category="designers" data-animate="fadeInUp"
+                    data-delay="0.2">
+                    <div class="card">
+                        <div class="card-container">
+                            <div class="card-face front-face">
+                                <img src="{{ asset('home/img/members/member2.jpg') }}" alt>
+                                4121 Tom Nomec
+                                Web dev/h3
+                            </div>
+                            <div class="card-Face back-face">
+                                <div class="container about">
+                                    About me:
+                                    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit, molestiae
+                                        assumenda lure sit enim quo nostrum temporibus eos sapiente nam eum cupiditate
+                                        quiden et placeat deleniti ullam nisi hic dolore.</p>
+                                    <div class="ca href target blant" classhi fo bi-facebook">
+                                        <a href target blans class-hi ig bi-instagram">
+                                            <a href" target="blank" class="bi git si-github">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 col-sm-6 team-member" data-category="developers" data-animate="fadeInUp"
+                    data-delay="0.1">
+                    <div class="card">
+                        <div class="card-container">
+                            <div class="card-face front-face">
+                                <img src="{{ asset('home/img/members/member2.jpg') }}" alt>
+                                4121 Tom Nomec
+                                Web dev/h3
+                            </div>
+                            <div class="card-Face back-face">
+                                <div class="container about">
+                                    About me:
+                                    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit, molestiae
+                                        assumenda lure sit enim quo nostrum temporibus eos sapiente nam eum cupiditate
+                                        quiden et placeat deleniti ullam nisi hic dolore.</p>
+                                    <div class="ca href target blant" classhi fo bi-facebook">
+                                        <a href target blans class-hi ig bi-instagram">
+                                            <a href" target="blank" class="bi git si-github">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
-
-                <div class="col-lg-3 col-md-4 col-sm-6">
-                    <div class="single-member" data-animate="fadeInUp" data-delay=".1">
-                        <div class="image-hover-wrap">
-                            <img src="{{ asset('home/img/members/member2.jpg') }}" alt="">
-                            <div class="image-hover-content d-flex justify-content-center align-items-center text-center">
-                                <ul class="list-inline">
-                                    <li><a href="#" target="_blank"><i class="fab fa-facebook-f"></i></a></li>
-                                    <li><a href="#" target="_blank"><i class="fab fa-twitter"></i></a></li>
-                                    <li><a href="#" target="_blank"><i class="fab fa-google-plus-g"></i></a></li>
-                                    <li><a href="#" target="_blank"><i class="fab fa-linkedin-in"></i></a></li>
-                                    <li><a href="#" target="_blank"><i class="fab fa-vk"></i></a></li>
-                                </ul>
+                <div class="col-md-3 col-sm-6 team-member" data-category="developers" data-animate="fadeInUp"
+                    data-delay="0.1">
+                    <div class="card">
+                        <div class="card-container">
+                            <div class="card-face front-face">
+                                <img src="{{ asset('home/img/members/member2.jpg') }}" alt>
+                                4121 Tom Nomec
+                                Web dev/h3
                             </div>
-                        </div>
-                        <div class="single-member-info">
-                            <h4>Marie S. Higginbotham</h4>
-                            <span>Senior Marketing Officer</span>
+                            <div class="card-Face back-face">
+                                <div class="container about">
+                                    About me:
+                                    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit, molestiae
+                                        assumenda lure sit enim quo nostrum temporibus eos sapiente nam eum cupiditate
+                                        quiden et placeat deleniti ullam nisi hic dolore.</p>
+                                    <div class="ca href target blant" classhi fo bi-facebook">
+                                        <a href target blans class-hi ig bi-instagram">
+                                            <a href" target="blank" class="bi git si-github">
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-3 col-md-4 col-sm-6">
-                    <div class="single-member" data-animate="fadeInUp" data-delay=".1">
-                        <div class="image-hover-wrap">
-                            <img src="{{ asset('home/img/members/member2.jpg') }}" alt="">
-                            <div class="image-hover-content d-flex justify-content-center align-items-center text-center">
-                                <ul class="list-inline">
-                                    <li><a href="#" target="_blank"><i class="fab fa-facebook-f"></i></a></li>
-                                    <li><a href="#" target="_blank"><i class="fab fa-twitter"></i></a></li>
-                                    <li><a href="#" target="_blank"><i class="fab fa-google-plus-g"></i></a></li>
-                                    <li><a href="#" target="_blank"><i class="fab fa-linkedin-in"></i></a></li>
-                                    <li><a href="#" target="_blank"><i class="fab fa-vk"></i></a></li>
-                                </ul>
+                <div class="col-md-3 col-sm-6 team-member" data-category="designers" data-animate="fadeInUp"
+                    data-delay="0.2">
+                    <div class="card">
+                        <div class="card-container">
+                            <div class="card-face front-face">
+                                <img src="{{ asset('home/img/members/member2.jpg') }}" alt>
+                                4121 Tom Nomec
+                                Web dev/h3
                             </div>
-                        </div>
-                        <div class="single-member-info">
-                            <h4>Marie S. Higginbotham</h4>
-                            <span>Senior Marketing Officer</span>
+                            <div class="card-Face back-face">
+                                <div class="container about">
+                                    About me:
+                                    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit, molestiae
+                                        assumenda lure sit enim quo nostrum temporibus eos sapiente nam eum cupiditate
+                                        quiden et placeat deleniti ullam nisi hic dolore.</p>
+                                    <div class="ca href target blant" classhi fo bi-facebook">
+                                        <a href target blans class-hi ig bi-instagram">
+                                            <a href" target="blank" class="bi git si-github">
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-3 col-md-4 col-sm-6">
-                    <div class="single-member" data-animate="fadeInUp" data-delay=".1">
-                        <div class="image-hover-wrap">
-                            <img src="{{ asset('home/img/members/member2.jpg') }}" alt="">
-                            <div class="image-hover-content d-flex justify-content-center align-items-center text-center">
-                                <ul class="list-inline">
-                                    <li><a href="#" target="_blank"><i class="fab fa-facebook-f"></i></a></li>
-                                    <li><a href="#" target="_blank"><i class="fab fa-twitter"></i></a></li>
-                                    <li><a href="#" target="_blank"><i class="fab fa-google-plus-g"></i></a></li>
-                                    <li><a href="#" target="_blank"><i class="fab fa-linkedin-in"></i></a></li>
-                                    <li><a href="#" target="_blank"><i class="fab fa-vk"></i></a></li>
-                                </ul>
+                <div class="col-md-3 col-sm-6 team-member" data-category="designers" data-animate="fadeInUp"
+                    data-delay="0.2">
+                    <div class="card">
+                        <div class="card-container">
+                            <div class="card-face front-face">
+                                <img src="{{ asset('home/img/members/member2.jpg') }}" alt>
+                                4121 Tom Nomec
+                                Web dev/h3
                             </div>
-                        </div>
-                        <div class="single-member-info">
-                            <h4>Marie S. Higginbotham</h4>
-                            <span>Senior Marketing Officer</span>
+                            <div class="card-Face back-face">
+                                <div class="container about">
+                                    About me:
+                                    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit, molestiae
+                                        assumenda lure sit enim quo nostrum temporibus eos sapiente nam eum cupiditate
+                                        quiden et placeat deleniti ullam nisi hic dolore.</p>
+                                    <div class="ca href target blant" classhi fo bi-facebook">
+                                        <a href target blans class-hi ig bi-instagram">
+                                            <a href" target="blank" class="bi git si-github">
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-3 col-md-4 col-sm-6">
-                    <div class="single-member" data-animate="fadeInUp" data-delay=".1">
-                        <div class="image-hover-wrap">
-                            <img src="{{ asset('home/img/members/member2.jpg') }}" alt="">
-                            <div class="image-hover-content d-flex justify-content-center align-items-center text-center">
-                                <ul class="list-inline">
-                                    <li><a href="#" target="_blank"><i class="fab fa-facebook-f"></i></a></li>
-                                    <li><a href="#" target="_blank"><i class="fab fa-twitter"></i></a></li>
-                                    <li><a href="#" target="_blank"><i class="fab fa-google-plus-g"></i></a></li>
-                                    <li><a href="#" target="_blank"><i class="fab fa-linkedin-in"></i></a></li>
-                                    <li><a href="#" target="_blank"><i class="fab fa-vk"></i></a></li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="single-member-info">
-                            <h4>Marie S. Higginbotham</h4>
-                            <span>Senior Marketing Officer</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-4 col-sm-6">
-                    <div class="single-member" data-animate="fadeInUp" data-delay=".1">
-                        <div class="image-hover-wrap">
-                            <img src="{{ asset('home/img/members/member2.jpg') }}" alt="">
-                            <div class="image-hover-content d-flex justify-content-center align-items-center text-center">
-                                <ul class="list-inline">
-                                    <li><a href="#" target="_blank"><i class="fab fa-facebook-f"></i></a></li>
-                                    <li><a href="#" target="_blank"><i class="fab fa-twitter"></i></a></li>
-                                    <li><a href="#" target="_blank"><i class="fab fa-google-plus-g"></i></a></li>
-                                    <li><a href="#" target="_blank"><i class="fab fa-linkedin-in"></i></a></li>
-                                    <li><a href="#" target="_blank"><i class="fab fa-vk"></i></a></li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="single-member-info">
-                            <h4>Marie S. Higginbotham</h4>
-                            <span>Senior Marketing Officer</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-4 col-sm-6">
-                    <div class="single-member" data-animate="fadeInUp" data-delay=".1">
-                        <div class="image-hover-wrap">
-                            <img src="{{ asset('home/img/members/member2.jpg') }}" alt="">
-                            <div class="image-hover-content d-flex justify-content-center align-items-center text-center">
-                                <ul class="list-inline">
-                                    <li><a href="#" target="_blank"><i class="fab fa-facebook-f"></i></a></li>
-                                    <li><a href="#" target="_blank"><i class="fab fa-twitter"></i></a></li>
-                                    <li><a href="#" target="_blank"><i class="fab fa-google-plus-g"></i></a></li>
-                                    <li><a href="#" target="_blank"><i class="fab fa-linkedin-in"></i></a></li>
-                                    <li><a href="#" target="_blank"><i class="fab fa-vk"></i></a></li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="single-member-info">
-                            <h4>Marie S. Higginbotham</h4>
-                            <span>Senior Marketing Officer</span>
-                        </div>
-                    </div>
-                </div>
-
+            </div>
         </div>
     </section>
     <!-- End of Our team -->
-
-
 
     <!-- Servers -->
     <section id="section3" class="servers pt-7 bg-light section3">
@@ -327,17 +764,4 @@
     </section>
     <!-- End Servers -->
 
-    <!-- Our clients -->
-    <section class="clients-wrap pt-4 pb-4">
-        <div class="container">
-            <ul class="our-clients list-unstyled d-md-flex align-items-md-center justify-content-md-between m-0">
-
-                <li data-animate="fadeInUp" data-delay=".1">
-                    <a href="#" target="_blank"><img src="{{ asset('home/img/brands/brand1.png') }}"
-                            alt=""></a>
-                </li>
-
-        </div>
-    </section>
-    <!-- End of Our clients -->
 @endsection

@@ -4,6 +4,23 @@
 
 @section('scripts')
     <script src="{{ asset('dashboard/js/image_preview.js') }}"></script>
+    <script src="{{ asset('ckeditor/ckeditor.js') }}"></script>
+    <script>
+
+    var imageGalleryBrowseUrl = "{{ route('dashboard.imageGallery.browser') }}";
+    var imageGalleryUploadUrl = "{{ route('dashboard.imageGallery.uploader') }}";
+        $(function() {
+            CKEDITOR.replace("ar[brief]", {
+                filebrowserBrowseUrl: imageGalleryBrowseUrl,
+                filebrowserUploadUrl: imageGalleryUploadUrl +
+                    "?_token=" +
+                    $("meta[name=csrf-token]").attr("content"),
+                removeButtons: "About",
+                contentsLangDirection: 'rtl'
+            });
+
+        });
+    </script>
 @endsection
 
 @section('content')
@@ -72,8 +89,8 @@
                     </div>
 
                     <div class="form-group mb-3">
-                        <input class="t" type="checkbox" value="1" id="show_at_home"
-                            name="show_at_home" {{ old('show_at_home') == '1' ? 'checked' : '' }}>
+                        <input class="t" type="checkbox" value="1" id="show_at_home" name="show_at_home"
+                            {{ old('show_at_home') == '1' ? 'checked' : '' }}>
                         <label class="" for="show_at_home">
                             عرض في الصفحة الرئيسية
                         </label>
