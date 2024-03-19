@@ -244,9 +244,9 @@ We may release future updates so it will overwrite this file. it's better and sa
 
         if(typedTarget.length) {
             var typed = new Typed(typedElement, {
-                strings: ['Start your business with award winning company.', 'Get ready to get summer big discount!'],
-                typeSpeed: 50,
-                backSpeed: 10,
+                 stringsElement: '#typed-strings',
+                typeSpeed: 0,
+                backSpeed: 0,
                 loop: true
             });
         }
@@ -256,10 +256,10 @@ We may release future updates so it will overwrite this file. it's better and sa
 
         if(typedTargetSecond.length) {
             var typed = new Typed(typedElementSecond, {
-                strings: ['Responsive.', 'Retina Ready.', 'Bootstrap 4 Supported.'],
-                typeSpeed: 50,
-                backSpeed: 10,
-                loop: true
+                stringsElement: '#typed-strings2',
+                typeSpeed: 0,
+                backSpeed: 0,
+                loop: false
             });
         }
     });

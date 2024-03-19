@@ -49,6 +49,10 @@
     <script src="{{ asset('noty/noty.min.js') }}" defer></script>
     @yield('styles')
 
+    {{-- aos --}}
+    <link rel="stylesheet" href="{{ asset('css/aos.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/animate.css') }}">
+
 </head>
 
 <body>
@@ -253,7 +257,10 @@
     <script src="{{ asset('home/js/custom.js') }}"></script>
 
     <script src="{{ asset('js/owl.carousel.min.js') }}"></script>
-
+    <script src="{{ asset('js/jquery.countup.js') }}"></script>
+    
+    {{-- aos --}}
+    <script src="{{ asset('js/aos.js') }}"></script>
     @include('partials._session')
     @yield('scripts')
 </body>

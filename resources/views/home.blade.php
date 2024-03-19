@@ -128,27 +128,27 @@
         }
 
         /* .section-wrapper .shielding-layer:after {
-                    content: "";
-                    width: 71%;
-                    height: 100%;
-                    position: absolute;
-                    top: 0;
-                    right: 0;
-                    z-index: 3;
-                    background: linear-gradient(90deg, rgba(249, 249, 254, 0) rgba(249, 249, 254, 0.97) 0,);
-                }
+                                                    content: "";
+                                                    width: 71%;
+                                                    height: 100%;
+                                                    position: absolute;
+                                                    top: 0;
+                                                    right: 0;
+                                                    z-index: 3;
+                                                    background: linear-gradient(90deg, rgba(249, 249, 254, 0) rgba(249, 249, 254, 0.97) 0,);
+                                                }
 
-                .section-wrapper .shielding-layer:before {
-                    pointer-events: none;
-                    content: "";
-                    width: calc(29% + 1px);
-                    height: 100%;
-                    position: absolute;
-                    top: 0;
-                    left: 0;
-                    z-index: 3;
-                    background: linear-gradient(90deg, rgba(249, 249, 254, 0.97) 0, rgba(249, 249, 254, 0));
-                } */
+                                                .section-wrapper .shielding-layer:before {
+                                                    pointer-events: none;
+                                                    content: "";
+                                                    width: calc(29% + 1px);
+                                                    height: 100%;
+                                                    position: absolute;
+                                                    top: 0;
+                                                    left: 0;
+                                                    z-index: 3;
+                                                    background: linear-gradient(90deg, rgba(249, 249, 254, 0.97) 0, rgba(249, 249, 254, 0));
+                                                } */
 
         .section-wrapper:before {
             content: "";
@@ -420,10 +420,45 @@
         }
     </style>
 
+    <style>
+        .counter_section {
+            padding: 50px 0;
+            background: #0D1216;
+            color: #E2E2E2
+        }
+
+        .item svg {
+            width: 45px !important;
+            height: 45px !important;
+        }
+
+        .item i {
+
+            font-size: 3em;
+        }
+
+        .item p.number {
+            font-size: 1.5em;
+        }
+
+        .item p.label {
+            font-size: 1.1em;
+            text-transform: uppercase;
+        }
+
+        .item:hover i,
+        .item:hover p {
+            color: rgb(226, 226, 226);
+        }
+
+        @media (max-width: 786px) {
+            .counter .item {
+                flex: 0 0 50%;
+            }
+        }
+    </style>
 @endsection
 @section('scripts')
-
-
     <script>
         var lastScrollTop = 0;
 
@@ -443,6 +478,10 @@
             lastScrollTop = currentScroll <= 0 ? 0 : currentScroll; // For Mobile or negative scrolling
         }, false);
     </script>
+
+    <script>
+        $('.counter').countUp();
+    </script>
 @endsection
 @section('content')
 
@@ -450,179 +489,191 @@
         <div class="shielding-layer"></div>
         <div class="">
             <div class="content">
-            <div id="particles_js"></div>
+                <div id="particles_js"></div>
                 <div class="container">
                     <div class=" row align-items-center" style="">
                         <div class="col-lg-7">
                             <!-- Banner content -->
                             <div class="banner-content">
-                                <h1 data-animate="fadeInUp" data-delay="1.2">{{ $info->title }}</h1>
-                                <h2 data-animate="fadeInUp" data-delay="1.3"><span
-                                        class="">{{ $info->description }}</span>
+                                <div id="typed-strings">
+                                    <p>{{ $info->title }}</p>
+                                </div>
+
+                                <h1 data-animate="fadeInUp" data-delay="1.2" class="typed"></h1>
+
+                                <div id="typed-strings2">
+                                    <p>{{ $info->description }}</p>
+                                </div>
+                                <h2 data-animate="fadeInUp" data-delay="1.3" class=""><span
+                                        class="typed-second"></span>
                                 </h2>
+
                                 <ul class="list-inline" data-animate="fadeInUp" data-delay="1.4">
                                     <li><a href="#" class="btn btn-primary"
                                             style="padding: 10px 25px">@lang('site.about_me')</a>
                                     </li>
 
                                 </ul>
+
                             </div>
                         </div>
-                        <div class="col-lg-5 " style=""  data-animate="fadeInUp" data-delay="1.4">>
+                        <div class="col-lg-2 offset-lg-3 " style="" data-animate="fadeInUp" data-delay="1.4">>
                             <!-- Banner image -->
                             <div class="template-wall">
-                                <div class="column index-0" >
+                                <div class="column index-0">
                                     <div class="wall-box">
                                         <img alt="perfectcod" class="icon hoverable" src="{{ asset('home/icon/1.png') }}"
-                                            style="width: 163px; height: 92px; margin-right: 5px;">
+                                            style="width: 75px; height: 92px; margin-right: 5px;">
                                         <div class="shelter"></div>
                                     </div>
                                     <div class="wall-box">
                                         <img alt="perfectcod" class="icon hoverable" src="{{ asset('home/icon/2.png') }}"
-                                            style="width: 163px; height: 92px; margin-right: 5px;">
+                                            style="width: 75px; height: 92px; margin-right: 5px;">
                                         <div class="shelter"></div>
                                     </div>
                                     <div class="wall-box">
                                         <img alt="perfectcod" class="icon hoverable" src="{{ asset('home/icon/3.png') }}"
-                                            style="width: 163px; height: 92px; margin-right: 5px;">
+                                            style="width: 75px; height: 92px; margin-right: 5px;">
                                         <div class="shelter"></div>
                                     </div>
                                     <div class="wall-box">
                                         <img alt="perfectcod" class="icon hoverable" src="{{ asset('home/icon/4.png') }}"
-                                            style="width: 163px; height: 92px; margin-right: 5px;">
+                                            style="width: 75px; height: 92px; margin-right: 5px;">
                                         <div class="shelter"></div>
                                     </div>
                                     <div class="wall-box">
                                         <img alt="perfectcod" class="icon hoverable" src="{{ asset('home/icon/5.png') }}"
-                                            style="width: 163px; height: 92px; margin-right: 5px;">
+                                            style="width: 75px; height: 92px; margin-right: 5px;">
                                         <div class="shelter"></div>
                                     </div>
                                     <div class="wall-box">
                                         <img alt="perfectcod" class="icon hoverable" src="{{ asset('home/icon/11.png') }}"
-                                            style="width: 163px; height: 92px; margin-right: 5px;">
+                                            style="width: 75px; height: 92px; margin-right: 5px;">
                                         <div class="shelter"></div>
                                     </div>
                                     <div class="wall-box">
                                         <img alt="perfectcod" class="icon hoverable" src="{{ asset('home/icon/7.png') }}"
-                                            style="width: 163px; height: 92px; margin-right: 5px;">
+                                            style="width: 75px; height: 92px; margin-right: 5px;">
                                         <div class="shelter"></div>
                                     </div>
                                     <div class="wall-box">
                                         <img alt="perfectcod" class="icon hoverable" src="{{ asset('home/icon/8.png') }}"
-                                            style="width: 163px; height: 92px; margin-right: 5px;">
+                                            style="width: 75px; height: 92px; margin-right: 5px;">
                                         <div class="shelter"></div>
                                     </div>
                                     <div class="wall-box">
                                         <img alt="perfectcod" class="icon hoverable" src="{{ asset('home/icon/9.png') }}"
-                                            style="width: 163px; height: 92px; margin-right: 5px;">
+                                            style="width: 75px; height: 92px; margin-right: 5px;">
                                         <div class="shelter"></div>
                                     </div>
                                 </div>
-                                <div class="column index-2">
+                                {{-- <div class="column index-2">
                                     <div class="wall-box">
-                                        <img alt="perfectcod" class="icon hoverable"
-                                            src="{{ asset('home/icon/13.png') }}"
-                                            style="width: 163px; height: 92px; margin-right: 5px;">
+                                        <img alt="perfectcod" class="icon hoverable" src="{{ asset('home/icon/13.png') }}"
+                                            style="width: 75px; height: 92px; margin-right: 5px;">
                                         <div class="shelter"></div>
                                     </div>
                                     <div class="wall-box">
-                                        <img alt="perfectcod" class="icon hoverable"
-                                            src="{{ asset('home/icon/14.png') }}"
-                                            style="width: 163px; height: 92px; margin-right: 5px;">
+                                        <img alt="perfectcod" class="icon hoverable" src="{{ asset('home/icon/14.png') }}"
+                                            style="width: 75px; height: 92px; margin-right: 5px;">
                                         <div class="shelter"></div>
                                     </div>
                                     <div class="wall-box">
                                         <img alt="perfectcod" class="icon hoverable"
                                             src="{{ asset('home/icon/15.png') }}"
-                                            style="width: 163px; height: 92px; margin-right: 5px;">
+                                            style="width: 75px; height: 92px; margin-right: 5px;">
                                         <div class="shelter"></div>
                                     </div>
                                     <div class="wall-box">
                                         <img alt="perfectcod" class="icon hoverable"
                                             src="{{ asset('home/icon/16.png') }}"
-                                            style="width: 163px; height: 92px; margin-right: 5px;">
+                                            style="width: 75px; height: 92px; margin-right: 5px;">
                                         <div class="shelter"></div>
                                     </div>
                                     <div class="wall-box">
                                         <img alt="perfectcod" class="icon hoverable"
                                             src="{{ asset('home/icon/17.png') }}"
-                                            style="width: 163px; height: 92px; margin-right: 5px;">
+                                            style="width: 75px; height: 92px; margin-right: 5px;">
                                         <div class="shelter"></div>
                                     </div>
                                     <div class="wall-box">
                                         <img alt="perfectcod" class="icon hoverable"
                                             src="{{ asset('home/icon/18.png') }}"
-                                            style="width: 163px; height: 92px; margin-right: 5px;">
+                                            style="width: 75px; height: 92px; margin-right: 5px;">
                                         <div class="shelter"></div>
                                     </div>
                                     <div class="wall-box">
                                         <img alt="perfectcod" class="icon hoverable"
                                             src="{{ asset('home/icon/19.png') }}"
-                                            style="width: 163px; height: 92px; margin-right: 5px;">
+                                            style="width: 75px; height: 92px; margin-right: 5px;">
                                         <div class="shelter"></div>
                                     </div>
                                     <div class="wall-box">
                                         <img alt="perfectcod" class="icon hoverable"
                                             src="{{ asset('home/icon/20.png') }}"
-                                            style="width: 163px; height: 92px; margin-right: 5px;">
+                                            style="width: 75px; height: 92px; margin-right: 5px;">
                                         <div class="shelter"></div>
                                     </div>
                                     <div class="wall-box">
                                         <img alt="perfectcod" class="icon hoverable"
                                             src="{{ asset('home/icon/13.png') }}"
-                                            style="width: 163px; height: 92px; margin-right: 5px;">
+                                            style="width: 75px; height: 92px; margin-right: 5px;">
                                         <div class="shelter"></div>
                                     </div>
                                 </div>
                                 <div class="column index-1">
                                     <div class="wall-box">
-                                        <img alt="perfectcod" class="icon hoverable" src="{{ asset('home/icon/10.png') }}"
-                                            style="width: 163px; height: 92px; margin-right: 5px;">
-                                        <div class="shelter"></div>
-                                    </div>
-                                    <div class="wall-box">
-                                        <img alt="perfectcod" class="icon hoverable" src="{{ asset('home/icon/11.png') }}"
-                                            style="width: 163px; height: 92px; margin-right: 5px;">
-                                        <div class="shelter"></div>
-                                    </div>
-                                    <div class="wall-box">
-                                        <img alt="perfectcod" class="icon hoverable" src="{{ asset('home/icon/12.png') }}"
-                                            style="width: 163px; height: 92px; margin-right: 5px;">
-                                        <div class="shelter"></div>
-                                    </div>
-                                    <div class="wall-box">
-                                        <img alt="perfectcod" class="icon hoverable" src="{{ asset('home/icon/8.png') }}"
-                                            style="width: 163px; height: 92px; margin-right: 5px;">
-                                        <div class="shelter"></div>
-                                    </div>
-                                    <div class="wall-box">
                                         <img alt="perfectcod" class="icon hoverable"
-                                            src="{{ asset('home/icon/7.png') }}"
-                                            style="width: 163px; height: 92px; margin-right: 5px;">
+                                            src="{{ asset('home/icon/10.png') }}"
+                                            style="width: 75px; height: 92px; margin-right: 5px;">
                                         <div class="shelter"></div>
                                     </div>
                                     <div class="wall-box">
                                         <img alt="perfectcod" class="icon hoverable"
                                             src="{{ asset('home/icon/11.png') }}"
-                                            style="width: 163px; height: 92px; margin-right: 5px;">
+                                            style="width: 75px; height: 92px; margin-right: 5px;">
+                                        <div class="shelter"></div>
+                                    </div>
+                                    <div class="wall-box">
+                                        <img alt="perfectcod" class="icon hoverable"
+                                            src="{{ asset('home/icon/12.png') }}"
+                                            style="width: 75px; height: 92px; margin-right: 5px;">
+                                        <div class="shelter"></div>
+                                    </div>
+                                    <div class="wall-box">
+                                        <img alt="perfectcod" class="icon hoverable"
+                                            src="{{ asset('home/icon/8.png') }}"
+                                            style="width: 75px; height: 92px; margin-right: 5px;">
+                                        <div class="shelter"></div>
+                                    </div>
+                                    <div class="wall-box">
+                                        <img alt="perfectcod" class="icon hoverable"
+                                            src="{{ asset('home/icon/7.png') }}"
+                                            style="width: 75px; height: 92px; margin-right: 5px;">
+                                        <div class="shelter"></div>
+                                    </div>
+                                    <div class="wall-box">
+                                        <img alt="perfectcod" class="icon hoverable"
+                                            src="{{ asset('home/icon/11.png') }}"
+                                            style="width: 75px; height: 92px; margin-right: 5px;">
                                         <div class="shelter"></div>
                                     </div>
                                     <div class="wall-box">
                                         <img alt="perfectcod" class="icon hoverable"
                                             src="{{ asset('home/icon/5.png') }}"
-                                            style="width: 163px; height: 92px; margin-right: 5px;">
+                                            style="width: 75px; height: 92px; margin-right: 5px;">
                                         <div class="shelter"></div>
                                     </div>
                                     <div class="wall-box">
                                         <img alt="perfectcod" class="icon hoverable"
                                             src="{{ asset('home/icon/4.png') }}"
-                                            style="width: 163px; height: 92px; margin-right: 5px;">
+                                            style="width: 75px; height: 92px; margin-right: 5px;">
                                         <div class="shelter"></div>
                                     </div>
                                     <div class="wall-box">
                                         <img alt="perfectcod" class="icon hoverable"
                                             src="{{ asset('home/icon/3.png') }}"
-                                            style="width: 163px; height: 92px; margin-right: 5px;">
+                                            style="width: 75px; height: 92px; margin-right: 5px;">
                                         <div class="shelter"></div>
                                     </div>
                                 </div>
@@ -630,58 +681,58 @@
                                     <div class="wall-box">
                                         <img alt="perfectcod" class="icon hoverable"
                                             src="{{ asset('home/icon/21.png') }}"
-                                            style="width: 163px; height: 92px; margin-right: 5px;">
+                                            style="width: 75px; height: 92px; margin-right: 5px;">
                                         <div class="shelter"></div>
                                     </div>
                                     <div class="wall-box">
                                         <img alt="perfectcod" class="icon hoverable"
                                             src="{{ asset('home/icon/22.png') }}"
-                                            style="width: 163px; height: 92px; margin-right: 5px;">
+                                            style="width: 75px; height: 92px; margin-right: 5px;">
                                         <div class="shelter"></div>
                                     </div>
                                     <div class="wall-box">
                                         <img alt="perfectcod" class="icon hoverable"
                                             src="{{ asset('home/icon/23.png') }}"
-                                            style="width: 163px; height: 92px; margin-right: 5px;">
+                                            style="width: 75px; height: 92px; margin-right: 5px;">
                                         <div class="shelter"></div>
                                     </div>
                                     <div class="wall-box">
                                         <img alt="perfectcod" class="icon hoverable"
                                             src="{{ asset('home/icon/24.png') }}"
-                                            style="width: 163px; height: 92px; margin-right: 5px;">
+                                            style="width: 75px; height: 92px; margin-right: 5px;">
                                         <div class="shelter"></div>
                                     </div>
                                     <div class="wall-box">
                                         <img alt="perfectcod" class="icon hoverable"
                                             src="{{ asset('home/icon/25.webp') }}"
-                                            style="width: 163px; height: 92px; margin-right: 5px;">
+                                            style="width: 75px; height: 92px; margin-right: 5px;">
                                         <div class="shelter"></div>
                                     </div>
                                     <div class="wall-box">
                                         <img alt="perfectcod" class="icon hoverable"
                                             src="{{ asset('home/icon/26.png') }}"
-                                            style="width: 163px; height: 92px; margin-right: 5px;">
+                                            style="width: 75px; height: 92px; margin-right: 5px;">
                                         <div class="shelter"></div>
                                     </div>
                                     <div class="wall-box">
                                         <img alt="perfectcod" class="icon hoverable"
                                             src="{{ asset('home/icon/27.png') }}"
-                                            style="width: 163px; height: 92px; margin-right: 5px;">
+                                            style="width: 75px; height: 92px; margin-right: 5px;">
                                         <div class="shelter"></div>
                                     </div>
                                     <div class="wall-box">
                                         <img alt="perfectcod" class="icon hoverable"
                                             src="{{ asset('home/icon/21.png') }}"
-                                            style="width: 163px; height: 92px; margin-right: 5px;">
+                                            style="width: 75px; height: 92px; margin-right: 5px;">
                                         <div class="shelter"></div>
                                     </div>
                                     <div class="wall-box">
                                         <img alt="perfectcod" class="icon hoverable"
                                             src="{{ asset('home/icon/27.png') }}"
-                                            style="width: 163px; height: 92px; margin-right: 5px;">
+                                            style="width: 75px; height: 92px; margin-right: 5px;">
                                         <div class="shelter"></div>
                                     </div>
-                                </div>
+                                </div> --}}
 
 
                             </div>
@@ -701,8 +752,8 @@
                 <div class="row">
                     <div class="col-md-4">
                         <div class="single-feature text-center" data-animate="fadeInUp" data-delay=".1">
-                            <img src="{{ asset('home/img/icons/vpn.svg') }}" alt="" alt=""
-                                data-no-retina class="svg">
+                            <img src="{{ asset('home/img/icons/vpn.svg') }}" alt="" alt="" data-no-retina
+                                class="svg">
                             <h3>عنون1</h3>
                             <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium
                                 voluptatum.</p>
@@ -819,8 +870,36 @@
     </section>
     <!-- End of Our services -->
 
+    {{-- Start Counter --}}
+    <section class="counter_section">
+        <div class="counter_main">
+            <div class="container">
 
-
+                <div class="row ">
+                    <div class="col-md-3 text-center item">
+                        <i class="fa fa-graduation-cap"></i>
+                        <p id="number1" class="number counter">600</p>
+                        <p class="label">الجامعات التي نغطيها</p>
+                    </div>
+                    <div class="col-md-3 text-center item">
+                        <i class="fa fa-newspaper"></i>
+                        <p id="number2" class="number counter">3800</p>
+                        <p class="label">التأشيرات الصادرة</p>
+                    </div>
+                    <div class="col-md-3 text-center item">
+                        <i class="fa fa-user"></i>
+                        <p id="number3" class="number counter">35</p>
+                        <p class="label">مستشار أكاديمي</p>
+                    </div>
+                    <div class="col-md-3 text-center item">
+                        <i class="fa fa-briefcase"></i>
+                        <p id="number4" class="number counter">10</p>
+                        <p class="label">سنوات الخبرة</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
     <!-- Servers -->
     <section id="section3" class="servers pt-7 bg-light section3 ">
@@ -852,6 +931,7 @@
         </div>
     </section>
     <!-- End Servers -->
+
 
     <!-- Our clients -->
     <section class="clients-wrap pt-4 pb-4">
@@ -898,4 +978,94 @@
     </section>
     <!-- End of Our clients -->
 
+    <!-- Reviews -->
+    <section class="pt-7 pb-7 bg-light">
+        <div class="container">
+            <div class="section-title text-center">
+                <h2 data-animate="fadeInUp" data-delay=".1">أراء العملاء</h2>
+            </div>
+            <div class="swiper-container review-slider">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide single-review-slide">
+                        <img src="{{ asset('home/img/authors/author.png') }}" class="rounded" alt="">
+                        <h4>Marsha C. Meyer
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </h4>
+                        <span> Australia</span>
+                        <p>I must explain to you how all this mistaken idea of denouncing pleasure and praising pain was
+                            born and I will give complete account of the system, and expound the actual teachings of
+                            happiness. No one rejects, dislikes, or avoids.</p>
+                    </div>
+
+                    <div class="swiper-slide single-review-slide">
+                        <h4><img src="{{ asset('home/img/authors/author.png') }}" class="rounded" alt=""
+                                style="margin-left: 15px; margin-right: 15px">
+
+                            Bns H. Jabed
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </h4>
+                        <span>Syria</span>
+                        <p>I must explain to you how all this mistaken idea of denouncing pleasure and praising pain was
+                            born and I will give complete account of the system, and expound the actual teachings of
+                            happiness. No one rejects, dislikes, or avoids.</p>
+                    </div>
+
+                    <div class="swiper-slide single-review-slide">
+                        <h4><img src="{{ asset('home/img/authors/author.png') }}" class="rounded" alt=""
+                                style="margin-left: 15px; margin-right: 15px">Cathy S. Knight
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </h4>
+                        <span>California, United States</span>
+                        <p>I must explain to you how all this mistaken idea of denouncing pleasure and praising pain was
+                            born and I will give complete account of the system, and expound the actual teachings of
+                            happiness. No one rejects, dislikes, or avoids.</p>
+                    </div>
+
+                    <div class="swiper-slide single-review-slide">
+                        <h4><img src="{{ asset('home/img/authors/author.png') }}" class="rounded" alt=""
+                                style="margin-left: 15px; margin-right: 15px">Cathy S. Knight
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </h4>
+                        <span>California, United States</span>
+                        <p>I must explain to you how all this mistaken idea of denouncing pleasure and praising pain was
+                            born and I will give complete account of the system, and expound the actual teachings of
+                            happiness. No one rejects, dislikes, or avoids.</p>
+                    </div>
+
+                    <div class="swiper-slide single-review-slide">
+                        <h4><img src="{{ asset('home/img/authors/author.png') }}" class="rounded" alt=""
+                                style="margin-left: 15px; margin-right: 15px">Cathy S. Knight
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </h4>
+                        <span>California, United States</span>
+                        <p>I must explain to you how all this mistaken idea of denouncing pleasure and praising pain was
+                            born and I will give complete account of the system, and expound the actual teachings of
+                            happiness. No one rejects, dislikes, or avoids.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="swiper-pagination review-pagination position-static"></div>
+        </div>
+    </section>
+    <!-- End of Reviews -->
 @endsection
