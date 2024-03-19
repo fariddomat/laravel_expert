@@ -10,6 +10,14 @@
 <script src="{{asset('dashboard/js/image_preview.js')}}"></script>
 <script src="{{asset('ckeditor/ckeditor.js')}}"></script>
 <script src="{{asset('dashboard/js/blog.js')}}"></script>
+<script>
+    $(document).ready(function() {
+        $('.tags-input').select2({
+            tags: true, // Enable tag creation
+
+        });
+    });
+</script>
 @endsection
 
 @section('content')
@@ -101,6 +109,15 @@
                     </select>
                 </div>
 
+                <div class="form-group mb-3">
+                    <label for="tags">Tags:</label>
+                    <select multiple class="form-control  tags-input" id="tags" name="tags[]">
+                        @foreach ($allTags as $tag)
+                            <option value="{{ $tag->id }}"
+                                 @if (in_array($tag->id, $blog->tags->pluck('id')->toArray())) selected @endif>{{ $tag->name }}</option>
+                        @endforeach
+                    </select>
+                </div>
                 <div class="form-group mb-3">
                     <input class="" type="checkbox" value="1" id="showed" name="showed" {{ $blog->showed  == 1 ? 'checked' : '' }}>
                     <label class="form-check-label" for="showed">

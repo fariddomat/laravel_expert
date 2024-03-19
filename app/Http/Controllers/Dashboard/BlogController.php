@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use App\Blog;
 use App\BlogCategory;
+use App\Tag;
 use Illuminate\Support\Str;
 use Illuminate\Validation\Rule;
 
@@ -25,7 +26,8 @@ class BlogController extends Controller
     public function create()
     {
         $categories = BlogCategory::all();
-        return view('dashboard.blogs.create', compact('categories'));
+        $allTags = Tag::all();
+        return view('dashboard.blogs.create', compact('categories', 'allTags'));
     }
 
     public function store(Request $request)
@@ -95,14 +97,29 @@ class BlogController extends Controller
         $blog->show_at_home  = $request->has('show_at_home') ? 1 : 0;
         $blog->slug = Str::slug($validatedData['slug'], '-');
         $blog->save();
+
+        $tagIds = [];
+
+        if ($request->tags) {
+            foreach ($request->tags as $tagId) {
+                $tag = Tag::find($tagId);
+                if (!$tag) {
+                    $tag = Tag::create(['name' => $tagId]);  // Create a new tag
+                }
+                $tagIds[] = $tag->id;
+            }
+        }
+        $blog->tags()->attach($tagIds);
         session()->flash('success', 'Blog Added Successfully');
+
         return redirect()->route('dashboard.blogs.index');
     }
 
     public function edit(Blog $blog)
     {
         $categories = BlogCategory::all();
-        return view('dashboard.blogs.edit', compact('blog', 'categories'));
+        $allTags = Tag::all();
+        return view('dashboard.blogs.edit', compact('blog', 'categories', 'allTags'));
     }
 
     public function update(Request $request, Blog $blog)
@@ -183,6 +200,19 @@ class BlogController extends Controller
         $blog->show_at_home  = $request->has('show_at_home') ? 1 : 0;
         $blog->slug = Str::slug($validatedData['slug'], '-');
         $blog->save();
+
+
+        $tagIds = [];
+        if ($request->tags) {
+            foreach ($request->tags as $tagId) {
+                $tag = Tag::find($tagId);
+                if (!$tag) {
+                    $tag = Tag::create(['name' => $tagId]);  // Create a new tag
+                }
+                $tagIds[] = $tag->id;
+            }
+        }
+        $blog->tags()->sync($tagIds);
         session()->flash('success', 'Blog Updated Successfully');
         return redirect()->route('dashboard.blogs.index');
     }

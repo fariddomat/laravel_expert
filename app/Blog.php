@@ -37,4 +37,9 @@ class Blog extends Model implements Viewable,TranslatableContract
           $query->where('id', $search);
         });
     }
+
+    public function tags()
+{
+    return $this->belongsToMany(Tag::class);
+}
 }
