@@ -7,13 +7,13 @@ blog side size #
 
 blog tags
 
-search blog category
+search blog category 
 
 search blog author
 
 remove author social
 
-blog search
+blog search #
 
 team rols
 

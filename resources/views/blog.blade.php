@@ -179,7 +179,7 @@
 
 @section('content')
       <!-- Page title -->
-      <section class="page-title-wrap position-relative bg-light"  data-bg-img="{{ asset($info->service_image) }}">
+      <section class="page-title-wrap position-relative bg-light"  data-bg-img="{{ asset($info->blog_header_image) }}">
         <div id="particles_js"></div>
         <div class="container">
             <div class="row">
@@ -354,9 +354,14 @@
                 <div class="col-md-3" data-animate="fadeInUp" data-delay="1.5">
                     <aside>
                         <div class="single-widget" data-animate="fadeInUp" data-delay=".1">
-                            <form action="#">
+                            <form action="{{ route('blogs') }}">
                                 <div class="form-group position-relative mb-0">
-                                    <input class="form-control" type="text" placeholder="البحث" data-parsley-required-message="Please type at least one word." data-parsley-minlength="3" data-parsley-minlength-message="Please type at least one word." required>
+                                    <input class="form-control" name="search"  type="text" placeholder="البحث"
+                                        data-parsley-required-message="Please type at least one word."
+                                        {{-- data-parsley-minlength="3"
+                                        data-parsley-minlength-message="Please type at least one word." --}}
+                                         {{-- required --}}
+                                         >
                                     <button type="submit"><i class="fas fa-search"></i></button>
                                 </div>
                             </form>

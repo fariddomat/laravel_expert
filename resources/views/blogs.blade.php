@@ -121,7 +121,7 @@
 @section('content')
 
     <!-- Page title -->
-    <section class="page-title-wrap position-relative bg-light" data-bg-img="{{ asset($info->service_image) }}">
+    <section class="page-title-wrap position-relative bg-light" data-bg-img="{{ asset($info->blog_header_image) }}">
         <div id="particles_js"></div>
         <div class="container">
             <div class="row">
@@ -131,9 +131,9 @@
                             data-delay="1.2">
                             <li><a href="{{ route('home') }}">@lang('site.home')</a></li>
                             <li><i class="fas fa-angle-double-right"></i></li>
-                            <li><a href="#">@lang('site.services')</a></li>
+                            <li><a href="#">@lang('site.blogs')</a></li>
                         </ul>
-                        <h1 data-animate="fadeInUp" data-delay="1.3">@lang('site.services')</h1>
+                        <h1 data-animate="fadeInUp" data-delay="1.3">@lang('site.blogs')</h1>
                     </div>
                 </div>
 
@@ -149,9 +149,16 @@
 
             <div class="row">
                 <div class="col-md-9" dir="ltr">
+                    @if ($blogs->count() == 0)
+
+                    <h3 style="text-align: center;
+                    padding-top: 50px;
+                    font-weight: bold;
+                    font-size: 3rem;">لا يوجد نتائج</h3>
+                    @endif
                     <div id="customers-testimonials" class="owl-carousel " data-animate="fadeInUp" data-delay="1.5">
 
-                        @foreach ($blogs as $index => $blog)
+                        @forelse ($blogs as $index => $blog)
                             <!--TESTIMONIAL 1 -->
                             <div class="item">
                                 <div class="shadow-effect">
@@ -190,12 +197,14 @@
                 <div class="col-md-3" data-animate="fadeInUp" data-delay="1.5">
                     <aside>
                         <div class="single-widget" data-animate="fadeInUp" data-delay=".1">
-                            <form action="#">
+                            <form>
                                 <div class="form-group position-relative mb-0">
-                                    <input class="form-control" type="text" placeholder="البحث"
+                                    <input class="form-control" name="search"  type="text" placeholder="البحث"
                                         data-parsley-required-message="Please type at least one word."
-                                        data-parsley-minlength="3"
-                                        data-parsley-minlength-message="Please type at least one word." required>
+                                        {{-- data-parsley-minlength="3"
+                                        data-parsley-minlength-message="Please type at least one word." --}}
+                                         {{-- required --}}
+                                         value="{{ $search }}">
                                     <button type="submit"><i class="fas fa-search"></i></button>
                                 </div>
                             </form>

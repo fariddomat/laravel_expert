@@ -332,13 +332,15 @@ class SiteController extends Controller
         return view('blog', compact('blog', 'relatedBlogs', 'socialMedias', 'categories', 'info'));
     }
 
-    public function blogs()
+    public function blogs(Request $request)
     {
         $info = Info::first();
         $categories = BlogCategory::all();
-        $blogs = Blog::with(['category'])->where('showed', 1)->latest()->get();
+        $blogs = Blog::with(['category'])->whenSearch($request->search)->where('showed', 1)->latest()->get();
+        // dd($blogs);
         $latestBlogs = Blog::latest()->limit(5);
-        return view('blogs', compact('blogs', 'categories', 'info', 'latestBlogs'));
+        $search=$request->search;
+        return view('blogs', compact('blogs', 'categories', 'info', 'latestBlogs' , 'search'));
     }
 
     public function profile()

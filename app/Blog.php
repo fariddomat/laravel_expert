@@ -19,4 +19,13 @@ class Blog extends Model implements Viewable,TranslatableContract
     {
         return $this->belongsTo('App\BlogCategory', 'blog_category_id', 'id');
     }
+
+
+    public function scopeWhenSearch($query, $search)
+    {
+        return Blog::with('translation')
+        ->whereHas('translation', function ($query) use ($search) {
+          $query->where('title', 'like', '%' . $search . '%');
+        });
+    }
 }
