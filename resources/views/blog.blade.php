@@ -179,7 +179,7 @@
 
 @section('content')
       <!-- Page title -->
-      <section class="page-title-wrap position-relative bg-light">
+      <section class="page-title-wrap position-relative bg-light"  data-bg-img="{{ asset($info->service_image) }}">
         <div id="particles_js"></div>
         <div class="container">
             <div class="row">

@@ -24,4 +24,5 @@ Questions and answers
 
 Dashboard intro page
 
-Visitor counter
+Visitor counter on blog and services #
+total vistors in website

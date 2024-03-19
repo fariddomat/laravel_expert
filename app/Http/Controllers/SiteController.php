@@ -328,7 +328,8 @@ class SiteController extends Controller
             ->get();
         $socialMedias = SocialMedia::all();
         $categories = BlogCategory::all();
-        return view('blog', compact('blog', 'relatedBlogs', 'socialMedias', 'categories'));
+        $info = Info::first();
+        return view('blog', compact('blog', 'relatedBlogs', 'socialMedias', 'categories', 'info'));
     }
 
     public function blogs()
