@@ -178,14 +178,15 @@
 @endsection
 
 @section('content')
-      <!-- Page title -->
-      <section class="page-title-wrap position-relative bg-light"  data-bg-img="{{ asset($info->blog_header_image) }}">
+    <!-- Page title -->
+    <section class="page-title-wrap position-relative bg-light" data-bg-img="{{ asset($info->blog_header_image) }}">
         <div id="particles_js"></div>
         <div class="container">
             <div class="row">
                 <div class="col-11">
                     <div class="page-title position-relative pt-5 pb-5">
-                        <ul class="custom-breadcrumb roboto list-unstyled mb-0 clearfix" data-animate="fadeInUp" data-delay="1.2">
+                        <ul class="custom-breadcrumb roboto list-unstyled mb-0 clearfix" data-animate="fadeInUp"
+                            data-delay="1.2">
                             <li><a href="{{ route('home') }}">الرئيسية</a></li>
                             <li><i class="fas fa-angle-double-right"></i></li>
                             <li><a href="#">تفاصيل المقال</a></li>
@@ -211,8 +212,11 @@
                     <div class="post-details" data-animate="fadeInUp" data-delay="1.5">
                         <div class="post-content">
                             <img src="{{ asset($blog->image) }}" alt="" data-animate="fadeInUp" data-delay=".2">
-                            <span data-animate="fadeInUp" data-delay=".3">تاريخ النشر: <a href="#">{{ $blog->updated_at->diffForHumans() }}</a> / بواسطة: <a href="#">{{ $blog->author_title }}</a>
-                                <br> التصنيف: <a href="{{ route('blogs', $blog->category->slug) }}">{{ $blog->category->name }}</a></span>
+                            <span data-animate="fadeInUp" data-delay=".3">تاريخ النشر: <a
+                                    href="#">{{ $blog->updated_at->diffForHumans() }}</a> / بواسطة: <a
+                                    href="#">{{ $blog->author_title }}</a>
+                                <br> التصنيف: <a
+                                    href="{{ route('blogs', $blog->category->slug) }}">{{ $blog->category->name }}</a></span>
                             <h2 data-animate="fadeInUp" data-delay=".4">
                                 {{ $blog->title }}
                             </h2>
@@ -245,23 +249,32 @@
                             </div> --}}
                             <div class="col-xl-5 col-lg-6">
                                 <ul class="social-share list-inline mb-0 text-lg-right">
-                                    <li data-animate="fadeInUp" data-delay=".4"><a class="pinterest" href="#"><i class="fab fa-pinterest-p"></i></a></li>
-                                    <li data-animate="fadeInUp" data-delay=".45"><a class="rss" href="#"><i class="fas fa-rss"></i></a></li>
-                                    <li data-animate="fadeInUp" data-delay=".5"><a class="linkedin" href="#"><i class="fab fa-linkedin-in"></i></a></li>
-                                    <li data-animate="fadeInUp" data-delay=".55"><a class="google" href="#"><i class="fab fa-google-plus-g"></i></a></li>
-                                    <li data-animate="fadeInUp" data-delay=".6"><a class="twitter" href="#"><i class="fab fa-twitter"></i></a></li>
-                                    <li data-animate="fadeInUp" data-delay=".65"><a class="facebook" href="#"><i class="fab fa-facebook-f"></i></a></li>
+                                    <li data-animate="fadeInUp" data-delay=".4"><a class="pinterest" href="#"><i
+                                                class="fab fa-pinterest-p"></i></a></li>
+                                    <li data-animate="fadeInUp" data-delay=".45"><a class="rss" href="#"><i
+                                                class="fas fa-rss"></i></a></li>
+                                    <li data-animate="fadeInUp" data-delay=".5"><a class="linkedin" href="#"><i
+                                                class="fab fa-linkedin-in"></i></a></li>
+                                    <li data-animate="fadeInUp" data-delay=".55"><a class="google" href="#"><i
+                                                class="fab fa-google-plus-g"></i></a></li>
+                                    <li data-animate="fadeInUp" data-delay=".6"><a class="twitter" href="#"><i
+                                                class="fab fa-twitter"></i></a></li>
+                                    <li data-animate="fadeInUp" data-delay=".65"><a class="facebook" href="#"><i
+                                                class="fab fa-facebook-f"></i></a></li>
                                 </ul>
                             </div>
                         </div>
 
                         <!-- Author info -->
                         <div class="d-flex align-items-center author-info-wrap">
-                            <img class="mr-3" src="{{ asset( $blog->author_image ) }}" alt="" data-animate="fadeInUp" data-delay=".1">
+                            <img class="mr-3" src="{{ asset($blog->author_image) }}" alt=""
+                                data-animate="fadeInUp" data-delay=".1">
                             <div class="author-info">
-                                <h4 data-animate="fadeInUp" data-delay=".2">كتب المقال بواسطة: <a href="#">{{ $blog->author_name }}</a></h4>
+                                <h4 data-animate="fadeInUp" data-delay=".2">كتب المقال بواسطة: <a
+                                        href="#">{{ $blog->author_name }}</a></h4>
                                 <p data-animate="fadeInUp" data-delay=".3">{{ $blog->author_title }}</p>
-                                <a class="roboto text-uppercase" href="#" data-animate="fadeInUp" data-delay=".4">مشاهدة كل مقالات الكاتب <i class="fas fa-caret-right"></i></a>
+                                <a class="roboto text-uppercase" href="#" data-animate="fadeInUp"
+                                    data-delay=".4">مشاهدة كل مقالات الكاتب <i class="fas fa-caret-right"></i></a>
                             </div>
                         </div>
 
@@ -356,12 +369,10 @@
                         <div class="single-widget" data-animate="fadeInUp" data-delay=".1">
                             <form action="{{ route('blogs') }}">
                                 <div class="form-group position-relative mb-0">
-                                    <input class="form-control" name="search"  type="text" placeholder="البحث"
+                                    <input class="form-control" name="search" type="text" placeholder="البحث"
                                         data-parsley-required-message="Please type at least one word."
                                         {{-- data-parsley-minlength="3"
-                                        data-parsley-minlength-message="Please type at least one word." --}}
-                                         {{-- required --}}
-                                         >
+                                        data-parsley-minlength-message="Please type at least one word." --}} {{-- required --}}>
                                     <button type="submit"><i class="fas fa-search"></i></button>
                                 </div>
                             </form>
@@ -371,20 +382,22 @@
                             <h3 data-animate="fadeInUp" data-delay=".2">تصنيفات المدونة</h3>
                             <ul class="widget-categories list-unstyled mb-0">
                                 @foreach ($categories as $category)
-   <li data-animate="fadeInUp" data-delay=".25"><a href="#"><span>{{ $category->name }}</span><span class="count">{{ $category->blogs->count() }}</span></a></li>
-
+                                    <li data-animate="fadeInUp" data-delay=".25"><a
+                                            href="{{ route('blogs', ['category' => $category->id]) }}"><span>{{ $category->name }}</span><span
+                                                class="count">{{ $category->blogs->count() }}</span></a></li>
                                 @endforeach
-                               </ul>
+                            </ul>
                         </div>
 
                         <div class="single-widget" data-animate="fadeInUp" data-delay=".1">
                             <h3 data-animate="fadeInUp" data-delay=".2">@lang('site.related_blogs')</h3>
                             <ul class="recent-posts list-unstyled mb-0">
                                 @foreach ($relatedBlogs as $blog)
-                                <li data-animate="fadeInUp" data-delay=".25"><a href="{{ route('blog', $blog->slug) }}">{{ $blog->title }}</a>
-                                <br>
-                                <span>{{ $blog->updated_at->format('d F Y') }}</span>
-                                </li>
+                                    <li data-animate="fadeInUp" data-delay=".25"><a
+                                            href="{{ route('blog', $blog->slug) }}">{{ $blog->title }}</a>
+                                        <br>
+                                        <span>{{ $blog->updated_at->format('d F Y') }}</span>
+                                    </li>
                                 @endforeach
 
                             </ul>

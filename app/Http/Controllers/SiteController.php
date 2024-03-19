@@ -336,7 +336,14 @@ class SiteController extends Controller
     {
         $info = Info::first();
         $categories = BlogCategory::all();
+        if ($request->category) {
+        $blogs = Blog::with(['category'])->whenCategory($request->category)->where('showed', 1)->latest()->get();
+
+        } else {
         $blogs = Blog::with(['category'])->whenSearch($request->search)->where('showed', 1)->latest()->get();
+
+        }
+
         // dd($blogs);
         $latestBlogs = Blog::latest()->limit(5);
         $search=$request->search;

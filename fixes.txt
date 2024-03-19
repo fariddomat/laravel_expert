@@ -5,15 +5,14 @@ home dynamic header
 blog header #
 blog side size #
 blog search #
+search blog category #
 
 blog tags
 
-search blog category
 
 search blog author
 
 remove author social
-
 
 team rols
 

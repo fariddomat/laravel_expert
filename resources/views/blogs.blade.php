@@ -215,7 +215,7 @@
                             <ul class="widget-categories list-unstyled mb-0">
                                 @foreach ($categories as $category)
                                     <li data-animate="fadeInUp" data-delay=".25"><a
-                                            href="#"><span>{{ $category->name }}</span><span
+                                            href="{{ route('blogs', ['category'=>$category->id]) }}"><span>{{ $category->name }}</span><span
                                                 class="count">{{ $category->blogs->count() }}</span></a></li>
                                 @endforeach
                             </ul>
