@@ -16,7 +16,7 @@ class CreateTeamRolesTable extends Migration
         Schema::create('team_roles', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->interger('level');
+            $table->integer('level');
             $table->timestamps();
         });
     }

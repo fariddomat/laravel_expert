@@ -1,3 +1,5 @@
+https://github.com/opcodesio/log-viewer
+
 home dynamic header
 
 blog header
@@ -10,11 +12,16 @@ search blog author
 
 remove author social
 
-
 blog search
 
 team rols
 
 team
 
-textarea editor
+textarea editor #
+
+Questions and answers
+
+Dashboard intro page
+
+Visitor counter

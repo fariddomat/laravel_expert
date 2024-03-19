@@ -11,6 +11,7 @@
         "php": "^7.2.5",
         "astrotomic/laravel-translatable": "^11.9",
         "carlos-meneses/laravel-mpdf": "^2.1",
+        "cyrildewit/eloquent-viewable": "^5.2",
         "fideloper/proxy": "^4.2",
         "fruitcake/laravel-cors": "^1.0",
         "guzzlehttp/guzzle": "^6.3",
