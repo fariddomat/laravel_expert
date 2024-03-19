@@ -123,7 +123,7 @@
 @section('content')
 
     <!-- Page title -->
-    <section class="page-title-wrap position-relative bg-light" data-bg-img="{{ asset($info->service_image) }}">
+    <section class="page-title-wrap position-relative bg-light" data-bg-img="{{ asset($info->service_image) }}"   data-animate="fadeInUp" data-delay="1.1">
         <div id="particles_js"></div>
         <div class="container">
             <div class="row">
@@ -151,7 +151,7 @@
             <div class="container">
                 <div class="row">
 
-                    <div class="col-md-6 wow fadeInUp" data-wow-delay=".3s" style="margin-top:50px">
+                    <div class="col-md-6 wow "  style="margin-top:50px"   data-animate="fadeInUp" data-delay="1.3">
 
                         <div>{!! $service->brief !!}</div>
                         <div class="row" style="margin-top:35px">
@@ -180,7 +180,7 @@
                         </div>
 
                     </div>
-                    <div class="col-md-6 pic-services wow fadeInUp" data-wow-delay=".6s" style="margin-top:55px">
+                    <div class="col-md-6 pic-services wow "   data-animate="fadeInUp" data-delay="1.5" style="margin-top:55px">
                         <img src="{{ asset($service->index_image) }}" class="img-responsive" alt="">
                         <img src="{{ asset($service->index_image_2) }}" class="img-responsive" alt="">
                     </div>
@@ -210,7 +210,7 @@
                 </div>
 
 
-                <section style="padding: 0">
+                <section style="padding: 0"   data-animate="fadeInUp" data-delay="1">
                     @if ($service->getSlider(1)->count() > 0)
                         <h3>{{ $service->slider1 }}</h3>
                         <!-- slider 1 -->
@@ -272,14 +272,14 @@
         </section>
 
         <!-- section begin -->
-        <section id="" class="call-to-action bg-color  text-center  pt-7 pb-7">
+        <section id="" class="call-to-action bg-color  text-center  pt-7 pb-7"   data-animate="fadeInUp" data-delay=".5">
             <a href="{{ route('service.order', $service->slug) }}" class="btn btn-secondary"
                 style="color: #fff; padding: 15px 50px">@lang('site.order_now')</a>
         </section>
         <!-- logo carousel section close -->
 
         @if ($service->subServices->count() > 0)
-        <section class="testimonials blog" dir="ltr">
+        <section class="testimonials blog" dir="ltr"   data-animate="fadeInUp" data-delay="1">
             <div class="container">
 
                 <div class="row">

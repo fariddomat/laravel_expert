@@ -120,7 +120,7 @@
             list-style-type: initial;
         }
 
-        h1,
+        /* h1,
         h2,
         h3,
         h4,
@@ -130,7 +130,7 @@
         body,
         strong {
             color: unset;
-        }
+        } */
 
         .share-div {
             font-size: 20px;
@@ -179,7 +179,7 @@
 
 @section('content')
     <!-- Page title -->
-    <section class="page-title-wrap position-relative bg-light" data-bg-img="{{ asset($info->blog_header_image) }}">
+    <section class="page-title-wrap position-relative bg-light" data-bg-img="{{ asset($info->blog_header_image) }}"  data-animate="fadeInUp" data-delay="1.1">
         <div id="particles_js"></div>
         <div class="container">
             <div class="row">
@@ -209,20 +209,20 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-9">
-                    <div class="post-details" data-animate="fadeInUp" data-delay="1.5">
+                    <div class="post-details" data-animate="fadeInUp" data-delay=".1">
                         <div class="post-content">
-                            <img src="{{ asset($blog->image) }}" alt="" data-animate="fadeInUp" data-delay=".2">
-                            <span data-animate="fadeInUp" data-delay=".3">تاريخ النشر: <a
+                            <img src="{{ asset($blog->image) }}" alt="" data-animate="fadeInUp" data-delay="1.4">
+                            <span data-animate="fadeInUp" data-delay=".1">تاريخ النشر: <a
                                     href="#">{{ $blog->updated_at->diffForHumans() }}</a> / بواسطة: <a
                                     href="#">{{ $blog->author_title }}</a>
                                 <br> التصنيف: <a
                                     href="{{ route('blogs', $blog->category->slug) }}">{{ $blog->category->name }}</a></span>
-                            <h2 data-animate="fadeInUp" data-delay=".4">
+                            <h2 data-animate="fadeInUp" data-delay=".1">
                                 {{ $blog->title }}
                             </h2>
-                            <p data-animate="fadeInUp" data-delay=".1">
+                            <div data-animate="fadeInUp" data-delay=".1">
                                 {!! $blog->introduction !!}
-                            </p>
+                            </div>
 
                             <blockquote data-animate="fadeInUp" data-delay=".1">
                                 <span><i class="fas fa-quote-right"></i></span>
@@ -230,23 +230,22 @@
                                 {!! $blog->content_table !!}
                             </blockquote>
 
-                            <p data-animate="fadeInUp" data-delay=".1">{!! $blog->first_paragraph !!}</p>
+                            <div data-animate="fadeInUp" data-delay=".1">{!! $blog->first_paragraph !!}</div>
 
 
-                            <p data-animate="fadeInUp" data-delay=".1">{!! $blog->description !!}</p>
+                            <div data-animate="fadeInUp" data-delay=".1">{!! $blog->description !!}</div>
                         </div>
 
                         <div class="row align-items-center half-gutters mb-5 tag-and-share">
-                            {{-- <div class="col-xl-7 col-lg-6">
+                            <div class="col-xl-7 col-lg-6">
                                 <ul class="tags roboto list-inline mb-lg-0 mb-md-3">
                                     <li data-animate="fadeInUp" data-delay=".1"><i class="fas fa-tags"></i></li>
-                                    <li data-animate="fadeInUp" data-delay=".15"><a href="#">#Technology</a></li>
-                                    <li data-animate="fadeInUp" data-delay=".2"><a href="#">#Envato</a></li>
-                                    <li data-animate="fadeInUp" data-delay=".25"><a href="#">#Themeforest</a></li>
-                                    <li data-animate="fadeInUp" data-delay=".3"><a href="#">#Domain</a></li>
-
+                                    @foreach ($blog->tags as $index => $tag)
+                                        <li data-animate="fadeInUp" data-delay="{{ 0.15 + $index / 8 }}"><a
+                                                href="#">{{ $tag->name }}</a></li>
+                                    @endforeach
                                 </ul>
-                            </div> --}}
+                            </div>
                             <div class="col-xl-5 col-lg-6">
                                 <ul class="social-share list-inline mb-0 text-lg-right">
                                     <li data-animate="fadeInUp" data-delay=".4"><a class="pinterest" href="#"><i

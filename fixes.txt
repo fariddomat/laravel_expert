@@ -6,8 +6,13 @@ blog header #
 blog side size #
 blog search #
 search blog category #
+blog tags #
+header fixes #
 
-blog tags
+privacy editor
+
+search blog tags
+next and previous blog
 
 
 search blog author

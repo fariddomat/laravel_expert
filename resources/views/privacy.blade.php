@@ -14,7 +14,7 @@
 @section('content')
 
 <!-- Contact Section -->
-<div id="contact" class="section-padding" style="background: #fff; padding-top: 100px; padding-left:15px; padding-right: 15px;>
+<div id="contact" class="section-padding" style="background: #fff; padding-top: 100px; padding-left:15px; padding-right: 15px;">
     <div class="container-fluid">
         <div class="row">
             <div class="col-md-12">
@@ -25,12 +25,12 @@
         <div class="row">
             <!-- Contact Info -->
             <div class="col-md-12 mb-4" style="padding-left: 50px; padding-right: 50px">
-                @if (app()->getLocale() == 'ar')
+                {{-- @if (app()->getLocale() == 'ar') --}}
                {!! $privacy->ar !!}
-               @else
+               {{-- @else
                {!! $privacy->en !!}
 
-               @endif
+               @endif --}}
 
             </div>
 
