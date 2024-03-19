@@ -14,8 +14,7 @@ privacy editor
 search blog tags
 next and previous blog
 
-
-search blog author
+blog author section fixes
 
 remove author social
 
