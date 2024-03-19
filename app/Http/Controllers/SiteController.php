@@ -97,6 +97,8 @@ class SiteController extends Controller
 
     public function service(Request $request, Service $service)
     {
+        views($service)
+        ->record();
         $info = Info::first();
 
         switch ($service->id) {
@@ -312,6 +314,11 @@ class SiteController extends Controller
 
     public function blog(Request $request,  Blog $blog)
     {
+        // dd($request->ip());
+        $expiresAt = now()->addHours(3);
+        // dd($expiresAt);
+        views($blog)
+            ->record();
 
         $relatedBlogs = Blog::with(['category'])
             ->where('showed', 1)
@@ -329,7 +336,7 @@ class SiteController extends Controller
         $info = Info::first();
         $categories = BlogCategory::all();
         $blogs = Blog::with(['category'])->where('showed', 1)->latest()->get();
-        $latestBlogs=Blog::latest()->limit(5);
+        $latestBlogs = Blog::latest()->limit(5);
         return view('blogs', compact('blogs', 'categories', 'info', 'latestBlogs'));
     }
 

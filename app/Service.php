@@ -6,8 +6,12 @@ use Illuminate\Database\Eloquent\Model;
 use Astrotomic\Translatable\Contracts\Translatable as TranslatableContract;
 use Astrotomic\Translatable\Translatable;
 
-class Service extends Model implements TranslatableContract
+use CyrildeWit\EloquentViewable\Contracts\Viewable;
+use CyrildeWit\EloquentViewable\InteractsWithViews;
+class Service extends Model implements Viewable,TranslatableContract
 {
+
+    use InteractsWithViews;
     use Translatable;
     public $translatedAttributes = ['title', 'brief', 'main_title'];
     protected $guarded=[];
