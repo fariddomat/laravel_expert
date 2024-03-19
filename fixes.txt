@@ -4,16 +4,16 @@ home dynamic header
 
 blog header #
 blog side size #
+blog search #
 
 blog tags
 
-search blog category 
+search blog category
 
 search blog author
 
 remove author social
 
-blog search #
 
 team rols
 
