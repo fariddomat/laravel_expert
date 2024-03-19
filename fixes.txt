@@ -2,7 +2,8 @@ https://github.com/opcodesio/log-viewer
 
 home dynamic header
 
-blog header
+blog header #
+blog side size #
 
 blog tags
 

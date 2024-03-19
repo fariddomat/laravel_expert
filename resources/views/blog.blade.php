@@ -207,7 +207,7 @@
     <section class=" blog pt-7 pb-7">
         <div class="container">
             <div class="row">
-                <div class="col-md-8">
+                <div class="col-md-9">
                     <div class="post-details" data-animate="fadeInUp" data-delay="1.5">
                         <div class="post-content">
                             <img src="{{ asset($blog->image) }}" alt="" data-animate="fadeInUp" data-delay=".2">
@@ -351,7 +351,7 @@
                 </div>
 
                 <!-- Sidebar -->
-                <div class="col-md-4" data-animate="fadeInUp" data-delay="1.5">
+                <div class="col-md-3" data-animate="fadeInUp" data-delay="1.5">
                     <aside>
                         <div class="single-widget" data-animate="fadeInUp" data-delay=".1">
                             <form action="#">
@@ -391,37 +391,37 @@
                                 <li class="col-4" data-animate="fadeInUp" data-delay=".25">
                                     <a class="facebook" href="#">
                                         <i class="fab fa-facebook-f"></i>
-                                        <span>Like 23.5k</span>
+                                        <span>Like</span>
                                     </a>
                                 </li>
                                 <li class="col-4" data-animate="fadeInUp" data-delay=".3">
                                     <a class="twitter" href="#">
                                         <i class="fab fa-twitter"></i>
-                                        <span>Follow 4.5k</span>
+                                        <span>Follow</span>
                                     </a>
                                 </li>
                                 <li class="col-4" data-animate="fadeInUp" data-delay=".35">
                                     <a class="google" href="#">
                                         <i class="fab fa-google-plus-g"></i>
-                                        <span>Like 82.5k</span>
+                                        <span>Like</span>
                                     </a>
                                 </li>
                                 <li class="col-4" data-animate="fadeInUp" data-delay=".4">
                                     <a class="pinterest" href="#">
                                         <i class="fab fa-pinterest-p"></i>
-                                        <span>Follow 6.9k</span>
+                                        <span>Follow</span>
                                     </a>
                                 </li>
                                 <li class="col-4" data-animate="fadeInUp" data-delay=".45">
                                     <a class="rss" href="#">
                                         <i class="fas fa-rss"></i>
-                                        <span>follow 2.8k</span>
+                                        <span>follow</span>
                                     </a>
                                 </li>
                                 <li class="col-4" data-animate="fadeInUp" data-delay=".5">
                                     <a class="linkedin" href="#">
                                         <i class="fab fa-linkedin-in"></i>
-                                        <span>follow 3.5k</span>
+                                        <span>follow</span>
                                     </a>
                                 </li>
                             </ul>
