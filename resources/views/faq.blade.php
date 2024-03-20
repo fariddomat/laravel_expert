@@ -2,13 +2,68 @@
 
 @section('title', trans('site.FAQ'))
 @section('styles')
+    <style>
+        .tm-accordion .card:first-child {
+            /* border-radius: 15px 15px 0 0; */
+        }
+
+        .tm-accordion .card {
+
+            margin-bottom: 15px;
+        }
+
+        .tm-accordion .card .card-header {
+            background-color: #fff;
+            border-top: none;
+        }
+
+        .tm-accordion .card .card-header .title {
+            padding: 1rem 2rem;
+            margin: 0;
+            position: relative;
+        }
+
+        .tm-accordion .card .card-header .title .accordion-controls-icon {
+            opacity: 0.4;
+            position: absolute;
+            left: 20px;
+            top: 50%;
+            -webkit-transform: translateY(-50%);
+            -ms-transform: translateY(-50%);
+            transform: translateY(-50%);
+            transition: all 0.4s ease-in-out;
+        }
+    </style>
 @endsection
 @section('scripts')
+    <script>
+        $(document).ready(function() {
+            $('#accordion100').on('shown.bs.collapse', function(e) {
+                $(e.target).prev().find('.open-icon').hide();
+                $(e.target).prev().find('.close-icon').show();
+            }).on('hidden.bs.collapse', function(e) {
+                $(e.target).prev().find('.open-icon').show();
+                $(e.target).prev().find('.close-icon').hide();
+            });
+        });
+    </script>
+    <script>
+        $(document).ready(function() {
+            $('#accordion100').on('shown.bs.collapse', function(e) {
+                var target = $(e.target); // Get the target section
+                var offset = target.prev().height(); // Calculate offset based on previous section's height
+                $('html, body').animate({
+                    scrollTop: target.offset().top - offset - 90
+                }, 500); // Animate scrolling with duration (adjust as needed)
+            });
+        });
+    </script>
 @endsection
 @section('content')
 
     <!-- Page title  -->
-    <section class="page-title-wrap position-relative bg-light" data-bg-img="{{ asset($info->about_header_image) }}"   data-animate="fadeInUp" data-delay="1.1">
+    <section class="page-title-wrap position-relative bg-light" data-bg-img="{{ asset($info->about_header_image) }}"
+        data-animate="fadeInUp" data-delay="1.1">
         <div id="particles_js"></div>
         <div class="container">
             <div class="row">
@@ -35,72 +90,37 @@
 
 
     <!-- FAQ -->
-    <section class="pt-7 pb-7">
+    <section class="pt-7 pb-7" data-animate="fadeInUp" data-delay="1.4">
         <div class="container">
-            <div class="row justify-content-center">
-                <div class="col-md-11">
-                    <div class="about-us-title text-center">
-                        <h2 data-animate="fadeInUp" data-delay="1.5">Have Any Questions In Your Mind?</h2>
-                        <p data-animate="fadeInUp" data-delay="1.6">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.</p>
-                    </div>
-                </div>
-            </div>
-            <div class="border-bottom pt-4 pb-4">
-                <div class="row align-items-center">
-                    <div class="col-md-6">
-                        <div class="single-faq-wrap">
-                            <h2 data-animate="fadeInUp" data-delay=".1">General Questions & Answers</h2>
+            <div class="row">
+                <div class="col-md-8 offset-md-2">
+                    <div id="accordion100" class="tm-accordion">
+                        @foreach ($faqs as $index => $faq)
+                            <div class="card" {{-- data-animate="fadeInUp" data-delay="{{ 0.1 + $index / 8 }}" --}}>
+                                <div class="card-header p-0" id="heading10{{ $index + 1 }}">
+                                    <h5 class="title" data-toggle="collapse" data-target="#collapse10{{ $index + 1 }}"
+                                        aria-expanded="@if ($index == 0) true
+                                        @else
+                                        false @endif"
+                                        aria-controls="collapse10{{ $index + 1 }}">
+                                        {{ $index + 1 }} # {{ $faq->question }}
+                                        <i class="fas fa-chevron-down accordion-controls-icon open-icon"
+                                            @if ($index == 0) style="display: none" @endif></i>
+                                        <i class="fas fa-chevron-up accordion-controls-icon close-icon"
+                                            @if ($index != 0) style="display: none" @endif
+                                            aria-hidden="true"></i>
 
-                            <h4 data-animate="fadeInUp" data-delay=".2"><i class="fas fa-question-circle"></i> How do I setup StrongVPN?</h4>
-                            <p data-animate="fadeInUp" data-delay=".3">At vero eos et accusamus et iusto odio dignissimos ducimus ui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati piditate non ilique sunt in culpa qui officia deserunt illitia test laborum et dolorum fuga.</p>
+                                    </h5>
+                                </div>
+                                <div id="collapse10{{ $index + 1 }}"
+                                    class="collapse @if ($index == 0) show @endif"
+                                    aria-labelledby="heading10{{ $index + 1 }}" data-parent="#accordion100">
+                                    <div class="card-body">
+                                        {!! $faq->answer !!}</div>
+                                </div>
+                            </div>
+                        @endforeach
 
-                            <h4 data-animate="fadeInUp" data-delay=".4"><i class="fas fa-question-circle"></i> What's the difference between a Proxy and VPN Service?</h4>
-                            <p data-animate="fadeInUp" data-delay=".5">At vero eos et accusamus et iusto odio dignissimos ducimus ui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati piditate non ilique sunt in culpa qui officia deserunt illitia test laborum et dolorum fuga.</p>
-
-                            <h4 data-animate="fadeInUp" data-delay=".6"><i class="fas fa-question-circle"></i> Can I use your VPN instead of my current ISP connection?</h4>
-                            <p data-animate="fadeInUp" data-delay=".7">At vero eos et accusamus et iusto odio dignissimos ducimus ui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati piditate non ilique sunt in culpa qui officia deserunt illitia test laborum et dolorum fuga.</p>
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <!-- Youtube video -->
-                        <div class="youtube-video position-relative mt-5 mt-md-0" data-animate="fadeInUp" data-delay=".1">
-                            <img src="img/faq-video.jpg" alt="">
-                            <a href="https://www.youtube.com/watch?v=y2Ky3Wo37AY" class="youtube-popup play-btn ripple">
-                                <i class="fas fa-play"></i>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="pt-4">
-                <div class="row">
-                    <div class="col-md-6">
-                        <div class="single-faq-wrap">
-                            <h2 data-animate="fadeInUp" data-delay=".1">Account related Questions & Answers</h2>
-
-                            <h4 data-animate="fadeInUp" data-delay=".2"><i class="fas fa-question-circle"></i> Can I get trial account prior to purchase?</h4>
-                            <p data-animate="fadeInUp" data-delay=".3">At vero eos et accusamus et iusto odio dignissimos ducimus ui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati piditate non ilique sunt in culpa qui officia deserunt illitia test laborum et dolorum fuga.</p>
-
-                            <h4 data-animate="fadeInUp" data-delay=".4"><i class="fas fa-question-circle"></i> How many concurrent connections do you allow?</h4>
-                            <p data-animate="fadeInUp" data-delay=".5">At vero eos et accusamus et iusto odio dignissimos ducimus ui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati piditate non ilique sunt in culpa qui officia deserunt illitia test laborum et dolorum fuga.</p>
-
-                            <h4 data-animate="fadeInUp" data-delay=".6"><i class="fas fa-question-circle"></i> How can I test VPN servers’ connectivity for my current location?</h4>
-                            <p data-animate="fadeInUp" data-delay=".7">At vero eos et accusamus et iusto odio dignissimos ducimus ui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati piditate non ilique sunt in culpa qui officia deserunt illitia test laborum et dolorum fuga.</p>
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="single-faq-wrap mt-5 mt-md-0">
-                            <h2 data-animate="fadeInUp" data-delay=".1">Technical Guideline/How to Use</h2>
-
-                            <h4 data-animate="fadeInUp" data-delay=".2"><i class="fas fa-question-circle"></i> I can connect, but cannot browse.</h4>
-                            <p data-animate="fadeInUp" data-delay=".3">At vero eos et accusamus et iusto odio dignissimos ducimus ui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati piditate non ilique sunt in culpa qui officia deserunt illitia test laborum et dolorum fuga.</p>
-
-                            <h4 data-animate="fadeInUp" data-delay=".4"><i class="fas fa-question-circle"></i> Does this site or device work with StrongVPN?</h4>
-                            <p data-animate="fadeInUp" data-delay=".5">At vero eos et accusamus et iusto odio dignissimos ducimus ui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati piditate non ilique sunt in culpa qui officia deserunt illitia test laborum et dolorum fuga.</p>
-
-                            <h4 data-animate="fadeInUp" data-delay=".6"><i class="fas fa-question-circle"></i> What ports should be open on firewall/router for it to work?</h4>
-                            <p data-animate="fadeInUp" data-delay=".7">At vero eos et accusamus et iusto odio dignissimos ducimus ui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati piditate non ilique sunt in culpa qui officia deserunt illitia test laborum et dolorum fuga.</p>
-                        </div>
                     </div>
                 </div>
             </div>
