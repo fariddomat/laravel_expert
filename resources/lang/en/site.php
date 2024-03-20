@@ -63,6 +63,7 @@ return [
     'login' => 'Login',
     'follow' => 'Follow us',
     'e_card_off' => 'eCard Off',
+    'FAQ' => 'Frequently Asked Questions',
     'FAQ_about' => 'Frequently Asked Questions about',
     'way_we_work_at' => 'The way we work at',
     'submit_your_request' => 'Submit your request',

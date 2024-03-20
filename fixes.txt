@@ -13,15 +13,13 @@ search blog tags #
 next and previous blog #
 textarea editor #
 Visitor counter on blog and services #
+team #
+team rols #
 
 
 blog author section fixes
 
 remove author social
-
-team rols
-
-team
 
 Questions and answers
 

@@ -49,6 +49,7 @@ Route::group(
         Route::get('/blogs/{blog:slug}', 'SiteController@blog')->name('blog');
 
         Route::get('/profile', 'SiteController@profile')->name('profile');
+        Route::get('/faq', 'SiteController@faq')->name('faq');
 
         Route::get('/vcard/{customer:slug}', 'CustomerController@show')->name('customer');
         Route::get('/vcard/{customer:slug}/vcf', 'CustomerController@vcf')->name('customer.vcf');
@@ -178,6 +179,7 @@ Route::group(['prefix' => '/dashboard', 'middleware' => ['auth', 'setArLocale'],
     Route::resource('experinceSlider', 'Dashboard\ExperinceController');
     Route::resource('team', 'Dashboard\TeamController');
     Route::resource('teamRoles', 'Dashboard\TeamRoleController');
+    Route::resource('faqs', 'Dashboard\FaqController');
 
     Route::get('/aboutfields', 'Dashboard\AboutFieldController@index')->name('aboutfields.index');
     Route::get('/aboutfields/create', 'Dashboard\AboutFieldController@create')->name('aboutfields.create');

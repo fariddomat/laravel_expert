@@ -19,6 +19,7 @@ use Illuminate\Support\Facades\App;
 use App\AboutImage;
 use App\BlockedContact;
 use App\ExperinceSlider;
+use App\Faq;
 use App\GlobalSMS;
 use App\SMS;
 use App\Helpers\SMS as SMSHelper;
@@ -371,5 +372,11 @@ class SiteController extends Controller
             $file = public_path() . "/pdf/ Profile-Ar V06.pdf";
         }
         return response()->download($file, null, $headers);
+    }
+
+    public function faq(){
+        $faqs=Faq::all();
+        $info = Info::first();
+        return view('faq', compact('faqs', 'info'));
     }
 }

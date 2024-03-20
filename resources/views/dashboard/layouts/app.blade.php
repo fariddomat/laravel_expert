@@ -137,6 +137,12 @@
                             خبرات فريق العمل
                         </a>
                     </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link @yield('faqActive')" href="{{ route('dashboard.faqs.index') }}">
+                            @lang('site.FAQ')
+                        </a>
+                    </li>
                     <li class="nav-item">
                         <a class="nav-link @yield('contactinfoActive')" href="{{ route('dashboard.contactinfo.create') }}">
                             معلومات التواصل
