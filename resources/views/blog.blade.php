@@ -121,16 +121,16 @@
         }
 
         /* h1,
-        h2,
-        h3,
-        h4,
-        h5,
-        h6,
-        p,
-        body,
-        strong {
-            color: unset;
-        } */
+            h2,
+            h3,
+            h4,
+            h5,
+            h6,
+            p,
+            body,
+            strong {
+                color: unset;
+            } */
 
         .share-div {
             font-size: 20px;
@@ -179,7 +179,8 @@
 
 @section('content')
     <!-- Page title -->
-    <section class="page-title-wrap position-relative bg-light" data-bg-img="{{ asset($info->blog_header_image) }}"  data-animate="fadeInUp" data-delay="1.1">
+    <section class="page-title-wrap position-relative bg-light" data-bg-img="{{ asset($info->blog_header_image) }}"
+        data-animate="fadeInUp" data-delay="1.1">
         <div id="particles_js"></div>
         <div class="container">
             <div class="row">
@@ -242,7 +243,8 @@
                                     <li data-animate="fadeInUp" data-delay=".1"><i class="fas fa-tags"></i></li>
                                     @foreach ($blog->tags as $index => $tag)
                                         <li data-animate="fadeInUp" data-delay="{{ 0.15 + $index / 8 }}"><a
-                                                href="{{ route('blogs', ['tag'=>$tag->id]) }}">{{ $tag->name }}</a></li>
+                                                href="{{ route('blogs', ['tag' => $tag->id]) }}">{{ $tag->name }}</a>
+                                        </li>
                                     @endforeach
                                 </ul>
                             </div>
@@ -280,12 +282,25 @@
                         <!-- Next/Previous Post -->
                         <ul class="prev-next roboto d-flex justify-content-between list-unstyled mt-5 mb-5">
                             <li data-animate="fadeInUp" data-delay=".1">
-                                <a href="#"><i class="fas fa-caret-left"></i> Prev Post</a>
-                                <span>How to Watch Smith VS Holzken Live Online From Anywhere</span>
+                                @if ($previousBlog)
+                                <a href="{{ route('blog', $previousBlog) }}"><i class="fas fa-caret-left"></i> المقال
+                                    السابق</a>
+                                <span>{{ $previousBlog->title }}</span>
+                                @else
+                                <a><i class="fas fa-caret-left"></i> لايوجد مقال سابق</a>
+                                <span></span>
+                                @endif
                             </li>
                             <li class="text-right" data-animate="fadeInUp" data-delay=".2">
-                                <a href="#">Next Post <i class="fas fa-caret-right"></i></a>
-                                <span>In Major Hiring Push, Web Hosting Powerhouse Go Daddy to</span>
+                               @if ($nextBlog)
+                               <a href="{{ route('blog', $nextBlog) }}">المقال التالي <i
+                                class="fas fa-caret-right"></i></a>
+                        <span>{{ $nextBlog->title }}</span>
+                               @else
+                               <a>لا يوجد مقال تالي <i
+                                class="fas fa-caret-right"></i></a>
+                        <span></span>
+                               @endif
                             </li>
                         </ul>
 

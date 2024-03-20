@@ -10,8 +10,10 @@ blog tags #
 header fixes #
 privacy editor #
 search blog tags #
+next and previous blog #
+textarea editor #
+Visitor counter on blog and services #
 
-next and previous blog
 
 blog author section fixes
 
@@ -21,11 +23,8 @@ team rols
 
 team
 
-textarea editor #
-
 Questions and answers
 
 Dashboard intro page
 
-Visitor counter on blog and services #
 total vistors in website

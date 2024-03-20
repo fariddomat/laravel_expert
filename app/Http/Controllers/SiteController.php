@@ -330,18 +330,23 @@ class SiteController extends Controller
         $socialMedias = SocialMedia::all();
         $categories = BlogCategory::all();
         $info = Info::first();
-        return view('blog', compact('blog', 'relatedBlogs', 'socialMedias', 'categories', 'info'));
+        $nextBlog = Blog::where('id', '>', $blog->id)
+            ->orderBy('id')
+            ->first();
+        $previousBlog = Blog::where('id', '<', $blog->id)
+            ->orderBy('id', 'desc')
+            ->first();
+        return view('blog', compact('blog', 'relatedBlogs', 'socialMedias', 'categories', 'info', 'nextBlog', 'previousBlog'));
     }
 
     public function blogs(Request $request)
     {
         $info = Info::first();
         $categories = BlogCategory::all();
-        if($request->tag){
-            $blogs=Tag::findOrFail($request->tag)->blogs;
+        if ($request->tag) {
+            $blogs = Tag::findOrFail($request->tag)->blogs;
             // dd($blogs);
-        }
-        elseif ($request->category) {
+        } elseif ($request->category) {
             $blogs = Blog::with(['category'])->whenCategory($request->category)->where('showed', 1)->latest()->get();
         } else {
             $blogs = Blog::with(['category'])->whenSearch($request->search)->where('showed', 1)->latest()->get();
