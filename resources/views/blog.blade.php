@@ -242,7 +242,7 @@
                                     <li data-animate="fadeInUp" data-delay=".1"><i class="fas fa-tags"></i></li>
                                     @foreach ($blog->tags as $index => $tag)
                                         <li data-animate="fadeInUp" data-delay="{{ 0.15 + $index / 8 }}"><a
-                                                href="#">{{ $tag->name }}</a></li>
+                                                href="{{ route('blogs', ['tag'=>$tag->id]) }}">{{ $tag->name }}</a></li>
                                     @endforeach
                                 </ul>
                             </div>

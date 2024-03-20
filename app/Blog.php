@@ -8,7 +8,7 @@ use Astrotomic\Translatable\Translatable;
 use CyrildeWit\EloquentViewable\Contracts\Viewable;
 use CyrildeWit\EloquentViewable\InteractsWithViews;
 
-class Blog extends Model implements Viewable,TranslatableContract
+class Blog extends Model implements Viewable, TranslatableContract
 {
 
     use InteractsWithViews;
@@ -24,22 +24,22 @@ class Blog extends Model implements Viewable,TranslatableContract
     public function scopeWhenSearch($query, $search)
     {
         return $this->with('translation')
-        ->whereHas('translation', function ($query) use ($search) {
-          $query->where('title', 'like', '%' . $search . '%');
-        });
+            ->whereHas('translation', function ($query) use ($search) {
+                $query->where('title', 'like', '%' . $search . '%');
+            });
     }
 
 
     public function scopeWhenCategory($query, $search)
     {
         return $this->with('translation')
-        ->whereHas('category', function ($query) use ($search) {
-          $query->where('id', $search);
-        });
+            ->whereHas('category', function ($query) use ($search) {
+                $query->where('id', $search);
+            });
     }
 
     public function tags()
-{
-    return $this->belongsToMany(Tag::class);
-}
+    {
+        return $this->belongsToMany(Tag::class);
+    }
 }

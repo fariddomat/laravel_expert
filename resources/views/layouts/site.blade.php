@@ -10,7 +10,6 @@
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="{{ $info->description }}">
-    <meta name="keywords" content="Buisness Secrets">
     <meta name="author" content="">
 
     <link href="{{ asset($info->logo) }}" rel="shortcut icon" type="image/png">
@@ -258,7 +257,7 @@
 
     <script src="{{ asset('js/owl.carousel.min.js') }}"></script>
     <script src="{{ asset('js/jquery.countup.js') }}"></script>
-    
+
     {{-- aos --}}
     <script src="{{ asset('js/aos.js') }}"></script>
     @include('partials._session')

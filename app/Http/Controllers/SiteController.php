@@ -28,6 +28,7 @@ use App\PartnerSlider;
 use App\Privacy;
 use App\SMSLog;
 use App\SocialMedia;
+use App\Tag;
 use App\Team;
 use Illuminate\Support\Carbon;
 use Mail;
@@ -98,7 +99,7 @@ class SiteController extends Controller
     public function service(Request $request, Service $service)
     {
         views($service)
-        ->record();
+            ->record();
         $info = Info::first();
 
         switch ($service->id) {
@@ -336,18 +337,20 @@ class SiteController extends Controller
     {
         $info = Info::first();
         $categories = BlogCategory::all();
-        if ($request->category) {
-        $blogs = Blog::with(['category'])->whenCategory($request->category)->where('showed', 1)->latest()->get();
-
+        if($request->tag){
+            $blogs=Tag::findOrFail($request->tag)->blogs;
+            // dd($blogs);
+        }
+        elseif ($request->category) {
+            $blogs = Blog::with(['category'])->whenCategory($request->category)->where('showed', 1)->latest()->get();
         } else {
-        $blogs = Blog::with(['category'])->whenSearch($request->search)->where('showed', 1)->latest()->get();
-
+            $blogs = Blog::with(['category'])->whenSearch($request->search)->where('showed', 1)->latest()->get();
         }
 
         // dd($blogs);
         $latestBlogs = Blog::latest()->limit(5);
-        $search=$request->search;
-        return view('blogs', compact('blogs', 'categories', 'info', 'latestBlogs' , 'search'));
+        $search = $request->search;
+        return view('blogs', compact('blogs', 'categories', 'info', 'latestBlogs', 'search'));
     }
 
     public function profile()

@@ -8,10 +8,9 @@ blog search #
 search blog category #
 blog tags #
 header fixes #
+privacy editor #
+search blog tags #
 
-privacy editor
-
-search blog tags
 next and previous blog
 
 blog author section fixes
