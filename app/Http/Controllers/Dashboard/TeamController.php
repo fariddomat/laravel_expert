@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Dashboard;
 
 use App\Http\Controllers\Controller;
 use App\Team;
+use App\TeamRole;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
@@ -23,13 +24,15 @@ class TeamController extends Controller
 
     public function create(Request $request)
     {
-        return view('dashboard.team.create');
+        $teamRoles=TeamRole::all();
+        return view('dashboard.team.create', compact('teamRoles'));
     }
 
     public function store(Request $request)
     {
         $request->validate([
             'name' => 'required',
+            'team_role_id' => 'required',
             'image' => ['required', 'image', 'mimes:jpeg,png,jpg,webp'],
         ]);
         $team  = Team::create($request->all());
@@ -46,7 +49,8 @@ class TeamController extends Controller
     {
         // dd($team);
         $team = Team::findOrFail($team);
-        return view('dashboard.team.edit', compact('team'));
+        $teamRoles=TeamRole::all();
+        return view('dashboard.team.edit', compact('team','teamRoles'));
     }
 
     public function update(Request $request, Team $team)
@@ -54,6 +58,7 @@ class TeamController extends Controller
 
         $request->validate([
             'name' => 'required',
+            'team_role_id' => 'required',
             'image' => ['nullable', 'image', 'mimes:jpeg,png,jpg,webp'],
         ]);
 
@@ -66,7 +71,7 @@ class TeamController extends Controller
             $filename = $imageFile->getClientOriginalName();
             $team->image = $imageFile->storeAs('photos/team', $filename);
         }
-        
+
         $team->save();
         session()->flash('success', 'Image Updated Successfully');
         return redirect()->route('dashboard.team.index');
