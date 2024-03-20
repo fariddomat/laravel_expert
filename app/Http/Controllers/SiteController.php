@@ -336,7 +336,8 @@ class SiteController extends Controller
         $previousBlog = Blog::where('id', '<', $blog->id)
             ->orderBy('id', 'desc')
             ->first();
-        return view('blog', compact('blog', 'relatedBlogs', 'socialMedias', 'categories', 'info', 'nextBlog', 'previousBlog'));
+        $tags = Tag::all();
+        return view('blog', compact('blog', 'relatedBlogs', 'socialMedias', 'categories', 'info', 'nextBlog', 'previousBlog', 'tags'));
     }
 
     public function blogs(Request $request)
@@ -355,7 +356,8 @@ class SiteController extends Controller
         // dd($blogs);
         $latestBlogs = Blog::latest()->limit(5);
         $search = $request->search;
-        return view('blogs', compact('blogs', 'categories', 'info', 'latestBlogs', 'search'));
+        $tags = Tag::all();
+        return view('blogs', compact('blogs', 'categories', 'info', 'latestBlogs', 'search', 'tags'));
     }
 
     public function profile()

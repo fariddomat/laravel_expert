@@ -5,8 +5,9 @@
 
     <style>
         .owl-carousel .owl-item img {
-  max-width: unset !important;
+            max-width: unset !important;
         }
+
         #customers-testimonials.owl-carousel .owl-dots .owl-dot span {
             background: #DF1F26 !important;
             margin-bottom: 25px !important;
@@ -121,7 +122,8 @@
 @section('content')
 
     <!-- Page title -->
-    <section class="page-title-wrap position-relative bg-light" data-bg-img="{{ asset($info->blog_header_image) }}"   data-animate="fadeInUp" data-delay="1.1">
+    <section class="page-title-wrap position-relative bg-light" data-bg-img="{{ asset($info->blog_header_image) }}"
+        data-animate="fadeInUp" data-delay="1.1">
         <div id="particles_js"></div>
         <div class="container">
             <div class="row">
@@ -150,11 +152,12 @@
             <div class="row">
                 <div class="col-md-9" dir="ltr">
                     @if ($blogs->count() == 0)
-
-                    <h3 style="text-align: center;
+                        <h3
+                            style="text-align: center;
                     padding-top: 50px;
                     font-weight: bold;
-                    font-size: 3rem;">لا يوجد نتائج</h3>
+                    font-size: 3rem;">
+                            لا يوجد نتائج</h3>
                     @endif
                     <div id="customers-testimonials" class="owl-carousel " data-animate="fadeInUp" data-delay="1.5">
 
@@ -199,12 +202,10 @@
                         <div class="single-widget" data-animate="fadeInUp" data-delay=".1">
                             <form>
                                 <div class="form-group position-relative mb-0">
-                                    <input class="form-control" name="search"  type="text" placeholder="البحث"
-                                        data-parsley-required-message="Please type at least one word."
-                                        {{-- data-parsley-minlength="3"
+                                    <input class="form-control" name="search" type="text" placeholder="البحث"
+                                        data-parsley-required-message="Please type at least one word." {{-- data-parsley-minlength="3"
                                         data-parsley-minlength-message="Please type at least one word." --}}
-                                         {{-- required --}}
-                                         value="{{ $search }}">
+                                        {{-- required --}} value="{{ $search }}">
                                     <button type="submit"><i class="fas fa-search"></i></button>
                                 </div>
                             </form>
@@ -215,7 +216,7 @@
                             <ul class="widget-categories list-unstyled mb-0">
                                 @foreach ($categories as $category)
                                     <li data-animate="fadeInUp" data-delay=".25"><a
-                                            href="{{ route('blogs', ['category'=>$category->id]) }}"><span>{{ $category->name }}</span><span
+                                            href="{{ route('blogs', ['category' => $category->id]) }}"><span>{{ $category->name }}</span><span
                                                 class="count">{{ $category->blogs->count() }}</span></a></li>
                                 @endforeach
                             </ul>
@@ -280,13 +281,12 @@
                         <div class="single-widget" data-animate="fadeInUp" data-delay=".1">
                             <h3 data-animate="fadeInUp" data-delay=".2">Tags</h3>
                             <ul class="tags roboto list-inline mb-0">
-                                <li data-animate="fadeInUp" data-delay=".25"><a href="#">#Technology</a></li>
-                                <li data-animate="fadeInUp" data-delay=".3"><a href="#">#Envato</a></li>
-                                <li data-animate="fadeInUp" data-delay=".35"><a href="#">#ThemeForest</a></li>
-                                <li data-animate="fadeInUp" data-delay=".4"><a href="#">#Domain</a></li>
-                                <li data-animate="fadeInUp" data-delay=".45"><a href="#">#VPNet</a></li>
-                                <li data-animate="fadeInUp" data-delay=".6"><a href="#">#CloudHostion</a></li>
-                                <li data-animate="fadeInUp" data-delay=".65"><a href="#">#WordPress</a></li>
+                                @foreach ($tags as $index => $tag)
+                                    <li data-animate="fadeInUp" data-delay="{{ 0.25 + $index / 8 }}">
+                                        <a href="{{ route('blogs', ['tag'=>$tag->id]) }}">#{{ $tag->name }}</a>
+                                    </li>
+
+                                @endforeach
                             </ul>
                         </div>
 

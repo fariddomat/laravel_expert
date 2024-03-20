@@ -121,16 +121,16 @@
         }
 
         /* h1,
-            h2,
-            h3,
-            h4,
-            h5,
-            h6,
-            p,
-            body,
-            strong {
-                color: unset;
-            } */
+                h2,
+                h3,
+                h4,
+                h5,
+                h6,
+                p,
+                body,
+                strong {
+                    color: unset;
+                } */
 
         .share-div {
             font-size: 20px;
@@ -283,24 +283,23 @@
                         <ul class="prev-next roboto d-flex justify-content-between list-unstyled mt-5 mb-5">
                             <li data-animate="fadeInUp" data-delay=".1">
                                 @if ($previousBlog)
-                                <a href="{{ route('blog', $previousBlog) }}"><i class="fas fa-caret-left"></i> المقال
-                                    السابق</a>
-                                <span>{{ $previousBlog->title }}</span>
+                                    <a href="{{ route('blog', $previousBlog) }}"><i class="fas fa-caret-left"></i> المقال
+                                        السابق</a>
+                                    <span>{{ $previousBlog->title }}</span>
                                 @else
-                                <a><i class="fas fa-caret-left"></i> لايوجد مقال سابق</a>
-                                <span></span>
+                                    <a><i class="fas fa-caret-left"></i> لايوجد مقال سابق</a>
+                                    <span></span>
                                 @endif
                             </li>
                             <li class="text-right" data-animate="fadeInUp" data-delay=".2">
-                               @if ($nextBlog)
-                               <a href="{{ route('blog', $nextBlog) }}">المقال التالي <i
-                                class="fas fa-caret-right"></i></a>
-                        <span>{{ $nextBlog->title }}</span>
-                               @else
-                               <a>لا يوجد مقال تالي <i
-                                class="fas fa-caret-right"></i></a>
-                        <span></span>
-                               @endif
+                                @if ($nextBlog)
+                                    <a href="{{ route('blog', $nextBlog) }}">المقال التالي <i
+                                            class="fas fa-caret-right"></i></a>
+                                    <span>{{ $nextBlog->title }}</span>
+                                @else
+                                    <a>لا يوجد مقال تالي <i class="fas fa-caret-right"></i></a>
+                                    <span></span>
+                                @endif
                             </li>
                         </ul>
 
@@ -462,13 +461,11 @@
                         <div class="single-widget" data-animate="fadeInUp" data-delay=".1">
                             <h3 data-animate="fadeInUp" data-delay=".2">Tags</h3>
                             <ul class="tags roboto list-inline mb-0">
-                                <li data-animate="fadeInUp" data-delay=".25"><a href="#">#Technology</a></li>
-                                <li data-animate="fadeInUp" data-delay=".3"><a href="#">#Envato</a></li>
-                                <li data-animate="fadeInUp" data-delay=".35"><a href="#">#ThemeForest</a></li>
-                                <li data-animate="fadeInUp" data-delay=".4"><a href="#">#Domain</a></li>
-                                <li data-animate="fadeInUp" data-delay=".45"><a href="#">#VPNet</a></li>
-                                <li data-animate="fadeInUp" data-delay=".6"><a href="#">#CloudHostion</a></li>
-                                <li data-animate="fadeInUp" data-delay=".65"><a href="#">#WordPress</a></li>
+                                @foreach ($tags as $index => $tag)
+                                    <li data-animate="fadeInUp" data-delay="{{ 0.25 + $index / 8 }}">
+                                        <a href="{{ route('blogs', ['tag'=>$tag->id]) }}">#{{ $tag->name }}</a>
+                                    </li>
+                                @endforeach
                             </ul>
                         </div>
 
