@@ -263,18 +263,7 @@ class SiteController extends Controller
             $contact->services()->attach($validatedData['services']);
         }
         $sms = SMS::where('type', 'contact')->first();
-        $globalSms = GlobalSMS::first();
-        if ($sms->status == 1 && $globalSms->status == 1) { // send sms
-            if (SMSHelper::checkMobileNumber($validatedData['mobile'])) {
-                $smsLog = SMSLog::where('send_to', $validatedData['mobile'])->where('created_at', '>', Carbon::now()->subHours(1)->toDateTimeString())->first();
-                if (!$smsLog) {
-                    $message = $sms->body;
-                    SMSHelper::sendContact($validatedData['mobile'], $message);
-                    $adminMessage = $sms->admin_message . ' order id is ' . $contact->id . ' , customer mobile is ' . $validatedData['mobile'];
-                    SMSHelper::sendToAdminFromContact($sms->admin_number, $adminMessage);
-                }
-            }
-        }
+
         $info = array(
             'type' => 'contact us',
             'name' => $request->name,
@@ -283,28 +272,11 @@ class SiteController extends Controller
             'data' => $request->message
         );
         Mail::send('mail', $info, function ($message) use ($contact) {
-            $message->to("info@project.com", "Mr. Abdulkader")
+            $message->to("info@project.com", "info")
                 ->subject('New Contact us');
-            $message->from('card-ordrer@project.com', 'Digitsmark');
+            $message->from('card-ordrer@project.com', 'Almohtarif');
         });
-        $services = Service::whereIn('id', $validatedData['services'])->get();
-        foreach ($services as $key => $service) {
-            if ($service->slug == 'malak-screen' || $service->slug == 'organizing-exhibitions-and-conferences') {
-                $info = array(
-                    'type' => 'order service',
-                    'name' => $request->name,
-                    'email' => $request->email,
-                    'mobile' => $request->mobile,
-                    'data' => $request->message
-                );
-                Mail::send('mail', $info, function ($message) use ($contact) {
-                    $message->to("info@project.com", "ADS")
-                        ->subject('New Contact us');
-                    $message->from('card-ordrer@project.com', 'Digitsmark');
-                });
-                break;
-            }
-        }
+
         session()->flash('success', trans('contact.sent_successfully'));
         return redirect()->back();
     }

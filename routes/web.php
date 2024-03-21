@@ -180,6 +180,9 @@ Route::group(['prefix' => '/dashboard', 'middleware' => ['auth', 'setArLocale'],
     Route::resource('team', 'Dashboard\TeamController');
     Route::resource('teamRoles', 'Dashboard\TeamRoleController');
     Route::resource('faqs', 'Dashboard\FaqController');
+    Route::resource('dayOfWorks', 'Dashboard\DayOfWorkController');
+    Route::resource('dailyAppointments', 'Dashboard\DailyAppointmentController');
+
 
     Route::get('/aboutfields', 'Dashboard\AboutFieldController@index')->name('aboutfields.index');
     Route::get('/aboutfields/create', 'Dashboard\AboutFieldController@create')->name('aboutfields.create');

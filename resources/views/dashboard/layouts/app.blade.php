@@ -116,6 +116,11 @@
                         </a>
                     </li>
                     <li class="nav-item">
+                        <a class="nav-link @yield('dayOfWorksActive')" href="{{ route('dashboard.dayOfWorks.index') }}">
+                            مواعيد الاستشارات المتاحة
+                        </a>
+                    </li>
+                    <li class="nav-item">
                         <a class="nav-link @yield('socialmediaActive')" href="{{ route('dashboard.socialmedia.index') }}">
                             منصات التواصل الاجتماعي
                         </a>

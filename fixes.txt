@@ -25,3 +25,6 @@ remove author social
 Dashboard intro page
 
 total vistors in website
+
+Quiz
+
