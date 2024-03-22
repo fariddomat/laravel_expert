@@ -7,7 +7,22 @@
     var imageGalleryUploadUrl = "{{ route('dashboard.imageGallery.uploader') }}";
 </script>
 <script src="{{asset('ckeditor/ckeditor.js')}}"></script>
-<script src="{{asset('dashboard/js/about.js')}}"></script>
+<script>
+
+    var imageGalleryBrowseUrl = "{{ route('dashboard.imageGallery.browser') }}";
+    var imageGalleryUploadUrl = "{{ route('dashboard.imageGallery.uploader') }}";
+        $(function() {
+            CKEDITOR.replace("ar[description]", {
+                filebrowserBrowseUrl: imageGalleryBrowseUrl,
+                filebrowserUploadUrl: imageGalleryUploadUrl +
+                    "?_token=" +
+                    $("meta[name=csrf-token]").attr("content"),
+                removeButtons: "About",
+                contentsLangDirection: 'rtl'
+            });
+
+        });
+    </script>
 @endsection
 @section('content')
 

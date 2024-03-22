@@ -105,7 +105,10 @@ class SiteController extends Controller
         views($service)
             ->record();
         $info = Info::first();
-
+        $categories = BlogCategory::all();
+        $latestBlogs = Blog::latest()->limit(5);
+        $search = $request->search;
+        $tags = Tag::all();
         switch ($service->id) {
 
             default:
@@ -120,7 +123,7 @@ class SiteController extends Controller
                     $halfOfQuestions = ceil($questions / 2);
                 }
                 $otherServices = Service::where('showed', 1)->get();
-                return view('service', compact('service', 'halfOfQuestions', 'arrow', 'otherServices', 'info'));
+                return view('service', compact('service', 'halfOfQuestions', 'arrow', 'otherServices', 'info', 'categories', 'latestBlogs', 'search', 'tags'));
         }
     }
 
@@ -361,7 +364,6 @@ class SiteController extends Controller
     public function blogs(Request $request)
     {
         $info = Info::first();
-        $categories = BlogCategory::all();
         if ($request->tag) {
             $blogs = Tag::findOrFail($request->tag)->blogs;
             // dd($blogs);
@@ -372,6 +374,7 @@ class SiteController extends Controller
         }
 
         // dd($blogs);
+        $categories = BlogCategory::all();
         $latestBlogs = Blog::latest()->limit(5);
         $search = $request->search;
         $tags = Tag::all();

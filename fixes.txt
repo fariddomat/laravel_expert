@@ -16,6 +16,7 @@ Visitor counter on blog and services #
 team #
 team rols #
 Questions and answers #
+Quiz #
 
 
 blog author section fixes
@@ -26,5 +27,4 @@ Dashboard intro page
 
 total vistors in website
 
-Quiz
 

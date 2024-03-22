@@ -59,10 +59,10 @@ class ServiceSectionController extends Controller
             // 'en.content' => ['required'],
         ];
         $validatedData = $request->validate($rules);
-        $section->translateOrNew('en')->title = $validatedData['en']['title'];
-        $section->translateOrNew('en')->content = $validatedData['en']['content'];
-        // $section->translateOrNew('ar')->title = $validatedData['ar']['title'];
-        // $section->translateOrNew('ar')->content = $validatedData['ar']['content'];
+        // $section->translateOrNew('en')->title = $validatedData['en']['title'];
+        // $section->translateOrNew('en')->content = $validatedData['en']['content'];
+        $section->translateOrNew('ar')->title = $validatedData['ar']['title'];
+        $section->translateOrNew('ar')->content = $validatedData['ar']['content'];
         $section->save();
         session()->flash('success', 'Section Updated Successfully');
         return redirect()->route('dashboard.services.sections.index', $section->service_id);
