@@ -1,23 +1,22 @@
 <?php
 
 namespace App\Http\Controllers\Dashboard;
-
+use Carbon\Carbon;
 use App\DailyAppointment;
 use App\DayOfWork;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\DB;
 class DailyAppointmentController extends Controller
 {
 
-      /**
+    /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
     public function index()
     {
-
     }
 
     /**
@@ -27,8 +26,8 @@ class DailyAppointmentController extends Controller
      */
     public function create(Request $request)
     {
-        $dayOfWork=DayOfWork::findOrFail($request->id);
-        $dailyAppointment=DailyAppointment::where('day_of_work_id', $dayOfWork->id)->get();
+        $dayOfWork = DayOfWork::findOrFail($request->id);
+        $dailyAppointment = DailyAppointment::where('day_of_work_id', $dayOfWork->id)->get();
         return view('dashboard.dailyAppointments.create', compact('dayOfWork', 'dailyAppointment'));
     }
 
@@ -41,20 +40,32 @@ class DailyAppointmentController extends Controller
     public function store(Request $request)
     {
 
-        $dayOfWork=DayOfWork::findOrFail($request->id);
+        $dayOfWork = DayOfWork::findOrFail($request->id);
         $request->validate([
-            'id'=>'required',
-            'from'=>'required',
-            'to'=>'required',
+            'id' => 'required',
+            'from' => 'required',
+            'to' => 'required',
         ]);
         // dd($request->to);
         // dd(date('g:i',strtotime($request->from)));
-        for ($i=strtotime($request->from); $i <= strtotime($request->to);  $i+=3600 ) {
-            DailyAppointment::create([
-                'day_of_work_id'=> $request->id,
-                'time'=> date('g:i', $i),
-            ]);
-        }
+
+
+$startTime = Carbon::parse($request->from);
+$endTime = Carbon::parse($request->to);
+
+// Ensure $startTime is always before $endTime
+if ($startTime->gt($endTime)) {
+  $tempTime = $startTime;
+  $startTime = $endTime;
+  $endTime = $tempTime;
+}
+
+for ($currentTime = $startTime; $currentTime->lte($endTime); $currentTime->add(30, 'minute')) {
+  DailyAppointment::create([
+    'day_of_work_id' => $request->id,
+    'time' => $currentTime->format('H:i:s'),
+  ]);
+}
 
 
         session()->flash('success', 'Created Successfully !');
@@ -79,7 +90,8 @@ class DailyAppointmentController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
-    {}
+    {
+    }
 
     /**
      * Update the specified resource in storage.
@@ -100,7 +112,7 @@ class DailyAppointmentController extends Controller
      */
     public function destroy($id)
     {
-        $dailyAppointment=DailyAppointment::findOrFail($id);
+        $dailyAppointment = DailyAppointment::findOrFail($id);
         $dailyAppointment->delete();
         session()->flash('success', 'Deleted Successfully !');
         return redirect()->back();

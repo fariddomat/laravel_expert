@@ -18,6 +18,8 @@ use App\Blog;
 use Illuminate\Support\Facades\App;
 use App\AboutImage;
 use App\BlockedContact;
+use App\DailyAppointment;
+use App\DayOfWork;
 use App\ExperinceSlider;
 use App\Faq;
 use App\GlobalSMS;
@@ -31,6 +33,7 @@ use App\SMSLog;
 use App\SocialMedia;
 use App\Tag;
 use App\Team;
+use DateTime;
 use Illuminate\Support\Carbon;
 use Mail;
 
@@ -220,8 +223,50 @@ class SiteController extends Controller
         return redirect()->route('services');
     }
 
+    public function appointmentTime(Request $request)
+    {
+
+
+        try {
+            $date = $request->appointment_date;
+            $d    = new DateTime($date);
+            $d->format('l');  //pass l for lion aphabet in format
+            // dd($d->format('l'));
+            $day = DayOfWork::where('day', $d->format('l'))->first();
+            // dd($day);
+            $time = DailyAppointment::where('day_of_work_id', $day->id)->get();
+
+            return response()->json([
+                'time' => $time
+            ]);
+        } catch (\Throwable $th) {
+            return response()->json([
+                'time' => null
+            ]);
+        }
+    }
+
     public function postContact(Request $request)
     {
+        $request->validate([
+            'appointment_date' => 'required',
+            'appointment_time' => 'required',
+        ]);
+        $date = $request->appointment_date;
+        $d    = new DateTime($date);
+        $d->format('l');  //pass l for lion aphabet in format
+        // dd($d->format('l'));
+        $day = DayOfWork::where('day', $d->format('l'))->first();
+        $time = DailyAppointment::findOrFail($request->appointment_time);
+        $start_At = $request->appointment_date . ' ' . $time->time;
+        session()->put('start_at', $start_At);
+        $a = ContactUs::where('start_at', $start_At)->count();
+        if ($a > 0) {
+            return redirect()->back()->withErrors([
+                'msg' => 'هذا الموعد محجوز مسبقاً'
+            ]);
+        }
+
         $rules = [
             'name' => ['required'],
             'email' => ['nullable', 'email'],
@@ -346,8 +391,9 @@ class SiteController extends Controller
         return response()->download($file, null, $headers);
     }
 
-    public function faq(){
-        $faqs=Faq::all();
+    public function faq()
+    {
+        $faqs = Faq::all();
         $info = Info::first();
         return view('faq', compact('faqs', 'info'));
     }

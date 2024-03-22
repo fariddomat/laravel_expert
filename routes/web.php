@@ -16,7 +16,7 @@ use Illuminate\Support\Facades\Route;
 Auth::routes(['register' => false]);
 
 // Clear cashe route
-Route::get('/clear', function() {
+Route::get('/clear', function () {
 
     Artisan::call('cache:clear');
     Artisan::call('config:clear');
@@ -24,8 +24,7 @@ Route::get('/clear', function() {
     Artisan::call('view:clear');
 
     return "Cleared!";
-
- });
+});
 
 Route::group(
     [
@@ -37,6 +36,8 @@ Route::group(
         Route::get('/about', 'SiteController@about')->name('about');
         Route::get('/privacy', 'SiteController@privacy')->name('privacy');
         Route::get('/contact-us', 'SiteController@contact')->name('contact');
+        Route::post('/appointment/time', 'SiteController@appointmentTime')->name('appointment.time');
+
         Route::get('/services', 'SiteController@services')->name('services');
         Route::get('/services/{service:slug}', 'SiteController@service')->name('service');
         Route::get('/services/{service:slug}/order', 'SiteController@orderService')->name('service.order');
@@ -70,9 +71,9 @@ Route::get('/sitemap.xml', 'SitemapXmlController@index')->name('sitemap');
 Route::group(['prefix' => '/dashboard', 'middleware' => ['auth', 'setArLocale'], 'as' => 'dashboard.'], function () {
     Route::get('/home', 'Dashboard\DashboardController@home')->name('home');
 
-    Route::resource('package_categories','Dashboard\PackageCategoryController');
-    Route::resource('packages','Dashboard\PackageController');
-    Route::resource('package_services','Dashboard\PackageServiceController')->except(['index', 'create', 'edit']);
+    Route::resource('package_categories', 'Dashboard\PackageCategoryController');
+    Route::resource('packages', 'Dashboard\PackageController');
+    Route::resource('package_services', 'Dashboard\PackageServiceController')->except(['index', 'create', 'edit']);
 
     Route::get('/package_services/{service}', 'Dashboard\PackageServiceController@index')->name('package_services.index');
     Route::get('/package_services/{service}/create', 'Dashboard\PackageServiceController@create')->name('package_services.create');

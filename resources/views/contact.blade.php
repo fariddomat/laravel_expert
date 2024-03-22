@@ -1,9 +1,21 @@
 @extends('layouts.site')
 @section('title', trans('site.contact_us'))
 @section('styles')
+    <meta name="csrf-token" content="{{ csrf_token() }}" />
+    <!-- FullCalendar CSS file -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.10.2/fullcalendar.min.css" />
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+
+    <!-- jQuery and FullCalendar JS files -->
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.10.2/fullcalendar.min.js"></script>
     <style>
         .form-control {
-            margin-top: 25px;
+            margin-top: 0px;
+            margin-bottom: 25px;
         }
 
         .form-check-label {
@@ -18,6 +30,40 @@
             $('#btn-submit').prop("disabled", true);
             $('#btn-spinner').show();
             return true;
+        });
+    </script>
+    <script>
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
+        $(document).ready(function() {
+            $('#appointment_date').on('change', function(e) {
+                var appointment_date = e.target.value;
+                $.ajax({
+                    url: "{{ route('appointment.time') }}",
+                    type: "POST",
+                    data: {
+                        appointment_date: appointment_date
+                    },
+                    success: function(data) {
+                        $('#appointment_time').empty();
+                        var i = 0;
+                        $.each(data.time, function(index,
+                            t) {
+                            i++;
+                            $('#appointment_time').append('<option value="' +
+                                t
+                                .id + '">' + t.time + '</option>');
+                        })
+                        if (i == 0) {
+                            $('#appointment_time').append(
+                                '<option>لا يوجد مواعيد متاحة</option>');
+                        }
+                    }
+                })
+            });
         });
     </script>
 @endsection
@@ -62,7 +108,8 @@
                             <h2 data-animate="fadeInUp" data-delay="1.7">@lang('contact.get_in_touch')</h2>
                         </div>
                         @include('partials._errors')
-                        <form id="contactFrom" method="post" action="{{ route('contact.post') }}" class="row"  data-animate="fadeInUp" data-delay="1.6">
+                        <form id="contactFrom" method="post" action="{{ route('contact.post') }}" class="row"
+                            data-animate="fadeInUp" data-delay="1.6">
                             @csrf()
 
                             {{-- HonyBot hidden input Start --}}
@@ -111,14 +158,23 @@
 
                             <div class="col-md-6" data-animate="fadeInUp" data-delay=".6">
                                 <div class="form-group">
-                                    <label for="contact_method">@lang('contact.preferred_method')</label>
+                                    <label for="contact_method">وسيلة الاتصال المفضلة</label>
                                     <select name="contact_method" class="form-control">
-                                        <option value="">وسيلة الاتصال المفضلة</option>
                                         <option value="email" @if (old('contact_method') == 'email') selected @endif>
                                             @lang('contact.email')
                                         </option>
+                                        <option value="mobile" @if (old('contact_method') == 'mobile') selected @endif>
+                                            @lang('contact.mobile')
+                                        </option>
+
                                         <option value="phone" @if (old('contact_method') == 'phone') selected @endif>
-                                            @lang('contact.phone')
+                                            الهاتف الأرضي
+                                        </option>
+                                        <option value="whatsapp" @if (old('contact_method') == 'whatsapp') selected @endif>
+                                            @lang('contact.whatsapp')
+                                        </option>
+
+                                        <option value="telegram" @if (old('contact_method') == 'telegram') selected @endif>تلغرام
                                         </option>
                                         {{-- Add more options as needed based on your schema --}}
                                     </select>
@@ -129,15 +185,22 @@
                                 <div class="form-group">
                                     <label for="city">المدينة</label>
                                     <input type="text" name="city" value="{{ old('city') }}"
-                                        class="form-control" placeholder="@lang('contact.city')">
+                                        class="form-control" placeholder="">
                                 </div>
                             </div>
 
                             <div class="col-md-6" data-animate="fadeInUp" data-delay=".8">
                                 <div class="form-group">
                                     <label for="cert_degree">آخر شهادة حصلة عليها</label>
-                                    <input type="text" name="cert_degree" value="{{ old('cert_degree') }}"
-                                        class="form-control" placeholder="@lang('contact.cert_degree')">
+                                    <select name="cert_degree" class="form-control">
+                                        <option value="ابتدائية">ابتدائية</option>
+                                        <option value="إعدادية">إعدادية</option>
+                                        <option value="ثانوية عامة">ثانوية عامة</option>
+                                        <option value="بكالوريوس">بكالوريوس</option>
+                                        <option value="ماجستير">ماجستير</option>
+                                        <option value="دكتوراه">دكتوراه</option>
+                                        <option value="غير ذلك">غير ذلك</option>
+                                    </select>
                                 </div>
                             </div>
 
@@ -158,6 +221,23 @@
                                         <label class="form-check-label" for="service"> @lang('site.other_services')</label>
                                     </div>
                                 </div>
+                            </div>
+                            <div class="col-md-6 form-group mt-3">
+                                <label for="">حجز موعد - التاريخ:</label>
+
+                                <input type="date" id="appointment_date" name="appointment_date"
+                                    class="form-control datepicker" id="date" placeholder="Appointment Date"
+                                    data-rule="minlen:4" data-msg="Please enter at least 4 chars"
+                                    min="{{ now()->toDateString('Y-m-d') }}">
+                                <div class="validate"></div>
+                            </div>
+
+                            <div class="col-md-6 form-group mt-3">
+                                <label for="">الوقت:</label>
+                                <select name="appointment_time" id="appointment_time" class="form-control">
+                                    <option value="">اختر تاريخ من فضلك</option>
+                                </select>
+                                <div class="validate"></div>
                             </div>
 
                             <div class="col-md-12" data-animate="fadeInUp" data-delay="1">
