@@ -106,7 +106,7 @@ class SiteController extends Controller
             ->record();
         $info = Info::first();
         $categories = BlogCategory::all();
-        $latestBlogs = Blog::latest()->limit(5);
+        $latestBlogs = Blog::where('showed', 1)->where('show_at_home', 1)->latest()->limit(5)->get();
         $search = $request->search;
         $tags = Tag::all();
         switch ($service->id) {

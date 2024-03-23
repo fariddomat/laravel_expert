@@ -231,10 +231,10 @@
                                 {!! $blog->content_table !!}
                             </blockquote>
 
-                            <div data-animate="fadeInUp" data-delay=".1">{!! $blog->first_paragraph !!}</div>
+                            <div data-animate="fadeInUp" data-delay=".3">{!! $blog->first_paragraph !!}</div>
 
 
-                            <div data-animate="fadeInUp" data-delay=".1">{!! $blog->description !!}</div>
+                            <div class="pt-2" data-animate="fadeInUp" data-delay=".3">{!! $blog->description !!}</div>
                         </div>
 
                         <div class="row align-items-center half-gutters mb-5 tag-and-share">

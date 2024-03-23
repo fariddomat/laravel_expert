@@ -89,6 +89,10 @@
             transition: all 250ms ease-out 0s;
             width: 20px;
         }
+
+        #customers-testimonials .item {
+            padding: 15px;
+        }
     </style>
     <style>
         .tm-accordion .card:first-child {
@@ -151,28 +155,28 @@
             });
         });
     </script>
-        <script>
-            $(document).ready(function() {
-                $('#accordion100').on('shown.bs.collapse', function(e) {
-                    $(e.target).prev().find('.open-icon').hide();
-                    $(e.target).prev().find('.close-icon').show();
-                }).on('hidden.bs.collapse', function(e) {
-                    $(e.target).prev().find('.open-icon').show();
-                    $(e.target).prev().find('.close-icon').hide();
-                });
+    <script>
+        $(document).ready(function() {
+            $('#accordion100').on('shown.bs.collapse', function(e) {
+                $(e.target).prev().find('.open-icon').hide();
+                $(e.target).prev().find('.close-icon').show();
+            }).on('hidden.bs.collapse', function(e) {
+                $(e.target).prev().find('.open-icon').show();
+                $(e.target).prev().find('.close-icon').hide();
             });
-        </script>
-        <script>
-            $(document).ready(function() {
-                $('#accordion100').on('shown.bs.collapse', function(e) {
-                    var target = $(e.target); // Get the target section
-                    var offset = target.prev().height(); // Calculate offset based on previous section's height
-                    $('html, body').animate({
-                        scrollTop: target.offset().top - offset - 90
-                    }, 500); // Animate scrolling with duration (adjust as needed)
-                });
+        });
+    </script>
+    <script>
+        $(document).ready(function() {
+            $('#accordion100').on('shown.bs.collapse', function(e) {
+                var target = $(e.target); // Get the target section
+                var offset = target.prev().height(); // Calculate offset based on previous section's height
+                $('html, body').animate({
+                    scrollTop: target.offset().top - offset - 90
+                }, 500); // Animate scrolling with duration (adjust as needed)
             });
-        </script>
+        });
+    </script>
 @endsection
 @section('content')
 
@@ -202,19 +206,17 @@
     <!-- End of Banner -->
 
 
-    <section id="section-content" class=" pt-7 pb-7">
+    <section id="section-content" class=" pt-7">
         <div class="container">
             <div class="row">
                 <div class="col-md-9">
                     <div class="row">
-
-
                         <div class="col-md-12 pic-services wow " data-animate="fadeInUp" data-delay="1.5"
                             style=" text-align: center;">
                             <img src="{{ asset($service->index_image) }}" class="img-responsive" alt="">
 
                         </div>
-                        <div class="col-md-12 wow " style="margin-top:50px" data-animate="fadeInUp" data-delay="1.3">
+                        <div class="col-md-12 wow " style="margin-top:50px" data-animate="fadeInUp" data-delay=".3">
 
                             <div>{!! $service->brief !!}</div>
                             <div class="row" style="margin-top:35px">
@@ -244,12 +246,12 @@
 
                         </div>
                         @if ($service->index_image_2)
-                            <div class="col-md-12 pic-services wow " data-animate="fadeInUp" data-delay="1.5"
+                            <div class="col-md-12 pic-services wow " data-animate="fadeInUp" data-delay=".4"
                                 style="margin-top:55px; text-align: center;">
                                 <img src="{{ asset($service->index_image_2) }}" class="img-responsive" alt="">
                             </div>
                         @endif
-                        <div class="col-md-12 wow fadeInUp" data-wow-delay=".3s" style="margin-top:50px">
+                        <div class="col-md-12 wow fadeInUp" data-wow-delay=".5s" style="margin-top:50px">
                             @foreach ($service->sections as $section)
                                 <div class="row mt-5">
                                     <div class="col-12">
@@ -273,6 +275,104 @@
                             @endforeach
                         </div>
                     </div>
+
+                    <!-- FAQ -->
+                    @if ($service->questions->count() > 0)
+                        <section class="pt-5" data-animate="fadeInUp" data-delay="1.4">
+                            <div class="container">
+                                <h2 class="text-center pb-2" style="">@lang('site.FAQ_about') : {{ $service->title }}</h2>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div id="accordion100" class="tm-accordion">
+                                            @foreach ($service->questions as $index => $faq)
+                                                <div class="card" {{-- data-animate="fadeInUp" data-delay="{{ 0.1 + $index / 8 }}" --}}>
+                                                    <div class="card-header p-0" id="heading10{{ $index + 1 }}">
+                                                        <h5 class="title" data-toggle="collapse"
+                                                            data-target="#collapse10{{ $index + 1 }}"
+                                                            aria-expanded="@if ($index == 0) true
+                                        @else
+                                        false @endif"
+                                                            aria-controls="collapse10{{ $index + 1 }}">
+                                                            # {{ $index + 1 }} {{ $faq->question }}
+                                                            <i class="fas fa-chevron-down accordion-controls-icon open-icon"
+                                                                @if ($index == 0) style="display: none" @endif></i>
+                                                            <i class="fas fa-chevron-up accordion-controls-icon close-icon"
+                                                                @if ($index != 0) style="display: none" @endif
+                                                                aria-hidden="true"></i>
+
+                                                        </h5>
+                                                    </div>
+                                                    <div id="collapse10{{ $index + 1 }}"
+                                                        class="collapse @if ($index == 0) show @endif"
+                                                        aria-labelledby="heading10{{ $index + 1 }}"
+                                                        data-parent="#accordion100">
+                                                        <div class="card-body">
+                                                            {!! $faq->answer !!}</div>
+                                                    </div>
+                                                </div>
+                                            @endforeach
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                    @endif
+                    <!-- End of FAQ -->
+
+                    <!-- section begin -->
+                    <section id="" class="call-to-action bg-color  text-center  pt-2 pb-5" data-animate="fadeInUp"
+                        data-delay=".5">
+                        <a href="{{ route('contact') }}" class="btn btn-secondary"
+                            style="color: #fff; padding: 15px 50px">أحجز الآن</a>
+                    </section>
+                    <!-- logo carousel section close -->
+
+                    @if ($service->subServices->count() > 0)
+                        <section class="testimonials blog" dir="ltr" data-animate="fadeInUp" data-delay="1">
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        <h2 class="text-center">الخدمات الفرعية</h2>
+                                        <div id="customers-testimonials" class="owl-carousel " data-animate="fadeInUp"
+                                            data-delay="1.5">
+                                            @foreach ($service->subServices as $index => $service)
+                                                <!--TESTIMONIAL 1 -->
+                                                <div class="item">
+                                                    <div class="shadow-effect">
+                                                        <div class="single-post" data-animate="">
+                                                            <div class="image-hover-wrap">
+                                                                <img class="img-fluid" src="{{ asset($service->image) }}"
+                                                                    alt="">
+                                                                <div
+                                                                    class="image-hover-content d-flex justify-content-center align-items-center text-center">
+                                                                    <ul class="list-inline">
+                                                                        <li><a
+                                                                                href="{{ route('service', $service->slug) }}"><i
+                                                                                    class="fas fa-link"></i></a>
+                                                                        </li>
+                                                                        {{-- <li><a href="#"><i class="fas fa-share-alt"></i></a></li> --}}
+                                                                    </ul>
+                                                                </div>
+                                                            </div>
+                                                            <h3>{{ $service->title }}</h3>
+                                                        </div>
+                                                    </div>
+                                                    <div class="testimonial-name" style="background-color: #DF1F26">
+                                                        <a href="{{ route('service', $service->slug) }}"
+                                                            class="btn btn-secondary">@lang('site.read_more')<i
+                                                                class="fas fa-caret-right"></i></a>
+                                                    </div>
+                                                </div>
+                                                <!--END OF TESTIMONIAL 1 -->
+                                            @endforeach
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                    @endif
+
                 </div>
                 <!-- Sidebar -->
                 <div class="col-md-3" data-animate="fadeInUp" data-delay="1.5">
@@ -281,9 +381,9 @@
                             <form>
                                 <div class="form-group position-relative mb-0">
                                     <input class="form-control" name="search" type="text" placeholder="البحث"
-                                        data-parsley-required-message="Please type at least one word." {{-- data-parsley-minlength="3"
-                                data-parsley-minlength-message="Please type at least one word." --}}
-                                        {{-- required --}} value="{{ $search }}">
+                                        data-parsley-required-message="Please type at least one word."
+                                        {{-- data-parsley-minlength="3"
+                                data-parsley-minlength-message="Please type at least one word." --}} {{-- required --}} value="{{ $search }}">
                                     <button type="submit"><i class="fas fa-search"></i></button>
                                 </div>
                             </form>
@@ -430,98 +530,5 @@
         </div>
     </section>
 
-    <!-- FAQ -->
-    <section class="" data-animate="fadeInUp" data-delay="1.4">
-        <div class="container">
-                <h2 class="text-center pb-2" style="">@lang('site.FAQ_about') : {{ $service->title }}</h2>
-            <div class="row">
-                <div class="col-md-8 offset-md-2">
-                    <div id="accordion100" class="tm-accordion">
-                        @foreach ($service->questions as $index => $faq)
-                            <div class="card" {{-- data-animate="fadeInUp" data-delay="{{ 0.1 + $index / 8 }}" --}}>
-                                <div class="card-header p-0" id="heading10{{ $index + 1 }}">
-                                    <h5 class="title" data-toggle="collapse"
-                                        data-target="#collapse10{{ $index + 1 }}"
-                                        aria-expanded="@if ($index == 0) true
-                                        @else
-                                        false @endif"
-                                        aria-controls="collapse10{{ $index + 1 }}">
-                                         # {{ $index + 1 }} {{ $faq->question }}
-                                        <i class="fas fa-chevron-down accordion-controls-icon open-icon"
-                                            @if ($index == 0) style="display: none" @endif></i>
-                                        <i class="fas fa-chevron-up accordion-controls-icon close-icon"
-                                            @if ($index != 0) style="display: none" @endif
-                                            aria-hidden="true"></i>
-
-                                    </h5>
-                                </div>
-                                <div id="collapse10{{ $index + 1 }}"
-                                    class="collapse @if ($index == 0) show @endif"
-                                    aria-labelledby="heading10{{ $index + 1 }}" data-parent="#accordion100">
-                                    <div class="card-body">
-                                        {!! $faq->answer !!}</div>
-                                </div>
-                            </div>
-                        @endforeach
-
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- End of FAQ -->
-
-    <!-- section begin -->
-    <section id="" class="call-to-action bg-color  text-center  pt-7 pb-7" data-animate="fadeInUp"
-        data-delay=".5">
-        <a href="{{ route('contact') }}" class="btn btn-secondary" style="color: #fff; padding: 15px 50px">أحجز الآن</a>
-    </section>
-    <!-- logo carousel section close -->
-
-    @if ($service->subServices->count() > 0)
-        <section class="testimonials blog" dir="ltr" data-animate="fadeInUp" data-delay="1">
-            <div class="container">
-                <div class="row">
-                    <div class="col-sm-12">
-                        <h2 class="text-center">الخدمات الفرعية</h2>
-                        <div id="customers-testimonials" class="owl-carousel " data-animate="fadeInUp" data-delay="1.5">
-                            @foreach ($service->subServices as $index => $service)
-                                <!--TESTIMONIAL 1 -->
-                                <div class="item">
-                                    <div class="shadow-effect">
-                                        <div class="single-post" data-animate="">
-                                            <div class="image-hover-wrap">
-                                                <img class="img-fluid" src="{{ asset($service->image) }}"
-                                                    alt="">
-                                                <div
-                                                    class="image-hover-content d-flex justify-content-center align-items-center text-center">
-                                                    <ul class="list-inline">
-                                                        <li><a href="{{ route('service', $service->slug) }}"><i
-                                                                    class="fas fa-link"></i></a>
-                                                        </li>
-                                                        {{-- <li><a href="#"><i class="fas fa-share-alt"></i></a></li> --}}
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                            <h3>{{ $service->title }}</h3>
-                                            <h4>{!! Str::limit(Helper::removeSpecialCharacter($service->brief), 140) !!}</h4>
-
-                                        </div>
-
-                                    </div>
-                                    <div class="testimonial-name" style="background-color: #DF1F26">
-                                        <a href="{{ route('service', $service->slug) }}"
-                                            class="btn btn-secondary">@lang('site.read_more')<i
-                                                class="fas fa-caret-right"></i></a>
-                                    </div>
-                                </div>
-                                <!--END OF TESTIMONIAL 1 -->
-                            @endforeach
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-    @endif
 
 @endsection

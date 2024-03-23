@@ -23,9 +23,18 @@ remove author social #
 search blog author #
 
 
+counter dynamic and db
+
+Reviews
+
+home Slider
+
+blog category show
 
 Dashboard intro page
 
 total vistors in website
+
+image optimization
 
 

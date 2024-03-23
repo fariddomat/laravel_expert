@@ -64,6 +64,15 @@
 
                 <div class="form-group mb-3">
                     <label>صورة ال Logo  (200 x 200)</label>
+                    <input type="file" name="logo_icon" class="form-control logo-icon">
+                </div>
+
+                <div class="form-group mb-3">
+                    <img src="{{ isset($info) ? asset($info->logo_icon) : '#' }}" style="width: 300px;" class="img-thumbnail logo-icon-preview" alt="">
+                </div>
+
+                <div class="form-group mb-3">
+                    <label>صورة ال Logo </label>
                     <input type="file" name="logo" class="form-control logo">
                 </div>
 

@@ -1,11 +1,12 @@
 <!DOCTYPE html>
 <html lang="en" dir="{{ LaravelLocalization::getCurrentLocaleDirection() }}">
+
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- Document Title -->
-    <link rel="icon" href="{{ asset($info->logo) }}" type="image/png" sizes="16x16">
+    <link rel="icon" href="{{ asset($info->logo_icon) }}" type="image/png" sizes="16x16">
     <title> @yield('title')</title>
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -37,9 +38,8 @@
 
 
     <link href="{{ asset('css/fonts.css') }}" rel="stylesheet">
-    <link
-            href="{{ asset('fonts/Cairo/Cairo-VariableFont_slnt,wght.ttf') }},wght@0,400;0,700;1,400;1,700&display=swap"
-            rel="stylesheet">
+    <link href="{{ asset('fonts/Cairo/Cairo-VariableFont_slnt,wght.ttf') }},wght@0,400;0,700;1,400;1,700&display=swap"
+        rel="stylesheet">
 
     {{-- icons --}}
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
@@ -73,12 +73,12 @@
                         <!-- Header social icons -->
                         <ul class="social-icons text-right list-inline m-0">
                             @foreach ($socialMedias as $socialMedia)
-                            <li>
-                            <a href="{{ $socialMedia->link }}" target="_blank"><i
-                                    class="fab {{ $socialMedia->icon }}"></i></a>
+                                <li>
+                                    <a href="{{ $socialMedia->link }}" target="_blank"><i
+                                            class="fab {{ $socialMedia->icon }}"></i></a>
 
-                            </li>
-                        @endforeach
+                                </li>
+                            @endforeach
                         </ul>
                     </div>
                 </div>
@@ -102,13 +102,13 @@
                             <div class="header-menu">
                                 <ul>
 
-                    <li><a href="{{ route('home') }}">@lang('site.home')</a></li>
-                    <li><a href="{{ route('about') }}">@lang('site.about')</a></li>
-                    <li><a href="{{ route('services') }}">@lang('site.services')</a></li>
-                    <li><a href="{{ route('blogs') }}">@lang('site.blog')</a></li>
-                    {{-- <li><a href="{{ route('home') }}#portfolio">@lang('site.my_works')</a></li> --}}
-                    <li><a href="{{ route('contact') }}">@lang('site.contact')</a></li>
-                    <li><a href="{{ route('login') }}">@lang('site.login')</a></li>
+                                    <li><a href="{{ route('home') }}">@lang('site.home')</a></li>
+                                    <li><a href="{{ route('about') }}">@lang('site.about')</a></li>
+                                    <li><a href="{{ route('services') }}">@lang('site.services')</a></li>
+                                    <li><a href="{{ route('blogs') }}">@lang('site.blog')</a></li>
+                                    {{-- <li><a href="{{ route('home') }}#portfolio">@lang('site.my_works')</a></li> --}}
+                                    <li><a href="{{ route('contact') }}">@lang('site.contact')</a></li>
+                                    <li><a href="{{ route('login') }}">@lang('site.login')</a></li>
                                 </ul>
                             </div>
                             <!-- End of Header-menu -->
@@ -153,13 +153,13 @@
                             </li>
                         </ul>
                         <ul class="social-links list-inline mb-0">
-                            @foreach ($socialMedias as $index=>$socialMedia)
-                            <li data-animate="fadeInUp" data-delay="{{ .25+($index/8) }}">
-                            <a href="{{ $socialMedia->link }}" target="_blank"><i
-                                    class="fab {{ $socialMedia->icon }}"></i></a>
+                            @foreach ($socialMedias as $index => $socialMedia)
+                                <li data-animate="fadeInUp" data-delay="{{ 0.25 + $index / 8 }}">
+                                    <a href="{{ $socialMedia->link }}" target="_blank"><i
+                                            class="fab {{ $socialMedia->icon }}"></i></a>
 
-                            </li>
-                        @endforeach
+                                </li>
+                            @endforeach
                         </ul>
                     </div>
                 </div>
@@ -169,16 +169,18 @@
                 <div class="col-md-4">
                     <div class="footer-posts">
                         <h3 class="text-white" data-animate="fadeInUp" data-delay=".5">@lang('site.services') </h3>
-                        @foreach ($services as $index=>$service)
-                        <div class="single-footer-post clearfix" data-animate="fadeInUp" data-delay="{{ .55+($index/10) }}">
+                        @foreach ($servicesA as $index => $service)
+                            <div class="single-footer-post clearfix" data-animate="fadeInUp"
+                                data-delay="{{ 0.55 + $index / 10 }}">
 
-                            <h4 class="cabin font-weight-normal"><a href="{{route('service',$service->slug)}}">{{ $service->title }}</a></h4>
-                            <p>{!! Str::limit( Helper::removeSpecialCharacter($service->brief),100 ) !!}</p>
-                        </div>
-
+                                <h4 class="cabin font-weight-normal"><a
+                                        href="{{ route('service', $service->slug) }}">{{ $service->title }}</a></h4>
+                                <p>{!! Str::limit(Helper::removeSpecialCharacter($service->brief), 100) !!}</p>
+                            </div>
                         @endforeach
 
-                        <a href="{{ route('services') }}" class="roboto text-uppercase" data-animate="fadeInUp" data-delay=".65">@lang('site.view_all_services') <i class="fas fa-caret-right"></i></a>
+                        <a href="{{ route('services') }}" class="roboto text-uppercase" data-animate="fadeInUp"
+                            data-delay=".65">@lang('site.view_all_services') <i class="fas fa-caret-right"></i></a>
                     </div>
                 </div>
                 <!-- End of Footer posts -->
@@ -187,20 +189,23 @@
                 <div class="col-md-4">
                     <div class="footer-posts">
                         <h3 class="text-white" data-animate="fadeInUp" data-delay=".5">@lang('site.blog') </h3>
-                        @foreach ($blogs as $index=>$blog)
-                        <div class="single-footer-post clearfix" data-animate="fadeInUp" data-delay="{{ .55+($index/10) }}">
-                            <a href="{{route('blog',$blog->slug)}}" class="float-left">
-                                <img class="img-fluid" src="{{asset($blog->image)}}" style="height: 40px; aspect-ratio: 3 / 2;" alt="">
-                            </a>
-                            <span> <a href="#">{{$blog->updated_at->format('d F
-                                Y')}}</a></span>
-                            <h4 class="cabin font-weight-normal"><a href="#">{{ $blog->title }}</a></h4>
-                            <p>{!! Str::limit( Helper::removeSpecialCharacter($blog->description),100 ) !!}</p>
-                        </div>
-
+                        @foreach ($blogs as $index => $blog)
+                            <div class="single-footer-post clearfix" data-animate="fadeInUp"
+                                data-delay="{{ 0.55 + $index / 10 }}">
+                                <a href="{{ route('blog', $blog->slug) }}" class="float-left">
+                                    <img class="img-fluid" src="{{ asset($blog->image) }}"
+                                        style="height: 40px; aspect-ratio: 3 / 2;" alt="">
+                                </a>
+                                <span> <a
+                                        href="#">{{ $blog->updated_at->format('d F
+                                                                        Y') }}</a></span>
+                                <h4 class="cabin font-weight-normal"><a href="#">{{ $blog->title }}</a></h4>
+                                <p>{!! Str::limit(Helper::removeSpecialCharacter($blog->description), 100) !!}</p>
+                            </div>
                         @endforeach
 
-                        <a href="blog.html" class="roboto text-uppercase" data-animate="fadeInUp" data-delay=".65">@lang('site.view_all_blog') <i class="fas fa-caret-right"></i></a>
+                        <a href="blog.html" class="roboto text-uppercase" data-animate="fadeInUp"
+                            data-delay=".65">@lang('site.view_all_blog') <i class="fas fa-caret-right"></i></a>
                     </div>
                 </div>
                 <!-- End of Footer newsletter -->
@@ -210,14 +215,17 @@
                 <div class="row">
                     <!-- Copyright -->
                     <div class="col-md-5 order-last order-md-first">
-                        <p class="copyright" data-animate="fadeInDown" data-delay=".85">&copy; جميع الحقوق محفوظة | شركة المحترف {{ now()->year }}  </p><span>by : <a href="mailto:fariddomat.000@gmail.com">@FaridDomat</a></span>
+                        <p class="copyright" data-animate="fadeInDown" data-delay=".85">&copy; جميع الحقوق محفوظة |
+                            شركة المحترف {{ now()->year }} </p><span>by : <a
+                                href="mailto:fariddomat.000@gmail.com">@FaridDomat</a></span>
                     </div>
 
                     <!-- Footer menu -->
                     <div class="col-md-7 order-first order-md-last">
-                        <ul class="footer-menu list-inline text-md-right mb-md-0" data-animate="fadeInDown" data-delay=".95">
+                        <ul class="footer-menu list-inline text-md-right mb-md-0" data-animate="fadeInDown"
+                            data-delay=".95">
                             <li>
-                            <a href="{{ route('privacy') }}">@lang('site.privacy')</a>
+                                <a href="{{ route('privacy') }}">@lang('site.privacy')</a>
                             </li>
                             <li>|</li>
                             <li><a href="{{ route('about') }}">@lang('site.about')</a></li>
@@ -263,4 +271,5 @@
     @include('partials._session')
     @yield('scripts')
 </body>
+
 </html>

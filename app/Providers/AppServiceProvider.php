@@ -39,7 +39,7 @@ class AppServiceProvider extends ServiceProvider
                 ->with('info', Info::find(1))
                 ->with('contactInfo', ContactInfo::find(1))
                 ->with('color', Color::find(1))
-                ->with('services', Service::all())
+                ->with('servicesA', Service::where('showed', 1)->where('show_at_home', 1)->limit(3)->get())
                 ->with('blogs', Blog::limit(3)->get());
         });
 

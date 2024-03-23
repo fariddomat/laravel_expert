@@ -15,6 +15,25 @@ $(".image").change(function () {
   }
 });
 
+$(".logo-icon").change(function () {
+    if (this.files && this.files[0]) {
+      var reader = new FileReader();
+
+      reader.onload = function (e) {
+        $(".logo-icon-preview").attr("src", e.target.result);
+        $(".logo-icon-preview").show();
+      };
+
+      reader.readAsDataURL(this.files[0]);
+      $(".img-wrap").show();
+    } else {
+      $(".logo-icon-preview").attr("src", "");
+      $(".logo-icon-preview").hide();
+      $(".img-wrap").hide();
+    }
+  });
+
+
 $(".logo").change(function () {
   if (this.files && this.files[0]) {
     var reader = new FileReader();

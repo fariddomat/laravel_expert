@@ -26,6 +26,7 @@ class HomeInfoController extends Controller
             'ar.description' => ['required'],
             'ar.work' => ['required'],
             'ar.work_description' => ['required'],
+            'logo-icon' => ['nullable', 'image', 'mimes:jpeg,png,jpg,webp'],
             'logo' => ['nullable', 'image', 'mimes:jpeg,png,jpg,webp'],
             'about_me_image' => ['nullable', 'image', 'mimes:jpeg,png,jpg,webp'],
             'service_image' => ['nullable', 'image', 'mimes:jpeg,png,jpg,webp'],
@@ -56,6 +57,13 @@ class HomeInfoController extends Controller
         // $info->translateOrNew('en')->work = $validatedData['en']['work'];
         // $info->translateOrNew('en')->work_description = $validatedData['en']['work_description'];
 
+
+        if ($request->has('logo_icon')) {
+            Storage::disk('local')->delete($info->logo_icon);
+            $image = $request->file('logo_icon');
+            $filename = $image->getClientOriginalName();
+            $info->logo_icon = $image->storeAs('photos/home', $filename);
+        }
         if ($request->has('logo')) {
             Storage::disk('local')->delete($info->logo);
             $image = $request->file('logo');
