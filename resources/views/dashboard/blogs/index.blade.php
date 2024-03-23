@@ -8,7 +8,7 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="card-block">
-           <a href="{{ route('dashboard.blogs.create') }}" class="btn btn-primary"><i class="fas fa-plus"></i> Add </a>
+           <a href="{{ route('dashboard.blogs.create') }}" class="btn btn-primary"><i class="fas fa-plus"></i> إضافة </a>
         </div>
     </div>
     <div class="row justify-content-center">
@@ -21,7 +21,7 @@
                         <th>التصنيف</th>
                         <th>عرض</th>
                         <th>عرض في الصفحة الرئيسية</th>
-                        <th>تعديل</th>
+                        <th>العمليات</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -34,6 +34,11 @@
                         <td>{{ $blog->show_at_home == 1 ? 'نعم' : 'مخفي' }}</td>
                         <td>
                             <a href="{{ route('dashboard.blogs.edit', $blog->id) }}" class="btn btn-info btn-sm"><i class="fas fa-edit"></i> تعديل</a>
+                            <form action="{{ route('dashboard.blogs.destroy', $blog->id) }}" method="post" style="display: inline-block">
+                                @csrf()
+                                @method('delete')
+                                <button type="submit" class="btn btn-danger delete btn-sm"><i class="fas fa-trash"></i> حذف</button>
+                            </form><!-- end of form -->
                         </td>
                     </tr>
                     @endforeach

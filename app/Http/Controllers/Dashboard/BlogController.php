@@ -216,4 +216,12 @@ class BlogController extends Controller
         session()->flash('success', 'Blog Updated Successfully');
         return redirect()->route('dashboard.blogs.index');
     }
+
+
+    public function destroy(Blog $blog)
+    {
+        $blog->delete();
+        session()->flash('success', 'Blog Deleted Successfully');
+        return redirect()->route('dashboard.blogs.index');
+    }
 }

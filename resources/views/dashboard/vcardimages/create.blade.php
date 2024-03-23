@@ -34,7 +34,7 @@
                     <img src="" style="width: 300px; display: none;" class="img-thumbnail image-preview" alt="">
                 </div>
                 <div class="form-group mb-3">
-                    <button type="submit" class="btn btn-primary"><i class="fa fa-plus"></i> Add </button>
+                    <button type="submit" class="btn btn-primary"><i class="fa fa-plus"></i> إضافة</button>
                 </div>
             </form>
         </div>

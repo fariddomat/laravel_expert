@@ -169,4 +169,10 @@ class ServiceController extends Controller
             $service->save();
         }
     }
+    public function destroy(Service $service)
+    {
+        $service->delete();
+        session()->flash('success', 'Service Deleted Successfully');
+        return redirect()->route('dashboard.services.index');
+    }
 }

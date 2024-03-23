@@ -84,6 +84,7 @@ Route::group(['prefix' => '/dashboard', 'middleware' => ['auth', 'setArLocale'],
     Route::get('/services/create', 'Dashboard\ServiceController@create')->name('services.create');
     Route::post('/services', 'Dashboard\ServiceController@store')->name('services.store');
     Route::put('/services/{service}', 'Dashboard\ServiceController@update')->name('services.update');
+    Route::delete('/services/{service}', 'Dashboard\ServiceController@destroy')->name('services.destroy');
     Route::delete('/services/{service}/index-image', 'Dashboard\ServiceController@destroyIndexImage')->name('services.indexImage.destroy');
     Route::delete('/services/{service}/index-image-2', 'Dashboard\ServiceController@destroyIndexImage2')->name('services.indexImage.destroy2');
 
@@ -223,6 +224,7 @@ Route::group(['prefix' => '/dashboard', 'middleware' => ['auth', 'setArLocale'],
     Route::post('/blogs', 'Dashboard\BlogController@store')->name('blogs.store');
     Route::get('/blogs/{blog}/edit', 'Dashboard\BlogController@edit')->name('blogs.edit');
     Route::put('/blogs/{blog}', 'Dashboard\BlogController@update')->name('blogs.update');
+    Route::delete('/blogs/{blog}', 'Dashboard\BlogController@destroy')->name('blogs.destroy');
 
     Route::get('/customers', 'Dashboard\CustomerController@index')->name('customers.index');
     Route::get('/customers/{id}/clients', 'Dashboard\CustomerController@clients')->name('customers.clients');

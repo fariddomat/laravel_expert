@@ -174,28 +174,6 @@ class SiteController extends Controller
         $orderService->ip = $request->ip();
         $orderService->save();
 
-        if ($service->id == 9) { //Larid ERP
-            $sms = SMS::where('type', 'larid')->first();
-        } else {
-            $sms = SMS::where('type', 'service')->first();
-        }
-        $globalSms = GlobalSMS::first();
-        if ($sms->status == 1 && $globalSms->status == 1) { // send sms
-            if (SMSHelper::checkMobileNumber($validatedData['mobile'])) {
-                $smsLog = SMSLog::where('send_to', $validatedData['mobile'])->where('created_at', '>', Carbon::now()->subHours(1)->toDateTimeString())->first();
-                if (!$smsLog) {
-                    $message = $sms->body;
-                    $adminMessage = $sms->admin_message . ' , order id is ' . $orderService->id . ' , service is ' . $service->translate('en')->title . ' , customer info is ' . $validatedData['name'] . '-' . $validatedData['mobile'] . ' , order date is ' . $orderService->created_at;
-                    if ($service->id == 9) { //Larid ERP
-                        SMSHelper::sendLarid($validatedData['mobile'], $message);
-                        SMSHelper::sendToAdminFromLarid($sms->admin_number, $adminMessage);
-                    } else {
-                        SMSHelper::sendService($validatedData['mobile'], $message);
-                        SMSHelper::sendToAdminFromService($sms->admin_number, $adminMessage);
-                    }
-                }
-            }
-        }
         $info = array(
             'type' => 'order service',
             'name' => $request->name,
@@ -204,31 +182,16 @@ class SiteController extends Controller
             'data' => $request->message
         );
         Mail::send('mail', $info, function ($message) use ($orderService) {
-            $message->to("info@project.com", "Mr. Abdulkader")
+            $message->to("info@project.com", "Al-Mohtarif")
                 ->subject('New order service');
-            $message->from('card-ordrer@project.com', 'Digitsmark');
+            $message->from('card-ordrer@project.com', 'Al-Mohtarif');
         });
-        if ($service->slug == 'malak-screen' || $service->slug == 'organizing-exhibitions-and-conferences') {
-            $info = array(
-                'type' => 'order service',
-                'name' => $request->name,
-                'email' => $request->email,
-                'mobile' => $request->mobile,
-                'data' => $request->message
-            );
-            Mail::send('mail', $info, function ($message) use ($orderService) {
-                $message->to("info@project.com", "ADS")
-                    ->subject('New order service');
-                $message->from('card-ordrer@project.com', 'Digitsmark');
-            });
-        }
         session()->flash('success', trans('site.order_added_successfully'));
         return redirect()->route('services');
     }
 
     public function appointmentTime(Request $request)
     {
-
 
         try {
             $date = $request->appointment_date;

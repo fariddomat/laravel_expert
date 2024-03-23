@@ -21,7 +21,7 @@
                         <th>خدمة فرعية؟</th>
                         <th>عرض</th>
                         <th>عرض في الصفحة الرئيسية</th>
-                        <th>تعديل</th>
+                        <th>العمليات</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -40,6 +40,11 @@
                         <td>{{ $service->show_at_home == 1 ? 'Showed' : 'Hidden' }}</td>
                         <td>
                             <a href="{{ route('dashboard.services.edit', $service->id) }}" class="btn btn-info btn-sm"><i class="fas fa-edit"></i> تعديل</a>
+                            <form action="{{ route('dashboard.services.destroy', $service->id) }}" method="post" style="display: inline-block">
+                                @csrf()
+                                @method('delete')
+                                <button type="submit" class="btn btn-danger delete btn-sm"><i class="fas fa-trash"></i> حذف</button>
+                            </form><!-- end of form -->
                         </td>
                     </tr>
                     @endforeach
