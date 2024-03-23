@@ -157,7 +157,7 @@
                         <label>صورة الكاتب</label>
                         <input type="file" name="author_image" class="form-control about-me-image">
                     </div>
-
+{{--
                     <div class="form-group mb-3">
                         <img src="" style="width: 300px; display: none;"
                             class="img-thumbnail about-me-image-preview" alt="">
@@ -191,7 +191,7 @@
                         <label for="author_linkedin" class="form-label">الكاتب Linkedin</label>
                         <input type="text" name="author_linkedin" class="form-control"
                             value="{{ old('author_linkedin') }}">
-                    </div>
+                    </div> --}}
                     <div class="form-group mb-3">
                         <label>الصورة</label>
                         <input type="file" name="image" class="form-control image">

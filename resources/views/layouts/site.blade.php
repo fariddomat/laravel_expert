@@ -190,7 +190,7 @@
                         @foreach ($blogs as $index=>$blog)
                         <div class="single-footer-post clearfix" data-animate="fadeInUp" data-delay="{{ .55+($index/10) }}">
                             <a href="{{route('blog',$blog->slug)}}" class="float-left">
-                                <img src="{{asset($blog->image)}}" style="height: 40px" alt="">
+                                <img class="img-fluid" src="{{asset($blog->image)}}" style="height: 40px; aspect-ratio: 3 / 2;" alt="">
                             </a>
                             <span> <a href="#">{{$blog->updated_at->format('d F
                                 Y')}}</a></span>

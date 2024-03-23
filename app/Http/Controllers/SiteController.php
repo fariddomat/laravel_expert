@@ -366,14 +366,14 @@ class SiteController extends Controller
         $info = Info::first();
         if ($request->tag) {
             $blogs = Tag::findOrFail($request->tag)->blogs;
-            // dd($blogs);
         } elseif ($request->category) {
             $blogs = Blog::with(['category'])->whenCategory($request->category)->where('showed', 1)->latest()->get();
+        }elseif ($request->author) {
+            $blogs = Blog::with(['category'])->whenAuthor($request->author)->where('showed', 1)->latest()->get();
         } else {
             $blogs = Blog::with(['category'])->whenSearch($request->search)->where('showed', 1)->latest()->get();
         }
 
-        // dd($blogs);
         $categories = BlogCategory::all();
         $latestBlogs = Blog::latest()->limit(5);
         $search = $request->search;

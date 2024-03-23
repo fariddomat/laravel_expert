@@ -159,7 +159,7 @@
                     <input type="file" name="author_image" class="form-control about-me-image">
                 </div>
 
-                <div class="form-group mb-3">
+                {{-- <div class="form-group mb-3">
                     <img src="{{ asset($blog->author_image) }}" style="width: 300px;" class="img-thumbnail about-me-image-preview"
                         alt="">
                 </div>
@@ -192,7 +192,7 @@
                     <label for="author_linkedin" class="form-label">الكاتب Linkedin</label>
                     <input type="text" name="author_linkedin" class="form-control"
                         value="{{ $blog->author_linkedin }}">
-                </div>
+                </div> --}}
 
                 <div class="form-group mb-3">
                     <label>الصورة</label>

@@ -30,6 +30,15 @@ class Blog extends Model implements Viewable, TranslatableContract
     }
 
 
+    public function scopeWhenAuthor($query, $search)
+    {
+        return $this->with('translation')
+            ->whereHas('translation', function ($query) use ($search) {
+                $query->where('author_name', 'like', '%' . $search . '%');
+            });
+    }
+
+
     public function scopeWhenCategory($query, $search)
     {
         return $this->with('translation')

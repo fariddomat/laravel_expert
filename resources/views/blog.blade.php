@@ -215,7 +215,7 @@
                             <img src="{{ asset($blog->image) }}" alt="" data-animate="fadeInUp" data-delay="1.4">
                             <span data-animate="fadeInUp" data-delay=".1">تاريخ النشر: <a
                                     href="#">{{ $blog->updated_at->diffForHumans() }}</a> / بواسطة: <a
-                                    href="#">{{ $blog->author_title }}</a>
+                                    href="#">{{ $blog->author_name }}</a>
                                 <br> التصنيف: <a
                                     href="{{ route('blogs', $blog->category->slug) }}">{{ $blog->category->name }}</a></span>
                             <h2 data-animate="fadeInUp" data-delay=".1">
@@ -248,33 +248,18 @@
                                     @endforeach
                                 </ul>
                             </div>
-                            <div class="col-xl-5 col-lg-6">
-                                <ul class="social-share list-inline mb-0 text-lg-right">
-                                    <li data-animate="fadeInUp" data-delay=".4"><a class="pinterest" href="#"><i
-                                                class="fab fa-pinterest-p"></i></a></li>
-                                    <li data-animate="fadeInUp" data-delay=".45"><a class="rss" href="#"><i
-                                                class="fas fa-rss"></i></a></li>
-                                    <li data-animate="fadeInUp" data-delay=".5"><a class="linkedin" href="#"><i
-                                                class="fab fa-linkedin-in"></i></a></li>
-                                    <li data-animate="fadeInUp" data-delay=".55"><a class="google" href="#"><i
-                                                class="fab fa-google-plus-g"></i></a></li>
-                                    <li data-animate="fadeInUp" data-delay=".6"><a class="twitter" href="#"><i
-                                                class="fab fa-twitter"></i></a></li>
-                                    <li data-animate="fadeInUp" data-delay=".65"><a class="facebook" href="#"><i
-                                                class="fab fa-facebook-f"></i></a></li>
-                                </ul>
-                            </div>
+
                         </div>
 
                         <!-- Author info -->
                         <div class="d-flex align-items-center author-info-wrap">
-                            <img class="mr-3" src="{{ asset($blog->author_image) }}" alt=""
-                                data-animate="fadeInUp" data-delay=".1">
+                            <img class="img-thumbnail mr-3" src="{{ asset($blog->author_image) }}" alt=""
+                                data-animate="fadeInUp" data-delay=".1" style="max-width: 100px;aspect-ratio: 3/3;">
                             <div class="author-info">
                                 <h4 data-animate="fadeInUp" data-delay=".2">كتب المقال بواسطة: <a
                                         href="#">{{ $blog->author_name }}</a></h4>
                                 <p data-animate="fadeInUp" data-delay=".3">{{ $blog->author_title }}</p>
-                                <a class="roboto text-uppercase" href="#" data-animate="fadeInUp"
+                                <a class="roboto text-uppercase" href="{{ route('blogs', ['author'=>$blog->author_name]) }}" data-animate="fadeInUp"
                                     data-delay=".4">مشاهدة كل مقالات الكاتب <i class="fas fa-caret-right"></i></a>
                             </div>
                         </div>

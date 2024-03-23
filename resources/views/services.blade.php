@@ -158,7 +158,7 @@
                                 <div class="shadow-effect">
                                     <div class="single-post" data-animate="">
                                         <div class="image-hover-wrap">
-                                            <img class="img-fluid" src="{{ asset($service->image) }}" alt="">
+                                            <img class="img-fluid" src="{{ asset($service->image) }}" alt="" style="aspect-ratio: 3 / 3;">
                                             <div
                                                 class="image-hover-content d-flex justify-content-center align-items-center text-center">
                                                 <ul class="list-inline">

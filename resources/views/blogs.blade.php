@@ -165,9 +165,9 @@
                             <!--TESTIMONIAL 1 -->
                             <div class="item">
                                 <div class="shadow-effect">
-                                    <div class="single-post" data-animate="">
+                                    <div class="single-post" data-animate="" style="padding: 0">
                                         <div class="image-hover-wrap">
-                                            <img src="{{ asset($blog->image) }}" alt="">
+                                            <img class="img-fluid" src="{{ asset($blog->image) }}" alt="" style=" aspect-ratio: 3 / 2;">
                                             <div
                                                 class="image-hover-content d-flex justify-content-center align-items-center text-center">
                                                 <ul class="list-inline">
