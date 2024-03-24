@@ -5,3 +5,5 @@ Red #DF1F26
 black #0D1216
 Grey #E2E2E2
 White #FFFFFF
+
+#262e26

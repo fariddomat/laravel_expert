@@ -121,16 +121,16 @@
         }
 
         /* h1,
-                        h2,
-                        h3,
-                        h4,
-                        h5,
-                        h6,
-                        p,
-                        body,
-                        strong {
-                            color: unset;
-                        } */
+                h2,
+                h3,
+                h4,
+                h5,
+                h6,
+                p,
+                body,
+                strong {
+                    color: unset;
+                } */
 
         .share-div {
             font-size: 20px;
@@ -171,20 +171,6 @@
                 height: 75px !important;
             }
         }
-
-        .blog {
-            background-color: transparent;
-            background-image: linear-gradient(180deg, #FFF 30%, #0D1216 97%);
-
-        }
-
-        .post-details {
-            background: #fff;
-            box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.5);
-        }
-        .blog .container{
-            max-width: 60rem;
-        }
     </style>
 @endsection
 @section('scripts')
@@ -211,8 +197,7 @@
                 </div>
                 <div class="col-1">
                     <div class="world-map position-relative">
-                        <img src="{{ asset('home/img/map.svg') }}" alt="" alt="" data-no-retina
-                            class="svg">
+                        <img src="img/map.svg" alt="" alt="" data-no-retina class="svg">
                     </div>
                 </div>
             </div>
@@ -224,26 +209,25 @@
     <section class=" blog pt-7 pb-7">
         <div class="container">
             <div class="row">
-                <div class="col-md-12">
+                <div class="col-md-9">
                     <div class="post-details" data-animate="fadeInUp" data-delay=".1">
                         <div class="post-content">
-                            <h2 data-animate="fadeInUp" data-delay="1.4">
-                                {{ $blog->title }}
-                            </h2>
-                            <span data-animate="fadeInUp" data-delay="1.5">تاريخ النشر: <a
+                            <img src="{{ asset($blog->image) }}" alt="" data-animate="fadeInUp" data-delay="1.4">
+                            <span data-animate="fadeInUp" data-delay=".1">تاريخ النشر: <a
                                     href="#">{{ $blog->updated_at->diffForHumans() }}</a> / بواسطة: <a
                                     href="#">{{ $blog->author_name }}</a>
                                 <br> التصنيف: <a
                                     href="{{ route('blogs', $blog->category->slug) }}">{{ $blog->category->name }}</a></span>
-                            <img class="img-thumbnail" src="{{ asset($blog->image) }}" alt=""
-                                data-animate="fadeInUp" data-delay="0.2" style="aspect-ratio: 3/2;">
-
-                            <div class="pt-2 pb-2" data-animate="fadeInUp" data-delay=".1">
+                            <h2 data-animate="fadeInUp" data-delay=".1">
+                                {{ $blog->title }}
+                            </h2>
+                            <div data-animate="fadeInUp" data-delay=".1">
                                 {!! $blog->introduction !!}
                             </div>
 
                             <blockquote data-animate="fadeInUp" data-delay=".1">
                                 <span><i class="fas fa-quote-right"></i></span>
+
                                 {!! $blog->content_table !!}
                             </blockquote>
 
@@ -275,8 +259,7 @@
                                 <h4 data-animate="fadeInUp" data-delay=".2">كتب المقال بواسطة: <a
                                         href="#">{{ $blog->author_name }}</a></h4>
                                 <p data-animate="fadeInUp" data-delay=".3">{{ $blog->author_title }}</p>
-                                <a class="roboto text-uppercase"
-                                    href="{{ route('blogs', ['author' => $blog->author_name]) }}" data-animate="fadeInUp"
+                                <a class="roboto text-uppercase" href="{{ route('blogs', ['author'=>$blog->author_name]) }}" data-animate="fadeInUp"
                                     data-delay=".4">مشاهدة كل مقالات الكاتب <i class="fas fa-caret-right"></i></a>
                             </div>
                         </div>
@@ -376,6 +359,106 @@
                             </form>
                         </div> --}}
                     </div>
+                </div>
+
+                <!-- Sidebar -->
+                <div class="col-md-3" data-animate="fadeInUp" data-delay="1.5">
+                    <aside>
+                        <div class="single-widget" data-animate="fadeInUp" data-delay=".1">
+                            <form action="{{ route('blogs') }}">
+                                <div class="form-group position-relative mb-0">
+                                    <input class="form-control" name="search" type="text" placeholder="البحث"
+                                        data-parsley-required-message="Please type at least one word."
+                                        {{-- data-parsley-minlength="3"
+                                        data-parsley-minlength-message="Please type at least one word." --}} {{-- required --}}>
+                                    <button type="submit"><i class="fas fa-search"></i></button>
+                                </div>
+                            </form>
+                        </div>
+
+                        <div class="single-widget" data-animate="fadeInUp" data-delay=".1">
+                            <h3 data-animate="fadeInUp" data-delay=".2">تصنيفات المدونة</h3>
+                            <ul class="widget-categories list-unstyled mb-0">
+                                @foreach ($categories as $category)
+                                    <li data-animate="fadeInUp" data-delay=".25"><a
+                                            href="{{ route('blogs', ['category' => $category->id]) }}"><span>{{ $category->name }}</span><span
+                                                class="count">{{ $category->blogs->count() }}</span></a></li>
+                                @endforeach
+                            </ul>
+                        </div>
+
+                        <div class="single-widget" data-animate="fadeInUp" data-delay=".1">
+                            <h3 data-animate="fadeInUp" data-delay=".2">@lang('site.related_blogs')</h3>
+                            <ul class="recent-posts list-unstyled mb-0">
+                                @foreach ($relatedBlogs as $blog)
+                                    <li data-animate="fadeInUp" data-delay=".25"><a
+                                            href="{{ route('blog', $blog->slug) }}">{{ $blog->title }}</a>
+                                        <br>
+                                        <span>{{ $blog->updated_at->format('d F Y') }}</span>
+                                    </li>
+                                @endforeach
+
+                            </ul>
+                        </div>
+
+                        <div class="single-widget" data-animate="fadeInUp" data-delay=".1">
+                            <h3 data-animate="fadeInUp" data-delay=".2">تابعنا على مواقع التواصل الاجتماعي</h3>
+                            <ul class="row half-gutters follow-us list-unstyled">
+                                <li class="col-4" data-animate="fadeInUp" data-delay=".25">
+                                    <a class="facebook" href="#">
+                                        <i class="fab fa-facebook-f"></i>
+                                        <span>Like</span>
+                                    </a>
+                                </li>
+                                <li class="col-4" data-animate="fadeInUp" data-delay=".3">
+                                    <a class="twitter" href="#">
+                                        <i class="fab fa-twitter"></i>
+                                        <span>Follow</span>
+                                    </a>
+                                </li>
+                                <li class="col-4" data-animate="fadeInUp" data-delay=".35">
+                                    <a class="google" href="#">
+                                        <i class="fab fa-google-plus-g"></i>
+                                        <span>Like</span>
+                                    </a>
+                                </li>
+                                <li class="col-4" data-animate="fadeInUp" data-delay=".4">
+                                    <a class="pinterest" href="#">
+                                        <i class="fab fa-pinterest-p"></i>
+                                        <span>Follow</span>
+                                    </a>
+                                </li>
+                                <li class="col-4" data-animate="fadeInUp" data-delay=".45">
+                                    <a class="rss" href="#">
+                                        <i class="fas fa-rss"></i>
+                                        <span>follow</span>
+                                    </a>
+                                </li>
+                                <li class="col-4" data-animate="fadeInUp" data-delay=".5">
+                                    <a class="linkedin" href="#">
+                                        <i class="fab fa-linkedin-in"></i>
+                                        <span>follow</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div class="single-widget" data-animate="fadeInUp" data-delay=".1">
+                            <h3 data-animate="fadeInUp" data-delay=".2">Tags</h3>
+                            <ul class="tags roboto list-inline mb-0">
+                                @foreach ($tags as $index => $tag)
+                                    <li data-animate="fadeInUp" data-delay="{{ 0.25 + $index / 8 }}">
+                                        <a href="{{ route('blogs', ['tag'=>$tag->id]) }}">#{{ $tag->name }}</a>
+                                    </li>
+                                @endforeach
+                            </ul>
+                        </div>
+
+                        {{-- <div class="single-widget text-center" data-animate="fadeInUp" data-delay=".1">
+                            <h3 data-animate="fadeInUp" data-delay=".2">Advertisement</h3>
+                            <img src="img/camera.jpg" alt="" data-animate="fadeInUp" data-delay=".25">
+                        </div> --}}
+                    </aside>
                 </div>
             </div>
         </div>
