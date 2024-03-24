@@ -120,18 +120,6 @@
             list-style-type: initial;
         }
 
-        /* h1,
-                        h2,
-                        h3,
-                        h4,
-                        h5,
-                        h6,
-                        p,
-                        body,
-                        strong {
-                            color: unset;
-                        } */
-
         .share-div {
             font-size: 20px;
             margin: auto;
@@ -182,8 +170,18 @@
             background: #fff;
             box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.5);
         }
-        .blog .container{
+
+        .blog .container {
             max-width: 60rem;
+        }
+
+        .post-content h2 {
+            font-size: 3rem;
+            text-align: center;
+        }
+
+        .widget-categories li::before {
+            width: 80%;
         }
     </style>
 @endsection
@@ -222,6 +220,7 @@
 
     <!-- Blog -->
     <section class=" blog pt-7 pb-7">
+       <div class="bg-flow">
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
@@ -305,80 +304,79 @@
                             </li>
                         </ul>
 
-                        <!-- Comments -->
-                        {{-- <div class="comments">
-                            <h3 data-animate="fadeInUp" data-delay=".1">03 Comments</h3>
-                            <ul class="main-comment list-unstyled">
-                                <li data-animate="fadeInUp" data-delay=".2">
-                                    <div class="single-comment">
-                                        <div class="comment-author float-left">
-                                            <img src="img/authors/comment-author1.png" alt="">
-                                        </div>
-                                        <div class="comment-content">
-                                            <h4>Alice R. Leopard</h4>
-                                            <a href="#"><i class="fas fa-reply"></i> Reply</a>
-                                            <span>Jan 05, 2018 at 04:30 pm</span>
-                                            <p>Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae.</p>
-                                        </div>
-                                    </div>
-                                </li>
 
-                                <li data-animate="fadeInUp" data-delay=".3">
-                                    <div class="single-comment">
-                                        <div class="comment-author float-left">
-                                            <img src="img/authors/comment-author2.png" alt="">
-                                        </div>
-                                        <div class="comment-content">
-                                            <h4>Brian C. Cook</h4>
-                                            <a href="#"><i class="fas fa-reply"></i> Reply</a>
-                                            <span>Jan 05, 2018 at 04:30 pm</span>
-                                            <p>Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae.</p>
-                                        </div>
-                                    </div>
+                        {{-- aside --}}
+                        <aside>
+                            @if ($relatedBlogs->count() > 0)
+                                <div class="single-widget" data-animate="fadeInUp" data-delay=".1">
+                                    <h3 data-animate="fadeInUp" data-delay=".2">@lang('site.related_blogs')</h3>
+                                    <ul class="recent-posts list-unstyled mb-0">
+                                        @foreach ($relatedBlogs as $blog)
+                                            <li data-animate="fadeInUp" data-delay=".25"><a
+                                                    href="{{ route('blog', $blog->slug) }}">{{ $blog->title }}</a>
+                                                <br>
+                                                <span>{{ $blog->updated_at->format('d F Y') }}</span>
+                                            </li>
+                                        @endforeach
 
-                                    <ul class="sub-comment list-unstyled">
-                                        <li data-animate="fadeInUp" data-delay=".4">
-                                            <div class="single-comment">
-                                                <div class="comment-author float-left">
-                                                    <img src="img/authors/comment-author3.png" alt="">
-                                                </div>
-                                                <div class="comment-content">
-                                                    <h4>Cheryl E. Smith</h4>
-                                                    <a href="#"><i class="fas fa-reply"></i> Reply</a>
-                                                    <span>Jan 05, 2018 at 04:30 pm</span>
-                                                    <p>Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae.</p>
-                                                </div>
-                                            </div>
-                                        </li>
                                     </ul>
-                                </li>
-                            </ul>
-                        </div> --}}
-                        <!-- End of Comments -->
-
-                        <!-- Comment Form -->
-                        {{-- <div class="comment-form mt-5">
-                            <h3 class="mb-4 font-weight-bold" data-animate="fadeInUp" data-delay=".1">Leave a Comment</h3>
-                            <form action="#">
-                                <textarea name="text" class="form-control" placeholder="Write your text" data-animate="fadeInUp" data-delay=".2" required></textarea>
-                                <div class="form-row">
-                                    <div class="col-md-4">
-                                        <input type="text" class="form-control" placeholder="Name" data-animate="fadeInUp" data-delay=".3" required>
-                                    </div>
-                                    <div class="col-md-4">
-                                        <input type="email" class="form-control" placeholder="E-mail" data-animate="fadeInUp" data-delay=".4" required>
-                                    </div>
-                                    <div class="col-md-4">
-                                        <input type="text" class="form-control" placeholder="Website" data-animate="fadeInUp" data-delay=".5">
-                                    </div>
                                 </div>
-                                <button class="btn btn-square btn-primary mt-3" data-animate="fadeInUp" data-delay=".6">Leave Comment</button>
-                            </form>
-                        </div> --}}
+                            @endif
+                            <div class="single-widget" data-animate="fadeInUp" data-delay=".1">
+                                <form action="{{ route('blogs') }}">
+                                    <div class="form-group position-relative mb-0">
+                                        <input class="form-control" name="search" type="text" placeholder="البحث"
+                                            data-parsley-required-message="Please type at least one word."
+                                            {{-- data-parsley-minlength="3"
+                                            data-parsley-minlength-message="Please type at least one word." --}} {{-- required --}}>
+                                        <button type="submit"><i class="fas fa-search"></i></button>
+                                    </div>
+                                </form>
+                            </div>
+
+                            <div class="single-widget" data-animate="fadeInUp" data-delay=".1">
+                                <h3 data-animate="fadeInUp" data-delay=".2">تصنيفات المدونة</h3>
+                                <ul class="widget-categories list-unstyled mb-0 row">
+                                    @foreach ($categories as $category)
+                                        <li class="col-md-4" data-animate="fadeInUp" data-delay=".25"><a
+                                                href="{{ route('blogs', ['category' => $category->id]) }}"><span>{{ $category->name }}</span><span
+                                                    class="count">{{ $category->blogs->count() }}</span></a></li>
+                                    @endforeach
+                                </ul>
+                            </div>
+
+                            <div class="single-widget" data-animate="fadeInUp" data-delay=".1">
+                                <h3 data-animate="fadeInUp" data-delay=".2">تابعنا على مواقع التواصل الاجتماعي</h3>
+                                <ul class="social-share list-inline mb-0 text-lg-right">
+                                    <li data-animate="fadeInUp" data-delay=".4"><a class="pinterest" href="#"><i
+                                                class="fab fa-pinterest-p"></i></a></li>
+                                    <li data-animate="fadeInUp" data-delay=".45"><a class="rss" href="#"><i
+                                                class="fas fa-rss"></i></a></li>
+                                    <li data-animate="fadeInUp" data-delay=".5"><a class="linkedin" href="#"><i
+                                                class="fab fa-linkedin-in"></i></a></li>
+                                    <li data-animate="fadeInUp" data-delay=".55"><a class="google" href="#"><i
+                                                class="fab fa-google-plus-g"></i></a></li>
+                                    <li data-animate="fadeInUp" data-delay=".6"><a class="twitter" href="#"><i
+                                                class="fab fa-twitter"></i></a></li>
+                                    <li data-animate="fadeInUp" data-delay=".65"><a class="facebook" href="#"><i
+                                                class="fab fa-facebook-f"></i></a></li>
+                                </ul>
+                            </div>
+
+
+                            {{-- <div class="single-widget text-center" data-animate="fadeInUp" data-delay=".1">
+                                <h3 data-animate="fadeInUp" data-delay=".2">Advertisement</h3>
+                                <img src="img/camera.jpg" alt="" data-animate="fadeInUp" data-delay=".25">
+                            </div> --}}
+                        </aside>
                     </div>
                 </div>
+
+
             </div>
         </div>
+       </div>
     </section>
     <!-- End of Blog -->
+
 @endsection
