@@ -125,6 +125,19 @@
             transform: translateY(-50%);
             transition: all 0.4s ease-in-out;
         }
+
+        .serviceSec {
+            overflow: hidden;
+            border: 1px solid #e0e1e0;
+            background: #fff;
+            box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.5);
+        }
+
+        .serviceSec > div,
+        .serviceSection > div {
+            overflow-x: auto;
+            overflow-y: hidden;
+        }
     </style>
 @endsection
 @section('scripts')
@@ -186,7 +199,7 @@
         <div id="particles_js"></div>
         <div class="container">
             <div class="row">
-                <div class="col-12">
+                <div class="col-11">
                     <div class="page-title position-relative pt-5 pb-5">
                         <ul class="custom-breadcrumb roboto list-unstyled mb-0 clearfix" data-animate="fadeInUp"
                             data-delay="1.2">
@@ -199,7 +212,12 @@
                         <h1 data-animate="fadeInUp" data-delay="1.3">{{ $service->title }}</h1>
                     </div>
                 </div>
-
+                <div class="col-1">
+                    <div class="world-map position-relative">
+                        <img src="{{ asset('home/img/map.svg') }}" alt="" alt="" data-no-retina
+                            class="svg">
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -207,17 +225,14 @@
 
 
     <section id="section-content" class=" pt-7">
-        <div class="container">
+        <div class="container" style="max-width: 65rem">
             <div class="row">
-                <div class="col-md-9">
-                    <div class="row">
-                        <div class="col-md-12 pic-services wow " data-animate="fadeInUp" data-delay="1.5"
-                            style=" text-align: center;">
-                            <img src="{{ asset($service->index_image) }}" class="img-responsive" alt="">
+                <div class="col-md-12">
+                    <div class="row serviceSec pb-7" style="" data-animate="fadeInDown" data-delay="1.4">
+                        <h2 class="col-md-12 pt-2 pb-2" data-animate="fadeInDown" data-delay="1.4"
+                            style="font-size: 3rem;text-align: center">{{ $service->title }}</h2>
 
-                        </div>
-                        <div class="col-md-12 wow " style="margin-top:50px" data-animate="fadeInUp" data-delay=".3">
-
+                        <div class="col-md-6 wow " style="margin-top:50px" data-animate="slideInRight" data-delay=".5">
                             <div>{!! $service->brief !!}</div>
                             <div class="row" style="margin-top:35px">
                                 @foreach ($service->indexItems as $item)
@@ -245,6 +260,10 @@
                             </div>
 
                         </div>
+                        <div class="col-md-6 pic-services wow " data-animate="slideInLeft" data-delay="0.5"
+                            style=" text-align: center; margin: auto 0;">
+                            <img src="{{ asset($service->index_image) }}" class="img-responsive" alt="">
+                        </div>
                         @if ($service->index_image_2)
                             <div class="col-md-12 pic-services wow " data-animate="fadeInUp" data-delay=".4"
                                 style="margin-top:55px; text-align: center;">
@@ -253,8 +272,8 @@
                         @endif
                         <div class="col-md-12 wow fadeInUp" data-wow-delay=".5s" style="margin-top:50px">
                             @foreach ($service->sections as $section)
-                                <div class="row mt-5">
-                                    <div class="col-12">
+                                <div class="row mt-5 ml-5 serviceSection"  data-animate="fadeInUp" data-delay=".2">
+                                    <div class="col-md-12">
                                         <h3 class="service-section-title">{{ $section->title }}</h3>
                                         <div>
                                             {!! $section->content !!}
@@ -263,7 +282,7 @@
                                 </div>
                                 <div class="row">
                                     @foreach ($section->images as $sectionImage)
-                                        <div class="col-12 col-md">
+                                        <div class="col-12 col-md" data-animate="fadeInUp" data-delay=".3">
                                             <div class="pt-3 text-center">
                                                 <img class="service-section-image img-fluid"
                                                     src="{{ asset($sectionImage->image) }}" alt=""
@@ -285,15 +304,14 @@
                                     <div class="col-md-12">
                                         <div id="accordion100" class="tm-accordion">
                                             @foreach ($service->questions as $index => $faq)
-                                                <div class="card" {{-- data-animate="fadeInUp" data-delay="{{ 0.1 + $index / 8 }}" --}}>
+                                                <div class="card" data-animate="fadeInUp" data-delay="{{ 0.1 + $index / 8 }}"  data-animate="fadeInUp" data-delay=".4">
                                                     <div class="card-header p-0" id="heading10{{ $index + 1 }}">
                                                         <h5 class="title" data-toggle="collapse"
                                                             data-target="#collapse10{{ $index + 1 }}"
                                                             aria-expanded="@if ($index == 0) true
                                         @else
                                         false @endif"
-                                                            aria-controls="collapse10{{ $index + 1 }}">
-                                                            # {{ $index + 1 }} {{ $faq->question }}
+                                                            aria-controls="collapse10{{ $index + 1 }}">#{{ $index + 1 }} {{ $faq->question }}
                                                             <i class="fas fa-chevron-down accordion-controls-icon open-icon"
                                                                 @if ($index == 0) style="display: none" @endif></i>
                                                             <i class="fas fa-chevron-up accordion-controls-icon close-icon"
@@ -375,99 +393,7 @@
 
                 </div>
                 <!-- Sidebar -->
-                <div class="col-md-3" data-animate="fadeInUp" data-delay="1.5">
-                    <aside>
-                        <div class="single-widget" data-animate="fadeInUp" data-delay=".1">
-                            <form>
-                                <div class="form-group position-relative mb-0">
-                                    <input class="form-control" name="search" type="text" placeholder="البحث"
-                                        data-parsley-required-message="Please type at least one word."
-                                        {{-- data-parsley-minlength="3"
-                                data-parsley-minlength-message="Please type at least one word." --}} {{-- required --}} value="{{ $search }}">
-                                    <button type="submit"><i class="fas fa-search"></i></button>
-                                </div>
-                            </form>
-                        </div>
 
-                        <div class="single-widget" data-animate="fadeInUp" data-delay=".1">
-                            <h3 data-animate="fadeInUp" data-delay=".2">تصنيفات المدونة</h3>
-                            <ul class="widget-categories list-unstyled mb-0">
-                                @foreach ($categories as $category)
-                                    <li data-animate="fadeInUp" data-delay=".25"><a
-                                            href="{{ route('blogs', ['category' => $category->id]) }}"><span>{{ $category->name }}</span><span
-                                                class="count">{{ $category->blogs->count() }}</span></a></li>
-                                @endforeach
-                            </ul>
-                        </div>
-
-                        <div class="single-widget" data-animate="fadeInUp" data-delay=".1">
-                            <h3 data-animate="fadeInUp" data-delay=".2">@lang('site.related_blogs')</h3>
-                            <ul class="recent-posts list-unstyled mb-0">
-                                @foreach ($latestBlogs as $blog)
-                                    <li data-animate="fadeInUp" data-delay=".25"><a
-                                            href="{{ route('blog', $blog->slug) }}">{{ $blog->title }}</a>
-                                        <br>
-                                        <span>{{ $blog->updated_at->format('d F Y') }}</span>
-                                    </li>
-                                @endforeach
-
-                            </ul>
-                        </div>
-
-                        <div class="single-widget" data-animate="fadeInUp" data-delay=".1">
-                            <h3 data-animate="fadeInUp" data-delay=".2">تابعنا على مواقع التواصل الاجتماعي</h3>
-                            <ul class="row half-gutters follow-us list-unstyled">
-                                <li class="col-4" data-animate="fadeInUp" data-delay=".25">
-                                    <a class="facebook" href="#">
-                                        <i class="fab fa-facebook-f"></i>
-                                        <span>Like</span>
-                                    </a>
-                                </li>
-                                <li class="col-4" data-animate="fadeInUp" data-delay=".3">
-                                    <a class="twitter" href="#">
-                                        <i class="fab fa-twitter"></i>
-                                        <span>Follow</span>
-                                    </a>
-                                </li>
-                                <li class="col-4" data-animate="fadeInUp" data-delay=".35">
-                                    <a class="google" href="#">
-                                        <i class="fab fa-google-plus-g"></i>
-                                        <span>Like</span>
-                                    </a>
-                                </li>
-                                <li class="col-4" data-animate="fadeInUp" data-delay=".4">
-                                    <a class="pinterest" href="#">
-                                        <i class="fab fa-pinterest-p"></i>
-                                        <span>Follow</span>
-                                    </a>
-                                </li>
-                                <li class="col-4" data-animate="fadeInUp" data-delay=".45">
-                                    <a class="rss" href="#">
-                                        <i class="fas fa-rss"></i>
-                                        <span>follow</span>
-                                    </a>
-                                </li>
-                                <li class="col-4" data-animate="fadeInUp" data-delay=".5">
-                                    <a class="linkedin" href="#">
-                                        <i class="fab fa-linkedin-in"></i>
-                                        <span>follow</span>
-                                    </a>
-                                </li>
-                            </ul>
-                        </div>
-
-                        <div class="single-widget" data-animate="fadeInUp" data-delay=".1">
-                            <h3 data-animate="fadeInUp" data-delay=".2">Tags</h3>
-                            <ul class="tags roboto list-inline mb-0">
-                                @foreach ($tags as $index => $tag)
-                                    <li data-animate="fadeInUp" data-delay="{{ 0.25 + $index / 8 }}">
-                                        <a href="{{ route('blogs', ['tag' => $tag->id]) }}">#{{ $tag->name }}</a>
-                                    </li>
-                                @endforeach
-                            </ul>
-                        </div>
-                    </aside>
-                </div>
             </div>
             <section style="padding: 0" data-animate="fadeInUp" data-delay="1">
                 @if ($service->getSlider(1)->count() > 0)
