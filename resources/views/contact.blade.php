@@ -121,7 +121,7 @@ $(document).ready(function() {
                 </div>
                 <div class="col-1">
                     <div class="world-map position-relative">
-                        <img src="img/map.svg" alt="" alt="" data-no-retina class="svg">
+                        <img src="{{ asset('home/img/map.svg') }}" alt="" alt="" data-no-retina class="svg">
                     </div>
                 </div>
             </div>
@@ -133,8 +133,8 @@ $(document).ready(function() {
     <section class="pt-7 pb-7">
         <div class="container">
             <div class="row align-items-lg-start">
-                <div class="col-lg-9 col-md-6" data-animate="fadeInUp" data-delay="1.6">
-                    <div class="contact-form-wrap">
+                <div class="col-lg-12 col-md-12" data-animate="fadeInUp" data-delay="1.6" >
+                    <div class="contact-form-wrap" style="max-width: 65rem; margin: 0 auto;">
                         <div class="text-center">
                             <h2 data-animate="fadeInUp" data-delay="1.7">@lang('contact.get_in_touch')</h2>
                         </div>
@@ -302,8 +302,8 @@ $(document).ready(function() {
                         </form>
                     </div>
                 </div>
-                <div class="col-lg-3 col-md-6">
-                    <div class="section-title">
+                <div class="col-lg-12 col-md-12">
+                    <div class="section-title pt-7 pl-7">
                         <h3 data-animate="fadeInUp" data-delay="1.5">
 
                             @lang('contact.always_happy')
