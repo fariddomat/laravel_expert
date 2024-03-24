@@ -23,14 +23,45 @@
             padding: 0 25px;
         }
     </style>
+
+<style>
+
+.parsley-errors-list {
+  left: auto;
+  right: 16px;
+  bottom: 0;
+}
+    /* Success/error message (optional) */
+    .alert {
+      /* margin-top: 1rem; */
+    }
+
+    .form-control:focus {
+  border-color: gold;
+  box-shadow: 0 0 5px rgba(255, 215, 0, 0.5);
+  color: gold; /* Change color on focus */
+}
+  </style>
 @endsection
 @section('scripts')
     <script>
-        $('#contactFrom').submit(function() {
-            $('#btn-submit').prop("disabled", true);
-            $('#btn-spinner').show();
-            return true;
-        });
+        // $('#contactFrom').submit(function() {
+        //     $('#btn-submit').prop("disabled", true);
+        //     $('#btn-spinner').show();
+        //     return true;
+        // });
+
+//         $(document).ready(function() {
+//   $('#contactFrom').parsley(); // Replace with your form's ID
+// });
+
+$(document).ready(function() {
+  $('.form-control').on('focusout', function() {
+    $(this).parsley().validate(); // Manually trigger validation on change
+  });
+
+  // Repeat for other fields where you want validation on change
+});
     </script>
     <script>
         $.ajaxSetup({
@@ -109,7 +140,7 @@
                         </div>
                         @include('partials._errors')
                         <form id="contactFrom" method="post" action="{{ route('contact.post') }}" class="row"
-                            data-animate="fadeInUp" data-delay="1.6">
+                            data-animate="fadeInUp" data-delay="1.6"  data-parsley-trigger="change">
                             @csrf()
 
                             {{-- HonyBot hidden input Start --}}
@@ -120,8 +151,12 @@
                                 <div class="form-group">
                                     <label for="">الاسم الكامل</label>
                                     <input type="text" name="name" value="{{ old('name') }}" class="form-control"
-                                        placeholder="@lang('contact.name')" required>
-                                </div>
+                                        placeholder="@lang('contact.name')"
+                                        data-parsley-required="true"
+                                        data-parsley-required-message="الاسم مطلوب."
+                                        data-parsley-trigger="change">
+
+                                    </div>
                             </div>
 
 
@@ -135,7 +170,10 @@
                                 <div class="form-group">
                                     <label for="">رقم الهاتف الجوال</label>
                                     <input type="tel" name="mobile" value="{{ old('mobile') }}" class="form-control"
-                                        placeholder="+963 934 770 008" required>
+                                        placeholder="+963 934 770 008"
+                                        data-parsley-required="true"
+                                        data-parsley-required-message="رقم الهاتف مطلوب."
+                                        data-parsley-trigger="change">
                                 </div>
                             </div>
 
@@ -143,7 +181,7 @@
                                 <div class="form-group">
                                     <label for="">رقم الهاتف الأرضي</label>
                                     <input type="tel" name="phone" value="{{ old('phone') }}" class="form-control"
-                                        placeholder="@lang('contact.phone')">
+                                        placeholder="031-2129925">
                                 </div>
                             </div>
 
@@ -152,7 +190,9 @@
                                 <div class="form-group">
                                     <label for="">البريد الالكتروني</label>
                                     <input type="email" name="email" value="{{ old('email') }}" class="form-control"
-                                        placeholder="@lang('contact.email')">
+                                        placeholder="@lang('contact.email')" data-parsley-type="email"
+                                        data-parsley-type-message="يجب ان تكون صيغة بريدالكتروني صحيحة."
+                                        data-parsley-trigger="change">
                                 </div>
                             </div>
 
