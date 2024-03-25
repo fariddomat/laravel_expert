@@ -118,7 +118,7 @@
                         <!-- Client area -->
                         <ul class="client-area text-right list-inline m-0" data-animate="fadeInUp" data-delay="1.1">
 
-                            <li><a class="btn btn-secondary" href="">أحجز الآن</a></li>
+                            <li><a class="btn btn-secondary" href="{{ route('contact') }}">أحجز الآن</a></li>
                         </ul>
                     </div>
                 </div>

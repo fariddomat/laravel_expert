@@ -33,6 +33,7 @@ use App\SMSLog;
 use App\SocialMedia;
 use App\Tag;
 use App\Team;
+use CyrildeWit\EloquentViewable\Support\Period;
 use DateTime;
 use Illuminate\Support\Carbon;
 use Mail;
@@ -104,6 +105,9 @@ class SiteController extends Controller
     {
         views($service)
             ->record();
+
+            // dd(views($service)->unique()->count());
+
         $info = Info::first();
         $categories = BlogCategory::all();
         $latestBlogs = Blog::where('showed', 1)->where('show_at_home', 1)->latest()->limit(5)->get();

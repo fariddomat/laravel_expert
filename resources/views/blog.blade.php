@@ -195,6 +195,10 @@
             border-radius: 100vmax;
         }
 
+        .widget-categories span{
+            position: relative;
+        }
+
         .top {
             top: 0;
             left: 0;
