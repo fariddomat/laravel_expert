@@ -83,7 +83,13 @@
                         لوحة التحكم
                     </a>
                 </li>
+
                 @if (auth()->user()->hasRole('superadministrator'))
+                <li class="nav-item">
+                    <a class="nav-link @yield('visitorActive')" href="{{ route('dashboard.visitors.index') }}">
+                        زيارات الموقع
+                    </a>
+                </li>
                     <li class="nav-item">
                         <a class="nav-link @yield('homeinfoActive')" href="{{ route('dashboard.homeinfo.create') }}">
                             الصفحة الرئيسية

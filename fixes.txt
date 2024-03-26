@@ -21,20 +21,28 @@ Service , sub service, service Quiz #
 blog author section fixes #
 remove author social #
 search blog author #
+total vistors in website #
+blogs and services visitors #
 
 
 counter dynamic and db
+
+blog category fixe design
+
+blog meta description
+
+add comment section
+
+add work with us sections
 
 Reviews
 
 home Slider
 
-blog category show
-
 Dashboard intro page
 
-total vistors in website
-
 image optimization
+
+export visitor data as csv
 
 

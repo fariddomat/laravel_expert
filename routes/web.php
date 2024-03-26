@@ -75,6 +75,8 @@ Route::group(['prefix' => '/dashboard', 'middleware' => ['auth', 'setArLocale'],
     Route::resource('packages', 'Dashboard\PackageController');
     Route::resource('package_services', 'Dashboard\PackageServiceController')->except(['index', 'create', 'edit']);
 
+    Route::resource('visitors', 'Dashboard\VisitorController');
+
     Route::get('/package_services/{service}', 'Dashboard\PackageServiceController@index')->name('package_services.index');
     Route::get('/package_services/{service}/create', 'Dashboard\PackageServiceController@create')->name('package_services.create');
     Route::get('/package_services/{service}/edit', 'Dashboard\PackageServiceController@edit')->name('package_services.edit');
