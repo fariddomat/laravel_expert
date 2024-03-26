@@ -23,11 +23,13 @@ remove author social #
 search blog author #
 total vistors in website #
 blogs and services visitors #
+blog category fixe design #
+
+add blog category image
 
 
 counter dynamic and db
 
-blog category fixe design
 
 blog meta description
 
@@ -45,4 +47,6 @@ image optimization
 
 export visitor data as csv
 
+remove un used code
 
+about us page

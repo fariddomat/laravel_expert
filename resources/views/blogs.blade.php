@@ -89,6 +89,197 @@
             width: 20px;
         }
     </style>
+
+    <style>
+        .section_our_solution .row {
+            align-items: center;
+        }
+
+        .our_solution_category {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+        }
+
+        .our_solution_category .solution_cards_box {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .solution_cards_box .solution_card {
+            flex: 0 50%;
+            background: #fff;
+            box-shadow: 0 2px 4px 0 rgba(223, 31, 38, 0.2),
+                0 5px 15px 0 rgba(223, 31, 38, 0.15);
+            border-radius: 15px;
+            margin: 8px;
+            padding: 10px 15px;
+            position: relative;
+            z-index: 1;
+            overflow: hidden;
+            min-height: 165px;
+            transition: 0.7s;
+        }
+
+        .solution_cards_box .solution_card:hover {
+            background: #DF1F26;
+            color: #fff;
+            transform: scale(1.1);
+            z-index: 9;
+        }
+
+        .solution_cards_box .solution_card:hover::before {
+            background: rgb(85 108 214 / 10%);
+        }
+
+        .solution_cards_box .solution_card:hover .solu_title h3,
+        .solution_cards_box .solution_card:hover .solu_description p {
+            color: #fff;
+        }
+
+        .solution_cards_box .solution_card:before {
+            content: "";
+            position: absolute;
+            background: rgb(85 108 214 / 5%);
+            width: 170px;
+            height: 400px;
+            z-index: -1;
+            transform: rotate(42deg);
+            right: -56px;
+            top: -23px;
+            border-radius: 35px;
+        }
+
+        .solution_cards_box .solution_card:hover .solu_description button {
+            background: #fff !important;
+            color: #fff;
+        }
+
+        .solution_card .so_top_icon {}
+
+        .solution_card .solu_title h3 {
+            color: #212121;
+            font-size: 1.3rem;
+            margin-top: 13px;
+            margin-bottom: 13px;
+        }
+
+        .solution_card .solu_description p {
+            font-size: 15px;
+            margin-bottom: 15px;
+        }
+
+        .solution_card .solu_description button {
+            border: 0;
+            border-radius: 15px;
+            background: linear-gradient(140deg,
+                    #DF1F26 0%,
+                    #DF1F26 50%,
+                    #DF1F26 75%) !important;
+            color: #fff;
+            font-weight: 500;
+            font-size: 1rem;
+            padding: 5px 16px;
+        }
+
+        .our_solution_content h1 {
+            text-transform: capitalize;
+            margin-bottom: 1rem;
+            font-size: 2.5rem;
+        }
+
+        .our_solution_content p {}
+
+        .hover_color_bubble {
+            position: absolute;
+            background: rgb(54 81 207 / 15%);
+            width: 100rem;
+            height: 100rem;
+            left: 0;
+            right: 0;
+            z-index: -1;
+            top: 16rem;
+            border-radius: 50%;
+            transform: rotate(-36deg);
+            left: -18rem;
+            transition: 0.7s;
+        }
+
+        .solution_cards_box .solution_card:hover .hover_color_bubble {
+            top: 0rem;
+        }
+
+        .solution_cards_box .solution_card .so_top_icon {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: #fff;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .solution_cards_box .solution_card .so_top_icon img {
+            width: 40px;
+            height: 50px;
+            object-fit: contain;
+        }
+
+        /*start media query*/
+        @media screen and (min-width: 320px) {
+            .sol_card_top_3 {
+                position: relative;
+                top: 0;
+            }
+
+            .our_solution_category {
+                width: 100%;
+                margin: 0 auto;
+            }
+
+            .our_solution_category .solution_cards_box {
+                flex: auto;
+            }
+        }
+
+        @media only screen and (min-width: 768px) {
+            .our_solution_category .solution_cards_box {
+                flex: 1;
+            }
+        }
+
+        @media only screen and (min-width: 1024px) {
+            .sol_card_top_3 {
+                position: relative;
+                top: -3rem;
+            }
+
+            .our_solution_category {
+                width: 100%;
+                margin: 0 auto;
+            }
+        }
+
+        .solution_cards_box {
+            display: flex;
+            flex-wrap: wrap;
+            text-align: right;
+        }
+
+        .solution_card {
+            flex: 0 20%;
+            min-width: 20%;
+        }
+
+        @media screen and (max-width: 768px) {
+            .solution_card {
+                flex: 0 50%;
+                /* 2 cards per row on smaller screens */
+            }
+        }
+    </style>
 @endsection
 @section('scripts')
     <script>
@@ -145,18 +336,77 @@
     <!-- End of Banner -->
 
 
-    <!-- Service -->
+    <section class="blog">
+        <div class="container">
+            <div class="section_our_solution pt-7 pb-7">
+                <div class="row" style="  margin: 0 auto;">
+                    <div class="col-lg-12 col-md-12 col-sm-12">
+                        <div class="our_solution_category">
+                            @foreach ($categories as $index => $category)
+
+                                @if ($index % 2 == 0)
+                                    <div class="solution_cards_box"
+                                    data-animate="fadeInUp" data-delay="{{ (1.5)+$index/8 }}">
+                                        <div class="solution_card">
+                                            <div class="hover_color_bubble"></div>
+                                            {{-- <div class="so_top_icon">
+                                                <i class=" fa fa-person"></i>
+                                            </div> --}}
+                                            <div class="solu_title">
+                                               <a
+                                                        href="{{ route('blogs', ['category' => $category->id]) }}"> <h3> {{ $category->name }} </h3></a>
+
+                                            </div>
+
+                                        </div>
+
+                                    </div>
+                                    <!--  -->
+                                @else
+                                    <div class="solution_cards_box sol_card_top_3"
+                                    data-animate="fadeInUp" data-delay="{{ (1.5)+$index/8 }}">
+                                        <div class="solution_card">
+                                            <div class="hover_color_bubble"></div>
+                                            {{-- <div class="so_top_icon">
+                                                <i class=" fa fa-person"></i>
+
+                                            </div> --}}
+                                            <div class="solu_title">
+                                                <a
+                                                        href="{{ route('blogs', ['category' => $category->id]) }}"><h3>{{ $category->name }} </h3></a>
+
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                @endif
+                            @endforeach
+
+                            <!--  -->
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Blogs -->
     <section class="blog  pt-7 pb-7">
         <div class="container">
-
             <div class="row">
-                <div class="col-md-9" dir="ltr">
+                <h3 class="col-md-12"
+                    style="text-align: center;font-size: 2rem;
+                margin-bottom: 35px;
+                font-weight: bold;"
+                    data-animate="fadeInUp" data-delay="1.5">المقالات</h3>
+                <div class="col-md-12" dir="ltr">
                     @if ($blogs->count() == 0)
                         <h3
                             style="text-align: center;
                     padding-top: 50px;
                     font-weight: bold;
-                    font-size: 3rem;">
+                    font-size: 3rem;"
+                    data-animate="fadeInUp" data-delay="1.5">
                             لا يوجد نتائج</h3>
                     @endif
                     <div id="customers-testimonials" class="owl-carousel " data-animate="fadeInUp" data-delay="1.5">
@@ -167,7 +417,8 @@
                                 <div class="shadow-effect">
                                     <div class="single-post" data-animate="" style="padding: 0">
                                         <div class="image-hover-wrap">
-                                            <img class="img-fluid" src="{{ asset($blog->image) }}" alt="" style=" aspect-ratio: 3 / 2;">
+                                            <img class="img-fluid" src="{{ asset($blog->image) }}" alt=""
+                                                style=" aspect-ratio: 3 / 2;">
                                             <div
                                                 class="image-hover-content d-flex justify-content-center align-items-center text-center">
                                                 <ul class="list-inline">
@@ -188,8 +439,8 @@
 
                                 </div>
                                 <div class="testimonial-name" style="background-color: #DF1F26">
-                                    <a href="{{ route('blog', $blog->slug) }}" class="btn btn-secondary">@lang('site.read_more')<i
-                                            class="fas fa-caret-right"></i></a>
+                                    <a href="{{ route('blog', $blog->slug) }}"
+                                        class="btn btn-secondary">@lang('site.read_more')<i class="fas fa-caret-right"></i></a>
                                 </div>
                             </div>
                             <!--END OF TESTIMONIAL 1 -->
@@ -197,15 +448,14 @@
                     </div>
                 </div>
                 <!-- Sidebar -->
-                <div class="col-md-3" data-animate="fadeInUp" data-delay="1.5">
+                {{-- <div class="col-md-3" data-animate="fadeInUp" data-delay="1.5">
                     <aside>
                         <div class="single-widget" data-animate="fadeInUp" data-delay=".1">
                             <form>
                                 <div class="form-group position-relative mb-0">
                                     <input class="form-control" name="search" type="text" placeholder="البحث"
-                                        data-parsley-required-message="Please type at least one word." {{-- data-parsley-minlength="3"
-                                        data-parsley-minlength-message="Please type at least one word." --}}
-                                        {{-- required --}} value="{{ $search }}">
+                                        data-parsley-required-message="Please type at least one word."
+                                         value="{{ $search }}">
                                     <button type="submit"><i class="fas fa-search"></i></button>
                                 </div>
                             </form>
@@ -290,12 +540,8 @@
                             </ul>
                         </div>
 
-                        {{-- <div class="single-widget text-center" data-animate="fadeInUp" data-delay=".1">
-                            <h3 data-animate="fadeInUp" data-delay=".2">Advertisement</h3>
-                            <img src="img/camera.jpg" alt="" data-animate="fadeInUp" data-delay=".25">
-                        </div> --}}
                     </aside>
-                </div>
+                </div> --}}
             </div>
         </div>
     </section>
