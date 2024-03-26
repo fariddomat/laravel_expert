@@ -18,6 +18,7 @@ use App\Blog;
 use Illuminate\Support\Facades\App;
 use App\AboutImage;
 use App\BlockedContact;
+use App\Counter;
 use App\DailyAppointment;
 use App\DayOfWork;
 use App\ExperinceSlider;
@@ -62,7 +63,8 @@ class SiteController extends Controller
         $experinceSlider = ExperinceSlider::all();
 
         $packages = Packagee::all();
-        return view('home', compact('info', 'about', 'aboutFields', 'workCategories', 'works', 'clients', 'blogs', 'blogCategories', 'services', 'contactInfo', 'allServices', 'contactInfo', 'homeSlider', 'experinceSlider', 'packages'));
+        $counters=Counter::all();
+        return view('home', compact('info', 'about', 'aboutFields', 'workCategories', 'works', 'clients', 'blogs', 'blogCategories', 'services', 'contactInfo', 'allServices', 'contactInfo', 'homeSlider', 'experinceSlider', 'packages', 'counters'));
     }
 
     public function about()

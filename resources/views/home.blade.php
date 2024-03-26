@@ -876,26 +876,15 @@
             <div class="container">
 
                 <div class="row ">
+                    @foreach ($counters as $counter)
                     <div class="col-md-3 text-center item">
-                        <i class="fa fa-graduation-cap"></i>
-                        <p id="number1" class="number counter">600</p>
-                        <p class="label">الجامعات التي نغطيها</p>
+                        <i class="fa {{ $counter->icon }}"></i>
+                        <p id="number1" class="number counter">{{ $counter->value }}</p>
+                        <p class="label">{{ $counter->title }}</p>
                     </div>
-                    <div class="col-md-3 text-center item">
-                        <i class="fa fa-newspaper"></i>
-                        <p id="number2" class="number counter">3800</p>
-                        <p class="label">التأشيرات الصادرة</p>
-                    </div>
-                    <div class="col-md-3 text-center item">
-                        <i class="fa fa-user"></i>
-                        <p id="number3" class="number counter">35</p>
-                        <p class="label">مستشار أكاديمي</p>
-                    </div>
-                    <div class="col-md-3 text-center item">
-                        <i class="fa fa-briefcase"></i>
-                        <p id="number4" class="number counter">10</p>
-                        <p class="label">سنوات الخبرة</p>
-                    </div>
+
+
+                    @endforeach
                 </div>
             </div>
         </div>
