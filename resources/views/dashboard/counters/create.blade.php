@@ -1,6 +1,6 @@
 @extends('dashboard.layouts.app')
 @section('title', 'Add New Counters')
-@section('conterActive', 'active')
+@section('counterActive', 'active')
 
 @section('content')
 

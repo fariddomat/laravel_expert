@@ -96,6 +96,11 @@
                         </a>
                     </li>
                     <li class="nav-item">
+                        <a class="nav-link @yield('counterActive')" href="{{ route('dashboard.counters.index') }}">
+                            عداد الخبرات
+                        </a>
+                    </li>
+                    <li class="nav-item">
                         <a class="nav-link @yield('aboutActive')" href="{{ route('dashboard.about.create') }}">
                             حول الموقع
                         </a>

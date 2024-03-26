@@ -24,12 +24,9 @@ search blog author #
 total vistors in website #
 blogs and services visitors #
 blog category fixe design #
+counter dynamic and db #
 
 add blog category image
-
-
-counter dynamic and db
-
 
 blog meta description
 
