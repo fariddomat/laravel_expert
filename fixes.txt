@@ -25,8 +25,7 @@ total vistors in website #
 blogs and services visitors #
 blog category fixe design #
 counter dynamic and db #
-
-add blog category image
+add blog category image #
 
 blog meta description
 

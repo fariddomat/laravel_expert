@@ -170,9 +170,9 @@
             background: #fff;
             /* box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.5); */
             border-top: 2px solid rgba(255, 49, 49, 0.5);
-            border-right: 2px solid rgba(0, 255, 255, 0.5);
-            border-bottom: 2px solid rgba(57, 255, 20, 0.5);
-            border-left: 2px solid rgba(255, 255, 113, 0.5);
+            border-right: 2px solid rgba(255, 49, 49, 0.5);
+            border-bottom: 2px solid rgba(255, 49, 49, 0.5);
+            border-left: 2px solid rgba(255, 49, 49, 0.5);
         }
 
         .blog .container {
@@ -190,12 +190,12 @@
     </style>
 
     <style>
-        span {
+        .sspan {
             position: absolute;
             border-radius: 100vmax;
         }
 
-        .widget-categories span{
+        .widget-categories span {
             position: relative;
         }
 
@@ -215,9 +215,8 @@
             bottom: 0;
             height: 5px;
             background: linear-gradient(90deg,
-                    rgb(57, 255, 20),
-                    rgba(57, 255, 20, 0.5),
-                    transparent 50%);
+                    rgba(255, 49, 49, 0.5),
+                    rgb(255, 49, 49) ,transparent 50%);
         }
 
         .right {
@@ -227,8 +226,8 @@
             height: 0;
             background: linear-gradient(180deg,
                     transparent 30%,
-                    rgba(0, 255, 255, 0.5),
-                    rgb(0, 255, 255));
+                    rgba(255, 49, 49, 0.5),
+                    rgb(255, 49, 49));
         }
 
         .left {
@@ -237,8 +236,8 @@
             width: 5px;
             height: 0;
             background: linear-gradient(180deg,
-                    rgb(255, 255, 113),
-                    rgba(255, 255, 113, 0.5),
+            rgba(255, 49, 49, 0.5),
+                    rgb(255, 49, 49),
                     transparent 70%);
         }
 
@@ -513,10 +512,10 @@
                             </div> --}}
                             </aside>
 
-                            <span class="top"></span>
-                            <span class="right"></span>
-                            <span class="bottom"></span>
-                            <span class="left"></span>
+                            <span class="sspan top"></span>
+                            <span class="sspan right"></span>
+                            <span class="sspan bottom"></span>
+                            <span class="sspan left"></span>
                         </div>
                     </div>
 
