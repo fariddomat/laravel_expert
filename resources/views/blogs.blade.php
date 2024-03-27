@@ -211,19 +211,20 @@
         }
 
         .solution_cards_box .solution_card .so_top_icon {
-            width: 60px;
-            height: 60px;
+            width: 90px;
+            height: 90px;
             border-radius: 50%;
             background: #fff;
             overflow: hidden;
             display: flex;
             align-items: center;
             justify-content: center;
+            margin: 0 auto;
         }
 
         .solution_cards_box .solution_card .so_top_icon img {
-            width: 40px;
-            height: 50px;
+            width: 150px;
+            height: 150px;
             object-fit: contain;
         }
 
@@ -345,35 +346,33 @@
                             @foreach ($categories as $index => $category)
 
                                 @if ($index % 2 == 0)
-                                    <div class="solution_cards_box"
-                                    data-animate="fadeInUp" data-delay="{{ (1.5)+$index/8 }}">
+                                    <div class="solution_cards_box" data-animate="fadeInUp"
+                                        data-delay="{{ 1.5 + $index / 8 }}">
                                         <div class="solution_card">
                                             <div class="hover_color_bubble"></div>
-                                            {{-- <div class="so_top_icon">
-                                                <i class=" fa fa-person"></i>
-                                            </div> --}}
-                                            <div class="solu_title">
-                                               <a
-                                                        href="{{ route('blogs', ['category' => $category->id]) }}"> <h3> {{ $category->name }} </h3></a>
-
+                                            <div class="so_top_icon">
+                                                <img src="{{ asset($category->image) }}" alt="">
                                             </div>
-
+                                            <div class="solu_title">
+                                                <a href="{{ route('blogs', ['category' => $category->id]) }}">
+                                                    <h3> {{ $category->name }} </h3>
+                                                </a>
+                                            </div>
                                         </div>
-
                                     </div>
                                     <!--  -->
                                 @else
-                                    <div class="solution_cards_box sol_card_top_3"
-                                    data-animate="fadeInUp" data-delay="{{ (1.5)+$index/8 }}">
+                                    <div class="solution_cards_box sol_card_top_3" data-animate="fadeInUp"
+                                        data-delay="{{ 1.5 + $index / 8 }}">
                                         <div class="solution_card">
                                             <div class="hover_color_bubble"></div>
-                                            {{-- <div class="so_top_icon">
-                                                <i class=" fa fa-person"></i>
-
-                                            </div> --}}
+                                            <div class="so_top_icon">
+                                                <img src="{{ asset($category->image) }}" alt="">
+                                            </div>
                                             <div class="solu_title">
-                                                <a
-                                                        href="{{ route('blogs', ['category' => $category->id]) }}"><h3>{{ $category->name }} </h3></a>
+                                                <a href="{{ route('blogs', ['category' => $category->id]) }}">
+                                                    <h3>{{ $category->name }} </h3>
+                                                </a>
 
                                             </div>
                                         </div>
@@ -401,12 +400,11 @@
                     data-animate="fadeInUp" data-delay="1.5">المقالات</h3>
                 <div class="col-md-12" dir="ltr">
                     @if ($blogs->count() == 0)
-                        <h3
-                            style="text-align: center;
+                        <h3 style="text-align: center;
                     padding-top: 50px;
                     font-weight: bold;
                     font-size: 3rem;"
-                    data-animate="fadeInUp" data-delay="1.5">
+                            data-animate="fadeInUp" data-delay="1.5">
                             لا يوجد نتائج</h3>
                     @endif
                     <div id="customers-testimonials" class="owl-carousel " data-animate="fadeInUp" data-delay="1.5">

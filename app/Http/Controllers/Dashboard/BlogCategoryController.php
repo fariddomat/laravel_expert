@@ -30,6 +30,7 @@ class BlogCategoryController extends Controller
         $rules = [
             'ar.name' => ['required'],
             'showed' => ['nullable'],
+            'image' => ['required', 'image', 'mimes:jpeg,png,jpg,webp'],
 
             // 'en.name' => ['required'],
         ];
@@ -42,6 +43,10 @@ class BlogCategoryController extends Controller
 
         $blogCategory->position = BlogCategory::max('position') + 1;
         $blogCategory->showed  = $request->has('showed') ? 1 : 0;
+        $image = $request->file('image');
+        $filename = $image->getClientOriginalName();
+        $blogCategory->image = $image->storeAs('photos/blogCategories', $filename);
+
         $blogCategory->save();
         session()->flash('success', 'Blog Category Added Successfully');
         return redirect()->route('dashboard.blogcategories.index');
@@ -56,7 +61,7 @@ class BlogCategoryController extends Controller
         $rules = [
             'ar.name' => ['required'],
             'showed' => ['nullable'],
-
+            'image' => ['nullable', 'image', 'mimes:jpeg,png,jpg,webp'],
             //'en.name' => ['required'],
         ];
         $validatedData = $request->validate($rules);
@@ -64,6 +69,12 @@ class BlogCategoryController extends Controller
         // $blogcategory->translate('en')->name = $validatedData['en']['name'];
         $blogcategory->translate('ar')->name = $validatedData['ar']['name'];
         $blogcategory->showed  = $request->has('showed') ? 1 : 0;
+        if ($request->has('image')) {
+            // Storage::disk('local')->delete($blog->image);
+            $image = $request->file('image');
+            $filename = $image->getClientOriginalName();
+            $blogcategory->image = $image->storeAs('photos/blogCategories', $filename);
+        }
         $blogcategory->save();
         session()->flash('success', 'Blog Category Updated Successfully');
         return redirect()->route('dashboard.blogcategories.index');
