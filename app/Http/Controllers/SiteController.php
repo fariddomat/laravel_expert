@@ -30,6 +30,7 @@ use App\HomeSlider;
 use App\Packagee;
 use App\PartnerSlider;
 use App\Privacy;
+use App\Review;
 use App\SMSLog;
 use App\SocialMedia;
 use App\Tag;
@@ -64,7 +65,8 @@ class SiteController extends Controller
 
         $packages = Packagee::all();
         $counters=Counter::all();
-        return view('home', compact('info', 'about', 'aboutFields', 'workCategories', 'works', 'clients', 'blogs', 'blogCategories', 'services', 'contactInfo', 'allServices', 'contactInfo', 'homeSlider', 'experinceSlider', 'packages', 'counters'));
+        $reviews=Review::latest()->get();
+        return view('home', compact('info', 'about', 'aboutFields', 'workCategories', 'works', 'clients', 'blogs', 'blogCategories', 'services', 'contactInfo', 'allServices', 'contactInfo', 'homeSlider', 'experinceSlider', 'packages', 'counters', 'reviews'));
     }
 
     public function about()

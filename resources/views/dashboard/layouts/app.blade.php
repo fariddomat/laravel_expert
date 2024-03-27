@@ -200,6 +200,11 @@
                         المدونة
                     </a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link @yield('reviewsActive')" href="{{ route('dashboard.reviews.index') }}">
+                        آراء العملاء
+                    </a>
+                </li>
                 @if (auth()->user()->hasRole('superadministrator'))
                     <li class="nav-item">
                         <a class="nav-link @yield('blogPDFActive')" href="{{ route('dashboard.blogPDF.create') }}">

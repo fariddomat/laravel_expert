@@ -975,82 +975,21 @@
             </div>
             <div class="swiper-container review-slider">
                 <div class="swiper-wrapper">
+                    @foreach ($reviews as $review)
                     <div class="swiper-slide single-review-slide">
-                        <img src="{{ asset('home/img/authors/author.png') }}" class="rounded" alt="">
-                        <h4>Marsha C. Meyer
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                        </h4>
-                        <span> Australia</span>
-                        <p>I must explain to you how all this mistaken idea of denouncing pleasure and praising pain was
-                            born and I will give complete account of the system, and expound the actual teachings of
-                            happiness. No one rejects, dislikes, or avoids.</p>
+                         <!-- Author info -->
+                         <div class="d-flex align-items-center author-info-wrap">
+                            <img class="img-thumbnail mr-3" src="{{ asset('images/reviews/'.$review->image) }}" alt=""
+                                data-animate="fadeInUp" data-delay=".1" style="max-width: 100px;aspect-ratio: 3/3;">
+                            <div class="author-info">
+                                        {{ $review->name }}
+                            </div>
+                        </div>
+                        <span> {{ $review->date }}</span>
+                        <p>{!! $review->description !!}</p>
                     </div>
+                    @endforeach
 
-                    <div class="swiper-slide single-review-slide">
-                        <h4><img src="{{ asset('home/img/authors/author.png') }}" class="rounded" alt=""
-                                style="margin-left: 15px; margin-right: 15px">
-
-                            Bns H. Jabed
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                        </h4>
-                        <span>Syria</span>
-                        <p>I must explain to you how all this mistaken idea of denouncing pleasure and praising pain was
-                            born and I will give complete account of the system, and expound the actual teachings of
-                            happiness. No one rejects, dislikes, or avoids.</p>
-                    </div>
-
-                    <div class="swiper-slide single-review-slide">
-                        <h4><img src="{{ asset('home/img/authors/author.png') }}" class="rounded" alt=""
-                                style="margin-left: 15px; margin-right: 15px">Cathy S. Knight
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                        </h4>
-                        <span>California, United States</span>
-                        <p>I must explain to you how all this mistaken idea of denouncing pleasure and praising pain was
-                            born and I will give complete account of the system, and expound the actual teachings of
-                            happiness. No one rejects, dislikes, or avoids.</p>
-                    </div>
-
-                    <div class="swiper-slide single-review-slide">
-                        <h4><img src="{{ asset('home/img/authors/author.png') }}" class="rounded" alt=""
-                                style="margin-left: 15px; margin-right: 15px">Cathy S. Knight
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                        </h4>
-                        <span>California, United States</span>
-                        <p>I must explain to you how all this mistaken idea of denouncing pleasure and praising pain was
-                            born and I will give complete account of the system, and expound the actual teachings of
-                            happiness. No one rejects, dislikes, or avoids.</p>
-                    </div>
-
-                    <div class="swiper-slide single-review-slide">
-                        <h4><img src="{{ asset('home/img/authors/author.png') }}" class="rounded" alt=""
-                                style="margin-left: 15px; margin-right: 15px">Cathy S. Knight
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                        </h4>
-                        <span>California, United States</span>
-                        <p>I must explain to you how all this mistaken idea of denouncing pleasure and praising pain was
-                            born and I will give complete account of the system, and expound the actual teachings of
-                            happiness. No one rejects, dislikes, or avoids.</p>
-                    </div>
                 </div>
             </div>
             <div class="swiper-pagination review-pagination position-static"></div>
