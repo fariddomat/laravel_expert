@@ -2,14 +2,18 @@
 @section('title', 'Blog Categories')
 @section('blogcategoriesActive', 'active')
 @section('styles')
-<link href="{{asset('dashboard/css/datatables.min.css')}}" rel="stylesheet">
+{{-- <link href="{{asset('dashboard/css/datatables.min.css')}}" rel="stylesheet"> --}}
+<link href="https://cdn.datatables.net/v/bs5/dt-2.0.3/b-3.0.1/r-3.0.1/rr-1.5.0/datatables.min.css" rel="stylesheet">
+
 @endsection
 @section('scripts')
-<script src="{{asset('dashboard/js/datatables.min.js')}}"></script>
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+
+<script src="https://cdn.datatables.net/v/bs5/dt-2.0.3/b-3.0.1/r-3.0.1/rr-1.5.0/datatables.min.js" defer></script>
 <script>
     var CategoriesReorderRoute = '{{route("dashboard.blogcategories.reorder")}}';
 </script>
-<script src="{{asset('dashboard/js/blogCategories.js')}}"></script>
+<script src="{{asset('dashboard/js/blogCategories.js')}}" defer> </script>
 @endsection
 @section('content')
 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
