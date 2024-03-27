@@ -10,8 +10,8 @@
     <title> @yield('title')</title>
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="{{ $info->description }}">
-    <meta name="author" content="">
+    <meta name="description" content="{{  $metaDescription ?? $info->description }}">
+    <meta name="author" content="Almohtarif">
 
     <link href="{{ asset($info->logo) }}" rel="shortcut icon" type="image/png">
     <link href="{{ asset($info->logo) }}" rel="apple-touch-icon">
@@ -38,8 +38,8 @@
 
 
     <link href="{{ asset('css/fonts.css') }}" rel="stylesheet">
-    <link
-        rel="stylesheet" href="{{ asset('fonts/Cairo/Cairo-VariableFont_slnt,wght.ttf') }},wght@0,400;0,700;1,400;1,700&display=swap">
+    <link rel="stylesheet"
+        href="{{ asset('fonts/Cairo/Cairo-VariableFont_slnt,wght.ttf') }},wght@0,400;0,700;1,400;1,700&display=swap">
 
     {{-- icons --}}
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
@@ -198,7 +198,7 @@
                                 </a>
                                 <span> <a
                                         href="#">{{ $blog->updated_at->format('d F
-                                                                        Y') }}</a></span>
+                                                                                                                                                                                                                                                                                Y') }}</a></span>
                                 <h4 class="cabin font-weight-normal"><a href="#">{{ $blog->title }}</a></h4>
                                 <p>{!! Str::limit(Helper::removeSpecialCharacter($blog->description), 100) !!}</p>
                             </div>

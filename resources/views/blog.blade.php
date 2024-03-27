@@ -1,4 +1,7 @@
 @extends('layouts.site')
+@php
+$metaDescription= Str::limit(strip_tags($blog->description ?? ''), 160) ;
+@endphp
 @section('title')
     {{ $blog->title }}
 @endsection

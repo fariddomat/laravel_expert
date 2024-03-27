@@ -1,4 +1,7 @@
 @extends('layouts.site')
+@php
+$metaDescription= Str::limit(strip_tags($service->brief ?? ''), 160) ;
+@endphp
 @section('title')
     {{ $service->title }}
 @endsection
