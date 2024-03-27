@@ -27,14 +27,11 @@ add blog category image #
 Reviews #
 meta description #
 add comment section #
-
-home dynamic header
+home dynamic header #
 
 google recaptcha
 
 add work with us page
-
-home Slider
 
 Dashboard intro page
 
