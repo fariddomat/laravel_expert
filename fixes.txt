@@ -1,7 +1,5 @@
 https://github.com/opcodesio/log-viewer
 
-home dynamic header
-
 blog header #
 blog side size #
 blog search #
@@ -28,9 +26,11 @@ counter dynamic and db #
 add blog category image #
 Reviews #
 meta description #
+add comment section #
 
+home dynamic header
 
-add comment section
+google recaptcha
 
 add work with us page
 

@@ -58,8 +58,8 @@
 
 
                 <div class="form-group mb-3">
-                    <label>سلايدر الصور - Home Slider</label>
-                    <a href="{{ route('dashboard.homeinfoSliderImages.index') }}"  class="btn btn-primary">Slider</a>
+                    <label>الصورة الرئيسية</label>
+                    <a href="{{ route('dashboard.homeinfoSliderImages.index') }}"  class="btn btn-primary">Image</a>
                 </div>
 
                 <div class="form-group mb-3">

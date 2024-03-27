@@ -128,27 +128,27 @@
         }
 
         /* .section-wrapper .shielding-layer:after {
-                                                    content: "";
-                                                    width: 71%;
-                                                    height: 100%;
-                                                    position: absolute;
-                                                    top: 0;
-                                                    right: 0;
-                                                    z-index: 3;
-                                                    background: linear-gradient(90deg, rgba(249, 249, 254, 0) rgba(249, 249, 254, 0.97) 0,);
-                                                }
+                                                        content: "";
+                                                        width: 71%;
+                                                        height: 100%;
+                                                        position: absolute;
+                                                        top: 0;
+                                                        right: 0;
+                                                        z-index: 3;
+                                                        background: linear-gradient(90deg, rgba(249, 249, 254, 0) rgba(249, 249, 254, 0.97) 0,);
+                                                    }
 
-                                                .section-wrapper .shielding-layer:before {
-                                                    pointer-events: none;
-                                                    content: "";
-                                                    width: calc(29% + 1px);
-                                                    height: 100%;
-                                                    position: absolute;
-                                                    top: 0;
-                                                    left: 0;
-                                                    z-index: 3;
-                                                    background: linear-gradient(90deg, rgba(249, 249, 254, 0.97) 0, rgba(249, 249, 254, 0));
-                                                } */
+                                                    .section-wrapper .shielding-layer:before {
+                                                        pointer-events: none;
+                                                        content: "";
+                                                        width: calc(29% + 1px);
+                                                        height: 100%;
+                                                        position: absolute;
+                                                        top: 0;
+                                                        left: 0;
+                                                        z-index: 3;
+                                                        background: linear-gradient(90deg, rgba(249, 249, 254, 0.97) 0, rgba(249, 249, 254, 0));
+                                                    } */
 
         .section-wrapper:before {
             content: "";
@@ -455,6 +455,18 @@
             .counter .item {
                 flex: 0 0 50%;
             }
+        }
+
+
+        .headsection {
+            background: url("{{ $homeSlider->first()->image }}");
+background-attachment: fixed;
+position: relative;
+background-repeat: no-repeat;
+opacity: 1;
+transition: opacity 0.5s, transform 0.5s;
+z-index: 1;
+background-size: cover;
         }
     </style>
 @endsection
@@ -877,13 +889,11 @@
 
                 <div class="row ">
                     @foreach ($counters as $counter)
-                    <div class="col-md-3 text-center item">
-                        <i class="fa {{ $counter->icon }}"></i>
-                        <p id="number1" class="number counter">{{ $counter->value }}</p>
-                        <p class="label">{{ $counter->title }}</p>
-                    </div>
-
-
+                        <div class="col-md-3 text-center item">
+                            <i class="fa {{ $counter->icon }}"></i>
+                            <p id="number1" class="number counter">{{ $counter->value }}</p>
+                            <p class="label">{{ $counter->title }}</p>
+                        </div>
                     @endforeach
                 </div>
             </div>
@@ -976,18 +986,19 @@
             <div class="swiper-container review-slider">
                 <div class="swiper-wrapper">
                     @foreach ($reviews as $review)
-                    <div class="swiper-slide single-review-slide">
-                         <!-- Author info -->
-                         <div class="d-flex align-items-center author-info-wrap">
-                            <img class="img-thumbnail mr-3" src="{{ asset('images/reviews/'.$review->image) }}" alt=""
-                                data-animate="fadeInUp" data-delay=".1" style="max-width: 100px;aspect-ratio: 3/3;">
-                            <div class="author-info">
-                                        {{ $review->name }}
+                        <div class="swiper-slide single-review-slide">
+                            <!-- Author info -->
+                            <div class="d-flex align-items-center author-info-wrap">
+                                <img class="img-thumbnail mr-3" src="{{ asset('images/reviews/' . $review->image) }}"
+                                    alt="" data-animate="fadeInUp" data-delay=".1"
+                                    style="max-width: 100px;aspect-ratio: 3/3;">
+                                <div class="author-info">
+                                    {{ $review->name }}
+                                </div>
                             </div>
+                            <span> {{ $review->date }}</span>
+                            <p>{!! $review->description !!}</p>
                         </div>
-                        <span> {{ $review->date }}</span>
-                        <p>{!! $review->description !!}</p>
-                    </div>
                     @endforeach
 
                 </div>

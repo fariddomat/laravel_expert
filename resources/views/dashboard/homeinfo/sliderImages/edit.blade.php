@@ -1,6 +1,6 @@
 @extends('dashboard.layouts.app')
 @section('title', 'Update Image')
-@section('servicesActive', 'active')
+@section('homeinfoActive', 'active')
 
 @section('scripts')
 <script src="{{asset('dashboard/js/image_preview.js')}}"></script>

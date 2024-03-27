@@ -1,6 +1,6 @@
 @extends('dashboard.layouts.app')
 @section('title', 'Slider Images')
-@section('servicesActive', 'active')
+@section('homeinfoActive', 'active')
 @section('content')
 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
     <div class="card-header"> <a href="{{route('dashboard.homeinfo.create')}}">Home</a></div>
