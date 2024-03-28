@@ -30,14 +30,13 @@ add comment section #
 home dynamic header #
 export visitor data as csv #
 about us page #
+Dashboard intro page #
+remove un used code #
 
 google recaptcha
 
 add work with us page
 
-Dashboard intro page
-
 image optimization
 
-remove un used code
 
