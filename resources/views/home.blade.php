@@ -128,27 +128,27 @@
         }
 
         /* .section-wrapper .shielding-layer:after {
-                                                        content: "";
-                                                        width: 71%;
-                                                        height: 100%;
-                                                        position: absolute;
-                                                        top: 0;
-                                                        right: 0;
-                                                        z-index: 3;
-                                                        background: linear-gradient(90deg, rgba(249, 249, 254, 0) rgba(249, 249, 254, 0.97) 0,);
-                                                    }
+                                                            content: "";
+                                                            width: 71%;
+                                                            height: 100%;
+                                                            position: absolute;
+                                                            top: 0;
+                                                            right: 0;
+                                                            z-index: 3;
+                                                            background: linear-gradient(90deg, rgba(249, 249, 254, 0) rgba(249, 249, 254, 0.97) 0,);
+                                                        }
 
-                                                    .section-wrapper .shielding-layer:before {
-                                                        pointer-events: none;
-                                                        content: "";
-                                                        width: calc(29% + 1px);
-                                                        height: 100%;
-                                                        position: absolute;
-                                                        top: 0;
-                                                        left: 0;
-                                                        z-index: 3;
-                                                        background: linear-gradient(90deg, rgba(249, 249, 254, 0.97) 0, rgba(249, 249, 254, 0));
-                                                    } */
+                                                        .section-wrapper .shielding-layer:before {
+                                                            pointer-events: none;
+                                                            content: "";
+                                                            width: calc(29% + 1px);
+                                                            height: 100%;
+                                                            position: absolute;
+                                                            top: 0;
+                                                            left: 0;
+                                                            z-index: 3;
+                                                            background: linear-gradient(90deg, rgba(249, 249, 254, 0.97) 0, rgba(249, 249, 254, 0));
+                                                        } */
 
         .section-wrapper:before {
             content: "";
@@ -427,7 +427,7 @@
             color: #E2E2E2
         }
 
-        .item svg {
+        .counter_section_item  svg {
             width: 45px !important;
             height: 45px !important;
         }
@@ -460,17 +460,132 @@
 
         .headsection {
             background: url("{{ $homeSlider->first()->image }}");
-background-attachment: fixed;
-position: relative;
-background-repeat: no-repeat;
-opacity: 1;
-transition: opacity 0.5s, transform 0.5s;
-z-index: 1;
-background-size: cover;
+            background-attachment: fixed;
+            position: relative;
+            background-repeat: no-repeat;
+            opacity: 1;
+            transition: opacity 0.5s, transform 0.5s;
+            z-index: 1;
+            background-size: cover;
+        }
+    </style>
+    <style>
+        .owl-carousel .owl-item img {
+            max-width: unset;
+        }
+
+        #customers-testimonials.owl-carousel .owl-dots .owl-dot span {
+            background: #DF1F26 !important;
+            margin-bottom: 25px !important;
+        }
+
+        .shadow-effect {
+            background: #fff;
+            padding: 20px;
+            border-radius: 4px;
+            text-align: center;
+            border: 1px solid #ECECEC;
+            box-shadow: 0 19px 38px rgba(0, 0, 0, 0.10), 0 15px 12px rgba(0, 0, 0, 0.02);
+        }
+
+        #customers-testimonials .shadow-effect p {
+            font-family: inherit;
+            font-size: 17px;
+            line-height: 1.5;
+            margin: 0 0 17px 0;
+            font-weight: 300;
+        }
+
+        .testimonial-name {
+            margin: -17px auto 0;
+            display: table;
+            width: auto;
+            background: #3190E7;
+            padding: 9px 35px;
+            border-radius: 12px;
+            text-align: center;
+            color: #fff;
+            box-shadow: 0 9px 18px rgba(0, 0, 0, 0.12), 0 5px 7px rgba(0, 0, 0, 0.05);
+        }
+
+        #customers-testimonials .item {
+            text-align: center;
+            padding: 50px;
+            margin-bottom: 80px;
+            opacity: .2;
+            transform: scale3d(0.8, 0.8, 1);
+            transition: all 0.3s ease-in-out;
+        }
+
+        #customers-testimonials .owl-item.active.center .item {
+            opacity: 1;
+            transform: scale3d(1.0, 1.0, 1);
+        }
+
+        .owl-carousel .owl-item img {
+            transform-style: preserve-3d;
+            max-width: 90px;
+            margin: 0 auto 17px;
+        }
+
+        #customers-testimonials.owl-carousel .owl-dots .owl-dot.active span,
+        #customers-testimonials.owl-carousel .owl-dots .owl-dot:hover span {
+            background: #3190E7;
+            transform: translate3d(0px, -50%, 0px) scale(0.7);
+        }
+
+        #customers-testimonials.owl-carousel .owl-dots {
+            display: inline-block;
+            width: 100%;
+            text-align: center;
+        }
+
+        #customers-testimonials.owl-carousel .owl-dots .owl-dot {
+            display: inline-block;
+        }
+
+        #customers-testimonials.owl-carousel .owl-dots .owl-dot span {
+            background: #3190E7;
+            display: inline-block;
+            height: 20px;
+            margin: 0 2px 5px;
+            transform: translate3d(0px, -50%, 0px) scale(0.3);
+            transform-origin: 50% 50% 0;
+            transition: all 250ms ease-out 0s;
+            width: 20px;
         }
     </style>
 @endsection
 @section('scripts')
+    <script>
+        jQuery(document).ready(function($) {
+            "use strict";
+            //  TESTIMONIALS CAROUSEL HOOK
+            $('#customers-testimonials').owlCarousel({
+                loop: true,
+                center: true,
+                items: 3,
+                margin: 0,
+                autoplay: true,
+                dots: true,
+                autoplayTimeout: 2500,
+                smartSpeed: 450,
+                responsive: {
+                    0: {
+                        items: 1
+                    },
+                    768: {
+                        items: 2
+                    },
+                    1170: {
+                        items: 3
+                    }
+                }
+            });
+        });
+    </script>
+
+
     <script>
         var lastScrollTop = 0;
 
@@ -521,7 +636,7 @@ background-size: cover;
                                 </h2>
 
                                 <ul class="list-inline" data-animate="fadeInUp" data-delay="1.4">
-                                    <li><a href="#" class="btn btn-primary"
+                                    <li><a href="{{ route('about') }}" class="btn btn-secondary"
                                             style="padding: 10px 25px">@lang('site.about_me')</a>
                                     </li>
 
@@ -762,35 +877,19 @@ background-size: cover;
 
             <div class="container-fluid">
                 <div class="row">
-                    <div class="col-md-4">
-                        <div class="single-feature text-center" data-animate="fadeInUp" data-delay=".1">
-                            <img src="{{ asset('home/img/icons/vpn.svg') }}" alt="" alt="" data-no-retina
-                                class="svg">
-                            <h3>عنون1</h3>
-                            <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium
-                                voluptatum.</p>
-                        </div>
-                    </div>
+                    <h2 class="" data-animate="fadeIn Up" data-delay=".1" style="margin: 0 auto 75px;">إمتيازات تجعل شركة المحترف الأفضل على الإطلاق </h2>
+                </div>
+                <div class="row">
 
-                    <div class="col-md-4">
-                        <div class="single-feature text-center" data-animate="fadeInUp" data-delay=".3">
-                            <img src="{{ asset('home/img/icons/support.svg') }}" alt="" alt=""
-                                data-no-retina class="svg">
-                            <h3>عنوان2</h3>
-                            <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium
-                                voluptatum.</p>
+                    @foreach ($aboutFields as $aboutField)
+                        <div class="col-md-4">
+                            <div class="single-feature text-center" data-animate="fadeInUp" data-delay=".1">
+                                <i class="fa {{ $aboutField->icon }}" style="font-size: 5rem; color:#DF1F26;"></i>
+                                <h3>{{ $aboutField->title }}</h3>
+                                <p style="text-align: justify;">{{ $aboutField->value }}</p>
+                            </div>
                         </div>
-                    </div>
-
-                    <div class="col-md-4">
-                        <div class="single-feature text-center" data-animate="fadeInUp" data-delay=".5">
-                            <img src="{{ asset('home/img/icons/guarantee.svg') }}" alt="" alt=""
-                                data-no-retina class="svg">
-                            <h3>3عنوان3</h3>
-                            <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium
-                                voluptatum.</p>
-                        </div>
-                    </div>
+                    @endforeach
                 </div>
                 <div class="row">
                     <div class="col-md-12 text-left" data-animate="fadeInUp" data-delay=".1">
@@ -799,22 +898,14 @@ background-size: cover;
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-md-6" data-animate="fadeInUp" data-delay=".2">
+                    <div class="col-md-6 align-self-center" data-animate="fadeInUp" data-delay=".2">
                         <div class="about-p">{!! $about->about_me !!}</div>
-                        <div class="about-info">
-                            <div class="row">
-                                @foreach ($aboutFields as $aboutField)
-                                    <div class="col-md-6">
-                                        <p><b>{{ $aboutField->title }}:</b> {{ $aboutField->value }}</p>
-                                    </div>
-                                @endforeach
-                            </div>
-                        </div>
+
                     </div>
                     <div class="col-md-5 offset-md-1" data-animate="fadeInUp" data-delay=".4">
                         <div class="about-img animate-box" data-animate-effect="fadeInUp">
                             <div class="img" style="  text-align: center;"> <img
-                                    src="{{ asset($info->about_me_image) }}" alt=""> </div>
+                                    src="{{ asset($info->about_me_image) }}" alt="" style="max-width: 250px"> </div>
                         </div>
                     </div>
                 </div>
@@ -822,6 +913,24 @@ background-size: cover;
         </div>
     </section>
     <!-- End of Features -->
+
+    {{-- Start Counter --}}
+    <section class="counter_section">
+        <div class="counter_main">
+            <div class="container">
+
+                <div class="row justify-content-center">
+                    @foreach ($counters as $counter)
+                        <div class="col-md-3 text-center item counter_section_item mt-5">
+                            <i class="fa {{ $counter->icon }}"></i>
+                            <p id="number1" class="number counter">{{ $counter->value }}</p>
+                            <p class="label">{{ $counter->title }}</p>
+                        </div>
+                    @endforeach
+                </div>
+            </div>
+        </div>
+    </section>
 
     <!-- Our services -->
     <section class="">
@@ -832,44 +941,56 @@ background-size: cover;
                     <div class="col-xl-6 col-lg-8">
                         <!-- Section title -->
                         <div class="section-title text-center">
-                            <h2 class="text-white" data-animate="fadeInUp" data-delay=".1">لماذا تحتاج خدماتنا؟ </h2>
-                            <p class="text-white" data-animate="fadeInUp" data-delay=".3">هناك حقيقة مثبتة منذ زمن طويل
-                                وهي
-                                أن المحتوى المقروء لصفحة ما سيلهي القارئ عن التركيز على الشكل الخارجي للنص أو شكل توضع
-                                الفقرات في الصفحة التي يقرأها.</p>
+                            <h2 class="text-white" data-animate="fadeInUp" data-delay=".1">خدمات المحترف </h2>
+
                         </div>
                     </div>
                 </div>
             </div>
         </div>
 
-        <div class="services-wrap bg-white position-relative pt-5 pb-5">
+        <div class="services-wrap bg-white position-relative pt-5 pb-5" dir="ltr">
             <div class="container">
                 <!-- All services -->
 
                 <div class="row">
-                    @foreach ($services as $index => $service)
-                        <div class="col-md-4" data-animate="fadeInUp" data-delay="{{ 0.1 + $index / 4 }}">
-                            <div class="d-flex flex-column justify-content-between gorman-services animate-box"
-                                data-animate-effect="fadeInUp" style="height: 175px;">
-                                <div class="gorman-icon"><i class="{{ $service->icon_class }}"></i></div>
-                                <div class="gorman-text">
-                                    <h3>{{ $service->title }}</h3>
-                                    <div>{{ Str::limit($service->brief, 100) }}</div>
-                                </div>
-                                <div class="d-flex flex-row justify-content-between pt-4">
-                                    <div>
+                    <div class="col-sm-12">
+                        <div id="customers-testimonials" class="owl-carousel " data-animate="fadeInUp" data-delay="1.5">
+
+                            @foreach ($services as $index => $service)
+                                <!--TESTIMONIAL 1 -->
+                                <div class="item">
+                                    <div class="shadow-effect">
+                                        <div class="single-post" data-animate="">
+                                            <div class="image-hover-wrap">
+                                                <img class="img-fluid" src="{{ asset($service->image) }}" alt="" style="aspect-ratio: 3 / 3;">
+                                                <div
+                                                    class="image-hover-content d-flex justify-content-center align-items-center text-center">
+                                                    <ul class="list-inline">
+                                                        <li><a href="{{ route('service', $service->slug) }}"><i
+                                                                    class="fas fa-link"></i></a>
+                                                        </li>
+                                                        {{-- <li><a href="#"><i class="fas fa-share-alt"></i></a></li> --}}
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                            <h3>{{ $service->title }}</h3>
+                                            <h4>
+                                                {!! Str::limit( Helper::removeSpecialCharacter($service->brief),140 ) !!}
+                                            </h4>
+
+                                        </div>
+
+                                    </div>
+                                    <div class="testimonial-name" style="background-color: #DF1F26">
                                         <a href="{{ route('service', $service->slug) }}"
-                                            class="more"><span>@lang('site.read_more')</span></a>
-                                    </div>
-                                    <div>
-                                        <a href="{{ route('service.order', $service->slug) }}"
-                                            class="more"><span>@lang('site.order_now')</span></a>
+                                            class="btn btn-secondary">@lang('site.read_more')<i class="fas fa-caret-right"></i></a>
                                     </div>
                                 </div>
-                            </div>
+                                <!--END OF TESTIMONIAL 1 -->
+                            @endforeach
                         </div>
-                    @endforeach
+                    </div>
                 </div>
 
                 {{-- <!-- Service contact info -->
@@ -882,43 +1003,31 @@ background-size: cover;
     </section>
     <!-- End of Our services -->
 
-    {{-- Start Counter --}}
-    <section class="counter_section">
-        <div class="counter_main">
-            <div class="container">
-
-                <div class="row ">
-                    @foreach ($counters as $counter)
-                        <div class="col-md-3 text-center item">
-                            <i class="fa {{ $counter->icon }}"></i>
-                            <p id="number1" class="number counter">{{ $counter->value }}</p>
-                            <p class="label">{{ $counter->title }}</p>
-                        </div>
-                    @endforeach
-                </div>
-            </div>
-        </div>
-    </section>
-
     <!-- Servers -->
     <section id="section3" class="servers pt-7 bg-light section3 ">
         <div class="container">
             <div class="row">
                 <div class="col-xl-7 col-lg-5">
                     <div class="section-title">
-                        <h2 data-animate="fadeInUp" data-delay=".1">سافر لكل مكان</h2>
-                        <p data-animate="fadeInUp" data-delay=".2">يمكن أن نقوم بمساعدتك باختيار الوجهة المناسبة لك</p>
+                        <h2 data-animate="fadeInUp" data-delay=".1">المزيد من الخدمات</h2>
+                        <p data-animate="fadeInUp" data-delay=".2">حتى نبقى معكم خلال الرحلة ولكي نؤمن أعلى درجات الدقة والسرعة التي نسعى اليها دائماً ,<br>شملت خدماتنا الحجوزات الفندقية والتأمين الصحي لمختلف دول العالم </p>
                     </div>
                     <ul class="data-centers list-unstyled list-item clearfix">
-                        <li data-animate="fadeInUp" data-delay=".1"><i class="fas fa-caret-right"></i>ألمانيا (201)
+                        <li></li>
+                        <li data-animate="fadeInUp" data-delay=".1" style="text-align: justify"><i class="fas fa-caret-right"></i>وحتى نبقى مستشاركم الأول منذ اللحظة الأولى
+                            نقدم لكم خدمة الاستشارات المجانية التي تحصلون من خلالها على إجابات كاملة لأسئلتكم واستفساراتكم عن كل ما يتعلق بالسفر والدراسة بالخارج
+
                         </li>
-                        <li data-animate="fadeInUp" data-delay=".2"><i class="fas fa-caret-right"></i>الإمارات (169)
+                        <li></li>
+                        <li data-animate="fadeInUp" data-delay=".2"><a class="btn btn-secondary" href="{{ route('contact') }}">أحجز موعدك الآن</a></li>
+                    </li>
+                        {{-- <li data-animate="fadeInUp" data-delay=".2"><i class="fas fa-caret-right"></i>الإمارات (169)
                         </li>
                         <li data-animate="fadeInUp" data-delay=".3"><i class="fas fa-caret-right"></i>رومانيا (151)</li>
                         <li data-animate="fadeInUp" data-delay=".4"><i class="fas fa-caret-right"></i>هنغاريا
                             (142)</li>
                         <li data-animate="fadeInUp" data-delay=".5"><i class="fas fa-caret-right"></i>آسيا (70)</li>
-                        <li data-animate="fadeInUp" data-delay=".6"><i class="fas fa-caret-right"></i>افريقيا (40)</li>
+                        <li data-animate="fadeInUp" data-delay=".6"><i class="fas fa-caret-right"></i>افريقيا (40)</li> --}}
                     </ul>
                 </div>
                 <div class="col-xl-5 col-lg-7 d-none d-lg-block">
@@ -932,50 +1041,6 @@ background-size: cover;
     <!-- End Servers -->
 
 
-    <!-- Our clients -->
-    <section class="clients-wrap pt-4 pb-4">
-        <div class="container">
-            <ul class="our-clients list-unstyled d-md-flex align-items-md-center justify-content-md-between m-0">
-                <li data-animate="fadeInUp" data-delay=".1">
-                    <a href="#" target="_blank"><img src="{{ asset('home/img/brands/brand1.png') }}"
-                            alt=""></a>
-                </li>
-                <li data-animate="fadeInUp" data-delay=".2">
-                    <a href="#" target="_blank"><img src="{{ asset('home/img/brands/brand2.png') }}"
-                            alt=""></a>
-                </li>
-                <li data-animate="fadeInUp" data-delay=".3">
-                    <a href="#" target="_blank"><img src="{{ asset('home/img/brands/brand3.png') }}"
-                            alt=""></a>
-                </li>
-                <li data-animate="fadeInUp" data-delay=".4">
-                    <a href="#" target="_blank"><img src="{{ asset('home/img/brands/brand4.png') }}"
-                            alt=""></a>
-                </li>
-                <li data-animate="fadeInUp" data-delay=".5">
-                    <a href="#" target="_blank"><img src="{{ asset('home/img/brands/brand5.png') }}"
-                            alt=""></a>
-                </li>
-                <li data-animate="fadeInUp" data-delay=".6">
-                    <a href="#" target="_blank"><img src="{{ asset('home/img/brands/brand6.png') }}"
-                            alt=""></a>
-                </li>
-                <li data-animate="fadeInUp" data-delay=".7">
-                    <a href="#" target="_blank"><img src="{{ asset('home/img/brands/brand7.png') }}"
-                            alt=""></a>
-                </li>
-                <li data-animate="fadeInUp" data-delay=".8">
-                    <a href="#" target="_blank"><img src="{{ asset('home/img/brands/brand8.png') }}"
-                            alt=""></a>
-                </li>
-                <li data-animate="fadeInUp" data-delay=".9">
-                    <a href="#" target="_blank"><img src="{{ asset('home/img/brands/brand9.png') }}"
-                            alt=""></a>
-                </li>
-            </ul>
-        </div>
-    </section>
-    <!-- End of Our clients -->
 
     <!-- Reviews -->
     <section class="pt-7 pb-7 bg-light">

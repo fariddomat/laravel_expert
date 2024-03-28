@@ -836,10 +836,10 @@ canvas {
 }
 .banner-content li:last-child a {
     padding: 0;
-    color: #0D1216;
+    /* color: #0D1216; */
 }
 .banner-content li:last-child a:hover {
-    color: #5dbd53;
+    color: #fff !important;
 }
 .banner-content li a svg {
     margin-left: 3px;

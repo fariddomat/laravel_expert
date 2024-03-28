@@ -29,6 +29,7 @@ class AboutFieldController extends Controller
         $rules = [
             'ar.title' => ['required'],
             'ar.value' => ['required'],
+            'icon' => ['required']
 
             // 'en.title' => ['required'],
             // 'en.value' => ['required'],
@@ -38,6 +39,7 @@ class AboutFieldController extends Controller
         $aboutField = new AboutField();
         $aboutField->translateOrNew('ar')->title = $validatedData['ar']['title'];
         $aboutField->translateOrNew('ar')->value = $validatedData['ar']['value'];
+        $aboutField->icon = $validatedData['icon'];
 
         // $aboutField->translateOrNew('en')->value = $validatedData['en']['value'];
         // $aboutField->translateOrNew('en')->title = $validatedData['en']['title'];
@@ -56,6 +58,8 @@ class AboutFieldController extends Controller
         $rules = [
             'ar.title' => ['required'],
             'ar.value' => ['required'],
+            'icon' => ['required']
+
             // 'en.title' => ['required'],
             // 'en.value' => ['required'],
         ];
@@ -63,6 +67,7 @@ class AboutFieldController extends Controller
 
         $aboutfield->translate('ar')->title = $validatedData['ar']['title'];
         $aboutfield->translate('ar')->value = $validatedData['ar']['value'];
+        $aboutfield->icon = $validatedData['icon'];
 
         // $aboutfield->translate('en')->title = $validatedData['en']['title'];
         // $aboutfield->translate('en')->value = $validatedData['en']['value'];

@@ -34,8 +34,8 @@
                         <td>
                             <form action="{{ route('dashboard.counters.destroy', $counter->id) }}" method="post">
                             @csrf
-                            @method('destroy')
-                            <button type="submit" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i> حذف</button>
+                            @method('DELETE')
+                            <button type="submit " class="btn btn-danger btn-sm delete"><i class="fa fa-trash"></i> حذف</button>
                             </form>
                         </td>
                     </tr>

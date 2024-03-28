@@ -17,6 +17,7 @@
                 <thead>
                     <tr>
                         <th>#</th>
+                        <th>icon</th>
                         <th>العنوان</th>
                         <th>القيمة</th>
                         <th>تعديل</th>
@@ -27,6 +28,7 @@
                     @foreach ($aboutFields as $aboutField)
                     <tr>
                         <td>{{ $aboutField->id }}</td>
+                        <td><i class="fa {{ $aboutField->icon }}"></i></td>
                         <td>{{ $aboutField->title }}</td>
                         <td>{{ $aboutField->value }}</td>
                         <td>

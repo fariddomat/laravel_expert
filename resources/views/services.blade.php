@@ -5,7 +5,9 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
     <style>
         .owl-carousel .owl-item img {
-  max-width: unset ;}
+            max-width: unset;
+        }
+
         #customers-testimonials.owl-carousel .owl-dots .owl-dot span {
             background: #DF1F26 !important;
             margin-bottom: 25px !important;
@@ -123,7 +125,8 @@
 @section('content')
 
     <!-- Page title -->
-    <section class="page-title-wrap position-relative bg-light" data-bg-img="{{ asset($info->service_image) }}"   data-animate="fadeInUp" data-delay="1.1">
+    <section class="page-title-wrap position-relative bg-light" data-bg-img="{{ asset($info->service_image) }}"
+        data-animate="fadeInUp" data-delay="1.1">
         <div id="particles_js"></div>
         <div class="container">
             <div class="row">
@@ -158,7 +161,8 @@
                                 <div class="shadow-effect">
                                     <div class="single-post" data-animate="">
                                         <div class="image-hover-wrap">
-                                            <img class="img-fluid" src="{{ asset($service->image) }}" alt="" style="aspect-ratio: 3 / 3;">
+                                            <img class="img-fluid" src="{{ asset($service->image) }}" alt=""
+                                                style="aspect-ratio: 3 / 3;">
                                             <div
                                                 class="image-hover-content d-flex justify-content-center align-items-center text-center">
                                                 <ul class="list-inline">
@@ -171,7 +175,7 @@
                                         </div>
                                         <h3>{{ $service->title }}</h3>
                                         <h4>
-                                            {!! Str::limit( Helper::removeSpecialCharacter($service->brief),140 ) !!}
+                                            {!! Str::limit(Helper::removeSpecialCharacter($service->brief), 140) !!}
                                         </h4>
 
                                     </div>

@@ -37,6 +37,11 @@
                 </div> --}}
 
                 <div class="form-group mb-3">
+                    <label for="icon" class="form-label">icon class</label>
+                    <input type="text" name="icon" class="form-control" value="{{ old('icon', $aboutfield->icon) }}" dir="rtl">
+                </div>
+
+                <div class="form-group mb-3">
                     <button type="submit" class="btn btn-primary"><i class="fa fa-plus"></i> تعديل </button>
                 </div>
             </form>

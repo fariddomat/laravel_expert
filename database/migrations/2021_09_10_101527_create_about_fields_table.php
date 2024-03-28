@@ -15,6 +15,7 @@ class CreateAboutFieldsTable extends Migration
     {
         Schema::create('about_fields', function (Blueprint $table) {
             $table->id();
+            $table->string('icon');
             $table->timestamps();
         });
     }
