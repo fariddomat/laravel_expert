@@ -7,7 +7,6 @@ use App\Blog;
 use PDF;
 use App\BlogPdf;
 use App\SocialMedia;
-use App\CustomerBlog;
 
 class PDFController extends Controller
 {
@@ -24,10 +23,5 @@ class PDFController extends Controller
         return $pdf->download($blog->title . '.pdf');
     }
 
-    public function downloadCustomerBlog(Request $request, CustomerBlog $blog)
-    {
-        $data = ['blog' => $blog];
-        $pdf = PDF::loadView('pdf.customerBlog', $data);
-        return $pdf->download($blog->title . '.pdf');
-    }
+
 }

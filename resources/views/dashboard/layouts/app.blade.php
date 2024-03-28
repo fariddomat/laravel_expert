@@ -217,11 +217,7 @@
                             تغيير كلمة السر
                         </a>
                     </li>
-                    {{-- <li class="nav-item">
-                    <a class="nav-link @yield('customersActive')" href="{{route('dashboard.customers.index')}}">
-                        Customers
-                    </a>
-                </li> --}}
+                   
                     {{-- <li class="nav-item">
                         <a class="nav-link @yield('colorActive')" href="{{ route('dashboard.color.create') }}">
                             ألوان الموقع

@@ -44,7 +44,6 @@ class LoginController extends Controller
         if (auth()->user()->hasRole(['superadministrator', 'blogger'])) {
             return RouteServiceProvider::DASHBOARDHOME;
         }
-        return RouteServiceProvider::CUSTOMERDASHBOARDHOME;
     }
 
     protected function credentials(Request $request)

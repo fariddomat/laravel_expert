@@ -25,7 +25,6 @@ class RouteServiceProvider extends ServiceProvider
 
     public const DASHBOARDHOME = '/dashboard/home';
 
-    public const CUSTOMERDASHBOARDHOME = '/customers/dashboard/home';
 
     /**
      * Define your route model bindings, pattern filters, etc.
@@ -38,9 +37,6 @@ class RouteServiceProvider extends ServiceProvider
 
         parent::boot();
 
-        Route::bind('customerBlog', function ($value) {
-            return \App\CustomerBlog::where('slug', $value)->firstOrFail();
-        });
     }
 
     /**

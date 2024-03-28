@@ -22,7 +22,7 @@ class RedirectIfAuthenticated
             if (auth()->user()->hasRole(['superadministrator', 'blogger'])) {
                 return redirect(RouteServiceProvider::DASHBOARDHOME);
             }
-            return redirect(RouteServiceProvider::CUSTOMERDASHBOARDHOME);
+            
         }
 
         return $next($request);
