@@ -35,10 +35,10 @@
                     <textarea class="form-control" id="en[about_me]" name="en[about_me]" rows="5">{{ old('en.about_me') ?? isset($about) ? $about->translate('en')->about_me : '' }}</textarea>
                 </div> --}}
 
-                <div class="form-group mb-3">
-                    <label for="ar[brief]" class="form-label">التعريف غن الشركة</label>
+                {{-- <div class="form-group mb-3">
+                    <label for="ar[brief]" class="form-label">التعريف عن الشركة</label>
                     <textarea class="form-control" id="ar[brief]" name="ar[brief]" rows="5" dir="rtl">{{ old('ar.brief') ?? isset($about) ? $about->translate('ar')->brief : '' }}</textarea>
-                </div>
+                </div> --}}
 
                 {{-- <div class="form-group mb-3">
                     <label for="en[brief]" class="form-label">Brief about company in English</label>
@@ -54,21 +54,21 @@
                     <label for="en[who]" class="form-label">Who are we? in English</label>
                     <textarea class="form-control" id="en[who]" name="en[who]" rows="5">{{ old('en.who') ?? isset($about) ? $about->translate('en')->who_are_we : '' }}</textarea>
                 </div> --}}
-                <hr>
-                <div class="form-group mb-3">
+                {{-- <hr> --}}
+                {{-- <div class="form-group mb-3">
                     <label for="ar[history]" class="form-label">تاريخنا</label>
                     <textarea class="form-control" id="ar[history]" name="ar[history]" rows="5" dir="rtl">{{ old('ar.history') ?? isset($about) ? $about->translate('ar')->history : '' }}</textarea>
-                </div>
+                </div> --}}
 
                 {{-- <div class="form-group mb-3">
                     <label for="en[history]" class="form-label">Our history in English</label>
                     <textarea class="form-control" id="en[history]" name="en[history]" rows="5">{{ old('en.history') ?? isset($about) ? $about->translate('en')->history : '' }}</textarea>
                 </div> --}}
-                <hr>
+                {{-- <hr>
                 <div class="form-group mb-3">
                     <label for="ar[massage]" class="form-label">رسالتنا</label>
                     <textarea class="form-control" id="ar[massage]" name="ar[massage]" rows="5" dir="rtl">{{ old('ar.massage') ?? isset($about) ? $about->translate('ar')->massage : '' }}</textarea>
-                </div>
+                </div> --}}
 
                 {{-- <div class="form-group mb-3">
                     <label for="en[massage]" class="form-label">Our message in English</label>
@@ -104,11 +104,11 @@
                     <label for="en[ambition]" class="form-label">Our ambition in English</label>
                     <textarea class="form-control" id="en[ambition]" name="en[ambition]" rows="5">{{ old('en.ambition') ?? isset($about) ? $about->translate('en')->ambition : '' }}</textarea>
                 </div> --}}
-
+{{--
                 <div class="form-group mb-3">
                     <label for="ar[values]" class="form-label">قيمنا</label>
                     <textarea class="form-control" id="ar[values]" name="ar[values]" rows="5" dir="rtl">{{ old('ar.values') ?? isset($about) ? $about->translate('ar')->values : '' }}</textarea>
-                </div>
+                </div> --}}
 
                 {{-- <div class="form-group mb-3">
                     <label for="en[values]" class="form-label">Our values in English</label>

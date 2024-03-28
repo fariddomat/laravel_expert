@@ -414,47 +414,46 @@
     <!-- End of Banner -->
 
     <!-- About us -->
-    <section class="pt-7 pb-7">
-        <div class="container">
+    <section class="pt-2 pb-2">
+        <div class="container" style="  max-width: 60rem;">
+            <div class="pt-5 pl-5 pr-5 pb-5" style="overflow: hidden;
+            border: 1px solid #e0e1e0;
+            background: #fff;
+            box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.5);"  data-animate="fadeInUp" data-delay="1.5">
+
             <div class="row justify-content-center">
                 <div class="col-md-11">
                     <div class="about-us-title text-center">
                         <h2 data-animate="fadeInUp" data-delay="1.5">@lang('about.who')</h2>
-                        <p data-animate="fadeInUp" data-delay="1.7"> {!! $about->who_are_we !!}</p>
+                        <div class="mt-3" data-animate="fadeInUp" data-delay="1.7"> {!! $about->who_are_we !!}</div>
                     </div>
                 </div>
             </div>
             <div class="row">
-                <div class="col-md-4">
-                    <div class="single-about-us-info" data-animate="fadeInUp" data-delay=".1">
-                        <h3>@lang('about.history')</h3>
-                        <p> {!! $about->history !!}</p>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="single-about-us-info" data-animate="fadeInUp" data-delay=".2">
-                        <h3>@lang('about.massage')</h3>
-                        <p> {!! $about->massage !!}</p>
-                    </div>
-                </div>
-                <div class="col-md-4">
+                <div class="col-md-12">
                     <div class="single-about-us-info" data-animate="fadeInUp" data-delay=".3">
-                        <h3>@lang('about.vision')</h3>
+                        <p> {!! $about->goals !!}</p>
+                    </div>
+
+                    <div class="single-about-us-info" data-animate="fadeInUp" data-delay=".3">
                         <p> {!! $about->vision !!}</p>
+                    </div>
+                    <div class="single-about-us-info" data-animate="fadeInUp" data-delay=".3">
+                        <p> {!! $about->ambition !!}</p>
                     </div>
                 </div>
             </div>
-
+            {{--
             <div class="write-about-us text-center">
                 <div class="row justify-content-center">
                     <div class="col-lg-8">
                         <h2 data-animate="fadeInUp" data-delay=".1">@lang('contact.connect')</h2>
-                        {{-- <p data-animate="fadeInUp" data-delay=".2">@lang('contact.get_in_touch')</p> --}}
                         <a href="{{ route('contact') }}" class="btn btn-primary" data-animate="fadeInUp"
                             data-delay=".3">@lang('site.contact_us')</a>
                     </div>
                 </div>
-            </div>
+            </div> --}}
+        </div>
         </div>
     </section>
     <!-- End of About us -->
@@ -462,18 +461,19 @@
     <!-- Our team -->
     <section class="pt-7 pb-5-5 bg-light">
         <div class="container">
+
             <div class="row justify-content-center">
                 <div class="col-xl-6 col-lg-8 col-md-10">
                     <div class="section-title text-center">
-                        <h2 data-animate="fadeInUp" data-delay=".1">@lang('site.our_team')</h2>
-                        {{-- <p data-animate="fadeInUp" data-delay=".2">There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour</p> --}}
+                        <h2 data-animate="fadeInUp" data-delay=".1">وها هو @lang('site.our_team')</h2>
+
                     </div>
                 </div>
             </div>
 
             <!-- Members -->
             <div class="row justify-content-center mb-4">
-                <div class="col-md-auto">
+                <div class="col-md-auto" data-animate="fadeInUp" data-delay=".2">
                     <ul class="nav nav-pills">
                         <li class="nav-item">
                             <a class="nav-link btn btn-dark ml-2" style="color: #fff">{{ $teams[0]->teamRole->name }}</a>
@@ -484,7 +484,7 @@
 
             <div class="row justify-content-center">
 
-                <div class="col-md-3 col-sm-6 team-member" data-animate="fadeInUp" data-delay="0.1">
+                <div class="col-md-3 col-sm-6 team-member" data-animate="fadeInUp" data-delay="0.3">
                     <div class="card">
                         <div class="card-container">
                             <div class="card-face front-face">
@@ -503,7 +503,7 @@
                     </div>
                 </div>
             </div>
-            <div class="row justify-content-center mb-4">
+            <div class="row justify-content-center mb-4" data-animate="fadeInUp" data-delay=".4">
                 <div class="col-md-auto">
                     <ul class="nav nav-pills filter-category">
                         <li class="nav-item">
@@ -558,6 +558,7 @@
                 @endforeach
 
             </div>
+
         </div>
     </section>
     <!-- End of Our team -->

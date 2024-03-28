@@ -24,14 +24,14 @@ class AboutController extends Controller
     {
         $rules = [
             'ar.about_me' => ['required'],
-            'ar.brief' => ['required'],
+            // 'ar.brief' => ['required'],
             'ar.who' => ['required'],
-            'ar.history' => ['required'],
-            'ar.massage' => ['required'],
+            // 'ar.history' => ['required'],
+            // 'ar.massage' => ['required'],
             'ar.goals' => ['required'],
             'ar.vision' => ['required'],
             'ar.ambition' => ['required'],
-            'ar.values' => ['required'],
+            // 'ar.values' => ['required'],
 
             // 'en.about_me' => ['required'],
             // 'en.brief' => ['required'],
@@ -48,14 +48,14 @@ class AboutController extends Controller
         $about =  About::firstOrNew();
 
         $about->translateOrNew('ar')->about_me = $validatedData['ar']['about_me'];
-        $about->translateOrNew('ar')->brief = $validatedData['ar']['brief'];
+        // $about->translateOrNew('ar')->brief = $validatedData['ar']['brief'];
         $about->translateOrNew('ar')->who_are_we = $validatedData['ar']['who'];
-        $about->translateOrNew('ar')->history = $validatedData['ar']['history'];
-        $about->translateOrNew('ar')->massage = $validatedData['ar']['massage'];
+        // $about->translateOrNew('ar')->history = $validatedData['ar']['history'];
+        // $about->translateOrNew('ar')->massage = $validatedData['ar']['massage'];
         $about->translateOrNew('ar')->goals = $validatedData['ar']['goals'];
         $about->translateOrNew('ar')->ambition = $validatedData['ar']['ambition'];
         $about->translateOrNew('ar')->vision = $validatedData['ar']['vision'];
-        $about->translateOrNew('ar')->values = $validatedData['ar']['values'];
+        // $about->translateOrNew('ar')->values = $validatedData['ar']['values'];
 
         // $about->translateOrNew('en')->about_me = $validatedData['en']['about_me'];
         // $about->translateOrNew('en')->brief = $validatedData['en']['brief'];
