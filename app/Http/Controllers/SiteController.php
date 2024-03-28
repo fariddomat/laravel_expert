@@ -35,6 +35,7 @@ use App\SMSLog;
 use App\SocialMedia;
 use App\Tag;
 use App\Team;
+use App\TeamRole;
 use CyrildeWit\EloquentViewable\Support\Period;
 use DateTime;
 use Illuminate\Support\Carbon;
@@ -78,10 +79,11 @@ class SiteController extends Controller
         // dd($aboutImages);
         $counter = range($aboutImages->count(), 1);
         $teams = Team::all();
+        $teamRoles = TeamRole::all();
         $partnerSlider = PartnerSlider::all();
         $experinceSlider = ExperinceSlider::all();
 
-        return view('about', compact('about', 'aboutImages', 'counter', 'teams', 'partnerSlider', 'experinceSlider', 'info'));
+        return view('about', compact('about', 'aboutImages', 'counter', 'teams', 'partnerSlider', 'experinceSlider', 'info', 'teamRoles'));
     }
 
     public function privacy()

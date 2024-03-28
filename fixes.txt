@@ -28,6 +28,7 @@ Reviews #
 meta description #
 add comment section #
 home dynamic header #
+export visitor data as csv #
 
 google recaptcha
 
@@ -36,8 +37,6 @@ add work with us page
 Dashboard intro page
 
 image optimization
-
-export visitor data as csv
 
 remove un used code
 

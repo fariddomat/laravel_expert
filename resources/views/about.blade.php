@@ -261,7 +261,7 @@
         .card img {
             width: 250px;
             height: 250px;
-            object-fit: cover;
+            object-fit: contain;
             border-radius: 50%;
         }
 
@@ -387,7 +387,8 @@
 @section('content')
 
     <!-- Page title  -->
-    <section class="page-title-wrap position-relative bg-light" data-bg-img="{{ asset($info->about_header_image) }}"   data-animate="fadeInUp" data-delay="1.1">
+    <section class="page-title-wrap position-relative bg-light" data-bg-img="{{ asset($info->about_header_image) }}"
+        data-animate="fadeInUp" data-delay="1.1">
         <div id="particles_js"></div>
         <div class="container">
             <div class="row">
@@ -469,265 +470,93 @@
                     </div>
                 </div>
             </div>
+
+            <!-- Members -->
+            <div class="row justify-content-center mb-4">
+                <div class="col-md-auto">
+                    <ul class="nav nav-pills">
+                        <li class="nav-item">
+                            <a class="nav-link btn btn-dark ml-2" style="color: #fff">{{ $teams[0]->teamRole->name }}</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="row justify-content-center">
+
+                <div class="col-md-3 col-sm-6 team-member" data-animate="fadeInUp" data-delay="0.1">
+                    <div class="card">
+                        <div class="card-container">
+                            <div class="card-face front-face">
+                                <img src="{{ asset($teams[0]->image) }}" alt style="padding: 20px">
+                                {{ $teams[0]->name }}
+                                <div style="padding: 25px">{{ $teams[0]->title }}</div>
+                            </div>
+                            <div class="card-Face back-face">
+                                <div class="container about">
+
+                                    <p>{{ $teams[0]->description }}</p>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
             <div class="row justify-content-center mb-4">
                 <div class="col-md-auto">
                     <ul class="nav nav-pills filter-category">
                         <li class="nav-item">
                             <a class="nav-link btn btn-secondary active" data-filter="all" href="#">All</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link btn btn-dark ml-2" data-filter="developers" href="#">Developers</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link btn btn-dark ml-2" data-filter="designers" href="#">Designers</a>
-                        </li>
+                        @foreach ($teamRoles as $index => $teamRole)
+                            @php
+                                if ($index === 0) {
+                                    continue;
+                                }
+                            @endphp
+                            <li class="nav-item">
+                                <a class="nav-link btn btn-dark ml-2" data-filter="{{ $teamRole->name }}"
+                                    href="#">{{ $teamRole->name }}</a>
+                            </li>
+                        @endforeach
+
                     </ul>
                 </div>
             </div>
 
             <!-- Members -->
             <div class="row justify-content-center">
-                <div class="col-md-3 col-sm-6 team-member" data-category="developers" data-animate="fadeInUp"
-                    data-delay="0.1">
-                    <div class="card">
-                        <div class="card-container">
-                            <div class="card-face front-face">
-                                <img src="{{ asset('home/img/members/member2.jpg') }}" alt>
-                                4121 Tom Nomec
-                                Web dev/h3
-                            </div>
-                            <div class="card-Face back-face">
-                                <div class="container about">
-                                    About me:
-                                    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit, molestiae
-                                        assumenda lure sit enim quo nostrum temporibus eos sapiente nam eum cupiditate
-                                        quiden et placeat deleniti ullam nisi hic dolore.</p>
-                                    <div class="ca href target blant" classhi fo bi-facebook">
-                                        <a href target blans class-hi ig bi-instagram">
-                                            <a href" target="blank" class="bi git si-github">
-                                    </div>
+                @foreach ($teams as $team)
+                    @php
+                        if ($team->team_role_id === 1) {
+                            continue;
+                        }
+                    @endphp
+                    <div class="col-md-3 col-sm-6 team-member" data-category="{{ $team->teamRole->name }}"
+                        data-animate="fadeInUp" data-delay="0.1">
+                        <div class="card">
+                            <div class="card-container">
+                                <div class="card-face front-face">
+                                    <img src="{{ asset($team->image) }}" alt style="padding: 20px">
+                                    {{ $team->name }}
+                                    <div style="padding: 25px">{{ $team->title }}</div>
                                 </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-3 col-sm-6 team-member" data-category="designers" data-animate="fadeInUp"
-                    data-delay="0.2">
-                    <div class="card">
-                        <div class="card-container">
-                            <div class="card-face front-face">
-                                <img src="{{ asset('home/img/members/member2.jpg') }}" alt>
-                                4121 Tom Nomec
-                                Web dev/h3
-                            </div>
-                            <div class="card-Face back-face">
-                                <div class="container about">
-                                    About me:
-                                    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit, molestiae
-                                        assumenda lure sit enim quo nostrum temporibus eos sapiente nam eum cupiditate
-                                        quiden et placeat deleniti ullam nisi hic dolore.</p>
-                                    <div class="ca href target blant" classhi fo bi-facebook">
-                                        <a href target blans class-hi ig bi-instagram">
-                                            <a href" target="blank" class="bi git si-github">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-3 col-sm-6 team-member" data-category="developers" data-animate="fadeInUp"
-                    data-delay="0.1">
-                    <div class="card">
-                        <div class="card-container">
-                            <div class="card-face front-face">
-                                <img src="{{ asset('home/img/members/member2.jpg') }}" alt>
-                                4121 Tom Nomec
-                                Web dev/h3
-                            </div>
-                            <div class="card-Face back-face">
-                                <div class="container about">
-                                    About me:
-                                    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit, molestiae
-                                        assumenda lure sit enim quo nostrum temporibus eos sapiente nam eum cupiditate
-                                        quiden et placeat deleniti ullam nisi hic dolore.</p>
-                                    <div class="ca href target blant" classhi fo bi-facebook">
-                                        <a href target blans class-hi ig bi-instagram">
-                                            <a href" target="blank" class="bi git si-github">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-3 col-sm-6 team-member" data-category="designers" data-animate="fadeInUp"
-                    data-delay="0.2">
-                    <div class="card">
-                        <div class="card-container">
-                            <div class="card-face front-face">
-                                <img src="{{ asset('home/img/members/member2.jpg') }}" alt>
-                                4121 Tom Nomec
-                                Web dev/h3
-                            </div>
-                            <div class="card-Face back-face">
-                                <div class="container about">
-                                    About me:
-                                    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit, molestiae
-                                        assumenda lure sit enim quo nostrum temporibus eos sapiente nam eum cupiditate
-                                        quiden et placeat deleniti ullam nisi hic dolore.</p>
-                                    <div class="ca href target blant" classhi fo bi-facebook">
-                                        <a href target blans class-hi ig bi-instagram">
-                                            <a href" target="blank" class="bi git si-github">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-3 col-sm-6 team-member" data-category="developers" data-animate="fadeInUp"
-                    data-delay="0.1">
-                    <div class="card">
-                        <div class="card-container">
-                            <div class="card-face front-face">
-                                <img src="{{ asset('home/img/members/member2.jpg') }}" alt>
-                                4121 Tom Nomec
-                                Web dev/h3
-                            </div>
-                            <div class="card-Face back-face">
-                                <div class="container about">
-                                    About me:
-                                    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit, molestiae
-                                        assumenda lure sit enim quo nostrum temporibus eos sapiente nam eum cupiditate
-                                        quiden et placeat deleniti ullam nisi hic dolore.</p>
-                                    <div class="ca href target blant" classhi fo bi-facebook">
-                                        <a href target blans class-hi ig bi-instagram">
-                                            <a href" target="blank" class="bi git si-github">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-3 col-sm-6 team-member" data-category="designers" data-animate="fadeInUp"
-                    data-delay="0.2">
-                    <div class="card">
-                        <div class="card-container">
-                            <div class="card-face front-face">
-                                <img src="{{ asset('home/img/members/member2.jpg') }}" alt>
-                                4121 Tom Nomec
-                                Web dev/h3
-                            </div>
-                            <div class="card-Face back-face">
-                                <div class="container about">
-                                    About me:
-                                    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit, molestiae
-                                        assumenda lure sit enim quo nostrum temporibus eos sapiente nam eum cupiditate
-                                        quiden et placeat deleniti ullam nisi hic dolore.</p>
-                                    <div class="ca href target blant" classhi fo bi-facebook">
-                                        <a href target blans class-hi ig bi-instagram">
-                                            <a href" target="blank" class="bi git si-github">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-3 col-sm-6 team-member" data-category="developers" data-animate="fadeInUp"
-                    data-delay="0.1">
-                    <div class="card">
-                        <div class="card-container">
-                            <div class="card-face front-face">
-                                <img src="{{ asset('home/img/members/member2.jpg') }}" alt>
-                                4121 Tom Nomec
-                                Web dev/h3
-                            </div>
-                            <div class="card-Face back-face">
-                                <div class="container about">
-                                    About me:
-                                    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit, molestiae
-                                        assumenda lure sit enim quo nostrum temporibus eos sapiente nam eum cupiditate
-                                        quiden et placeat deleniti ullam nisi hic dolore.</p>
-                                    <div class="ca href target blant" classhi fo bi-facebook">
-                                        <a href target blans class-hi ig bi-instagram">
-                                            <a href" target="blank" class="bi git si-github">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                                <div class="card-Face back-face">
+                                    <div class="container about">
 
-                <div class="col-md-3 col-sm-6 team-member" data-category="developers" data-animate="fadeInUp"
-                    data-delay="0.1">
-                    <div class="card">
-                        <div class="card-container">
-                            <div class="card-face front-face">
-                                <img src="{{ asset('home/img/members/member2.jpg') }}" alt>
-                                4121 Tom Nomec
-                                Web dev/h3
-                            </div>
-                            <div class="card-Face back-face">
-                                <div class="container about">
-                                    About me:
-                                    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit, molestiae
-                                        assumenda lure sit enim quo nostrum temporibus eos sapiente nam eum cupiditate
-                                        quiden et placeat deleniti ullam nisi hic dolore.</p>
-                                    <div class="ca href target blant" classhi fo bi-facebook">
-                                        <a href target blans class-hi ig bi-instagram">
-                                            <a href" target="blank" class="bi git si-github">
+                                        <p>{{ $team->description }}</p>
+                                        <div class="ca href target blant" classhi fo bi-facebook">
+                                            <a href target blans class-hi ig bi-instagram">
+                                                <a href" target="blank" class="bi git si-github">
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="col-md-3 col-sm-6 team-member" data-category="designers" data-animate="fadeInUp"
-                    data-delay="0.2">
-                    <div class="card">
-                        <div class="card-container">
-                            <div class="card-face front-face">
-                                <img src="{{ asset('home/img/members/member2.jpg') }}" alt>
-                                4121 Tom Nomec
-                                Web dev/h3
-                            </div>
-                            <div class="card-Face back-face">
-                                <div class="container about">
-                                    About me:
-                                    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit, molestiae
-                                        assumenda lure sit enim quo nostrum temporibus eos sapiente nam eum cupiditate
-                                        quiden et placeat deleniti ullam nisi hic dolore.</p>
-                                    <div class="ca href target blant" classhi fo bi-facebook">
-                                        <a href target blans class-hi ig bi-instagram">
-                                            <a href" target="blank" class="bi git si-github">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-3 col-sm-6 team-member" data-category="designers" data-animate="fadeInUp"
-                    data-delay="0.2">
-                    <div class="card">
-                        <div class="card-container">
-                            <div class="card-face front-face">
-                                <img src="{{ asset('home/img/members/member2.jpg') }}" alt>
-                                4121 Tom Nomec
-                                Web dev/h3
-                            </div>
-                            <div class="card-Face back-face">
-                                <div class="container about">
-                                    About me:
-                                    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit, molestiae
-                                        assumenda lure sit enim quo nostrum temporibus eos sapiente nam eum cupiditate
-                                        quiden et placeat deleniti ullam nisi hic dolore.</p>
-                                    <div class="ca href target blant" classhi fo bi-facebook">
-                                        <a href target blans class-hi ig bi-instagram">
-                                            <a href" target="blank" class="bi git si-github">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                @endforeach
+
             </div>
         </div>
     </section>
