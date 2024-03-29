@@ -36,6 +36,7 @@ use App\Models\SocialMedia;
 use App\Models\Tag;
 use App\Models\Team;
 use App\Models\TeamRole;
+use App\Models\WorkWithUs;
 use CyrildeWit\EloquentViewable\Support\Period;
 use DateTime;
 use Illuminate\Support\Carbon;
@@ -65,8 +66,8 @@ class SiteController extends Controller
         $experinceSlider = ExperinceSlider::all();
 
         $packages = Packagee::all();
-        $counters=Counter::all();
-        $reviews=Review::latest()->get();
+        $counters = Counter::all();
+        $reviews = Review::latest()->get();
         return view('home', compact('info', 'about', 'aboutFields', 'workCategories', 'works', 'clients', 'blogs', 'blogCategories', 'services', 'contactInfo', 'allServices', 'contactInfo', 'homeSlider', 'experinceSlider', 'packages', 'counters', 'reviews'));
     }
 
@@ -100,6 +101,60 @@ class SiteController extends Controller
         return view('contact', compact('services', 'contactInfo', 'info'));
     }
 
+    public function workWithUs()
+    {
+        $info = Info::first();
+        $contactInfo = ContactInfo::find(1);
+        return view('workWithUs', compact('contactInfo', 'info'));
+    }
+
+    public function postWorkWithUs(Request $request)
+    {
+        // 1. Validate the request data
+        $validatedData = $request->validate([
+            'full_name' => 'required|string',
+            'gender' => 'required|in:male,female',
+            'date_of_birth' => 'required|date',
+            'email' => 'required|email|unique:work_with_us',
+            'mobile_number' => 'required|numeric',
+            'address' => 'required|string',
+            'marital_status' => 'required|in:single,married,other',
+            'study_major' => 'required|string',
+            'current_job' => 'nullable|string',
+            'other_work_experiences' => 'nullable|string',
+            'english_level' => 'required|in:beginner,intermediate,good,very_good',
+            'skills' => 'required|array', // Assuming skills are an array
+            'additional_information' => 'nullable|string',
+            'job_benefit_goals' => 'required|string',
+        ]);
+
+        // 2. Create a new WorkWithUs instance
+        $workWithUs = new WorkWithUs();
+
+        // 3. Assign validated data to the model
+        $workWithUs->full_name = $validatedData['full_name'];
+        $workWithUs->gender = $validatedData['gender'];
+        $workWithUs->date_of_birth = $validatedData['date_of_birth'];
+        $workWithUs->email = $validatedData['email'];
+        $workWithUs->mobile_number = $validatedData['mobile_number'];
+        $workWithUs->address = $validatedData['address'];
+        $workWithUs->marital_status = $validatedData['marital_status'];
+        $workWithUs->study_major = $validatedData['study_major'];
+        $workWithUs->current_job = $validatedData['current_job'];
+        $workWithUs->other_work_experiences = $validatedData['other_work_experiences'];
+        $workWithUs->english_level = $validatedData['english_level'];
+        $workWithUs->skills = json_encode($validatedData['skills']); // Store skills as JSON
+        $workWithUs->additional_information = $validatedData['additional_information'];
+        $workWithUs->job_benefit_goals = $validatedData['job_benefit_goals'];
+
+        // 4. Save the model to the database
+        $workWithUs->save();
+
+        session()->flash('success', trans('contact.sent_successfully'));
+        // 5. Redirect or show success message
+        return redirect()->route('home')->with('message', 'تم إرسال الطلب بنجاح!');
+    }
+
     public function services()
     {
         $services = Service::where('showed', 1)->get();
@@ -112,7 +167,7 @@ class SiteController extends Controller
         views($service)
             ->record();
 
-            // dd(views($service)->unique()->count());
+        // dd(views($service)->unique()->count());
 
         $info = Info::first();
         $categories = BlogCategory::all();
@@ -309,11 +364,11 @@ class SiteController extends Controller
         );
         try {
             //code...
-        Mail::send('mail', $info, function ($message) use ($contact) {
-            $message->to("info@project.com", "info")
-                ->subject('New Contact us');
-            $message->from('card-ordrer@project.com', 'Almohtarif');
-        });
+            Mail::send('mail', $info, function ($message) use ($contact) {
+                $message->to("info@project.com", "info")
+                    ->subject('New Contact us');
+                $message->from('card-ordrer@project.com', 'Almohtarif');
+            });
         } catch (\Throwable $th) {
             //throw $th;
         }
@@ -361,7 +416,7 @@ class SiteController extends Controller
             $blogs = Tag::findOrFail($request->tag)->blogs;
         } elseif ($request->category) {
             $blogs = Blog::with(['category'])->whenCategory($request->category)->where('showed', 1)->latest()->get();
-        }elseif ($request->author) {
+        } elseif ($request->author) {
             $blogs = Blog::with(['category'])->whenAuthor($request->author)->where('showed', 1)->latest()->get();
         } else {
             $blogs = Blog::with(['category'])->whenSearch($request->search)->where('showed', 1)->latest()->get();

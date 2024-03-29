@@ -36,6 +36,11 @@ Route::group(
         Route::get('/about', 'SiteController@about')->name('about');
         Route::get('/privacy', 'SiteController@privacy')->name('privacy');
         Route::get('/contact-us', 'SiteController@contact')->name('contact');
+        Route::post('/contact-us', 'SiteController@postContact')->name('contact.post');
+        // workWithUs
+        Route::get('/workWithUs', 'SiteController@workWithUs')->name('workWithUs');
+        Route::post('/workWithUs', 'SiteController@postWorkWithUs')->name('workWithUs.post');
+
         Route::post('/appointment/time', 'SiteController@appointmentTime')->name('appointment.time');
 
         Route::get('/services', 'SiteController@services')->name('services');
@@ -43,7 +48,6 @@ Route::group(
         Route::get('/services/{service:slug}/order', 'SiteController@orderService')->name('service.order');
         Route::post('/services/{service:slug}/order', 'SiteController@storeOrderService')->name('service.order.store');
 
-        Route::post('/contact-us', 'SiteController@postContact')->name('contact.post');
 
         Route::get('/works/{work:slug}', 'SiteController@work')->name('work');
         Route::get('/blogs', 'SiteController@blogs')->name('blogs');
