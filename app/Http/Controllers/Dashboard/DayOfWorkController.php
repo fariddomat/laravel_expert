@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Dashboard;
 
-use App\DayOfWork;
+use App\Models\DayOfWork;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 

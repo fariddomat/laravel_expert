@@ -5,9 +5,9 @@ namespace App\Http\Controllers\Dashboard;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
-use App\Blog;
-use App\BlogCategory;
-use App\Tag;
+use App\Models\Blog;
+use App\Models\BlogCategory;
+use App\Models\Tag;
 use Illuminate\Support\Str;
 use Illuminate\Validation\Rule;
 

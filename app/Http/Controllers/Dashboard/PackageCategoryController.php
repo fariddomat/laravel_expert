@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Dashboard;
 
 use App\Http\Controllers\Controller;
-use App\PackageCategory;
+use App\Models\PackageCategory;
 use Illuminate\Http\Request;
 
 class PackageCategoryController extends Controller

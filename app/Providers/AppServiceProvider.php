@@ -2,15 +2,15 @@
 
 namespace App\Providers;
 
-use App\Blog;
-use App\Color;
-use App\ContactInfo;
+use App\Models\Blog;
+use App\Models\Color;
+use App\Models\ContactInfo;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Facades\View;
-use App\SocialMedia;
-use App\Info;
-use App\Service;
+use App\Models\SocialMedia;
+use App\Models\Info;
+use App\Models\Service;
 
 class AppServiceProvider extends ServiceProvider
 {

@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Dashboard;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\WorkCategory;
+use App\Models\WorkCategory;
 use Illuminate\Support\Facades\Validator;
 
 class WorkCategoryController extends Controller

@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Dashboard;
 
-use App\Counter;
+use App\Models\Counter;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 

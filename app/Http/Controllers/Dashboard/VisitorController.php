@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers\Dashboard;
 
-use App\Blog;
+use App\Models\Blog;
 use App\Http\Controllers\Controller;
-use App\Service;
-use App\VisitorInformation;
+use App\Models\Service;
+use App\Models\VisitorInformation;
 use Carbon\Carbon;
 use CyrildeWit\EloquentViewable\Support\Period;
 use Illuminate\Http\Request;

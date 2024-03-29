@@ -3,12 +3,12 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Service;
-use App\Info;
-use App\About;
-use App\ContactInfo;
-use App\Work;
-use App\Blog;
+use App\Models\Service;
+use App\Models\Info;
+use App\Models\About;
+use App\Models\ContactInfo;
+use App\Models\Work;
+use App\Models\Blog;
 
 class SitemapXmlController extends Controller
 {

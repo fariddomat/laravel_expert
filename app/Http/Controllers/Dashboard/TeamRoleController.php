@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Dashboard;
 
 use App\Http\Controllers\Controller;
-use App\TeamRole;
+use App\Models\TeamRole;
 use Illuminate\Http\Request;
 
 class TeamRoleController extends Controller

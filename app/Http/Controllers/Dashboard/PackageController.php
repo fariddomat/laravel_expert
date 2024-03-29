@@ -3,8 +3,8 @@
 namespace App\Http\Controllers\Dashboard;
 
 use App\Http\Controllers\Controller;
-use App\Packagee;
-use App\Service;
+use App\Models\Packagee;
+use App\Models\Service;
 use Illuminate\Http\Request;
 
 class PackageController extends Controller

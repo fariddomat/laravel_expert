@@ -3,11 +3,11 @@
 namespace App\Http\Controllers\Dashboard;
 
 use App\Http\Controllers\Controller;
-use App\Service;
+use App\Models\Service;
 use Illuminate\Http\Request;
-use App\ServiceSection;
-use App\ServiceSliderImage;
-use App\ServiceSectionImage;
+use App\Models\ServiceSection;
+use App\Models\ServiceSliderImage;
+use App\Models\ServiceSectionImage;
 use Illuminate\Support\Facades\Storage;
 
 class ServiceSliderImageController extends Controller

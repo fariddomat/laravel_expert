@@ -110,7 +110,8 @@
                                     <li><a href="{{ route('contact') }}">@lang('site.contact')</a></li>
                                     @guest
                                     <li><a href="{{ route('login') }}">@lang('site.login')</a></li>
-                                        
+                                    @else
+                                    <li><a href="{{ route('dashboard.home') }}">@lang('site.dashboard')</a></li>
                                     @endguest
                                 </ul>
                             </div>

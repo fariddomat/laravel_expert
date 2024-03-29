@@ -4,8 +4,8 @@ namespace App\Http\Controllers\Dashboard;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\SMS;
-use App\GlobalSMS;
+use App\Models\SMS;
+use App\Models\GlobalSMS;
 
 class SMSController extends Controller
 {

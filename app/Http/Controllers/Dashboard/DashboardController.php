@@ -2,13 +2,13 @@
 
 namespace App\Http\Controllers\Dashboard;
 
-use App\Blog;
-use App\BlogCategory;
-use App\ContactUs;
+use App\Models\Blog;
+use App\Models\BlogCategory;
+use App\Models\ContactUs;
 use App\Http\Controllers\Controller;
-use App\Service;
-use App\VisitorInformation;
-use App\WorkWithUs;
+use App\Models\Service;
+use App\Models\VisitorInformation;
+use App\Models\WorkWithUs;
 use Illuminate\Http\Request;
 
 class DashboardController extends Controller

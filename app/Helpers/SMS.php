@@ -3,7 +3,7 @@
 namespace App\Helpers;
 
 use Illuminate\Support\Facades\Http;
-use App\SMSLog;
+use App\Models\SMSLog;
 
 class SMS
 {

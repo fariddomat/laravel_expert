@@ -4,9 +4,9 @@ namespace App\Exceptions;
 
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 use Throwable;
-use App\Service;
-use App\Work;
-use App\Blog;
+use App\Models\Service;
+use App\Models\Work;
+use App\Models\Blog;
 
 class Handler extends ExceptionHandler
 {

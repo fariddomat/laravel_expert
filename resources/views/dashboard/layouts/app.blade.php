@@ -105,11 +105,11 @@
                             حول الموقع
                         </a>
                     </li>
-                    <li class="nav-item">
+                    {{-- <li class="nav-item">
                         <a class="nav-link @yield('aboutimagesActive')" href="{{ route('dashboard.aboutimages.index') }}">
                             صور حول الموقع
                         </a>
-                    </li>
+                    </li> --}}
 
                     <li class="nav-item">
                         <a class="nav-link @yield('servicesActive')" href="{{ route('dashboard.services.index') }}">
@@ -136,23 +136,23 @@
                             منصات التواصل الاجتماعي
                         </a>
                     </li>
-
+{{-- 
                     <li class="nav-item">
                         <a class="nav-link @yield('partnerActive')" href="{{ route('dashboard.partnerSlider.index') }}">
                             شركائنا
                         </a>
-                    </li>
+                    </li> --}}
 
                     <li class="nav-item">
                         <a class="nav-link @yield('teamActive')" href="{{ route('dashboard.team.index') }}">
                             فريق العمل
                         </a>
                     </li>
-                    <li class="nav-item">
+                    {{-- <li class="nav-item">
                         <a class="nav-link @yield('experinceActive')" href="{{ route('dashboard.experinceSlider.index') }}">
                             خبرات فريق العمل
                         </a>
-                    </li>
+                    </li> --}}
 
                     <li class="nav-item">
                         <a class="nav-link @yield('faqActive')" href="{{ route('dashboard.faqs.index') }}">
@@ -206,11 +206,11 @@
                     </a>
                 </li>
                 @if (auth()->user()->hasRole('superadministrator'))
-                    <li class="nav-item">
+                    {{-- <li class="nav-item">
                         <a class="nav-link @yield('blogPDFActive')" href="{{ route('dashboard.blogPDF.create') }}">
                             غلاف المدونة
                         </a>
-                    </li>
+                    </li> --}}
 
                     <li class="nav-item">
                         <a class="nav-link @yield('passwordEditActive')" href="{{ route('dashboard.password.edit') }}">

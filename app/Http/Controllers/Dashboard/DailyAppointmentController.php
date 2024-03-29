@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers\Dashboard;
 use Carbon\Carbon;
-use App\DailyAppointment;
-use App\DayOfWork;
+use App\Models\DailyAppointment;
+use App\Models\DayOfWork;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;

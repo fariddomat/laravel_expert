@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
-use App\SocialMedia;
+use App\Models\SocialMedia;
 
 class SocialMediaSeeder extends Seeder
 {

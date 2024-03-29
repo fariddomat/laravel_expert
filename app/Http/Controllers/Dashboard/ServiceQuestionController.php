@@ -4,8 +4,8 @@ namespace App\Http\Controllers\Dashboard;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Service;
-use App\ServiceQuestion;
+use App\Models\Service;
+use App\Models\ServiceQuestion;
 
 class ServiceQuestionController extends Controller
 {

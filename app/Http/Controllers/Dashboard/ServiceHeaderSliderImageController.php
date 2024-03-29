@@ -3,8 +3,8 @@
 namespace App\Http\Controllers\Dashboard;
 
 use App\Http\Controllers\Controller;
-use App\Service;
-use App\ServiceHeaderSliderImage;
+use App\Models\Service;
+use App\Models\ServiceHeaderSliderImage;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 

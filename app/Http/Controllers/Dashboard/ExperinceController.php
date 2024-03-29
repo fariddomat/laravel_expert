@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Dashboard;
 
-use App\ExperinceSlider;
+use App\Models\ExperinceSlider;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;

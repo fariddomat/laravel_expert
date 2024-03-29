@@ -3,8 +3,8 @@
 namespace App\Http\Controllers\Dashboard;
 
 use App\Http\Controllers\Controller;
-use App\Team;
-use App\TeamRole;
+use App\Models\Team;
+use App\Models\TeamRole;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 

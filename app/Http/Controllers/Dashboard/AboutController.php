@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Dashboard;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\About;
+use App\Models\About;
 use Illuminate\Support\Facades\Storage;
 
 class AboutController extends Controller

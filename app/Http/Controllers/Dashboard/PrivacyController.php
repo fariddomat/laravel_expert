@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers\Dashboard;
 
-use App\About;
+use App\Models\About;
 use App\Http\Controllers\Controller;
-use App\Privacy;
+use App\Models\Privacy;
 use Illuminate\Http\Request;
 
 class PrivacyController extends Controller

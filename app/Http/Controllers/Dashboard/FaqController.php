@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Dashboard;
 
-use App\Faq;
+use App\Models\Faq;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 

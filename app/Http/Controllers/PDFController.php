@@ -3,10 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Blog;
+use App\Models\Blog;
 use PDF;
-use App\BlogPdf;
-use App\SocialMedia;
+use App\Models\BlogPdf;
+use App\Models\SocialMedia;
 
 class PDFController extends Controller
 {

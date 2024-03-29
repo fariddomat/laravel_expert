@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Dashboard;
 
-use App\BlockedContact;
+use App\Models\BlockedContact;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 

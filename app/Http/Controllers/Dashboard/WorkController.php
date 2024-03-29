@@ -5,8 +5,8 @@ namespace App\Http\Controllers\Dashboard;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
-use App\Work;
-use App\WorkCategory;
+use App\Models\Work;
+use App\Models\WorkCategory;
 use Illuminate\Support\Str;
 use Illuminate\Validation\Rule;
 

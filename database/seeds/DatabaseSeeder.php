@@ -1,6 +1,6 @@
 <?php
 
-use App\ContactInfo;
+use App\Models\ContactInfo;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder

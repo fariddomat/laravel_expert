@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Dashboard;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
-use App\Service;
+use App\Models\Service;
 use Illuminate\Support\Str;
 use Illuminate\Validation\Rule;
 

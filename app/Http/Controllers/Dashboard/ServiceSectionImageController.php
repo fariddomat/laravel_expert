@@ -4,8 +4,8 @@ namespace App\Http\Controllers\Dashboard;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\ServiceSection;
-use App\ServiceSectionImage;
+use App\Models\ServiceSection;
+use App\Models\ServiceSectionImage;
 use Illuminate\Support\Facades\Storage;
 
 class ServiceSectionImageController extends Controller
