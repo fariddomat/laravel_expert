@@ -108,7 +108,10 @@
                                     <li><a href="{{ route('blogs') }}">@lang('site.blog')</a></li>
                                     {{-- <li><a href="{{ route('home') }}#portfolio">@lang('site.my_works')</a></li> --}}
                                     <li><a href="{{ route('contact') }}">@lang('site.contact')</a></li>
+                                    @guest
                                     <li><a href="{{ route('login') }}">@lang('site.login')</a></li>
+                                        
+                                    @endguest
                                 </ul>
                             </div>
                             <!-- End of Header-menu -->
