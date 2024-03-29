@@ -116,11 +116,11 @@
                             الخدمات
                         </a>
                     </li>
-                    <li class="nav-item">
+                    {{-- <li class="nav-item">
                         <a class="nav-link @yield('orderservicesActive')" href="{{ route('dashboard.orderservices.index') }}">
                             طلبات الخدمات
                         </a>
-                    </li>
+                    </li> --}}
                     <li class="nav-item">
                         <a class="nav-link @yield('contactusActive')" href="{{ route('dashboard.contact-us.index') }}">
                             اتصل بنا
@@ -217,7 +217,7 @@
                             تغيير كلمة السر
                         </a>
                     </li>
-                   
+
                     {{-- <li class="nav-item">
                         <a class="nav-link @yield('colorActive')" href="{{ route('dashboard.color.create') }}">
                             ألوان الموقع

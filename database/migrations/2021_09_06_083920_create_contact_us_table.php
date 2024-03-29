@@ -28,6 +28,8 @@ class CreateContactUsTable extends Migration
             $table->tinyInteger('status');
             $table->string('ip')->nullable();
             $table->timestamps();
+            $table->text('note')->nullable();
+
         });
     }
 

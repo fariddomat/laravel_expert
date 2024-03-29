@@ -246,7 +246,14 @@ class SiteController extends Controller
         $rules = [
             'name' => ['required'],
             'email' => ['nullable', 'email'],
-            'mobile' => ['required', 'numeric'],
+            'mobile' => ['required'],
+
+            'phone' => ['nullable'],
+            'contact_method' => ['required'],
+            'dob' => ['required', 'date'],
+            'city' => ['required'],
+            'cert_degree' => ['required'],
+
             'services' => ['required', 'array'],
             'services.*' => ['numeric'],
             'message' => ['nullable'],
@@ -276,6 +283,14 @@ class SiteController extends Controller
         $contact->name = $validatedData['name'];
         $contact->email =  $validatedData['email'] ?? '';
         $contact->mobile =  $validatedData['mobile'];
+
+        $contact->phone =  $validatedData['phone'] ?? '';
+        $contact->contact_method =  $validatedData['contact_method'];
+        $contact->dob =  $validatedData['dob'];
+        $contact->city =  $validatedData['city'];
+        $contact->cert_degree =  $validatedData['cert_degree'];
+        $contact->start_at =  $start_At;
+
         $contact->message = $validatedData['message'] ?? '';
         $contact->status = 1; //new
         $contact->ip = $request->ip();
@@ -292,11 +307,16 @@ class SiteController extends Controller
             'mobile' => $request->mobile,
             'data' => $request->message
         );
+        try {
+            //code...
         Mail::send('mail', $info, function ($message) use ($contact) {
             $message->to("info@project.com", "info")
                 ->subject('New Contact us');
             $message->from('card-ordrer@project.com', 'Almohtarif');
         });
+        } catch (\Throwable $th) {
+            //throw $th;
+        }
 
         session()->flash('success', trans('contact.sent_successfully'));
         return redirect()->back();

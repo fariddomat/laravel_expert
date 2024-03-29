@@ -163,7 +163,9 @@ $(document).ready(function() {
                             <div class="col-md-6" data-animate="fadeInUp" data-delay=".2">
                                 <div class="form-group">
                                     <label for="dob">تاريخ الميلاد</label>
-                                    <input type="date" name="dob" value="{{ old('dob') }}" class="form-control">
+                                    <input type="date" name="dob" value="{{ old('dob') }}" class="form-control"  data-parsley-required="true"
+                                        data-parsley-required-message="تاريخ الميلاد مطلوب."
+                                        data-parsley-trigger="change">
                                 </div>
                             </div>
                             <div class="col-md-6" data-animate="fadeInUp" data-delay=".3">
@@ -199,7 +201,9 @@ $(document).ready(function() {
                             <div class="col-md-6" data-animate="fadeInUp" data-delay=".6">
                                 <div class="form-group">
                                     <label for="contact_method">وسيلة الاتصال المفضلة</label>
-                                    <select name="contact_method" class="form-control">
+                                    <select name="contact_method" class="form-control"  data-parsley-required="true"
+                                    data-parsley-required-message="وسيلة الاتصال مطلوبة."
+                                    data-parsley-trigger="change">
                                         <option value="email" @if (old('contact_method') == 'email') selected @endif>
                                             @lang('contact.email')
                                         </option>
@@ -225,14 +229,18 @@ $(document).ready(function() {
                                 <div class="form-group">
                                     <label for="city">المدينة</label>
                                     <input type="text" name="city" value="{{ old('city') }}"
-                                        class="form-control" placeholder="">
+                                        class="form-control" placeholder=""  data-parsley-required="true"
+                                        data-parsley-required-message="المدينة مطلوبة."
+                                        data-parsley-trigger="change">
                                 </div>
                             </div>
 
                             <div class="col-md-6" data-animate="fadeInUp" data-delay=".8">
                                 <div class="form-group">
                                     <label for="cert_degree">آخر شهادة حصلة عليها</label>
-                                    <select name="cert_degree" class="form-control">
+                                    <select name="cert_degree" class="form-control"  data-parsley-required="true"
+                                    data-parsley-required-message="الشهادة مطلوبة."
+                                    data-parsley-trigger="change">
                                         <option value="ابتدائية">ابتدائية</option>
                                         <option value="إعدادية">إعدادية</option>
                                         <option value="ثانوية عامة">ثانوية عامة</option>
@@ -251,7 +259,9 @@ $(document).ready(function() {
                                     @foreach ($services as $service)
                                         <div class="form-check form-switch">
                                             <input class="form-check-input" type="checkbox" name="services[]"
-                                                value="{{ $service->id }}">
+                                                value="{{ $service->id }}"  data-parsley-required="true"
+                                                data-parsley-required-message="تحديد خدمة على الأقل مطلوب."
+                                                data-parsley-trigger="change">
                                             <label class="form-check-label" for="service">{{ $service->title }}</label>
                                         </div>
                                     @endforeach
@@ -262,19 +272,22 @@ $(document).ready(function() {
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-md-6 form-group mt-3">
+                            <div class="col-md-6 form-group mt-3" data-animate="fadeInUp" data-delay=".9">
                                 <label for="">حجز موعد - التاريخ:</label>
 
                                 <input type="date" id="appointment_date" name="appointment_date"
                                     class="form-control datepicker" id="date" placeholder="Appointment Date"
-                                    data-rule="minlen:4" data-msg="Please enter at least 4 chars"
-                                    min="{{ now()->toDateString('Y-m-d') }}">
+                                    min="{{ now()->toDateString('Y-m-d') }}"  data-parsley-required="true"
+                                    data-parsley-required-message="التاريخ مطلوب."
+                                    data-parsley-trigger="change">
                                 <div class="validate"></div>
                             </div>
 
-                            <div class="col-md-6 form-group mt-3">
+                            <div class="col-md-6 form-group mt-3" data-animate="fadeInUp" data-delay=".9">
                                 <label for="">الوقت:</label>
-                                <select name="appointment_time" id="appointment_time" class="form-control">
+                                <select name="appointment_time" id="appointment_time" class="form-control"  data-parsley-required="true"
+                                data-parsley-required-message="الوقت مطلوب."
+                                data-parsley-trigger="change">
                                     <option value="">اختر تاريخ من فضلك</option>
                                 </select>
                                 <div class="validate"></div>
