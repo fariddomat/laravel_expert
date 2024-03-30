@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Dashboard;
 
+use App\Helpers\ImageHelper;
 use App\Http\Controllers\Controller;
 use App\Models\Team;
 use App\Models\TeamRole;
@@ -37,9 +38,13 @@ class TeamController extends Controller
         ]);
         $team  = Team::create($request->all());
 
+        
+        $helper = new ImageHelper;
         $image = $request->file('image');
-        $filename = $image->getClientOriginalName();
-        $team->image = $image->storeAs('photos/team', $filename);
+        $directory = '/photos/team';
+        $fullPath = $helper->storeImageInPublicDirectory($image, $directory);
+        $team->image = $fullPath;
+
         $team->save();
         session()->flash('success', 'Image Added Successfully');
         return redirect()->route('dashboard.team.index');
@@ -66,10 +71,12 @@ class TeamController extends Controller
         $team->update($request->all());
 
         if ($request->has('image')) {
-            Storage::disk('local')->delete($team->image);
-            $imageFile = $request->file('image');
-            $filename = $imageFile->getClientOriginalName();
-            $team->image = $imageFile->storeAs('photos/team', $filename);
+            $helper = new ImageHelper;
+            $helper->removeImageInPublicDirectory($team->image);
+            $image = $request->file('image');
+            $directory = '/photos/team';
+            $fullPath = $helper->storeImageInPublicDirectory($image, $directory);
+            $team->image = $fullPath;
         }
 
         $team->save();

@@ -111,7 +111,7 @@
                                     @guest
                                     <li><a href="{{ route('login') }}">@lang('site.login')</a></li>
                                     @else
-                                    <li><a href="{{ route('dashboard.home') }}">@lang('site.dashboard')</a></li>
+                                    <li><a href="{{ route('dashboard.home') }}">لوحة التحكم</a></li>
                                     @endguest
                                 </ul>
                             </div>

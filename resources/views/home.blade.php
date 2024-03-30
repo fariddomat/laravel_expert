@@ -2,6 +2,10 @@
 @section('title', trans('site.home'))
 @section('styles')
     <style>
+        .services-title {
+            height: 485px;
+        }
+
         dfn {
             font-style: italic
         }
@@ -128,27 +132,27 @@
         }
 
         /* .section-wrapper .shielding-layer:after {
-                                                            content: "";
-                                                            width: 71%;
-                                                            height: 100%;
-                                                            position: absolute;
-                                                            top: 0;
-                                                            right: 0;
-                                                            z-index: 3;
-                                                            background: linear-gradient(90deg, rgba(249, 249, 254, 0) rgba(249, 249, 254, 0.97) 0,);
-                                                        }
+                                                                content: "";
+                                                                width: 71%;
+                                                                height: 100%;
+                                                                position: absolute;
+                                                                top: 0;
+                                                                right: 0;
+                                                                z-index: 3;
+                                                                background: linear-gradient(90deg, rgba(249, 249, 254, 0) rgba(249, 249, 254, 0.97) 0,);
+                                                            }
 
-                                                        .section-wrapper .shielding-layer:before {
-                                                            pointer-events: none;
-                                                            content: "";
-                                                            width: calc(29% + 1px);
-                                                            height: 100%;
-                                                            position: absolute;
-                                                            top: 0;
-                                                            left: 0;
-                                                            z-index: 3;
-                                                            background: linear-gradient(90deg, rgba(249, 249, 254, 0.97) 0, rgba(249, 249, 254, 0));
-                                                        } */
+                                                            .section-wrapper .shielding-layer:before {
+                                                                pointer-events: none;
+                                                                content: "";
+                                                                width: calc(29% + 1px);
+                                                                height: 100%;
+                                                                position: absolute;
+                                                                top: 0;
+                                                                left: 0;
+                                                                z-index: 3;
+                                                                background: linear-gradient(90deg, rgba(249, 249, 254, 0.97) 0, rgba(249, 249, 254, 0));
+                                                            } */
 
         .section-wrapper:before {
             content: "";
@@ -427,7 +431,7 @@
             color: #E2E2E2
         }
 
-        .counter_section_item  svg {
+        .counter_section_item svg {
             width: 45px !important;
             height: 45px !important;
         }
@@ -877,7 +881,8 @@
 
             <div class="container-fluid">
                 <div class="row">
-                    <h2 class="" data-animate="fadeIn Up" data-delay=".1" style="margin: 0 auto 75px;">إمتيازات تجعل شركة المحترف الأفضل على الإطلاق </h2>
+                    <h2 class="" data-animate="fadeIn Up" data-delay=".1" style="margin: 0 auto 75px;">إمتيازات تجعل
+                        شركة المحترف الأفضل على الإطلاق </h2>
                 </div>
                 <div class="row">
 
@@ -905,7 +910,8 @@
                     <div class="col-md-5 offset-md-1" data-animate="fadeInUp" data-delay=".4">
                         <div class="about-img animate-box" data-animate-effect="fadeInUp">
                             <div class="img" style="  text-align: center;"> <img
-                                    src="{{ asset($info->about_me_image) }}" alt="" style="max-width: 250px"> </div>
+                                    src="{{ asset($info->about_me_image) }}" alt="" style="max-width: 250px">
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -963,7 +969,8 @@
                                     <div class="shadow-effect">
                                         <div class="single-post" data-animate="">
                                             <div class="image-hover-wrap">
-                                                <img class="img-fluid" src="{{ asset($service->image) }}" alt="" style="aspect-ratio: 3 / 3;">
+                                                <img class="img-fluid" src="{{ asset($service->image) }}" alt=""
+                                                    style="aspect-ratio: 3 / 3;">
                                                 <div
                                                     class="image-hover-content d-flex justify-content-center align-items-center text-center">
                                                     <ul class="list-inline">
@@ -976,7 +983,7 @@
                                             </div>
                                             <h3>{{ $service->title }}</h3>
                                             <h4>
-                                                {!! Str::limit( Helper::removeSpecialCharacter($service->brief),140 ) !!}
+                                                {!! Str::limit(Helper::removeSpecialCharacter($service->brief), 140) !!}
                                             </h4>
 
                                         </div>
@@ -984,7 +991,8 @@
                                     </div>
                                     <div class="testimonial-name" style="background-color: #DF1F26">
                                         <a href="{{ route('service', $service->slug) }}"
-                                            class="btn btn-secondary">@lang('site.read_more')<i class="fas fa-caret-right"></i></a>
+                                            class="btn btn-secondary">@lang('site.read_more')<i
+                                                class="fas fa-caret-right"></i></a>
                                     </div>
                                 </div>
                                 <!--END OF TESTIMONIAL 1 -->
@@ -1010,17 +1018,22 @@
                 <div class="col-xl-7 col-lg-5">
                     <div class="section-title">
                         <h2 data-animate="fadeInUp" data-delay=".1">المزيد من الخدمات</h2>
-                        <p data-animate="fadeInUp" data-delay=".2">حتى نبقى معكم خلال الرحلة ولكي نؤمن أعلى درجات الدقة والسرعة التي نسعى اليها دائماً ,<br>شملت خدماتنا الحجوزات الفندقية والتأمين الصحي لمختلف دول العالم </p>
+                        <p data-animate="fadeInUp" data-delay=".2">حتى نبقى معكم خلال الرحلة ولكي نؤمن أعلى درجات الدقة
+                            والسرعة التي نسعى اليها دائماً ,<br>شملت خدماتنا الحجوزات الفندقية والتأمين الصحي لمختلف دول
+                            العالم </p>
                     </div>
                     <ul class="data-centers list-unstyled list-item clearfix">
                         <li></li>
-                        <li data-animate="fadeInUp" data-delay=".1" style="text-align: justify"><i class="fas fa-caret-right"></i>وحتى نبقى مستشاركم الأول منذ اللحظة الأولى
-                            نقدم لكم خدمة الاستشارات المجانية التي تحصلون من خلالها على إجابات كاملة لأسئلتكم واستفساراتكم عن كل ما يتعلق بالسفر والدراسة بالخارج
+                        <li data-animate="fadeInUp" data-delay=".1" style="text-align: justify"><i
+                                class="fas fa-caret-right"></i>وحتى نبقى مستشاركم الأول منذ اللحظة الأولى
+                            نقدم لكم خدمة الاستشارات المجانية التي تحصلون من خلالها على إجابات كاملة لأسئلتكم واستفساراتكم
+                            عن كل ما يتعلق بالسفر والدراسة بالخارج
 
                         </li>
                         <li></li>
-                        <li data-animate="fadeInUp" data-delay=".2"><a class="btn btn-secondary" href="{{ route('contact') }}">أحجز موعدك الآن</a></li>
-                    </li>
+                        <li data-animate="fadeInUp" data-delay=".2"><a class="btn btn-secondary"
+                                href="{{ route('contact') }}">أحجز موعدك الآن</a></li>
+                        </li>
                         {{-- <li data-animate="fadeInUp" data-delay=".2"><i class="fas fa-caret-right"></i>الإمارات (169)
                         </li>
                         <li data-animate="fadeInUp" data-delay=".3"><i class="fas fa-caret-right"></i>رومانيا (151)</li>

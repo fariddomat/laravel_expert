@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Dashboard;
 
+use App\Helpers\ImageHelper;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Review;
@@ -53,10 +54,12 @@ class ReviewController extends Controller
 
         // Handle image upload if provided
         if ($request->hasFile('image')) {
+            
+            $helper = new ImageHelper;
             $image = $request->file('image');
-            $imageName = time() . '.' . $image->getClientOriginalExtension();
-            $image->move(public_path('images/reviews'), $imageName);
-            $review->image = $imageName;
+            $directory = '/photos/reviews';
+            $fullPath = $helper->storeImageInPublicDirectory($image, $directory, 200);
+            $review->image = $fullPath;
         }
 
         // Save the review
@@ -112,15 +115,13 @@ class ReviewController extends Controller
 
         // Handle image update if provided
         if ($request->hasFile('image')) {
-            // Delete the old image if it exists
-            if ($review->image) {
-                unlink(public_path('images/reviews/' . $review->image));
-            }
-
+       
+            $helper = new ImageHelper;
+            $helper->removeImageInPublicDirectory($review->image);
             $image = $request->file('image');
-            $imageName = time() . '.' . $image->getClientOriginalExtension();
-            $image->move(public_path('images/reviews'), $imageName);
-            $review->image = $imageName;
+            $directory = '/photos/reviews';
+            $fullPath = $helper->storeImageInPublicDirectory($image, $directory,200);
+            $review->image = $fullPath;
         }
 
         // Save the updated review

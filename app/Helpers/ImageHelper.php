@@ -32,6 +32,7 @@ class ImageHelper
                 ->encode('webp', 80); // Encode as WebP with 80% quality (adjust as needed)
         }
         // Store the processed image in the public directory
+        $filename = time() . '.' . $image->getClientOriginalExtension();
         Storage::disk('local')->put($path . '/' . $filename, $processedImage);
         return $path . '/' . $filename; // Return the full path with name
     }
