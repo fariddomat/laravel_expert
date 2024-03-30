@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\View;
 use App\Models\SocialMedia;
 use App\Models\Info;
 use App\Models\Service;
+use Intervention\Image\ImageManager;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -21,7 +22,6 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        
     }
 
     /**
@@ -33,6 +33,8 @@ class AppServiceProvider extends ServiceProvider
     {
 
         Schema::defaultStringLength(191);
+
+
         // Using closure based composers...
         View::composer('layouts.site', function ($view) {
             $view->with('socialMedias', SocialMedia::all())
@@ -42,7 +44,5 @@ class AppServiceProvider extends ServiceProvider
                 ->with('servicesA', Service::where('showed', 1)->where('show_at_home', 1)->limit(3)->get())
                 ->with('blogs', Blog::limit(3)->get());
         });
-
-
     }
 }

@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers\Dashboard;
 
+use App\Helpers\ImageHelper;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\BlogCategory;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
 
 class BlogCategoryController extends Controller
@@ -43,9 +45,14 @@ class BlogCategoryController extends Controller
 
         $blogCategory->position = BlogCategory::max('position') + 1;
         $blogCategory->showed  = $request->has('showed') ? 1 : 0;
+
         $image = $request->file('image');
-        $filename = $image->getClientOriginalName();
-        $blogCategory->image = $image->storeAs('photos/blogCategories', $filename);
+        $directory = '/photos/blogCategories'; // Replace with the desired directory
+        // dd($directory);
+        $helper = new ImageHelper;
+        $fullPath = $helper->storeImageInPublicDirectory($image, $directory,100,100);
+        // Save the full path with name in the database
+        $blogCategory->image = $fullPath;
 
         $blogCategory->save();
         session()->flash('success', 'Blog Category Added Successfully');
@@ -70,10 +77,12 @@ class BlogCategoryController extends Controller
         $blogcategory->translate('ar')->name = $validatedData['ar']['name'];
         $blogcategory->showed  = $request->has('showed') ? 1 : 0;
         if ($request->has('image')) {
-            // Storage::disk('local')->delete($blog->image);
+            $helper = new ImageHelper;
+            $helper->removeImageInPublicDirectory($blogcategory->image);
             $image = $request->file('image');
-            $filename = $image->getClientOriginalName();
-            $blogcategory->image = $image->storeAs('photos/blogCategories', $filename);
+            $directory = '/photos/blogCategories';
+            $fullPath = $helper->storeImageInPublicDirectory($image, $directory, 100, 100);
+            $blogcategory->image = $fullPath;
         }
         $blogcategory->save();
         session()->flash('success', 'Blog Category Updated Successfully');

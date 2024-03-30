@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Dashboard;
 
+use App\Helpers\ImageHelper;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
@@ -81,18 +82,25 @@ class BlogController extends Controller
         // $blog->translateOrNew('en')->author_title = $validatedData['en']['author_title'];
 
         if ($request->has('author_image')) {
-            $AuthorImage = $request->file('author_image');
-            $filename = $AuthorImage->getClientOriginalName();
-            $blog->author_image = $AuthorImage->storeAs('photos/blogs', $filename);
+            $helper = new ImageHelper;
+            $image = $request->file('image');
+            $directory = '/photos/blogs';
+            $fullPath = $helper->storeImageInPublicDirectory($image, $directory, 200, 200);
+            $blog->author_image = $fullPath;
         }
         $blog->author_instagram  = $validatedData['author_instagram'] ?? null;
         $blog->author_snapchat  = $validatedData['author_snapchat'] ?? null;
         $blog->author_twitter  = $validatedData['author_twitter'] ?? null;
         $blog->author_tiktok  = $validatedData['author_tiktok'] ?? null;
         $blog->author_linkedin  = $validatedData['author_linkedin'] ?? null;
+
+        $helper = new ImageHelper;
         $image = $request->file('image');
-        $filename = $image->getClientOriginalName();
-        $blog->image = $image->storeAs('photos/blogs', $filename);
+        $directory = '/photos/blogs';
+        $fullPath = $helper->storeImageInPublicDirectory($image, $directory, 800, 550);
+        $blog->image = $fullPath;
+
+
         $blog->showed  = $request->has('showed') ? 1 : 0;
         $blog->show_at_home  = $request->has('show_at_home') ? 1 : 0;
         $blog->slug = Str::slug($validatedData['slug'], '-');
@@ -179,10 +187,12 @@ class BlogController extends Controller
         // $blog->translate('en')->author_title = $validatedData['en']['author_title'];
 
         if ($request->has('author_image')) {
-            Storage::disk('local')->delete($blog->author_image);
-            $AuthorImage = $request->file('author_image');
-            $filename = $AuthorImage->getClientOriginalName();
-            $blog->author_image = $AuthorImage->storeAs('photos/blogs', $filename);
+            $helper = new ImageHelper;
+            $helper->removeImageInPublicDirectory($blog->author_image);
+            $image = $request->file('image');
+            $directory = '/photos/blogs';
+            $fullPath = $helper->storeImageInPublicDirectory($image, $directory, 200, 200);
+            $blog->author_image = $fullPath;
         }
         $blog->author_instagram  = $validatedData['author_instagram'] ?? null;
         $blog->author_snapchat  = $validatedData['author_snapchat'] ?? null;
@@ -192,9 +202,13 @@ class BlogController extends Controller
 
         if ($request->has('image')) {
             // Storage::disk('local')->delete($blog->image);
+
+            $helper = new ImageHelper;
+            $helper->removeImageInPublicDirectory($blog->image);
             $image = $request->file('image');
-            $filename = $image->getClientOriginalName();
-            $blog->image = $image->storeAs('photos/blogs', $filename);
+            $directory = '/photos/blogs';
+            $fullPath = $helper->storeImageInPublicDirectory($image, $directory, 800, 500);
+            $blog->image = $fullPath;
         }
         $blog->showed  = $request->has('showed') ? 1 : 0;
         $blog->show_at_home  = $request->has('show_at_home') ? 1 : 0;
