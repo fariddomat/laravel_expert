@@ -2,3 +2,8 @@
     Custom Stylesheet (Any custom styling you want to apply should be defined here).
 ====================================================================================*/
 
+@media (min-width: 1200px) {
+    .container-top {
+      padding-right: 15rem;
+    }
+  }

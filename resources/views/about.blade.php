@@ -390,7 +390,7 @@
     <section class="page-title-wrap position-relative bg-light" data-bg-img="{{ asset($info->about_header_image) }}"
         data-animate="fadeInUp" data-delay="1.1">
         <div id="particles_js"></div>
-        <div class="container">
+        <div class="container container-top">
             <div class="row">
                 <div class="col-11">
                     <div class="page-title position-relative pt-5 pb-5">

@@ -24,24 +24,25 @@
         }
     </style>
 
-<style>
+    <style>
+        .parsley-errors-list {
+            left: auto;
+            right: 16px;
+            bottom: 0;
+        }
 
-.parsley-errors-list {
-  left: auto;
-  right: 16px;
-  bottom: 0;
-}
-    /* Success/error message (optional) */
-    .alert {
-      /* margin-top: 1rem; */
-    }
+        /* Success/error message (optional) */
+        .alert {
+            /* margin-top: 1rem; */
+        }
 
-    .form-control:focus {
-  border-color: gold;
-  box-shadow: 0 0 5px rgba(255, 215, 0, 0.5);
-  color: gold; /* Change color on focus */
-}
-  </style>
+        .form-control:focus {
+            border-color: gold;
+            box-shadow: 0 0 5px rgba(255, 215, 0, 0.5);
+            color: gold;
+            /* Change color on focus */
+        }
+    </style>
 @endsection
 @section('scripts')
     <script>
@@ -51,17 +52,17 @@
         //     return true;
         // });
 
-//         $(document).ready(function() {
-//   $('#contactFrom').parsley(); // Replace with your form's ID
-// });
+        //         $(document).ready(function() {
+        //   $('#contactFrom').parsley(); // Replace with your form's ID
+        // });
 
-$(document).ready(function() {
-  $('.form-control').on('focusout', function() {
-    $(this).parsley().validate(); // Manually trigger validation on change
-  });
+        $(document).ready(function() {
+            $('.form-control').on('focusout', function() {
+                $(this).parsley().validate(); // Manually trigger validation on change
+            });
 
-  // Repeat for other fields where you want validation on change
-});
+            // Repeat for other fields where you want validation on change
+        });
     </script>
     <script>
         $.ajaxSetup({
@@ -106,7 +107,7 @@ $(document).ready(function() {
     <section class="page-title-wrap position-relative bg-light" data-bg-img="{{ asset($info->contact_header_image) }}"
         data-animate="fadeInUp" data-delay="1.1">
         <div id="particles_js"></div>
-        <div class="container">
+        <div class="container container-top">
             <div class="row">
                 <div class="col-11">
                     <div class="page-title position-relative pt-5 pb-5">
@@ -121,7 +122,8 @@ $(document).ready(function() {
                 </div>
                 <div class="col-1">
                     <div class="world-map position-relative">
-                        <img src="{{ asset('home/img/map.svg') }}" alt="" alt="" data-no-retina class="svg">
+                        <img src="{{ asset('home/img/map.svg') }}" alt="" alt="" data-no-retina
+                            class="svg">
                     </div>
                 </div>
             </div>
@@ -133,14 +135,14 @@ $(document).ready(function() {
     <section class="pt-7 pb-7">
         <div class="container">
             <div class="row align-items-lg-start">
-                <div class="col-lg-12 col-md-12" data-animate="fadeInUp" data-delay="1.6" >
+                <div class="col-lg-12 col-md-12" data-animate="fadeInUp" data-delay="1.6">
                     <div class="contact-form-wrap" style="max-width: 65rem; margin: 0 auto;">
                         <div class="text-center">
                             <h2 data-animate="fadeInUp" data-delay="1.7">@lang('contact.get_in_touch')</h2>
                         </div>
                         @include('partials._errors')
                         <form id="contactFrom" method="post" action="{{ route('contact.post') }}" class="row"
-                            data-animate="fadeInUp" data-delay="1.6"  data-parsley-trigger="change">
+                            data-animate="fadeInUp" data-delay="1.6" data-parsley-trigger="change">
                             @csrf()
 
                             {{-- HonyBot hidden input Start --}}
@@ -151,20 +153,18 @@ $(document).ready(function() {
                                 <div class="form-group">
                                     <label for="">الاسم الكامل</label>
                                     <input type="text" name="name" value="{{ old('name') }}" class="form-control"
-                                        placeholder="@lang('contact.name')"
-                                        data-parsley-required="true"
-                                        data-parsley-required-message="الاسم مطلوب."
-                                        data-parsley-trigger="change">
+                                        placeholder="@lang('contact.name')" data-parsley-required="true"
+                                        data-parsley-required-message="الاسم مطلوب." data-parsley-trigger="change">
 
-                                    </div>
+                                </div>
                             </div>
 
 
                             <div class="col-md-6" data-animate="fadeInUp" data-delay=".2">
                                 <div class="form-group">
                                     <label for="dob">تاريخ الميلاد</label>
-                                    <input type="date" name="dob" value="{{ old('dob') }}" class="form-control"  data-parsley-required="true"
-                                        data-parsley-required-message="تاريخ الميلاد مطلوب."
+                                    <input type="date" name="dob" value="{{ old('dob') }}" class="form-control"
+                                        data-parsley-required="true" data-parsley-required-message="تاريخ الميلاد مطلوب."
                                         data-parsley-trigger="change">
                                 </div>
                             </div>
@@ -172,10 +172,8 @@ $(document).ready(function() {
                                 <div class="form-group">
                                     <label for="">رقم الهاتف الجوال</label>
                                     <input type="tel" name="mobile" value="{{ old('mobile') }}" class="form-control"
-                                        placeholder="+963 934 770 008"
-                                        data-parsley-required="true"
-                                        data-parsley-required-message="رقم الهاتف مطلوب."
-                                        data-parsley-trigger="change">
+                                        placeholder="+963 934 770 008" data-parsley-required="true"
+                                        data-parsley-required-message="رقم الهاتف مطلوب." data-parsley-trigger="change">
                                 </div>
                             </div>
 
@@ -191,8 +189,8 @@ $(document).ready(function() {
                             <div class="col-md-6" data-animate="fadeInUp" data-delay=".5">
                                 <div class="form-group">
                                     <label for="">البريد الالكتروني</label>
-                                    <input type="email" name="email" value="{{ old('email') }}" class="form-control"
-                                        placeholder="@lang('contact.email')" data-parsley-type="email"
+                                    <input type="email" name="email" value="{{ old('email') }}"
+                                        class="form-control" placeholder="@lang('contact.email')" data-parsley-type="email"
                                         data-parsley-type-message="يجب ان تكون صيغة بريدالكتروني صحيحة."
                                         data-parsley-trigger="change">
                                 </div>
@@ -201,9 +199,9 @@ $(document).ready(function() {
                             <div class="col-md-6" data-animate="fadeInUp" data-delay=".6">
                                 <div class="form-group">
                                     <label for="contact_method">وسيلة الاتصال المفضلة</label>
-                                    <select name="contact_method" class="form-control"  data-parsley-required="true"
-                                    data-parsley-required-message="وسيلة الاتصال مطلوبة."
-                                    data-parsley-trigger="change">
+                                    <select name="contact_method" class="form-control" data-parsley-required="true"
+                                        data-parsley-required-message="وسيلة الاتصال مطلوبة."
+                                        data-parsley-trigger="change">
                                         <option value="email" @if (old('contact_method') == 'email') selected @endif>
                                             @lang('contact.email')
                                         </option>
@@ -229,18 +227,16 @@ $(document).ready(function() {
                                 <div class="form-group">
                                     <label for="city">المدينة</label>
                                     <input type="text" name="city" value="{{ old('city') }}"
-                                        class="form-control" placeholder=""  data-parsley-required="true"
-                                        data-parsley-required-message="المدينة مطلوبة."
-                                        data-parsley-trigger="change">
+                                        class="form-control" placeholder="" data-parsley-required="true"
+                                        data-parsley-required-message="المدينة مطلوبة." data-parsley-trigger="change">
                                 </div>
                             </div>
 
                             <div class="col-md-6" data-animate="fadeInUp" data-delay=".8">
                                 <div class="form-group">
                                     <label for="cert_degree">آخر شهادة حصلة عليها</label>
-                                    <select name="cert_degree" class="form-control"  data-parsley-required="true"
-                                    data-parsley-required-message="الشهادة مطلوبة."
-                                    data-parsley-trigger="change">
+                                    <select name="cert_degree" class="form-control" data-parsley-required="true"
+                                        data-parsley-required-message="الشهادة مطلوبة." data-parsley-trigger="change">
                                         <option value="ابتدائية">ابتدائية</option>
                                         <option value="إعدادية">إعدادية</option>
                                         <option value="ثانوية عامة">ثانوية عامة</option>
@@ -259,7 +255,7 @@ $(document).ready(function() {
                                     @foreach ($services as $service)
                                         <div class="form-check form-switch">
                                             <input class="form-check-input" type="checkbox" name="services[]"
-                                                value="{{ $service->id }}"  data-parsley-required="true"
+                                                value="{{ $service->id }}" data-parsley-required="true"
                                                 data-parsley-required-message="تحديد خدمة على الأقل مطلوب."
                                                 data-parsley-trigger="change">
                                             <label class="form-check-label" for="service">{{ $service->title }}</label>
@@ -277,17 +273,16 @@ $(document).ready(function() {
 
                                 <input type="date" id="appointment_date" name="appointment_date"
                                     class="form-control datepicker" id="date" placeholder="Appointment Date"
-                                    min="{{ now()->toDateString('Y-m-d') }}"  data-parsley-required="true"
-                                    data-parsley-required-message="التاريخ مطلوب."
-                                    data-parsley-trigger="change">
+                                    min="{{ now()->toDateString('Y-m-d') }}" data-parsley-required="true"
+                                    data-parsley-required-message="التاريخ مطلوب." data-parsley-trigger="change">
                                 <div class="validate"></div>
                             </div>
 
                             <div class="col-md-6 form-group mt-3" data-animate="fadeInUp" data-delay=".9">
                                 <label for="">الوقت:</label>
-                                <select name="appointment_time" id="appointment_time" class="form-control"  data-parsley-required="true"
-                                data-parsley-required-message="الوقت مطلوب."
-                                data-parsley-trigger="change">
+                                <select name="appointment_time" id="appointment_time" class="form-control"
+                                    data-parsley-required="true" data-parsley-required-message="الوقت مطلوب."
+                                    data-parsley-trigger="change">
                                     <option value="">اختر تاريخ من فضلك</option>
                                 </select>
                                 <div class="validate"></div>

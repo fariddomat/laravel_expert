@@ -317,7 +317,7 @@
     <section class="page-title-wrap position-relative bg-light" data-bg-img="{{ asset($info->blog_header_image) }}"
         data-animate="fadeInUp" data-delay="1.1">
         <div id="particles_js"></div>
-        <div class="container">
+        <div class="container container-top">
             <div class="row">
                 <div class="col-12">
                     <div class="page-title position-relative pt-5 pb-5">
@@ -339,7 +339,7 @@
 
     <section class="blog">
         <div class="container">
-            <div class="section_our_solution pt-7 pb-7">
+            <div class="section_our_solution pt-5 pb-7">
                 <div class="row" style="  margin: 0 auto;">
                     <div class="col-lg-12 col-md-12 col-sm-12">
                         <div class="our_solution_category">
