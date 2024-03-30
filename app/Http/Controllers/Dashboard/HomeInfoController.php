@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Dashboard;
 
+use App\Helpers\ImageHelper;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
@@ -59,22 +60,31 @@ class HomeInfoController extends Controller
 
 
         if ($request->has('logo_icon')) {
-            Storage::disk('local')->delete($info->logo_icon);
+
+            $helper = new ImageHelper;
+            $helper->removeImageInPublicDirectory($info->logo_icon);
             $image = $request->file('logo_icon');
-            $filename = $image->getClientOriginalName();
-            $info->logo_icon = $image->storeAs('photos/home', $filename);
+            $directory = '/photos/home';
+            $fullPath = $helper->storeImageInPublicDirectory($image, $directory);
+            $info->logo_icon = $fullPath;
         }
         if ($request->has('logo')) {
-            Storage::disk('local')->delete($info->logo);
+
+            $helper = new ImageHelper;
+            $helper->removeImageInPublicDirectory($info->logo);
             $image = $request->file('logo');
-            $filename = $image->getClientOriginalName();
-            $info->logo = $image->storeAs('photos/home', $filename);
+            $directory = '/photos/home';
+            $fullPath = $helper->storeImageInPublicDirectory($image, $directory);
+            $info->logo = $fullPath;
         }
         if ($request->has('about_me_image')) {
-            Storage::disk('local')->delete($info->about_me_image);
+
+            $helper = new ImageHelper;
+            $helper->removeImageInPublicDirectory($info->about_me_image);
             $image = $request->file('about_me_image');
-            $filename = $image->getClientOriginalName();
-            $info->about_me_image = $image->storeAs('photos/home', $filename);
+            $directory = '/photos/home';
+            $fullPath = $helper->storeImageInPublicDirectory($image, $directory);
+            $info->about_me_image = $fullPath;
         }
         // if ($request->has('about_me_image_en')) {
         //     Storage::disk('local')->delete($info->about_me_image_en);
@@ -83,32 +93,40 @@ class HomeInfoController extends Controller
         //     $info->about_me_image_en = $image->storeAs('photos/home', $filename);
         // }
         if ($request->has('service_image')) {
-            Storage::disk('local')->delete($info->service_image);
+
+            $helper = new ImageHelper;
             $image = $request->file('service_image');
-            $filename = $image->getClientOriginalName();
-            $info->service_image = $image->storeAs('photos/home', $filename);
+            $directory = '/photos/home';
+            $fullPath = $helper->storeImageInPublicDirectory($image, $directory, 1350,245);
+            $info->service_image = $fullPath;
         }
 
         if ($request->has('about_header_image')) {
-            Storage::disk('local')->delete($info->about_header_image);
+
+            $helper = new ImageHelper;
             $image = $request->file('about_header_image');
-            $filename = $image->getClientOriginalName();
-            $info->about_header_image = $image->storeAs('photos/home', $filename);
+            $directory = '/photos/home';
+            $fullPath = $helper->storeImageInPublicDirectory($image, $directory, 1350,245);
+            $info->about_header_image = $fullPath;
         }
 
         if ($request->has('blog_header_image')) {
-            Storage::disk('local')->delete($info->blog_header_image);
+
+            $helper = new ImageHelper;
             $image = $request->file('blog_header_image');
-            $filename = $image->getClientOriginalName();
-            $info->blog_header_image = $image->storeAs('photos/home', $filename);
+            $directory = '/photos/home';
+            $fullPath = $helper->storeImageInPublicDirectory($image, $directory, 1350,245);
+            $info->blog_header_image = $fullPath;
         }
 
 
         if ($request->has('contact_header_image')) {
-            Storage::disk('local')->delete($info->contact_header_image);
+
+            $helper = new ImageHelper;
             $image = $request->file('contact_header_image');
-            $filename = $image->getClientOriginalName();
-            $info->contact_header_image = $image->storeAs('photos/home', $filename);
+            $directory = '/photos/home';
+            $fullPath = $helper->storeImageInPublicDirectory($image, $directory, 1350,245);
+            $info->contact_header_image = $fullPath;
         }
 
 
