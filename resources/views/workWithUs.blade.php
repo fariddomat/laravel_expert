@@ -250,9 +250,9 @@
 
                             <div class="col-md-12" data-animate="fadeInUp" data-delay="1.4">
                                 <div class="form-group">
-                                    <label for="job_benefit_goals">كيف ستساعدك هذه الوظيفة؟</label>
+                                    <label for="job_benefit_goals">كيف ستساعدك هذه الوظيفة؟ *</label>
                                     <textarea name="job_benefit_goals" id="job_benefit_goals" cols="30" rows="4" class="form-control"
-                                              placeholder="بشكل صريح ومختصر أخبرنا ما الذي تسعى إليه من خلال التقدم إلى هذه الوظيفة"></textarea>
+                                              placeholder="بشكل صريح ومختصر أخبرنا ما الذي تسعى إليه من خلال التقدم إلى هذه الوظيفة" required></textarea>
                                 </div>
                             </div>
 

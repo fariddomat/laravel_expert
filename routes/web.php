@@ -156,6 +156,10 @@ Route::group(['prefix' => '/dashboard', 'middleware' => ['auth', 'setArLocale'],
     Route::post('/contact-us/{contactus}/status', 'Dashboard\ContactUsController@changeStatus')->name('contact-us.status');
     Route::put('/contact-us/{contactus}/note', 'Dashboard\ContactUsController@note')->name('contact-us.note');
 
+    Route::get('/workWithUs', 'Dashboard\WorkWithUsController@index')->name('workWithUs.index');
+    Route::delete('/workWithUs/{workWithUs}', 'Dashboard\WorkWithUsController@destroy')->name('workWithUs.destroy');
+    Route::post('/workWithUs/{workWithUs}/status', 'Dashboard\WorkWithUsController@changeStatus')->name('workWithUs.status');
+    
     Route::get('/about', 'Dashboard\AboutController@create')->name('about.create');
     Route::post('/about', 'Dashboard\AboutController@store')->name('about.store');
 

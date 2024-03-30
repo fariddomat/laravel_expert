@@ -29,6 +29,8 @@ class CreateWorkWithUsTable extends Migration
             $table->json('skills')->nullable(); // Store skills as a JSON array
             $table->text('additional_information')->nullable();
             $table->text('job_benefit_goals');
+            
+            $table->tinyInteger('status')->default('1');
             $table->timestamps();
         });
     }

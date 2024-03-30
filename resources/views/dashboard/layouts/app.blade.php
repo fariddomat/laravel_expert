@@ -121,6 +121,12 @@
                             طلبات الخدمات
                         </a>
                     </li> --}}
+                    {{-- workWithUsActive --}}
+                    <li class="nav-item">
+                        <a class="nav-link @yield('workWithUsActive')" href="{{ route('dashboard.workWithUs.index') }}">
+                            استمارة التوظيف
+                        </a>
+                    </li>
                     <li class="nav-item">
                         <a class="nav-link @yield('contactusActive')" href="{{ route('dashboard.contact-us.index') }}">
                             اتصل بنا

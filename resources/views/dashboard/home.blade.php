@@ -82,9 +82,9 @@
                                     <i class="icon-grid "></i>
                                 </div>
                                 <h4 class="m-b-0">
-                                    <a class="a"  href="">{{ $workWithUs }}</a>
+                                    <a class="a"  href="{{ route('dashboard.workWithUs.index') }}">{{ $workWithUs }}</a>
                                     </h4>
-                                <p><a class="a"  href="">طلبات العمل</a> </p>
+                                <p><a class="a"  href="{{ route('dashboard.workWithUs.index') }}">طلبات العمل</a> </p>
                             </div>
 
                         </div>
