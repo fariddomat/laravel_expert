@@ -83,7 +83,7 @@ class BlogController extends Controller
 
         if ($request->has('author_image')) {
             $helper = new ImageHelper;
-            $image = $request->file('image');
+            $image = $request->file('author_image');
             $directory = '/photos/blogs';
             $fullPath = $helper->storeImageInPublicDirectory($image, $directory, 200, 200);
             $blog->author_image = $fullPath;
@@ -189,7 +189,7 @@ class BlogController extends Controller
         if ($request->has('author_image')) {
             $helper = new ImageHelper;
             $helper->removeImageInPublicDirectory($blog->author_image);
-            $image = $request->file('image');
+            $image = $request->file('author_image');
             $directory = '/photos/blogs';
             $fullPath = $helper->storeImageInPublicDirectory($image, $directory, 200, 200);
             $blog->author_image = $fullPath;

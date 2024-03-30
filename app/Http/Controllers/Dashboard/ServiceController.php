@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Dashboard;
 
+use App\Helpers\ImageHelper;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
@@ -65,17 +66,27 @@ class ServiceController extends Controller
             $image = $request->file('image');
             $filename = $image->getClientOriginalName();
             $service->image = $image->storeAs('photos/services', $filename);
+
+            $helper = new ImageHelper;
+            $image = $request->file('image');
+            $directory = '/photos/services';
+            $fullPath = $helper->storeImageInPublicDirectory($image, $directory, 235, 160);
+            $service->image = $fullPath;
         }
         if ($request->has('index_image')) {
-            $indexImage = $request->file('index_image');
-            $filename = $indexImage->getClientOriginalName();
-            $service->index_image = $indexImage->storeAs('photos/services/index', $filename);
-        }
+            $helper = new ImageHelper;
+            $image = $request->file('index_image');
+            $directory = '/photos/services';
+            $fullPath = $helper->storeImageInPublicDirectory($image, $directory, 800, 500);
+            $service->index_image = $fullPath;
+ }
         if ($request->has('index_image_2')) {
-            $indexImage = $request->file('index_image_2');
-            $filename = $indexImage->getClientOriginalName();
-            $service->index_image_2 = $indexImage->storeAs('photos/services/index', $filename);
-        }
+            $helper = new ImageHelper;
+            $image = $request->file('index_image_2');
+            $directory = '/photos/services';
+            $fullPath = $helper->storeImageInPublicDirectory($image, $directory, 800, 500);
+            $service->index_image_2 = $fullPath;
+            }
         $service->showed  = $request->has('showed') ? 1 : 0;
         $service->show_at_home  = $request->has('show_at_home') ? 1 : 0;
         $service->slug = Str::slug($validatedData['slug'], '-');
@@ -125,23 +136,31 @@ class ServiceController extends Controller
         $service->parent_id=$request->parent_id;
 
         if ($request->has('image')) {
-            Storage::disk('local')->delete($service->image);
+
+            $helper = new ImageHelper;
+            $helper->removeImageInPublicDirectory($service->image);
             $image = $request->file('image');
-            $filename = $image->getClientOriginalName();
-            $service->image = $image->storeAs('photos/services', $filename);
+            $directory = '/photos/services';
+            $fullPath = $helper->storeImageInPublicDirectory($image, $directory, 265, 160);
+            $service->image = $fullPath;
         }
         if ($request->has('index_image')) {
-            Storage::disk('local')->delete($service->index_image);
-            $indexImage = $request->file('index_image');
-            $filename = $indexImage->getClientOriginalName();
-            $service->index_image = $indexImage->storeAs('photos/services/index', $filename);
+
+            $helper = new ImageHelper;
+            $helper->removeImageInPublicDirectory($service->index_image);
+            $image = $request->file('index_image');
+            $directory = '/photos/services';
+            $fullPath = $helper->storeImageInPublicDirectory($image, $directory, 800, 500);
+            $service->index_image = $fullPath;
         }
 
         if ($request->has('index_image_2')) {
-            Storage::disk('local')->delete($service->index_image_2);
-            $indexImage = $request->file('index_image_2');
-            $filename = $indexImage->getClientOriginalName();
-            $service->index_image_2 = $indexImage->storeAs('photos/services/index', $filename);
+            $helper = new ImageHelper;
+            $helper->removeImageInPublicDirectory($service->index_image_2);
+            $image = $request->file('index_image_2');
+            $directory = '/photos/services';
+            $fullPath = $helper->storeImageInPublicDirectory($image, $directory, 800, 500);
+            $service->index_image_2 = $fullPath;
         }
         $service->showed  = $request->has('showed') ? 1 : 0;
         $service->show_at_home  = $request->has('show_at_home') ? 1 : 0;
