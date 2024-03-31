@@ -347,7 +347,7 @@ $metaDescription= Str::limit(strip_tags($blog->description ?? ''), 160) ;
                             <li><i class="fas fa-angle-double-right"></i></li>
                             <li><a href="#">تفاصيل المقال</a></li>
                         </ul>
-                        <h1 data-animate="fadeInUp" data-delay="1.3">{{ $blog->title }}</h1>
+                        <h1 data-animate="fadeInUp" data-delay="1.3" style="font-size: 1.3rem;">{{ $blog->title }}</h1>
                     </div>
                 </div>
                 <div class="col-1">
@@ -377,7 +377,7 @@ $metaDescription= Str::limit(strip_tags($blog->description ?? ''), 160) ;
                                         href="#">{{ $blog->author_name }}</a>
                                     <br> التصنيف: <a
                                         href="{{ route('blogs', $blog->category->slug) }}">{{ $blog->category->name }}</a></span>
-                                <img class="img-thumbnail" src="{{ asset($blog->image) }}" alt=""
+                                <img class="img-thumbnail" src="{{ asset($blog->index_image) }}" alt=""
                                     data-animate="fadeInUp" data-delay="0.2" style="aspect-ratio: 3/2;">
 
                                 <div class="pt-2 pb-2" data-animate="fadeInUp" data-delay=".1">

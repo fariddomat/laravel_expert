@@ -101,6 +101,13 @@ class BlogController extends Controller
         $blog->image = $fullPath;
 
 
+        if ($request->has('index_image')) {
+            $image = $request->file('index_image');
+            $directory = '/photos/blogs';
+            $fullPath = $helper->storeImageInPublicDirectory($image, $directory, 800, 500);
+            $blog->index_image = $fullPath;
+        }
+
         $blog->showed  = $request->has('showed') ? 1 : 0;
         $blog->show_at_home  = $request->has('show_at_home') ? 1 : 0;
         $blog->slug = Str::slug($validatedData['slug'], '-');
@@ -200,15 +207,23 @@ class BlogController extends Controller
         $blog->author_tiktok  = $validatedData['author_tiktok'] ?? null;
         $blog->author_linkedin  = $validatedData['author_linkedin'] ?? null;
 
+            $helper = new ImageHelper;
         if ($request->has('image')) {
             // Storage::disk('local')->delete($blog->image);
 
-            $helper = new ImageHelper;
             $helper->removeImageInPublicDirectory($blog->image);
             $image = $request->file('image');
             $directory = '/photos/blogs';
             $fullPath = $helper->storeImageInPublicDirectory($image, $directory, 800, 500);
             $blog->image = $fullPath;
+        }
+        if ($request->has('index_image')) {
+
+            // $helper->removeImageInPublicDirectory($blog->index_image);
+            $image = $request->file('index_image');
+            $directory = '/photos/blogs';
+            $fullPath = $helper->storeImageInPublicDirectory($image, $directory, 800, 500);
+            $blog->index_image = $fullPath;
         }
         $blog->showed  = $request->has('showed') ? 1 : 0;
         $blog->show_at_home  = $request->has('show_at_home') ? 1 : 0;
@@ -237,5 +252,14 @@ class BlogController extends Controller
         $blog->delete();
         session()->flash('success', 'Blog Deleted Successfully');
         return redirect()->route('dashboard.blogs.index');
+    }
+
+
+    public function destroyIndexImage(Blog $blog)
+    {
+        if ($blog->index_image) {
+            $helper = new ImageHelper;
+            $helper->removeImageInPublicDirectory($blog->image);
+        }
     }
 }

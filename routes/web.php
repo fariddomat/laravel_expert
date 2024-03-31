@@ -89,6 +89,8 @@ Route::group(['prefix' => '/dashboard', 'middleware' => ['auth', 'setArLocale'],
     Route::delete('/services/{service}/index-image', 'Dashboard\ServiceController@destroyIndexImage')->name('services.indexImage.destroy');
     Route::delete('/services/{service}/index-image-2', 'Dashboard\ServiceController@destroyIndexImage2')->name('services.indexImage.destroy2');
 
+    Route::delete('/blogs/{blog}/index-image', 'Dashboard\BlogController@destroyIndexImage')->name('blogs.indexImage.destroy');
+
     Route::get('/services/{service}/indexitems', 'Dashboard\ServiceIndexItemController@index')->name('services.indexitems.index');
     Route::get('/services/{service}/indexitems/create', 'Dashboard\ServiceIndexItemController@create')->name('services.indexitems.create');
     Route::post('/services/{service}/indexitems', 'Dashboard\ServiceIndexItemController@store')->name('services.indexitems.store');
@@ -159,7 +161,7 @@ Route::group(['prefix' => '/dashboard', 'middleware' => ['auth', 'setArLocale'],
     Route::get('/workWithUs', 'Dashboard\WorkWithUsController@index')->name('workWithUs.index');
     Route::delete('/workWithUs/{workWithUs}', 'Dashboard\WorkWithUsController@destroy')->name('workWithUs.destroy');
     Route::post('/workWithUs/{workWithUs}/status', 'Dashboard\WorkWithUsController@changeStatus')->name('workWithUs.status');
-    
+
     Route::get('/about', 'Dashboard\AboutController@create')->name('about.create');
     Route::post('/about', 'Dashboard\AboutController@store')->name('about.store');
 

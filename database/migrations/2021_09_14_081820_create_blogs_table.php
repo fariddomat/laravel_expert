@@ -18,6 +18,7 @@ class CreateBlogsTable extends Migration
             $table->string('slug');
             $table->unsignedBigInteger('blog_category_id');
             $table->string('image');
+            $table->string('index_image')->nullable();
             $table->boolean('showed');
             $table->boolean('show_at_home');
             $table->string('author_image')->nullable();

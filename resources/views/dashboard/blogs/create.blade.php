@@ -193,7 +193,7 @@
                             value="{{ old('author_linkedin') }}">
                     </div> --}}
                     <div class="form-group mb-3">
-                        <label>الصورة</label>
+                        <label>الصورة المصغرة</label>
                         <input type="file" name="image" class="form-control image">
                     </div>
 
@@ -201,6 +201,18 @@
                         <img src="" style="width: 300px; display: none;" class="img-thumbnail image-preview"
                             alt="">
                     </div>
+
+
+                    <div class="form-group mb-3">
+                        <label>الصورة الرئيسية</label>
+                        <input type="file" name="index_image" class="form-control logo">
+                    </div>
+
+                    <div class="form-group mb-3">
+                        <img src="" style="width: 300px; display: none;" class="img-thumbnail logo-preview"
+                            alt="">
+                    </div>
+
 
                     <div class="form-group mb-3">
                         <button type="submit" class="btn btn-primary"><i class="fa fa-plus"></i> إضافة </button>

@@ -62,7 +62,7 @@ $metaDescription= Str::limit(strip_tags($service->brief ?? ''), 160) ;
 
         .owl-carousel .owl-item img {
             transform-style: preserve-3d;
-            max-width: 90px;
+            /* max-width: 90px; */
             margin: 0 auto 17px;
         }
 
@@ -217,8 +217,7 @@ $metaDescription= Str::limit(strip_tags($service->brief ?? ''), 160) ;
                 </div>
                 <div class="col-1">
                     <div class="world-map position-relative">
-                        <img src="{{ asset('home/img/map.svg') }}" alt="" alt="" data-no-retina
-                            class="svg">
+                        
                     </div>
                 </div>
             </div>

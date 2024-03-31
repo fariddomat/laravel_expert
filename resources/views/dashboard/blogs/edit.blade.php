@@ -11,6 +11,27 @@
 <script src="{{asset('ckeditor/ckeditor.js')}}"></script>
 <script src="{{asset('dashboard/js/blog.js')}}"></script>
 <script>
+    $(function() {
+        $("#delete-index-img").on("click", function() {
+            $("#index-img").attr("src", "");
+            $(".del").hide();
+            $(".logo").val(null);
+            var CSRF_TOKEN = $('meta[name="csrf-token"]').attr("content");
+            $.ajax({
+                url: "{{ route('dashboard.blogs.indexImage.destroy', $blog->id) }}",
+                type: "DELETE",
+                data: {
+                    _token: CSRF_TOKEN
+                },
+                dataType: "JSON",
+                success: function(data) {
+                    //done.
+                },
+            });
+        });
+    });
+</script>
+<script>
     $(document).ready(function() {
         $('.tags-input').select2({
             tags: true, // Enable tag creation
@@ -204,6 +225,28 @@
                     <img src="{{ asset($blog->image) }}" style="width: 300px;" class="img-thumbnail image-preview"
                         alt="">
                 </div>
+
+                <div class="form-group mb-3">
+                    <label>الصورة الرئيسية
+                    </label>
+                    <input type="file" name="index_image" class="form-control logo">
+                </div>
+
+                <div class="form-group mb-3">
+                    @if ($blog->index_image)
+
+                        <div class="img-wrap del">
+                            <span id="delete-index-img" class="close" data-bs-toggle="tooltip" data-bs-placement="top"
+                                title="Delete">&times;</span>
+                            <img id="index-img" src="{{ asset($blog->index_image) }}" style="width: 300px;"
+                                class="img-thumbnail logo-preview" alt="">
+                        </div>
+                    @else
+                        <img src="" style="width: 300px; display: none;" class="img-thumbnail logo-preview"
+                            alt="">
+                    @endif
+                </div>
+
 
                 <div class="form-group mb-3">
                     <button type="submit" class="btn btn-primary"><i class="fas fa-pencil-alt"></i> تعديل </button>

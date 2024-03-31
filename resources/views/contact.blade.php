@@ -122,8 +122,7 @@
                 </div>
                 <div class="col-1">
                     <div class="world-map position-relative">
-                        <img src="{{ asset('home/img/map.svg') }}" alt="" alt="" data-no-retina
-                            class="svg">
+                        
                     </div>
                 </div>
             </div>
@@ -310,7 +309,7 @@
                         </form>
                     </div>
                 </div>
-                
+
             </div>
         </div>
     </section>
