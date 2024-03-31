@@ -61,27 +61,25 @@ class ServiceController extends Controller
         // $service->translateOrNew('en')->brief = $validatedData['en']['brief'];
         // $service->translateOrNew('en')->main_title = $validatedData['en']['main_title'];
 
+            $helper = new ImageHelper;
         $service->parent_id=$request->parent_id;
         if ($request->has('image')) {
             $image = $request->file('image');
             $filename = $image->getClientOriginalName();
             $service->image = $image->storeAs('photos/services', $filename);
 
-            $helper = new ImageHelper;
             $image = $request->file('image');
             $directory = '/photos/services';
             $fullPath = $helper->storeImageInPublicDirectory($image, $directory, 235, 160);
             $service->image = $fullPath;
         }
         if ($request->has('index_image')) {
-            $helper = new ImageHelper;
             $image = $request->file('index_image');
             $directory = '/photos/services';
             $fullPath = $helper->storeImageInPublicDirectory($image, $directory, 800, 500);
             $service->index_image = $fullPath;
  }
         if ($request->has('index_image_2')) {
-            $helper = new ImageHelper;
             $image = $request->file('index_image_2');
             $directory = '/photos/services';
             $fullPath = $helper->storeImageInPublicDirectory($image, $directory, 800, 500);
@@ -135,9 +133,9 @@ class ServiceController extends Controller
 
         $service->parent_id=$request->parent_id;
 
+            $helper = new ImageHelper;
         if ($request->has('image')) {
 
-            $helper = new ImageHelper;
             $helper->removeImageInPublicDirectory($service->image);
             $image = $request->file('image');
             $directory = '/photos/services';
@@ -146,7 +144,6 @@ class ServiceController extends Controller
         }
         if ($request->has('index_image')) {
 
-            $helper = new ImageHelper;
             $helper->removeImageInPublicDirectory($service->index_image);
             $image = $request->file('index_image');
             $directory = '/photos/services';
@@ -155,7 +152,6 @@ class ServiceController extends Controller
         }
 
         if ($request->has('index_image_2')) {
-            $helper = new ImageHelper;
             $helper->removeImageInPublicDirectory($service->index_image_2);
             $image = $request->file('index_image_2');
             $directory = '/photos/services';

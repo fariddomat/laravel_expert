@@ -39,4 +39,9 @@ image optimization #
 google recaptcha
 
 
+blogs remove description from slider
+services remove description
+
+study aboard optional index_image and fixe design
+
 
