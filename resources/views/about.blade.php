@@ -459,7 +459,7 @@
     <!-- End of About us -->
 
     <!-- Our team -->
-    <section class="pt-7 pb-5-5 bg-light">
+    <section class="pt-7 pb-5-5 bg-light bg-gradient">
         <div class="container">
 
             <div class="row justify-content-center">
@@ -564,24 +564,35 @@
     <!-- End of Our team -->
 
     <!-- Servers -->
-    <section id="section3" class="servers pt-7 bg-light section3">
+    <section id="section3" class="servers pt-7 bg-light section3 ">
         <div class="container">
             <div class="row">
                 <div class="col-xl-7 col-lg-5">
                     <div class="section-title">
-                        <h2 data-animate="fadeInUp" data-delay=".1">سافر لكل مكان</h2>
-                        <p data-animate="fadeInUp" data-delay=".2">يمكن أن نقوم بمساعدتك باختيار الوجهة المناسبة لك</p>
+                        <h2 data-animate="fadeInUp" data-delay=".1">المزيد من الخدمات</h2>
+                        <p data-animate="fadeInUp" data-delay=".2">حتى نبقى معكم خلال الرحلة ولكي نؤمن أعلى درجات الدقة
+                            والسرعة التي نسعى اليها دائماً ,<br>شملت خدماتنا الحجوزات الفندقية والتأمين الصحي لمختلف دول
+                            العالم </p>
                     </div>
                     <ul class="data-centers list-unstyled list-item clearfix">
-                        <li data-animate="fadeInUp" data-delay=".1"><i class="fas fa-caret-right"></i>ألمانيا (201)
+                        <li></li>
+                        <li data-animate="fadeInUp" data-delay=".1" style="text-align: justify"><i
+                                class="fas fa-caret-right"></i>وحتى نبقى مستشاركم الأول منذ اللحظة الأولى
+                            نقدم لكم خدمة الاستشارات المجانية التي تحصلون من خلالها على إجابات كاملة لأسئلتكم واستفساراتكم
+                            عن كل ما يتعلق بالسفر والدراسة بالخارج
+
                         </li>
-                        <li data-animate="fadeInUp" data-delay=".2"><i class="fas fa-caret-right"></i>الإمارات (169)
+                        <li></li>
+                        <li data-animate="fadeInUp" data-delay=".2"><a class="btn btn-secondary"
+                                href="{{ route('contact') }}">أحجز موعدك الآن</a></li>
+                        </li>
+                        {{-- <li data-animate="fadeInUp" data-delay=".2"><i class="fas fa-caret-right"></i>الإمارات (169)
                         </li>
                         <li data-animate="fadeInUp" data-delay=".3"><i class="fas fa-caret-right"></i>رومانيا (151)</li>
                         <li data-animate="fadeInUp" data-delay=".4"><i class="fas fa-caret-right"></i>هنغاريا
                             (142)</li>
                         <li data-animate="fadeInUp" data-delay=".5"><i class="fas fa-caret-right"></i>آسيا (70)</li>
-                        <li data-animate="fadeInUp" data-delay=".6"><i class="fas fa-caret-right"></i>افريقيا (40)</li>
+                        <li data-animate="fadeInUp" data-delay=".6"><i class="fas fa-caret-right"></i>افريقيا (40)</li> --}}
                     </ul>
                 </div>
                 <div class="col-xl-5 col-lg-7 d-none d-lg-block">
@@ -593,5 +604,6 @@
         </div>
     </section>
     <!-- End Servers -->
+
 
 @endsection

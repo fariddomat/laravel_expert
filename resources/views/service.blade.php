@@ -227,7 +227,7 @@ $metaDescription= Str::limit(strip_tags($service->brief ?? ''), 160) ;
     <!-- End of Banner -->
 
 
-    <section id="section-content" class=" pt-7">
+    <section id="section-content " class="bg-gradient pt-7">
         <div class="container" style="max-width: 65rem">
             <div class="row">
                 <div class="col-md-12">
@@ -395,7 +395,9 @@ $metaDescription= Str::limit(strip_tags($service->brief ?? ''), 160) ;
                     @endif
 
                     <div class="disquss-comment mt-50"  data-animate="fadeInUp"
-                    data-delay=".5">
+                    data-delay=".5" style="background: white;
+                    border-radius: 25px;
+                    padding: 2rem;">
                         <div id="disqus_thread"></div>
                         <script>
                             /**

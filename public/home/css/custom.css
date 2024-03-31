@@ -2,6 +2,10 @@
     Custom Stylesheet (Any custom styling you want to apply should be defined here).
 ====================================================================================*/
 
+.bg-gradient{
+    background: rgb(13,18,22) !important;
+background: linear-gradient(360deg, rgba(13,18,22,1) 0%, rgba(226,226,226,0.4738095067128414) 50%, rgba(255,255,255,1) 100%)!important;
+}
 @media (min-width: 1200px) {
     .container-top {
       padding-right: 15rem;

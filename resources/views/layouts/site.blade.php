@@ -108,11 +108,8 @@
                                     <li><a href="{{ route('blogs') }}">@lang('site.blog')</a></li>
                                     {{-- <li><a href="{{ route('home') }}#portfolio">@lang('site.my_works')</a></li> --}}
                                     <li><a href="{{ route('contact') }}">@lang('site.contact')</a></li>
-                                    @guest
-                                    <li><a href="{{ route('login') }}">@lang('site.login')</a></li>
-                                    @else
-                                    <li><a href="{{ route('dashboard.home') }}">لوحة التحكم</a></li>
-                                    @endguest
+                                    <li><a href="{{ route('faq') }}">@lang('site.FAQ')</a></li>
+                                    
                                 </ul>
                             </div>
                             <!-- End of Header-menu -->
@@ -165,6 +162,8 @@
                                 </li>
                             @endforeach
                         </ul>
+                        <p data-animate="fadeInUp" data-delay="1.5">هل ترغب بفرصة عمل في بيئة راقية ؟كن فرداً من فريق عمل المحترف و انضم لعائلتنا </p>
+                        <a data-animate="fadeInUp" data-delay="1.6" class="btn btn-secondary" href="{{ route('workWithUs') }}">أنضم الآن</a>
                     </div>
                 </div>
                 <!-- End of Footer info -->

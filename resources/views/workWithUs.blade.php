@@ -94,7 +94,7 @@
                             <li><i class="fas fa-angle-double-right"></i></li>
                             <li><a href="#">استمارة التقدم لوظيفة</a></li>
                         </ul>
-                        <h1 data-animate="fadeInUp" data-delay="1.3">استمارة التقدم لوظيفة</h1>
+                        <h2 data-animate="fadeInUp" data-delay="1.3">استمارة التقدم لوظيفة</h2>
                     </div>
                 </div>
                 <div class="col-1">
@@ -108,11 +108,11 @@
     <!-- End of Banner -->
 
     <!-- Contact page content -->
-    <section class="pt-7 pb-7">
-        <div class="container">
+    <section class="pt-7 pb-7 bg-gradient">
+        <div class="container" >
             <div class="row align-items-lg-start">
-                <div class="col-lg-12 col-md-12" data-animate="fadeInUp" data-delay="1.6">
-                    <div class="contact-form-wrap" style="max-width: 65rem; margin: 0 auto;">
+                <div class="col-lg-12 col-md-12 " data-animate="fadeInUp" data-delay="1.6">
+                    <div class="contact-form-wrap" style="max-width: 65rem; margin: 0 auto;background: #fff;">
                         <div class="text-center">
                             <h2 data-animate="fadeInUp" data-delay="1.7">الاستمارة</h2>
                         </div>

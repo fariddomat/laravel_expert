@@ -1,5 +1,5 @@
 @extends('layouts.site')
-@section('title', trans('site.blogs'))
+@section('title', trans('site.blog'))
 @section('styles')
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
 
@@ -325,9 +325,9 @@
                             data-delay="1.2">
                             <li><a href="{{ route('home') }}">@lang('site.home')</a></li>
                             <li><i class="fas fa-angle-double-right"></i></li>
-                            <li><a href="#">@lang('site.blogs')</a></li>
+                            <li><a href="#">@lang('site.blog')</a></li>
                         </ul>
-                        <h1 data-animate="fadeInUp" data-delay="1.3">@lang('site.blogs')</h1>
+                        <h1 data-animate="fadeInUp" data-delay="1.3">@lang('site.blog')</h1>
                     </div>
                 </div>
 

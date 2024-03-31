@@ -163,11 +163,11 @@ $metaDescription= Str::limit(strip_tags($blog->description ?? ''), 160) ;
             }
         }
 
-        .blog {
+        /* .blog {
             background-color: transparent;
             background-image: linear-gradient(180deg, #FFF 30%, #0D1216 97%);
 
-        }
+        } */
 
         .post-details {
             background: #fff;
@@ -362,7 +362,7 @@ $metaDescription= Str::limit(strip_tags($blog->description ?? ''), 160) ;
     <!-- End of Banner -->
 
     <!-- Blog -->
-    <section class=" blog pt-7 pb-7">
+    <section class=" blog pt-7 pb-7 bg-gradient">
         <div class="bg-flow">
             <div class="container">
                 <div class="row">
