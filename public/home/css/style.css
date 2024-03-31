@@ -1339,7 +1339,7 @@ canvas {
 .single-post span {
     font-size: 0.75rem;
     color: #919491;
-    display: block;
+    /* display: block; */
     margin-top: 0.5rem;
 }
 .single-post h4 {
@@ -1378,7 +1378,7 @@ canvas {
 .post-content span {
     margin-top: 1rem;
     margin-bottom: .5rem;
-    display: block;
+    /* display: block; */
     font-size: 0.75rem;
     color: #919491;
 }
@@ -1401,7 +1401,7 @@ canvas {
     margin-bottom: 1.25rem;
     position: relative;
 }
-.post-content blockquote span {
+.post-content blockquote .bspan {
     position: absolute;
     right: 0;
     top: 0;

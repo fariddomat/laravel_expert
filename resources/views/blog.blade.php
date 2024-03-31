@@ -385,7 +385,7 @@ $metaDescription= Str::limit(strip_tags($blog->description ?? ''), 160) ;
                                 </div>
 
                                 <blockquote data-animate="fadeInUp" data-delay=".1">
-                                    <span><i class="fas fa-quote-right"></i></span>
+                                    <span class="bspan"><i class="fas fa-quote-right"></i></span>
                                     {!! $blog->content_table !!}
                                 </blockquote>
 

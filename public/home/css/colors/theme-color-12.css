@@ -92,7 +92,7 @@ a,
 .back-to-top a,
 .image-hover-content:before,
 .play-btn,
-.post-content blockquote span {
+.post-content blockquote .bspan {
     background-color: #DF1F26;
 }
 

@@ -109,7 +109,7 @@
                                     {{-- <li><a href="{{ route('home') }}#portfolio">@lang('site.my_works')</a></li> --}}
                                     <li><a href="{{ route('contact') }}">@lang('site.contact')</a></li>
                                     <li><a href="{{ route('faq') }}">@lang('site.FAQ')</a></li>
-                                    
+
                                 </ul>
                             </div>
                             <!-- End of Header-menu -->
@@ -200,9 +200,9 @@
                                         style="height: 40px; aspect-ratio: 3 / 2;" alt="">
                                 </a>
                                 <span> <a
-                                        href="#">{{ $blog->updated_at->format('d F
+                                        href="{{ route('blog', $blog->slug) }}">{{ $blog->updated_at->format('d F
                                                                                                                                                                                                                                                                                 Y') }}</a></span>
-                                <h4 class="cabin font-weight-normal"><a href="#">{{ $blog->title }}</a></h4>
+                                <h4 class="cabin font-weight-normal"><a href="{{ route('blog', $blog->slug) }}">{{ $blog->title }}</a></h4>
                                 <p>{!! Str::limit(Helper::removeSpecialCharacter($blog->description), 100) !!}</p>
                             </div>
                         @endforeach
