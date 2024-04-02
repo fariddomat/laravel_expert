@@ -5,7 +5,15 @@
 @section('styles')
     {{-- <link href="{{asset('dashboard/css/datatables.min.css')}}" rel="stylesheet"> --}}
     <link href="https://cdn.datatables.net/v/bs5/dt-2.0.3/b-3.0.1/r-3.0.1/rr-1.5.0/datatables.min.css" rel="stylesheet">
-@endsection
+    <style>
+        table.dataTable thead>tr>th.dt-orderable-asc,
+        table.dataTable thead>tr>th.dt-orderable-desc,
+        table.dataTable thead>tr>td.dt-orderable-asc,
+        table.dataTable thead>tr>td.dt-orderable-desc {
+            text-align: right;
+        }
+    </style>
+    @endsection
 
 @section('scripts')
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
@@ -19,6 +27,9 @@
                 paging: false,
                 info: false,
                 sorting: false,
+                language: {
+                    url: '//cdn.datatables.net/plug-ins/2.0.3/i18n/ar.json',
+                },
             });
         });
     </script>
