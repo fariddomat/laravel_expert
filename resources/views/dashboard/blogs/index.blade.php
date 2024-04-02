@@ -25,26 +25,28 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($blogs as $blog)
+                    @foreach ($blogs as $index=>$blog)
                     <tr>
-                        <td>{{ $blog->id }}</td>
+                        <td>{{ $index+1 }}</td>
                         <td>{{ $blog->title }}</td>
                         <td>{{ $blog->Category->name }}</td>
                         <td>{{ $blog->showed == 1 ? 'نعم' : 'مخفي' }}</td>
                         <td>{{ $blog->show_at_home == 1 ? 'نعم' : 'مخفي' }}</td>
                         <td>
-                            <a href="{{ route('dashboard.blogs.edit', $blog->id) }}" class="btn btn-info btn-sm"><i class="fas fa-edit"></i> تعديل</a>
+                            <a href="{{ route('blog', $blog->slug) }}" class="btn btn-info btn-sm" target="_blank"> عرض</a>
+                            <a href="{{ route('dashboard.blogs.edit', $blog->id) }}" class="btn btn-info btn-sm"><i class="fas fa-edit"></i> </a>
                             <form action="{{ route('dashboard.blogs.destroy', $blog->id) }}" method="post" style="display: inline-block">
                                 @csrf()
                                 @method('delete')
-                                <button type="submit" class="btn btn-danger delete btn-sm"><i class="fas fa-trash"></i> حذف</button>
+                                <button type="submit" class="btn btn-danger delete btn-sm"><i class="fas fa-trash"></i> </button>
                             </form><!-- end of form -->
                         </td>
                     </tr>
                     @endforeach
                 </tbody>
             </table><!-- end of table -->
-            {{ $blogs->links() }}
+
+            
         </div>
     </div>
 </div>

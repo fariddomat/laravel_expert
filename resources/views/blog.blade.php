@@ -347,12 +347,12 @@ $metaDescription= Str::limit(strip_tags($blog->description ?? ''), 160) ;
                             <li><i class="fas fa-angle-double-right"></i></li>
                             <li><a href="#">تفاصيل المقال</a></li>
                         </ul>
-                        <h1 data-animate="fadeInUp" data-delay="1.3" style="font-size: 1.3rem;">{{ $blog->title }}</h1>
+                       
                     </div>
                 </div>
                 <div class="col-1">
                     <div class="world-map position-relative">
-                        
+
                     </div>
                 </div>
             </div>

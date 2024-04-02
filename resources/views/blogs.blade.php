@@ -428,10 +428,7 @@
                                         </div>
                                         <span> {{ $blog->updated_at->format('d F Y') }}</span>
                                         <h3>{{ $blog->title }}</h3>
-                                        @php
-                                            $desc = Str::limit(strip_tags($blog->description), 180, ' ...');
-                                        @endphp
-                                        <h4>{{ $desc }}</h4>
+                                        
 
                                     </div>
 

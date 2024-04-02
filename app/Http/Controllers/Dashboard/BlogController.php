@@ -21,7 +21,7 @@ class BlogController extends Controller
 
     public function index()
     {
-        $blogs = Blog::with(['category'])->paginate(10);
+        $blogs = Blog::with(['category'])->get();
         return view('dashboard.blogs.index', compact('blogs'));
     }
     public function create()

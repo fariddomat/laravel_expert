@@ -20,6 +20,7 @@
                     <tr>
                         <th>#</th>
                         <th>الاسم</th>
+                        <th>التصنيف</th>
                         <th>الوصف</th>
                         <th>تعديل</th>
                         <th>حذف</th>
@@ -30,6 +31,7 @@
                     <tr>
                         <td>{{ $key + 1 }}</td>
                         <td>{{ $item->name }}</td>
+                        <td>{{ $item->teamRole->name }}</td>
                         <td>{{ $item->title }}</td>
                         <td>
                             <a href="{{ route('dashboard.team.edit', $item->id) }}" class="btn btn-info btn-sm"><i class="fas fa-edit"></i> تعديل</a>

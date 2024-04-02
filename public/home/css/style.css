@@ -1379,7 +1379,7 @@ canvas {
     margin-top: 1rem;
     margin-bottom: .5rem;
     /* display: block; */
-    font-size: 0.75rem;
+    /* font-size: 0.75rem; */
     color: #919491;
 }
 .post-content span a {

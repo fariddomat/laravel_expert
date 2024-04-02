@@ -35,12 +35,10 @@ remove un used code #
 change models directory#
 add work with us page #
 image optimization #
+blogs remove description from slider #
+services fixe description #
 
 google recaptcha
-
-
-blogs remove description from slider
-services remove description
 
 study aboard optional index_image and fixe design
 

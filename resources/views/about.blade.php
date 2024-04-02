@@ -262,7 +262,7 @@
             width: 250px;
             height: 250px;
             /* object-fit: cover; */
-            border-radius: 50%;
+            /* border-radius: 50%; */
         }
 
         .card-container {
@@ -340,7 +340,7 @@
             lastScrollTop = currentScroll <= 0 ? 0 : currentScroll; // For Mobile or negative scrolling
         }, false);
     </script>
-    <script>
+    <script defer>
         $(document).ready(function() {
             // Owl Carousel for team gallery
             $('.team-gallery').owlCarousel({
@@ -526,7 +526,12 @@
             </div>
 
             <!-- Members -->
-            <div class="row justify-content-center">
+            @php
+                $counter=0;
+            @endphp
+            <div class="row justify-content-center" @if ($counter == 0)
+                data-animate="fadeInUp" data-delay="0.1"
+                @endif>
                 @foreach ($teams as $team)
                     @php
                         if ($team->team_role_id === 1) {
@@ -534,7 +539,10 @@
                         }
                     @endphp
                     <div class="col-md-3 col-sm-6 team-member" data-category="{{ $team->teamRole->name }}"
-                        data-animate="fadeInUp" data-delay="0.1">
+                        @if ($counter>0)
+                        data-animate="fadeInUp" data-delay="0.1"
+                        @endif
+                        >
                         <div class="card">
                             <div class="card-container">
                                 <div class="card-face front-face">
@@ -556,6 +564,10 @@
                         </div>
                     </div>
                 @endforeach
+
+                @php
+                $counter++;
+            @endphp
 
             </div>
 
