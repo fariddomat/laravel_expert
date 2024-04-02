@@ -12,6 +12,10 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
 
     <style>
+        .page-title h1 {
+            font-size: 2rem;
+        }
+
         #customers-testimonials.owl-carousel .owl-dots .owl-dot span {
             background: #DF1F26 !important;
             margin-bottom: 25px !important;
@@ -231,45 +235,38 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="row serviceSec pb-7" style="" data-animate="fadeInDown" data-delay="1.4">
-                        @if ($service->parent_id == "1")
-                        <div  data-animate="slideInRight" data-delay=".5">
-                            <div class="col-md-12 wow "
-                                style="padding-right: 25px; padding-top:150px;
-                                background-image: url({{ asset($service->index_image) }});
-                                background-size: cover !important;
-                                height: 600px !imporant;
-                                background-color: rgba(255,255,255,0.7) !important;
-                                background-blend-mode: lighten !important; height: 600px !important">
-                                <div>{!! $service->brief !!}</div>
-                                <div class="row" style="margin-top:35px">
-                                    @foreach ($service->indexItems as $item)
-                                        <div class="col-12 col-md-12">
-                                            <div class="accordion1">
-                                                <i class="fa fa-caret-{{ $arrow }} pr-3"></i>
+                        @if ($service->parent_id == '1')
+                            <div data-animate="slideInRight" data-delay=".5">
+                                <div class="col-md-12 wow "
+                                    style="padding-right: 25px; padding-top:50px;
+                                            background-image: url({{ asset($service->index_image) }});
+                                            background-size: cover !important;
+                                            min-height: 600px !imporant;
+                                            background-color: rgba(255,255,255,0.7) !important;
+                                            background-blend-mode: lighten !important; height: 600px !important">
+                                    <h2 class="col-md-12 pt-2 pb-2" data-animate="fadeInDown" data-delay="1.4"
+                                        style="font-size: 3rem;text-align: center">{{ $service->title }}</h2>
 
-                                                {{ $item->name }}
-                                            </div>
-                                            <div class="panel1">
-                                                {!! $item->description !!}
-                                                {{-- @if ($item->sub_service_id != null)
-                                        <div class="row" style="margin-bottom: 15px">
-                                            <div class="">
-                                                <a href="{{ route('service', $item->sub_service_id) }}"
-                                                    class="btn btn-primary" style="color: #fff">@lang('site.read_more')</a>
+                                    <div class="" style="padding: 2rem;">{!! $service->brief !!}</div>
+                                    <div class="row" style="margin-top:35px">
+                                        @foreach ($service->indexItems as $item)
+                                            <div class="col-12 col-md-12">
+                                                <div class="accordion1">
+                                                    <i class="fa fa-caret-{{ $arrow }} pr-3"></i>
 
+                                                    {{ $item->name }}
+                                                </div>
+                                                <div class="panel1">
+                                                    {!! $item->description !!}
+                                                </div>
                                             </div>
-                                        </div>
-                                    @endif --}}
-                                            </div>
-
-                                        </div>
-                                    @endforeach
+                                        @endforeach
+                                    </div>
                                 </div>
-
-                            </div></div>
+                            </div>
                         @elseif ($service->index_image)
-                        <h2 class="col-md-12 pt-2 pb-2" data-animate="fadeInDown" data-delay="1.4"
-                            style="font-size: 3rem;text-align: center">{{ $service->title }}</h2>
+                            <h2 class="col-md-12 pt-2 pb-2" data-animate="fadeInDown" data-delay="1.4"
+                                style="font-size: 3rem;text-align: center">{{ $service->title }}</h2>
 
                             <div class="col-md-6 wow " style="margin-top:50px ;" data-animate="slideInRight"
                                 data-delay=".5">
@@ -305,10 +302,10 @@
                                 <img src="{{ asset($service->index_image) }}" class="img-responsive" alt="">
                             </div>
                         @else
-                        <h2 class="col-md-12 pt-2 pb-2" data-animate="fadeInDown" data-delay="1.4"
-                            style="font-size: 3rem;text-align: center">{{ $service->title }}</h2>
+                            <h2 class="col-md-12 pt-2 pb-2" data-animate="fadeInDown" data-delay="1.4"
+                                style="font-size: 3rem;text-align: center">{{ $service->title }}</h2>
 
-                            <div class="col-md-12 wow " style="margin-right: 25px; margin-top:50px"
+                            <div class="col-md-12 wow " style="padding-right: 25px; margin-top:50px"
                                 data-animate="slideInRight" data-delay=".5">
                                 <div>{!! $service->brief !!}</div>
                                 <div class="row" style="margin-top:35px">
@@ -345,9 +342,10 @@
                                 <img src="{{ asset($service->index_image_2) }}" class="img-responsive" alt="">
                             </div>
                         @endif
-                        <div class="col-md-12 wow fadeInUp" data-wow-delay=".5s" style="margin-top:50px">
+                        <div class="col-md-12 wow fadeInUp" data-wow-delay=".5s"
+                            @if ($service->parent_id != 1) style="margin-top:50px" @endif>
                             @foreach ($service->sections as $section)
-                                <div class="row mt-5 ml-5 serviceSection" data-animate="fadeInUp" data-delay=".2">
+                                <div class="row mt-5 ml-5 mr-5 serviceSection" data-animate="fadeInUp" data-delay=".2">
                                     <div class="col-md-12">
                                         <h3 class="service-section-title">{{ $section->title }}</h3>
                                         <div>
