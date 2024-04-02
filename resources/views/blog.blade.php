@@ -352,8 +352,7 @@ $metaDescription= Str::limit(strip_tags($blog->description ?? ''), 160) ;
                 </div>
                 <div class="col-1">
                     <div class="world-map position-relative">
-                        <img src="{{ asset('home/img/map.svg') }}" alt="" alt="" data-no-retina
-                            class="svg">
+                        
                     </div>
                 </div>
             </div>

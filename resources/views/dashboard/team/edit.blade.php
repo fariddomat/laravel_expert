@@ -4,6 +4,27 @@
 
 @section('scripts')
     <script src="{{ asset('dashboard/js/image_preview.js') }}"></script>
+    <script type="text/javascript">
+        var imageGalleryBrowseUrl = "{{ route('dashboard.imageGallery.browser') }}";
+        var imageGalleryUploadUrl = "{{ route('dashboard.imageGallery.uploader') }}";
+    </script>
+    <script src="{{asset('ckeditor/ckeditor.js')}}"></script>
+    <script>
+
+        var imageGalleryBrowseUrl = "{{ route('dashboard.imageGallery.browser') }}";
+        var imageGalleryUploadUrl = "{{ route('dashboard.imageGallery.uploader') }}";
+            $(function() {
+                CKEDITOR.replace("description", {
+                    filebrowserBrowseUrl: imageGalleryBrowseUrl,
+                    filebrowserUploadUrl: imageGalleryUploadUrl +
+                        "?_token=" +
+                        $("meta[name=csrf-token]").attr("content"),
+                    removeButtons: "About",
+                    contentsLangDirection: 'rtl'
+                });
+
+            });
+        </script>
 @endsection
 
 @section('content')
@@ -42,7 +63,7 @@
                     </div>
                     <div class="form-group mb-3">
                         <label>التفاصيل</label>
-                        <textarea name="description" class="form-control">
+                        <textarea name="description" class="form-control description">
                         {{ old('description', $team->description) }}
                     </textarea>
                     </div>

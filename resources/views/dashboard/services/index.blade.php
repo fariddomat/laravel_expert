@@ -39,7 +39,7 @@
                         <td>{{ $service->showed == 1 ? 'Showed' : 'Hidden' }}</td>
                         <td>{{ $service->show_at_home == 1 ? 'Showed' : 'Hidden' }}</td>
                         <td>
-                            <a href="{{ route('dashboard.services.edit', $service->id) }}" class="btn btn-info btn-sm"><i class="fas fa-edit"></i> تعديل</a>
+                            <a href="{{ route('dashboard.services.edit', $service->slug) }}" class="btn btn-info btn-sm"><i class="fas fa-edit"></i> تعديل</a>
                             <form action="{{ route('dashboard.services.destroy', $service->id) }}" method="post" style="display: inline-block">
                                 @csrf()
                                 @method('delete')

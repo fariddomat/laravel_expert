@@ -164,6 +164,7 @@ class SiteController extends Controller
 
     public function service(Request $request, Service $service)
     {
+        // dd($service->parent_id);
         views($service)
             ->record();
 

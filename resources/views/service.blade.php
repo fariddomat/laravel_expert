@@ -1,6 +1,6 @@
 @extends('layouts.site')
 @php
-$metaDescription= Str::limit(strip_tags($service->brief ?? ''), 160) ;
+    $metaDescription = Str::limit(strip_tags($service->brief ?? ''), 160);
 @endphp
 @section('title')
     {{ $service->title }}
@@ -136,8 +136,8 @@ $metaDescription= Str::limit(strip_tags($service->brief ?? ''), 160) ;
             box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.5);
         }
 
-        .serviceSec > div,
-        .serviceSection > div {
+        .serviceSec>div,
+        .serviceSection>div {
             overflow-x: auto;
             overflow-y: hidden;
         }
@@ -217,7 +217,7 @@ $metaDescription= Str::limit(strip_tags($service->brief ?? ''), 160) ;
                 </div>
                 <div class="col-1">
                     <div class="world-map position-relative">
-                        
+
                     </div>
                 </div>
             </div>
@@ -231,22 +231,60 @@ $metaDescription= Str::limit(strip_tags($service->brief ?? ''), 160) ;
             <div class="row">
                 <div class="col-md-12">
                     <div class="row serviceSec pb-7" style="" data-animate="fadeInDown" data-delay="1.4">
+                        @if ($service->parent_id == "1")
+                        <div  data-animate="slideInRight" data-delay=".5">
+                            <div class="col-md-12 wow "
+                                style="padding-right: 25px; padding-top:150px;
+                                background-image: url({{ asset($service->index_image) }});
+                                background-size: cover !important;
+                                height: 600px !imporant;
+                                background-color: rgba(255,255,255,0.7) !important;
+                                background-blend-mode: lighten !important; height: 600px !important">
+                                <div>{!! $service->brief !!}</div>
+                                <div class="row" style="margin-top:35px">
+                                    @foreach ($service->indexItems as $item)
+                                        <div class="col-12 col-md-12">
+                                            <div class="accordion1">
+                                                <i class="fa fa-caret-{{ $arrow }} pr-3"></i>
+
+                                                {{ $item->name }}
+                                            </div>
+                                            <div class="panel1">
+                                                {!! $item->description !!}
+                                                {{-- @if ($item->sub_service_id != null)
+                                        <div class="row" style="margin-bottom: 15px">
+                                            <div class="">
+                                                <a href="{{ route('service', $item->sub_service_id) }}"
+                                                    class="btn btn-primary" style="color: #fff">@lang('site.read_more')</a>
+
+                                            </div>
+                                        </div>
+                                    @endif --}}
+                                            </div>
+
+                                        </div>
+                                    @endforeach
+                                </div>
+
+                            </div></div>
+                        @elseif ($service->index_image)
                         <h2 class="col-md-12 pt-2 pb-2" data-animate="fadeInDown" data-delay="1.4"
                             style="font-size: 3rem;text-align: center">{{ $service->title }}</h2>
 
-                        <div class="col-md-6 wow " style="margin-top:50px" data-animate="slideInRight" data-delay=".5">
-                            <div>{!! $service->brief !!}</div>
-                            <div class="row" style="margin-top:35px">
-                                @foreach ($service->indexItems as $item)
-                                    <div class="col-12 col-md-12">
-                                        <div class="accordion1">
-                                            <i class="fa fa-caret-{{ $arrow }} pr-3"></i>
+                            <div class="col-md-6 wow " style="margin-top:50px ;" data-animate="slideInRight"
+                                data-delay=".5">
+                                <div>{!! $service->brief !!}</div>
+                                <div class="row" style="margin-top:35px">
+                                    @foreach ($service->indexItems as $item)
+                                        <div class="col-12 col-md-12">
+                                            <div class="accordion1">
+                                                <i class="fa fa-caret-{{ $arrow }} pr-3"></i>
 
-                                            {{ $item->name }}
-                                        </div>
-                                        <div class="panel1">
-                                            {!! $item->description !!}
-                                            {{-- @if ($item->sub_service_id != null)
+                                                {{ $item->name }}
+                                            </div>
+                                            <div class="panel1">
+                                                {!! $item->description !!}
+                                                {{-- @if ($item->sub_service_id != null)
                                             <div class="row" style="margin-bottom: 15px">
                                                 <div class="">
                                                     <a href="{{ route('service', $item->sub_service_id) }}"
@@ -255,17 +293,52 @@ $metaDescription= Str::limit(strip_tags($service->brief ?? ''), 160) ;
                                                 </div>
                                             </div>
                                         @endif --}}
+                                            </div>
+
                                         </div>
+                                    @endforeach
+                                </div>
 
-                                    </div>
-                                @endforeach
                             </div>
+                            <div class="col-md-6 pic-services wow " data-animate="slideInLeft" data-delay="0.5"
+                                style=" text-align: center; margin: auto 0;">
+                                <img src="{{ asset($service->index_image) }}" class="img-responsive" alt="">
+                            </div>
+                        @else
+                        <h2 class="col-md-12 pt-2 pb-2" data-animate="fadeInDown" data-delay="1.4"
+                            style="font-size: 3rem;text-align: center">{{ $service->title }}</h2>
 
-                        </div>
-                        <div class="col-md-6 pic-services wow " data-animate="slideInLeft" data-delay="0.5"
-                            style=" text-align: center; margin: auto 0;">
-                            <img src="{{ asset($service->index_image) }}" class="img-responsive" alt="">
-                        </div>
+                            <div class="col-md-12 wow " style="margin-right: 25px; margin-top:50px"
+                                data-animate="slideInRight" data-delay=".5">
+                                <div>{!! $service->brief !!}</div>
+                                <div class="row" style="margin-top:35px">
+                                    @foreach ($service->indexItems as $item)
+                                        <div class="col-12 col-md-12">
+                                            <div class="accordion1">
+                                                <i class="fa fa-caret-{{ $arrow }} pr-3"></i>
+
+                                                {{ $item->name }}
+                                            </div>
+                                            <div class="panel1">
+                                                {!! $item->description !!}
+                                                {{-- @if ($item->sub_service_id != null)
+                                        <div class="row" style="margin-bottom: 15px">
+                                            <div class="">
+                                                <a href="{{ route('service', $item->sub_service_id) }}"
+                                                    class="btn btn-primary" style="color: #fff">@lang('site.read_more')</a>
+
+                                            </div>
+                                        </div>
+                                    @endif --}}
+                                            </div>
+
+                                        </div>
+                                    @endforeach
+                                </div>
+
+                            </div>
+                        @endif
+
                         @if ($service->index_image_2)
                             <div class="col-md-12 pic-services wow " data-animate="fadeInUp" data-delay=".4"
                                 style="margin-top:55px; text-align: center;">
@@ -274,7 +347,7 @@ $metaDescription= Str::limit(strip_tags($service->brief ?? ''), 160) ;
                         @endif
                         <div class="col-md-12 wow fadeInUp" data-wow-delay=".5s" style="margin-top:50px">
                             @foreach ($service->sections as $section)
-                                <div class="row mt-5 ml-5 serviceSection"  data-animate="fadeInUp" data-delay=".2">
+                                <div class="row mt-5 ml-5 serviceSection" data-animate="fadeInUp" data-delay=".2">
                                     <div class="col-md-12">
                                         <h3 class="service-section-title">{{ $section->title }}</h3>
                                         <div>
@@ -301,19 +374,23 @@ $metaDescription= Str::limit(strip_tags($service->brief ?? ''), 160) ;
                     @if ($service->questions->count() > 0)
                         <section class="pt-5" data-animate="fadeInUp" data-delay="1.4">
                             <div class="container">
-                                <h2 class="text-center pb-2" style="">@lang('site.FAQ_about') : {{ $service->title }}</h2>
+                                <h2 class="text-center pb-2" style="">@lang('site.FAQ_about') : {{ $service->title }}
+                                </h2>
                                 <div class="row">
                                     <div class="col-md-12">
                                         <div id="accordion100" class="tm-accordion">
                                             @foreach ($service->questions as $index => $faq)
-                                                <div class="card" data-animate="fadeInUp" data-delay="{{ 0.1 + $index / 8 }}"  data-animate="fadeInUp" data-delay=".4">
+                                                <div class="card" data-animate="fadeInUp"
+                                                    data-delay="{{ 0.1 + $index / 8 }}" data-animate="fadeInUp"
+                                                    data-delay=".4">
                                                     <div class="card-header p-0" id="heading10{{ $index + 1 }}">
                                                         <h5 class="title" data-toggle="collapse"
                                                             data-target="#collapse10{{ $index + 1 }}"
                                                             aria-expanded="@if ($index == 0) true
                                         @else
                                         false @endif"
-                                                            aria-controls="collapse10{{ $index + 1 }}">#{{ $index + 1 }} {{ $faq->question }}
+                                                            aria-controls="collapse10{{ $index + 1 }}">
+                                                            #{{ $index + 1 }} {{ $faq->question }}
                                                             <i class="fas fa-chevron-down accordion-controls-icon open-icon"
                                                                 @if ($index == 0) style="display: none" @endif></i>
                                                             <i class="fas fa-chevron-up accordion-controls-icon close-icon"
@@ -341,8 +418,8 @@ $metaDescription= Str::limit(strip_tags($service->brief ?? ''), 160) ;
                     <!-- End of FAQ -->
 
                     <!-- section begin -->
-                    <section id="" class="call-to-action bg-color  text-center  pt-2 pb-5" data-animate="fadeInUp"
-                        data-delay=".5">
+                    <section id="" class="call-to-action bg-color  text-center  pt-2 pb-5"
+                        data-animate="fadeInUp" data-delay=".5">
                         <a href="{{ route('contact') }}" class="btn btn-secondary"
                             style="color: #fff; padding: 15px 50px">أحجز الآن</a>
                     </section>
@@ -393,15 +470,15 @@ $metaDescription= Str::limit(strip_tags($service->brief ?? ''), 160) ;
                         </section>
                     @endif
 
-                    <div class="disquss-comment mt-50"  data-animate="fadeInUp"
-                    data-delay=".5" style="background: white;
+                    <div class="disquss-comment mt-50" data-animate="fadeInUp" data-delay=".5"
+                        style="background: white;
                     border-radius: 25px;
                     padding: 2rem;">
                         <div id="disqus_thread"></div>
                         <script>
                             /**
-                            *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
-                            *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables    */
+                             *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+                             *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables    */
                             /*
                             var disqus_config = function () {
                             this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
@@ -409,13 +486,15 @@ $metaDescription= Str::limit(strip_tags($service->brief ?? ''), 160) ;
                             };
                             */
                             (function() { // DON'T EDIT BELOW THIS LINE
-                            var d = document, s = d.createElement('script');
-                            s.src = 'https://almohtarif-2.disqus.com/embed.js';
-                            s.setAttribute('data-timestamp', +new Date());
-                            (d.head || d.body).appendChild(s);
+                                var d = document,
+                                    s = d.createElement('script');
+                                s.src = 'https://almohtarif-2.disqus.com/embed.js';
+                                s.setAttribute('data-timestamp', +new Date());
+                                (d.head || d.body).appendChild(s);
                             })();
                         </script>
-                        <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+                        <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments
+                                powered by Disqus.</a></noscript>
                     </div>
 
 

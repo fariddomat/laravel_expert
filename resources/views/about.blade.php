@@ -261,7 +261,7 @@
         .card img {
             width: 250px;
             height: 250px;
-            object-fit: contain;
+            /* object-fit: cover; */
             border-radius: 50%;
         }
 
@@ -484,7 +484,7 @@
 
             <div class="row justify-content-center">
 
-                <div class="col-md-3 col-sm-6 team-member" data-animate="fadeInUp" data-delay="0.3">
+                <div class="col-md-3 col-sm-6" data-animate="fadeInUp" data-delay="0.3">
                     <div class="card">
                         <div class="card-container">
                             <div class="card-face front-face">
@@ -495,7 +495,7 @@
                             <div class="card-Face back-face">
                                 <div class="container about">
 
-                                    <p>{{ $teams[0]->description }}</p>
+                                    <p>{!! $teams[0]->description !!}</p>
 
                                 </div>
                             </div>
@@ -545,7 +545,7 @@
                                 <div class="card-Face back-face">
                                     <div class="container about">
 
-                                        <p>{{ $team->description }}</p>
+                                        <p>{!! $team->description !!}</p>
                                         <div class="ca href target blant" classhi fo bi-facebook">
                                             <a href target blans class-hi ig bi-instagram">
                                                 <a href" target="blank" class="bi git si-github">
