@@ -305,8 +305,8 @@
                             <h2 class="col-md-12 pt-2 pb-2" data-animate="fadeInDown" data-delay="1.4"
                                 style="font-size: 3rem;text-align: center">{{ $service->title }}</h2>
 
-                            <div class="col-md-12 wow " style="padding:0 2rem; margin-top:50px"
-                                data-animate="slideInRight" data-delay=".5">
+                            <div class="col-md-12 wow " style="padding:0 2rem; margin-top:50px" data-animate="slideInRight"
+                                data-delay=".5">
                                 <div>{!! $service->brief !!}</div>
                                 <div class="row" style="margin-top:35px">
                                     @foreach ($service->indexItems as $item)
@@ -318,7 +318,7 @@
                                             </div>
                                             <div class="panel1">
                                                 {!! $item->description !!}
-                                              </div>
+                                            </div>
 
                                         </div>
                                     @endforeach
@@ -336,10 +336,18 @@
                         <div class="col-md-12 wow fadeInUp" data-wow-delay=".5s"
                             @if ($service->parent_id != 1) style="margin-top:50px" @endif>
                             @foreach ($service->sections as $section)
-                                <div class="row mt-5 ml-5 mr-5 serviceSection" data-animate="fadeInUp" data-delay=".2">
+                                <div class="row mt-5 ml-5 mr-5 serviceSection" data-animate="fadeInUp" data-delay=".2" style=" border: 1px solid #e0e1e0;
+                                background: #fff;
+                                box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.5);
+                                padding: 20px;
+                                border-radius: 10px;
+                                margin-bottom: 30px; /* Adjust spacing */">
                                     <div class="col-md-12">
-                                        <h3 class="service-section-title">{{ $section->title }}</h3>
-                                        <div>
+                                        <h3 class="service-section-title" style=" font-size: 24px; /* Adjust font size */
+                                        font-weight: bold; color:#DF1F26;
+                                        margin-bottom: 15px; /* Adjust spacing */">{{ $section->title }}</h3>
+                                        <div style="  line-height: 1.6; /* Adjust line spacing */
+                                        margin-bottom: 20px; /* Adjust spacing */">
                                             {!! $section->content !!}
                                         </div>
                                     </div>
