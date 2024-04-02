@@ -38,10 +38,10 @@ image optimization #
 blogs remove description from slider #
 services fixe description #
 study aboard optional index_image and fixe design #
+fixe datatable #
 
 google recaptcha
 
-fixe datatable
 mobile friendly check
 
 
