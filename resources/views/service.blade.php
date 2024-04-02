@@ -305,7 +305,7 @@
                             <h2 class="col-md-12 pt-2 pb-2" data-animate="fadeInDown" data-delay="1.4"
                                 style="font-size: 3rem;text-align: center">{{ $service->title }}</h2>
 
-                            <div class="col-md-12 wow " style="padding-right: 25px; margin-top:50px"
+                            <div class="col-md-12 wow " style="padding:0 2rem; margin-top:50px"
                                 data-animate="slideInRight" data-delay=".5">
                                 <div>{!! $service->brief !!}</div>
                                 <div class="row" style="margin-top:35px">
@@ -318,16 +318,7 @@
                                             </div>
                                             <div class="panel1">
                                                 {!! $item->description !!}
-                                                {{-- @if ($item->sub_service_id != null)
-                                        <div class="row" style="margin-bottom: 15px">
-                                            <div class="">
-                                                <a href="{{ route('service', $item->sub_service_id) }}"
-                                                    class="btn btn-primary" style="color: #fff">@lang('site.read_more')</a>
-
-                                            </div>
-                                        </div>
-                                    @endif --}}
-                                            </div>
+                                              </div>
 
                                         </div>
                                     @endforeach
@@ -338,7 +329,7 @@
 
                         @if ($service->index_image_2)
                             <div class="col-md-12 pic-services wow " data-animate="fadeInUp" data-delay=".4"
-                                style="margin-top:55px; text-align: center;">
+                                style="margin-top:55px; ;text-align: center;">
                                 <img src="{{ asset($service->index_image_2) }}" class="img-responsive" alt="">
                             </div>
                         @endif

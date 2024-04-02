@@ -41,7 +41,7 @@ study aboard optional index_image and fixe design #
 
 google recaptcha
 
-
+fixe datatable
 mobile friendly check
 
 
