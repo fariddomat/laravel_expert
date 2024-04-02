@@ -42,4 +42,6 @@ study aboard optional index_image and fixe design #
 google recaptcha
 
 
+mobile friendly check
+
 
