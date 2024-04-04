@@ -326,6 +326,56 @@ $metaDescription= Str::limit(strip_tags($blog->description ?? ''), 160) ;
             }
         }
     </style>
+
+    <style>
+
+/* Typography */
+h1 {
+    font-size: 3rem; /* Adjust as needed */
+    font-weight: bold;
+    margin-bottom: 20px;
+    color: #DF1F26
+}
+
+p {
+    font-size: 16px; /* Adjust as needed */
+    line-height: 1.6;
+    margin-bottom: 15px;
+}
+
+/* Images */
+.img-fluid {
+    max-width: 100%;
+    height: auto;
+}
+
+.img-thumbnail {
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 4px;
+}
+
+/* Blog Post Details */
+.blog-d {
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.5);
+                                padding: 20px;
+                                margin-bottom: 25px;
+}
+
+.author-info-wrap {
+    margin-top: 30px;
+    padding: 15px;
+    background-color: #f5f5f5;
+    border-radius: 5px;
+}
+
+.prev-next {
+    margin-top: 30px;
+}
+    </style>
 @endsection
 @section('scripts')
     <script src="{{ asset('js/blog.js') }}"></script>
@@ -347,7 +397,7 @@ $metaDescription= Str::limit(strip_tags($blog->description ?? ''), 160) ;
                             <li><i class="fas fa-angle-double-right"></i></li>
                             <li><a href="#">تفاصيل المقال</a></li>
                         </ul>
-                       
+
                     </div>
                 </div>
                 <div class="col-1">
@@ -379,7 +429,7 @@ $metaDescription= Str::limit(strip_tags($blog->description ?? ''), 160) ;
                                 <img class="img-thumbnail" src="{{ asset($blog->index_image) }}" alt=""
                                     data-animate="fadeInUp" data-delay="0.2" style="aspect-ratio: 3/2;">
 
-                                <div class="pt-2 pb-2" data-animate="fadeInUp" data-delay=".1">
+                                <div class="pt-2 pb-2 mt-3 blog-d" data-animate="fadeInUp" data-delay=".1">
                                     {!! $blog->introduction !!}
                                 </div>
 
@@ -388,10 +438,10 @@ $metaDescription= Str::limit(strip_tags($blog->description ?? ''), 160) ;
                                     {!! $blog->content_table !!}
                                 </blockquote>
 
-                                <div data-animate="fadeInUp" data-delay=".3">{!! $blog->first_paragraph !!}</div>
+                                <div class="blog-d" data-animate="fadeInUp" data-delay=".3">{!! $blog->first_paragraph !!}</div>
 
 
-                                <div class="pt-2" data-animate="fadeInUp" data-delay=".3">{!! $blog->description !!}</div>
+                                <div class="blog-d"  class="pt-2" data-animate="fadeInUp" data-delay=".3">{!! $blog->description !!}</div>
                             </div>
 
                             <div class="row align-items-center half-gutters mb-5 tag-and-share">
