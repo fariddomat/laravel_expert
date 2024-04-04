@@ -18,36 +18,77 @@
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 
     <script src="https://cdn.datatables.net/v/bs5/dt-2.0.3/b-3.0.1/r-3.0.1/rr-1.5.0/datatables.min.js" defer></script>
-
+    <script>
+        var ServicesReorderRoute = '{{ route('dashboard.services.reorder') }}';
+    </script>
     <script>
         $(document).ready(function() {
-    var table = $('#Table').DataTable({
-        responsive: true,
-        searching: true,
-        paging: false,
-        info: false,
-        sorting: false,
-        language: {
-            url: '//cdn.datatables.net/plug-ins/2.0.3/i18n/ar.json',
-        },
-        // Add column definition for parent service title
-        // columnDefs: [
-        //     {
-        //         targets: 2, // Index of the parent service title column
-        //         render: function (data, type, row) {
-        //             return $(row).data('parent-service-title');
-        //         }
-        //     }
-        // ]
-    });
+            var table = $('#Table').DataTable({
+                responsive: true,
+                searching: true,
+                paging: true,
+                info: false,
+                sorting: false,
+                columnDefs: [{
+                    orderable: false,
+                    targets: [5]
+                }],
+                rowReorder: true,
+                // language: {
+                //     url: '//cdn.datatables.net/plug-ins/2.0.3/i18n/ar.json',
+                // },
 
-    // Filter event handler for select dropdown
-    $('#parentServiceSelect').on('change', function() {
-        var selectedValue = $(this).val();
-        table.column(2).search(selectedValue ? '^' + selectedValue + '$' : '', true, false).draw();
-        console.log(selectedValue);
-    });
-});
+            });
+
+            // Filter event handler for select dropdown
+            $('#parentServiceSelect').on('change', function() {
+                var selectedValue = $(this).val();
+                table.column(2).search(selectedValue ? '^' + selectedValue + '$' : '', true, false).draw();
+                console.log(selectedValue);
+            });
+
+            table.on("row-reorder", function(e, diff, edit) {
+                var length = diff.length - 1;
+                if (length > 0) {
+                    var to = [];
+                    to[diff[0].oldData] = diff[0].newData;
+                    to[diff[length].oldData] = diff[length].newData;
+                    var from = edit.triggerRow.data()[0];
+                    var token = $("meta[name=csrf-token]").attr("content");
+                    $.ajax({
+                        url: ServicesReorderRoute,
+                        type: "POST",
+                        data: {
+                            _token: token,
+                            from: from,
+                            to: to[from]
+                        },
+                        cache: false,
+                        datatype: "JSON",
+                        success: function(data) {
+                            if (data.status == 1) {
+                                // Update DataTable data (if necessary)
+                                // for (var i = 0; i < diff.length; i++) {
+                                //     var rowData = table.row(diff[i].node).data();
+                                //     rowData[0] = Number(diff[i].newData) +
+                                //     1; // Update row index
+                                //     table.row(diff[i].node).data(rowData).draw();
+                                // }
+                                alert("reorder done.");
+                                
+                            } else {
+                                alert("error occurred in reordering.");
+                                location.reload(true);
+                            }
+                        },
+                        error: function() {
+                            alert("error.");
+                            location.reload(true);
+                        }
+                    });
+                }
+            });
+        });
     </script>
 @endsection
 @section('content')
@@ -75,12 +116,12 @@
                 <table id="Table" class="table table-hover">
                     <thead>
                         <tr>
-                            <th>#</th>
-                            <th>الاسم</th>
-                            <th>خدمة فرعية؟</th>
-                            <th>عرض</th>
-                            <th>عرض في الصفحة الرئيسية</th>
-                            <th>العمليات</th>
+                            <th scope="card-block">#</th>
+                            <th scope="card-block">الاسم</th>
+                            <th scope="card-block">خدمة فرعية؟</th>
+                            <th scope="card-block">عرض</th>
+                            <th scope="card-block">عرض في الصفحة الرئيسية</th>
+                            <th scope="card-block">العمليات</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -88,7 +129,8 @@
                             <tr>
                                 <td>{{ $index + 1 }}</td>
                                 <td>{{ $service->title }}</td>
-                                <td data-parent-service-title="{{ $service->parentService ? $service->parentService->title : '' }}">
+                                <td
+                                    data-parent-service-title="{{ $service->parentService ? $service->parentService->title : '' }}">
                                     @if ($service->parent_id == null)
                                         لا
                                     @else

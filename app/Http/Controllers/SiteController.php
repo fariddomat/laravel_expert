@@ -60,7 +60,7 @@ class SiteController extends Controller
         $clients = Client::all();
         $services = Service::where('showed', 1)->where('show_at_home', 1)->limit(3)->get();
         $contactInfo = ContactInfo::find(1);
-        $allServices = Service::where('showed', 1)->get();
+        $allServices = Service::where('showed', 1)->orderBy('position')->get();
         $contactInfo = ContactInfo::find(1);
         $homeSlider = HomeSlider::all();
         $experinceSlider = ExperinceSlider::all();
@@ -157,7 +157,7 @@ class SiteController extends Controller
 
     public function services()
     {
-        $services = Service::where('showed', 1)->get();
+        $services = Service::where('showed', 1)->orderBy('position')->get();
         $info = Info::first();
         return view('services', compact('services', 'info'));
     }

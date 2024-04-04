@@ -88,6 +88,8 @@ Route::group(['prefix' => '/dashboard', 'middleware' => ['auth', 'setArLocale'],
     Route::delete('/services/{service}', 'Dashboard\ServiceController@destroy')->name('services.destroy');
     Route::delete('/services/{service}/index-image', 'Dashboard\ServiceController@destroyIndexImage')->name('services.indexImage.destroy');
     Route::delete('/services/{service}/index-image-2', 'Dashboard\ServiceController@destroyIndexImage2')->name('services.indexImage.destroy2');
+    Route::post('/services/reorder', 'Dashboard\ServiceController@reorder')->name('services.reorder');
+
 
     Route::delete('/blogs/{blog}/index-image', 'Dashboard\BlogController@destroyIndexImage')->name('blogs.indexImage.destroy');
 

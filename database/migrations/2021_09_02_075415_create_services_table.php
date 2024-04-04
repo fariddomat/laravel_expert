@@ -15,6 +15,7 @@ class CreateServicesTable extends Migration
     {
         Schema::create('services', function (Blueprint $table) {
             $table->id();
+            $table->integer('position');
             $table->string('slug');
             $table->string('image')->nullable();
             $table->string('index_image')->nullable();
@@ -25,7 +26,6 @@ class CreateServicesTable extends Migration
             $table->text('slider1')->nullable();
             $table->text('slider2')->nullable();
             $table->text('slider3')->nullable();
-
             $table->foreign('parent_id')->references('id')->on('services')->onDelete('cascade');
 
             $table->timestamps();

@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Storage;
 use App\Models\Service;
 use Illuminate\Support\Str;
 use Illuminate\Validation\Rule;
-
+use Illuminate\Support\Facades\Validator;
 class ServiceController extends Controller
 {
     public function __construct()
@@ -19,12 +19,13 @@ class ServiceController extends Controller
 
     public function index()
     {
-        $services = Service::orderBy('id')->get();
+        $services = Service::orderBy('position')->get();
         return view('dashboard.services.index', compact('services'));
     }
     public function create()
     {
         $services=Service::all();
+
         return view('dashboard.services.create', compact('services'));
     }
 
@@ -52,6 +53,8 @@ class ServiceController extends Controller
 
         $service = new Service();
 
+
+        $service->position = Service::max('position') + 1;
 
         $service->translateOrNew('ar')->title = $validatedData['ar']['title'];
         $service->translateOrNew('ar')->brief = $validatedData['ar']['brief'];
@@ -189,5 +192,41 @@ class ServiceController extends Controller
         $service->delete();
         session()->flash('success', 'Service Deleted Successfully');
         return redirect()->route('dashboard.services.index');
+    }
+
+
+    public function reorder(Request $request)
+    {
+        $validator = Validator::make($request->all(), [
+            'from' => 'required|integer',
+            'to' => 'required|integer',
+        ]);
+        if ($validator->fails()) {
+            return response()->json(['status' => '0']);
+        }
+        $from = $request->from;
+        $to = $request->to;
+        $movedService = Service::where('position', $from)->first();
+        $toService = Service::where('position', $to)->first();
+        // if ($movedService == null || $toService == null) {
+        //     return response()->json(['status' => '0']);
+        // }
+        // dd($from);
+        if ($from < $to) {
+            $services = Service::whereBetween('position', [$from + 1, $to])->get();
+            foreach ($services as $service) {
+                $service->decrement('position');
+            }
+            $movedService->position = $to;
+            $movedService->save();
+        } else if ($from > $to) {
+            $services = Service::whereBetween('position', [$to, $from - 1])->get();
+            foreach ($services as $service) {
+                $service->increment('position');
+            }
+            $movedService->position = $to;
+            $movedService->save();
+        }
+        return response()->json(['status' => '1']);
     }
 }

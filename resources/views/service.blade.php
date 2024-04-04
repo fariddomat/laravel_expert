@@ -430,7 +430,7 @@
                                         <h2 class="text-center">الخدمات الفرعية</h2>
                                         <div id="customers-testimonials" class="owl-carousel " data-animate="fadeInUp"
                                             data-delay="1.5">
-                                            @foreach ($service->subServices as $index => $service)
+                                            @foreach ($service->subServices->orderBy('position') as $index => $service)
                                                 <!--TESTIMONIAL 1 -->
                                                 <div class="item">
                                                     <div class="shadow-effect">
