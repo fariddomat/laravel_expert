@@ -38,6 +38,10 @@ class ImageHelper
     }
     function removeImageInPublicDirectory($image)
     {
-        Storage::disk('local')->delete($image);
+        try {
+            Storage::disk('local')->delete($image);
+        } catch (\Throwable $th) {
+            //throw $th;
+        }
     }
 }
