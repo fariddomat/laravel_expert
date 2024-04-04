@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use Illuminate\Pagination\Paginator;
 use App\Models\Blog;
 use App\Models\Color;
 use App\Models\ContactInfo;
@@ -34,6 +35,7 @@ class AppServiceProvider extends ServiceProvider
 
         Schema::defaultStringLength(191);
 
+        Paginator::useBootstrap();
 
         // Using closure based composers...
         View::composer('layouts.site', function ($view) {
