@@ -1,6 +1,6 @@
 @extends('layouts.site')
 @php
-$metaDescription= Str::limit(strip_tags($blog->description ?? ''), 160) ;
+    $metaDescription = Str::limit(strip_tags($blog->description ?? ''), 160);
 @endphp
 @section('title')
     {{ $blog->title }}
@@ -164,10 +164,10 @@ $metaDescription= Str::limit(strip_tags($blog->description ?? ''), 160) ;
         }
 
         /* .blog {
-            background-color: transparent;
-            background-image: linear-gradient(180deg, #FFF 30%, #0D1216 97%);
+                background-color: transparent;
+                background-image: linear-gradient(180deg, #FFF 30%, #0D1216 97%);
 
-        } */
+            } */
 
         .post-details {
             background: #fff;
@@ -219,7 +219,7 @@ $metaDescription= Str::limit(strip_tags($blog->description ?? ''), 160) ;
             height: 5px;
             background: linear-gradient(90deg,
                     rgba(255, 49, 49, 0.5),
-                    rgb(255, 49, 49) ,transparent 50%);
+                    rgb(255, 49, 49), transparent 50%);
         }
 
         .right {
@@ -239,7 +239,7 @@ $metaDescription= Str::limit(strip_tags($blog->description ?? ''), 160) ;
             width: 5px;
             height: 0;
             background: linear-gradient(180deg,
-            rgba(255, 49, 49, 0.5),
+                    rgba(255, 49, 49, 0.5),
                     rgb(255, 49, 49),
                     transparent 70%);
         }
@@ -328,53 +328,54 @@ $metaDescription= Str::limit(strip_tags($blog->description ?? ''), 160) ;
     </style>
 
     <style>
+        /* Typography */
+        h1 {
+            font-size: 3rem;
+            /* Adjust as needed */
+            font-weight: bold;
+            margin-bottom: 20px;
+            color: #DF1F26
+        }
 
-/* Typography */
-h1 {
-    font-size: 3rem; /* Adjust as needed */
-    font-weight: bold;
-    margin-bottom: 20px;
-    color: #DF1F26
-}
+        p {
+            font-size: 16px;
+            /* Adjust as needed */
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
 
-p {
-    font-size: 16px; /* Adjust as needed */
-    line-height: 1.6;
-    margin-bottom: 15px;
-}
+        /* Images */
+        .img-fluid {
+            max-width: 100%;
+            height: auto;
+        }
 
-/* Images */
-.img-fluid {
-    max-width: 100%;
-    height: auto;
-}
+        .img-thumbnail {
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            padding: 4px;
+        }
 
-.img-thumbnail {
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    padding: 4px;
-}
+        /* Blog Post Details */
+        .blog-d {
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.5);
+            padding: 20px;
+            margin-bottom: 25px;
+        }
 
-/* Blog Post Details */
-.blog-d {
-    padding: 20px;
-    background-color: #fff;
-    border-radius: 5px;
-    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.5);
-                                padding: 20px;
-                                margin-bottom: 25px;
-}
+        .author-info-wrap {
+            margin-top: 30px;
+            padding: 15px;
+            background-color: #f5f5f5;
+            border-radius: 5px;
+        }
 
-.author-info-wrap {
-    margin-top: 30px;
-    padding: 15px;
-    background-color: #f5f5f5;
-    border-radius: 5px;
-}
-
-.prev-next {
-    margin-top: 30px;
-}
+        .prev-next {
+            margin-top: 30px;
+        }
     </style>
 @endsection
 @section('scripts')
@@ -416,7 +417,7 @@ p {
             <div class="container">
                 <div class="row">
                     <div class="col-md-12">
-                        <div class="post-details" data-animate="fadeInUp" data-delay=".1">
+                        <div class="post-details" data-animate="fadeInUp" data-delay="1.1">
                             <div class="post-content">
                                 <h2 data-animate="fadeInUp" data-delay="1.4">
                                     {{ $blog->title }}
@@ -427,7 +428,7 @@ p {
                                     <br> التصنيف: <a
                                         href="{{ route('blogs', $blog->category->slug) }}">{{ $blog->category->name }}</a></span>
                                 <img class="img-thumbnail" src="{{ asset($blog->index_image) }}" alt=""
-                                    data-animate="fadeInUp" data-delay="0.2" style="aspect-ratio: 3/2;">
+                                    data-animate="fadeInUp" data-delay=".6" style="aspect-ratio: 3/2; margin-top: 25px">
 
                                 <div class="pt-2 pb-2 mt-3 blog-d" data-animate="fadeInUp" data-delay=".1">
                                     {!! $blog->introduction !!}
@@ -441,7 +442,8 @@ p {
                                 <div class="blog-d" data-animate="fadeInUp" data-delay=".3">{!! $blog->first_paragraph !!}</div>
 
 
-                                <div class="blog-d"  class="pt-2" data-animate="fadeInUp" data-delay=".3">{!! $blog->description !!}</div>
+                                <div class="blog-d" class="pt-2" data-animate="fadeInUp" data-delay=".3">
+                                    {!! $blog->description !!}</div>
                             </div>
 
                             <div class="row align-items-center half-gutters mb-5 tag-and-share">
@@ -499,13 +501,12 @@ p {
                             </ul>
 
 
-                            <div class="disquss-comment mt-50"  data-animate="fadeInUp"
-                            data-delay=".5">
+                            <div class="disquss-comment mt-50" data-animate="fadeInUp" data-delay=".5">
                                 <div id="disqus_thread"></div>
                                 <script>
                                     /**
-                                    *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
-                                    *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables    */
+                                     *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+                                     *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables    */
                                     /*
                                     var disqus_config = function () {
                                     this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
@@ -513,13 +514,15 @@ p {
                                     };
                                     */
                                     (function() { // DON'T EDIT BELOW THIS LINE
-                                    var d = document, s = d.createElement('script');
-                                    s.src = 'https://almohtarif-2.disqus.com/embed.js';
-                                    s.setAttribute('data-timestamp', +new Date());
-                                    (d.head || d.body).appendChild(s);
+                                        var d = document,
+                                            s = d.createElement('script');
+                                        s.src = 'https://almohtarif-2.disqus.com/embed.js';
+                                        s.setAttribute('data-timestamp', +new Date());
+                                        (d.head || d.body).appendChild(s);
                                     })();
                                 </script>
-                                <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+                                <noscript>Please enable JavaScript to view the <a
+                                        href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
                             </div>
 
                             {{-- aside --}}
@@ -604,4 +607,3 @@ p {
     <!-- End of Blog -->
 
 @endsection
-
