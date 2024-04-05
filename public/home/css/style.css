@@ -1335,6 +1335,7 @@ canvas {
     padding: 15px;
     border: 1px solid #e0e1e0;
     margin-bottom: 30px;
+    cursor: grab;
 }
 .single-post span {
     font-size: 0.75rem;

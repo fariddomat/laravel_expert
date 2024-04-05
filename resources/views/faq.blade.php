@@ -73,14 +73,13 @@
                             data-delay="1.2">
                             <li><a href="{{ route('home') }}">@lang('site.home')</a></li>
                             <li><i class="fas fa-angle-double-right"></i></li>
-                            <li><a href="#">>@lang('site.FAQ')</a></li>
+                            <li><a href="#">@lang('site.FAQ')</a></li>
                         </ul>
                         <h1 data-animate="fadeInUp" data-delay="1.3">@lang('site.FAQ')</h1>
                     </div>
                 </div>
                 <div class="col-1">
                     <div class="world-map position-relative">
-                        <img src="img/map.svg" alt="" alt="" data-no-retina class="svg">>
                     </div>
                 </div>
             </div>

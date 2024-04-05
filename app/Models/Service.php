@@ -55,7 +55,7 @@ class Service extends Model implements Viewable,TranslatableContract
     // Define the relationship for child services
     public function subServices()
     {
-        return $this->hasMany(Service::class, 'parent_id');
+        return $this->hasMany(Service::class, 'parent_id')->orderBy('position');
     }
 
     // Define the relationship for the parent service

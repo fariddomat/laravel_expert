@@ -282,6 +282,7 @@
             transform: rotateY(180deg);
         }
 
+
         .card-face {
             width: 100%;
             height: 100%;
@@ -316,6 +317,9 @@
             transform: rotateY(180deg);
             padding-top: 50px
         }
+        .card-container.flipped {
+    transform: rotateY(180deg);
+}
     </style>
 @endsection
 @section('scripts')
@@ -342,6 +346,15 @@
     </script>
     <script defer>
         $(document).ready(function() {
+
+            $(document).ready(function() {
+                // Check if it's a mobile device
+                if (window.innerWidth <= 768) { // Adjust breakpoint as needed
+                    $('.card').on('click', function() {
+                        $(this).find('.card-container').toggleClass('flipped');
+                    });
+                }
+            });
             // Owl Carousel for team gallery
             $('.team-gallery').owlCarousel({
                 loop: true,
@@ -398,14 +411,13 @@
                             data-delay="1.2">
                             <li><a href="{{ route('home') }}">@lang('site.home')</a></li>
                             <li><i class="fas fa-angle-double-right"></i></li>
-                            <li><a href="#">>@lang('site.about')</a></li>
+                            <li><a href="#">@lang('site.about')</a></li>
                         </ul>
                         <h1 data-animate="fadeInUp" data-delay="1.3">@lang('site.about')</h1>
                     </div>
                 </div>
                 <div class="col-1">
                     <div class="world-map position-relative">
-                        <img src="img/map.svg" alt="" alt="" data-no-retina class="svg">>
                     </div>
                 </div>
             </div>
@@ -416,34 +428,36 @@
     <!-- About us -->
     <section class="pt-2 pb-2">
         <div class="container" style="  max-width: 60rem;">
-            <div class="pt-5 pl-5 pr-5 pb-5" style="overflow: hidden;
+            <div class="pt-5 pl-5 pr-5 pb-5"
+                style="overflow: hidden;
             border: 1px solid #e0e1e0;
             background: #fff;
-            box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.5);"  data-animate="fadeInUp" data-delay="1.5">
+            box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.5);"
+                data-animate="fadeInUp" data-delay="1.5">
 
-            <div class="row justify-content-center">
-                <div class="col-md-11">
-                    <div class="about-us-title text-center">
-                        <h2 data-animate="fadeInUp" data-delay="1.5">@lang('about.who')</h2>
-                        <div class="mt-3" data-animate="fadeInUp" data-delay="1.7"> {!! $about->who_are_we !!}</div>
+                <div class="row justify-content-center">
+                    <div class="col-md-11">
+                        <div class="about-us-title text-center">
+                            <h2 data-animate="fadeInUp" data-delay="1.5">@lang('about.who')</h2>
+                            <div class="mt-3" data-animate="fadeInUp" data-delay="1.7"> {!! $about->who_are_we !!}</div>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="single-about-us-info" data-animate="fadeInUp" data-delay=".3">
-                        <p> {!! $about->goals !!}</p>
-                    </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="single-about-us-info" data-animate="fadeInUp" data-delay=".3">
+                            <p> {!! $about->goals !!}</p>
+                        </div>
 
-                    <div class="single-about-us-info" data-animate="fadeInUp" data-delay=".3">
-                        <p> {!! $about->vision !!}</p>
-                    </div>
-                    <div class="single-about-us-info" data-animate="fadeInUp" data-delay=".3">
-                        <p> {!! $about->ambition !!}</p>
+                        <div class="single-about-us-info" data-animate="fadeInUp" data-delay=".3">
+                            <p> {!! $about->vision !!}</p>
+                        </div>
+                        <div class="single-about-us-info" data-animate="fadeInUp" data-delay=".3">
+                            <p> {!! $about->ambition !!}</p>
+                        </div>
                     </div>
                 </div>
-            </div>
-            {{--
+                {{--
             <div class="write-about-us text-center">
                 <div class="row justify-content-center">
                     <div class="col-lg-8">
@@ -453,7 +467,7 @@
                     </div>
                 </div>
             </div> --}}
-        </div>
+            </div>
         </div>
     </section>
     <!-- End of About us -->
@@ -504,8 +518,10 @@
                 </div>
             </div>
             <div class="row justify-content-center mb-4" data-animate="fadeInUp" data-delay=".4">
-                <div class="col-md-auto">
-                    <ul class="nav nav-pills filter-category">
+                <div class="col-md-12">
+                    <ul class="nav nav-pills filter-category  overflow-auto">
+
+
                         <li class="nav-item">
                             <a class="nav-link btn btn-secondary active" data-filter="all" href="#">All</a>
                         </li>
@@ -527,11 +543,10 @@
 
             <!-- Members -->
             @php
-                $counter=0;
+                $counter = 0;
             @endphp
-            <div class="row justify-content-center" @if ($counter == 0)
-                data-animate="fadeInUp" data-delay="0.1"
-                @endif>
+            <div class="row justify-content-center"
+                @if ($counter == 0) data-animate="fadeInUp" data-delay="0.1" @endif>
                 @foreach ($teams as $team)
                     @php
                         if ($team->team_role_id === 1) {
@@ -539,10 +554,7 @@
                         }
                     @endphp
                     <div class="col-md-3 col-sm-6 team-member" data-category="{{ $team->teamRole->name }}"
-                        @if ($counter>0)
-                        data-animate="fadeInUp" data-delay="0.1"
-                        @endif
-                        >
+                        @if ($counter > 0) data-animate="fadeInUp" data-delay="0.1" @endif>
                         <div class="card">
                             <div class="card-container">
                                 <div class="card-face front-face">
@@ -554,10 +566,7 @@
                                     <div class="container about">
 
                                         <p>{!! $team->description !!}</p>
-                                        <div class="ca href target blant" classhi fo bi-facebook">
-                                            <a href target blans class-hi ig bi-instagram">
-                                                <a href" target="blank" class="bi git si-github">
-                                        </div>
+
                                     </div>
                                 </div>
                             </div>
@@ -566,8 +575,8 @@
                 @endforeach
 
                 @php
-                $counter++;
-            @endphp
+                    $counter++;
+                @endphp
 
             </div>
 

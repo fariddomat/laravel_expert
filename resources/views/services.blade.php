@@ -88,6 +88,12 @@
             transition: all 250ms ease-out 0s;
             width: 20px;
         }
+
+@media (max-width: 768px) {
+    .single-post h3 {
+  font-size: 1.45rem !important;
+}
+}
     </style>
 @endsection
 @section('scripts')

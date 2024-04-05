@@ -131,3 +131,16 @@ a:hover {
 {
     color: #ffffff;
 }
+
+
+@media (max-width: 992px) {
+    .header-menu > ul > li > a
+    {
+        color: #DF1F26;
+    }
+.header-menu > ul {
+  top: 52px !important;
+  width: calc(100% - 30px) !important;
+  min-width: 300px !important;
+}
+}
