@@ -51,7 +51,7 @@
                     <div class="form-group mb-3">
                         <label>الاجابة</label>
                         <textarea name="answer" class="form-control">
-                        {{ old('answer', $faq->question) }}
+                        {{ old('answer', $faq->answer) }}
                     </textarea>
                     </div>
 
