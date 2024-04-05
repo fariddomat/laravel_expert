@@ -132,27 +132,27 @@
         }
 
         /* .section-wrapper .shielding-layer:after {
-                                                                content: "";
-                                                                width: 71%;
-                                                                height: 100%;
-                                                                position: absolute;
-                                                                top: 0;
-                                                                right: 0;
-                                                                z-index: 3;
-                                                                background: linear-gradient(90deg, rgba(249, 249, 254, 0) rgba(249, 249, 254, 0.97) 0,);
-                                                            }
+                                                                    content: "";
+                                                                    width: 71%;
+                                                                    height: 100%;
+                                                                    position: absolute;
+                                                                    top: 0;
+                                                                    right: 0;
+                                                                    z-index: 3;
+                                                                    background: linear-gradient(90deg, rgba(249, 249, 254, 0) rgba(249, 249, 254, 0.97) 0,);
+                                                                }
 
-                                                            .section-wrapper .shielding-layer:before {
-                                                                pointer-events: none;
-                                                                content: "";
-                                                                width: calc(29% + 1px);
-                                                                height: 100%;
-                                                                position: absolute;
-                                                                top: 0;
-                                                                left: 0;
-                                                                z-index: 3;
-                                                                background: linear-gradient(90deg, rgba(249, 249, 254, 0.97) 0, rgba(249, 249, 254, 0));
-                                                            } */
+                                                                .section-wrapper .shielding-layer:before {
+                                                                    pointer-events: none;
+                                                                    content: "";
+                                                                    width: calc(29% + 1px);
+                                                                    height: 100%;
+                                                                    position: absolute;
+                                                                    top: 0;
+                                                                    left: 0;
+                                                                    z-index: 3;
+                                                                    background: linear-gradient(90deg, rgba(249, 249, 254, 0.97) 0, rgba(249, 249, 254, 0));
+                                                                } */
 
         .section-wrapper:before {
             content: "";
@@ -366,7 +366,13 @@
     </style>
     <style>
         .services-title {
-            background-size: contain !important;
+            background-size: contain;
+        }
+
+        @media (max-width: 768px) {
+            .single-post h3 {
+                font-size: 1.45rem !important;
+            }
         }
 
         .headsection {
@@ -620,7 +626,7 @@
         <div class="shielding-layer"></div>
         <div class="">
             <div class="content">
-                 <div id="particles_js"></div>
+                <div id="particles_js"></div>
                 <div class="container">
                     <div class=" row align-items-center" style="">
                         <div class="col-lg-7">
@@ -648,7 +654,8 @@
 
                             </div>
                         </div>
-                        <div class="col-lg-2 offset-lg-3 " style="" data-animate="fadeInUp" data-delay="1.4">>
+                        <div class="col-lg-2 offset-lg-3 homeAirplains" style="" data-animate="fadeInUp"
+                            data-delay="1.4">>
                             <!-- Banner image -->
                             <div class="template-wall">
                                 <div class="column index-0">

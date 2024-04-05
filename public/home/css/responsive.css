@@ -444,4 +444,14 @@
     h3, h4, h5, h6, .post-content span, .single-about-us-info span, .about-us-title span {
         font-size: calc(100% - 0pt) !important; /* Assuming original font size is in pixels */
     }
+
+    .homeAirplains{
+        display: none;
+    }
+    .section-wrapper {
+        height: 450px !important;
+    }
+    .services-title {
+        background-size: cover !important ;
+    }
 }
