@@ -122,7 +122,7 @@
                 </div>
                 <div class="col-1">
                     <div class="world-map position-relative">
-                        
+
                     </div>
                 </div>
             </div>

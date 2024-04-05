@@ -5,6 +5,11 @@
     {{-- <link href="{{asset('dashboard/css/datatables.min.css')}}" rel="stylesheet"> --}}
     <link href="https://cdn.datatables.net/v/bs5/dt-2.0.3/b-3.0.1/r-3.0.1/rr-1.5.0/datatables.min.css" rel="stylesheet">
     <style>
+        .movee {
+            cursor: grab;
+            text-align: center;
+        }
+
         table.dataTable thead>tr>th.dt-orderable-asc,
         table.dataTable thead>tr>th.dt-orderable-desc,
         table.dataTable thead>tr>td.dt-orderable-asc,
@@ -22,7 +27,6 @@
         var ServicesReorderRoute = '{{ route('dashboard.services.reorder') }}';
     </script>
     <script>
-
         $(document).ready(function() {
             var servicesTable = $("#Table").DataTable({
                 searching: true,
@@ -72,10 +76,11 @@
                 }
             });
 
-             // Filter event handler for select dropdown
-             $('#parentServiceSelect').on('change', function() {
+            // Filter event handler for select dropdown
+            $('#parentServiceSelect').on('change', function() {
                 var selectedValue = $(this).val();
-                servicesTable.column(2).search(selectedValue ? '^' + selectedValue + '$' : '', true, false).draw();
+                servicesTable.column(2).search(selectedValue ? '^' + selectedValue + '$' : '', true, false)
+                    .draw();
                 console.log(selectedValue);
             });
         });
@@ -117,7 +122,7 @@
                     <tbody>
                         @foreach ($services as $index => $service)
                             <tr>
-                                <td>{{ $index + 1 }}</td>
+                                <td class="movee">{{ $index + 1 }}</td>
                                 <td>{{ $service->title }}</td>
                                 <td
                                     data-parent-service-title="{{ $service->parentService ? $service->parentService->title : '' }}">

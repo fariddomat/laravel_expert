@@ -620,7 +620,7 @@
         <div class="shielding-layer"></div>
         <div class="">
             <div class="content">
-                <div id="particles_js"></div>
+                 <div id="particles_js"></div>
                 <div class="container">
                     <div class=" row align-items-center" style="">
                         <div class="col-lg-7">

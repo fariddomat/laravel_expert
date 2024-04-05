@@ -428,7 +428,7 @@
                                         </div>
                                         <span> {{ $blog->updated_at->format('d F Y') }}</span>
                                         <h3>{{ $blog->title }}</h3>
-                                        
+
 
                                     </div>
 
