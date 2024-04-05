@@ -22,32 +22,23 @@
         var ServicesReorderRoute = '{{ route('dashboard.services.reorder') }}';
     </script>
     <script>
+
         $(document).ready(function() {
-            var table = $('#Table').DataTable({
-                responsive: true,
+            var servicesTable = $("#Table").DataTable({
                 searching: true,
                 paging: true,
                 info: false,
-                sorting: false,
                 columnDefs: [{
                     orderable: false,
-                    targets: [5]
+                    targets: [3]
                 }],
                 rowReorder: true,
                 // language: {
-                //     url: '//cdn.datatables.net/plug-ins/2.0.3/i18n/ar.json',
-                // },
-
+                //             url: '//cdn.datatables.net/plug-ins/2.0.3/i18n/ar.json',
+                //         },
             });
 
-            // Filter event handler for select dropdown
-            $('#parentServiceSelect').on('change', function() {
-                var selectedValue = $(this).val();
-                table.column(2).search(selectedValue ? '^' + selectedValue + '$' : '', true, false).draw();
-                console.log(selectedValue);
-            });
-
-            table.on("row-reorder", function(e, diff, edit) {
+            servicesTable.on("row-reorder", function(e, diff, edit) {
                 var length = diff.length - 1;
                 if (length > 0) {
                     var to = [];
@@ -66,19 +57,11 @@
                         cache: false,
                         datatype: "JSON",
                         success: function(data) {
-                            if (data.status == 1) {
-                                // Update DataTable data (if necessary)
-                                // for (var i = 0; i < diff.length; i++) {
-                                //     var rowData = table.row(diff[i].node).data();
-                                //     rowData[0] = Number(diff[i].newData) +
-                                //     1; // Update row index
-                                //     table.row(diff[i].node).data(rowData).draw();
-                                // }
-                                alert("reorder done.");
-                                
-                            } else {
+                            if (data.status != 1) {
                                 alert("error occurred in reordering.");
                                 location.reload(true);
+                            } else {
+                                alert("reorder done.");
                             }
                         },
                         error: function() {
@@ -87,6 +70,13 @@
                         }
                     });
                 }
+            });
+
+             // Filter event handler for select dropdown
+             $('#parentServiceSelect').on('change', function() {
+                var selectedValue = $(this).val();
+                servicesTable.column(2).search(selectedValue ? '^' + selectedValue + '$' : '', true, false).draw();
+                console.log(selectedValue);
             });
         });
     </script>
