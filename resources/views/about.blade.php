@@ -517,6 +517,7 @@
                     </div>
                 </div>
             </div>
+            
             <div class="row justify-content-center mb-4" data-animate="fadeInUp" data-delay=".4">
                 <div class="col-md-12">
                     <ul class="nav nav-pills filter-category  overflow-auto">
