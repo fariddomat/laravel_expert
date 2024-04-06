@@ -18,7 +18,6 @@ class CreateReviewsTable extends Migration
             $table->string('name');
             $table->string('image')->nullable(); // Allow optional image
             $table->text('description');
-            $table->date('date');
             $table->timestamps();
         });
     }

@@ -22,7 +22,6 @@
                     <tr>
                         <th>#</th>
                         <th>الاسم</th>
-                        <th>التاريخ</th>
                         <th>تعديل</th>
                         <th>حذف</th>
                     </tr>
@@ -32,7 +31,6 @@
                     <tr>
                         <td>{{ $key + 1 }}</td>
                         <td>{{ $review->name }}</td>
-                        <td>{{ $review->date }}</td>
                         <td>
                             <a href="{{ route('dashboard.reviews.edit', $review->id) }}" class="btn btn-info btn-sm"><i class="fas fa-edit"></i> تعديل</a>
                         </td>

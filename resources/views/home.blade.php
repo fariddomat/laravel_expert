@@ -1074,14 +1074,13 @@
                         <div class="swiper-slide single-review-slide">
                             <!-- Author info -->
                             <div class="d-flex align-items-center author-info-wrap">
-                                <img class="img-thumbnail mr-3" src="{{ asset('images/reviews/' . $review->image) }}"
+                                <img class="img-thumbnail mr-3" src="{{ asset( $review->image) }}"
                                     alt="" data-animate="fadeInUp" data-delay=".1"
                                     style="max-width: 100px;aspect-ratio: 3/3;">
                                 <div class="author-info">
                                     {{ $review->name }}
                                 </div>
                             </div>
-                            <span> {{ $review->date }}</span>
                             <p>{!! $review->description !!}</p>
                         </div>
                     @endforeach

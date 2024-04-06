@@ -48,11 +48,6 @@
                     </div>
 
                     <div class="form-group mb-3">
-                        <label for="date">التاريخ</label>
-                        <input type="date" name="date" class="form-control" id="date" value="{{ old('date') }}" required>
-                    </div>
-
-                    <div class="form-group mb-3">
                         <button type="submit" class="btn btn-primary"><i class="fa fa-plus"></i> إضافة</button>
                     </div>
                 </form>

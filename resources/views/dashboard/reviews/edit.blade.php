@@ -41,7 +41,7 @@
                     <div class="form-group mb-3">
                         <label for="image">الصورة</label>
                         <input type="file" name="image" class="form-control" id="image" required>
-                        <img src="{{ asset('images/reviews/'.$review->image) }}" alt="" style="max-width: 200px; margin: 25px; border: 1px solid #5e5152; padding: 15px; border-radius: 15px"; >
+                        <img src="{{ asset($review->image) }}" alt="" style="max-width: 200px; margin: 25px; border: 1px solid #5e5152; padding: 15px; border-radius: 15px"; >
                     </div>
 
                     <div class="form-group mb-3">
@@ -49,10 +49,6 @@
                         <textarea name="description" class="form-control" id="description" required>{{ old('description', $review->description) }}</textarea>
                     </div>
 
-                    <div class="form-group mb-3">
-                        <label for="date">التاريخ</label>
-                        <input type="date" name="date" class="form-control" id="date" value="{{ old('date', $review->date) }}" required>
-                    </div>
 
                     <div class="form-group mb-3">
                         <button type="submit" class="btn btn-primary"><i class="fa fa-plus"></i> إضافة</button>

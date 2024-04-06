@@ -42,7 +42,6 @@ class ReviewController extends Controller
         $request->validate([
             'name' => 'required',
             'description' => 'required',
-            'date' => 'required|date',
             'image' => 'nullable|image|max:2048', // Optional image validation
         ]);
 
@@ -50,11 +49,10 @@ class ReviewController extends Controller
         $review = new Review();
         $review->name = $request->name;
         $review->description = $request->description;
-        $review->date = $request->date;
 
         // Handle image upload if provided
         if ($request->hasFile('image')) {
-            
+
             $helper = new ImageHelper;
             $image = $request->file('image');
             $directory = '/photos/reviews';
@@ -104,18 +102,16 @@ class ReviewController extends Controller
         $request->validate([
             'name' => 'required',
             'description' => 'required',
-            'date' => 'required|date',
             'image' => 'nullable|image|max:2048', // Optional image validation
         ]);
 
         // Update the review
         $review->name = $request->name;
         $review->description = $request->description;
-        $review->date = $request->date;
 
         // Handle image update if provided
         if ($request->hasFile('image')) {
-       
+
             $helper = new ImageHelper;
             $helper->removeImageInPublicDirectory($review->image);
             $image = $request->file('image');
