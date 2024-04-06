@@ -2,8 +2,14 @@
 @section('title', trans('site.home'))
 @section('styles')
     <style>
+        
         .services-title {
-            height: 485px;
+            
+            background-image: url({{ asset('home/img/WorldMap.svg') }});
+            height: auto;
+            background-attachment: fixed !important;
+            background-repeat: no-repeat !important;
+            background-size: cover !important;
         }
 
         dfn {
@@ -432,10 +438,11 @@
 
     <style>
         .counter_section {
-            padding: 50px 0;
+            padding: 0 0 50px;
             background: #0D1216;
             color: #E2E2E2
         }
+
 
         .counter_section_item svg {
             width: 45px !important;
@@ -504,6 +511,7 @@
             line-height: 1.5;
             margin: 0 0 17px 0;
             font-weight: 300;
+            direction: rtl;
         }
 
         .testimonial-name {
@@ -654,9 +662,8 @@
 
                             </div>
                         </div>
-                        <div class="col-lg-2 offset-lg-3 homeAirplains" style="" data-animate="fadeInUp"
+                        {{-- <div class="col-lg-2 offset-lg-3 homeAirplains" style="" data-animate="fadeInUp"
                             data-delay="1.4">>
-                            <!-- Banner image -->
                             <div class="template-wall">
                                 <div class="column index-0">
                                     <div class="wall-box">
@@ -705,176 +712,11 @@
                                         <div class="shelter"></div>
                                     </div>
                                 </div>
-                                {{-- <div class="column index-2">
-                                    <div class="wall-box">
-                                        <img alt="perfectcod" class="icon hoverable" src="{{ asset('home/icon/13.png') }}"
-                                            style="width: 75px; height: 92px; margin-right: 5px;">
-                                        <div class="shelter"></div>
-                                    </div>
-                                    <div class="wall-box">
-                                        <img alt="perfectcod" class="icon hoverable" src="{{ asset('home/icon/14.png') }}"
-                                            style="width: 75px; height: 92px; margin-right: 5px;">
-                                        <div class="shelter"></div>
-                                    </div>
-                                    <div class="wall-box">
-                                        <img alt="perfectcod" class="icon hoverable"
-                                            src="{{ asset('home/icon/15.png') }}"
-                                            style="width: 75px; height: 92px; margin-right: 5px;">
-                                        <div class="shelter"></div>
-                                    </div>
-                                    <div class="wall-box">
-                                        <img alt="perfectcod" class="icon hoverable"
-                                            src="{{ asset('home/icon/16.png') }}"
-                                            style="width: 75px; height: 92px; margin-right: 5px;">
-                                        <div class="shelter"></div>
-                                    </div>
-                                    <div class="wall-box">
-                                        <img alt="perfectcod" class="icon hoverable"
-                                            src="{{ asset('home/icon/17.png') }}"
-                                            style="width: 75px; height: 92px; margin-right: 5px;">
-                                        <div class="shelter"></div>
-                                    </div>
-                                    <div class="wall-box">
-                                        <img alt="perfectcod" class="icon hoverable"
-                                            src="{{ asset('home/icon/18.png') }}"
-                                            style="width: 75px; height: 92px; margin-right: 5px;">
-                                        <div class="shelter"></div>
-                                    </div>
-                                    <div class="wall-box">
-                                        <img alt="perfectcod" class="icon hoverable"
-                                            src="{{ asset('home/icon/19.png') }}"
-                                            style="width: 75px; height: 92px; margin-right: 5px;">
-                                        <div class="shelter"></div>
-                                    </div>
-                                    <div class="wall-box">
-                                        <img alt="perfectcod" class="icon hoverable"
-                                            src="{{ asset('home/icon/20.png') }}"
-                                            style="width: 75px; height: 92px; margin-right: 5px;">
-                                        <div class="shelter"></div>
-                                    </div>
-                                    <div class="wall-box">
-                                        <img alt="perfectcod" class="icon hoverable"
-                                            src="{{ asset('home/icon/13.png') }}"
-                                            style="width: 75px; height: 92px; margin-right: 5px;">
-                                        <div class="shelter"></div>
-                                    </div>
-                                </div>
-                                <div class="column index-1">
-                                    <div class="wall-box">
-                                        <img alt="perfectcod" class="icon hoverable"
-                                            src="{{ asset('home/icon/10.png') }}"
-                                            style="width: 75px; height: 92px; margin-right: 5px;">
-                                        <div class="shelter"></div>
-                                    </div>
-                                    <div class="wall-box">
-                                        <img alt="perfectcod" class="icon hoverable"
-                                            src="{{ asset('home/icon/11.png') }}"
-                                            style="width: 75px; height: 92px; margin-right: 5px;">
-                                        <div class="shelter"></div>
-                                    </div>
-                                    <div class="wall-box">
-                                        <img alt="perfectcod" class="icon hoverable"
-                                            src="{{ asset('home/icon/12.png') }}"
-                                            style="width: 75px; height: 92px; margin-right: 5px;">
-                                        <div class="shelter"></div>
-                                    </div>
-                                    <div class="wall-box">
-                                        <img alt="perfectcod" class="icon hoverable"
-                                            src="{{ asset('home/icon/8.png') }}"
-                                            style="width: 75px; height: 92px; margin-right: 5px;">
-                                        <div class="shelter"></div>
-                                    </div>
-                                    <div class="wall-box">
-                                        <img alt="perfectcod" class="icon hoverable"
-                                            src="{{ asset('home/icon/7.png') }}"
-                                            style="width: 75px; height: 92px; margin-right: 5px;">
-                                        <div class="shelter"></div>
-                                    </div>
-                                    <div class="wall-box">
-                                        <img alt="perfectcod" class="icon hoverable"
-                                            src="{{ asset('home/icon/11.png') }}"
-                                            style="width: 75px; height: 92px; margin-right: 5px;">
-                                        <div class="shelter"></div>
-                                    </div>
-                                    <div class="wall-box">
-                                        <img alt="perfectcod" class="icon hoverable"
-                                            src="{{ asset('home/icon/5.png') }}"
-                                            style="width: 75px; height: 92px; margin-right: 5px;">
-                                        <div class="shelter"></div>
-                                    </div>
-                                    <div class="wall-box">
-                                        <img alt="perfectcod" class="icon hoverable"
-                                            src="{{ asset('home/icon/4.png') }}"
-                                            style="width: 75px; height: 92px; margin-right: 5px;">
-                                        <div class="shelter"></div>
-                                    </div>
-                                    <div class="wall-box">
-                                        <img alt="perfectcod" class="icon hoverable"
-                                            src="{{ asset('home/icon/3.png') }}"
-                                            style="width: 75px; height: 92px; margin-right: 5px;">
-                                        <div class="shelter"></div>
-                                    </div>
-                                </div>
-                                <div class="column index-3">
-                                    <div class="wall-box">
-                                        <img alt="perfectcod" class="icon hoverable"
-                                            src="{{ asset('home/icon/21.png') }}"
-                                            style="width: 75px; height: 92px; margin-right: 5px;">
-                                        <div class="shelter"></div>
-                                    </div>
-                                    <div class="wall-box">
-                                        <img alt="perfectcod" class="icon hoverable"
-                                            src="{{ asset('home/icon/22.png') }}"
-                                            style="width: 75px; height: 92px; margin-right: 5px;">
-                                        <div class="shelter"></div>
-                                    </div>
-                                    <div class="wall-box">
-                                        <img alt="perfectcod" class="icon hoverable"
-                                            src="{{ asset('home/icon/23.png') }}"
-                                            style="width: 75px; height: 92px; margin-right: 5px;">
-                                        <div class="shelter"></div>
-                                    </div>
-                                    <div class="wall-box">
-                                        <img alt="perfectcod" class="icon hoverable"
-                                            src="{{ asset('home/icon/24.png') }}"
-                                            style="width: 75px; height: 92px; margin-right: 5px;">
-                                        <div class="shelter"></div>
-                                    </div>
-                                    <div class="wall-box">
-                                        <img alt="perfectcod" class="icon hoverable"
-                                            src="{{ asset('home/icon/25.webp') }}"
-                                            style="width: 75px; height: 92px; margin-right: 5px;">
-                                        <div class="shelter"></div>
-                                    </div>
-                                    <div class="wall-box">
-                                        <img alt="perfectcod" class="icon hoverable"
-                                            src="{{ asset('home/icon/26.png') }}"
-                                            style="width: 75px; height: 92px; margin-right: 5px;">
-                                        <div class="shelter"></div>
-                                    </div>
-                                    <div class="wall-box">
-                                        <img alt="perfectcod" class="icon hoverable"
-                                            src="{{ asset('home/icon/27.png') }}"
-                                            style="width: 75px; height: 92px; margin-right: 5px;">
-                                        <div class="shelter"></div>
-                                    </div>
-                                    <div class="wall-box">
-                                        <img alt="perfectcod" class="icon hoverable"
-                                            src="{{ asset('home/icon/21.png') }}"
-                                            style="width: 75px; height: 92px; margin-right: 5px;">
-                                        <div class="shelter"></div>
-                                    </div>
-                                    <div class="wall-box">
-                                        <img alt="perfectcod" class="icon hoverable"
-                                            src="{{ asset('home/icon/27.png') }}"
-                                            style="width: 75px; height: 92px; margin-right: 5px;">
-                                        <div class="shelter"></div>
-                                    </div>
-                                </div> --}}
+ 
 
 
                             </div>
-                        </div>
+                        </div> --}}
                     </div>
                 </div>
             </div>
@@ -896,7 +738,7 @@
                     @foreach ($aboutFields as $aboutField)
                         <div class="col-md-4">
                             <div class="single-feature text-center" data-animate="fadeInUp" data-delay=".1">
-                                <i class="fa {{ $aboutField->icon }}" style="font-size: 5rem; color:#DF1F26;"></i>
+                                <i class="fa {{ $aboutField->icon }}" style="font-size: 3rem; color:#DF1F26;"></i>
                                 <h3>{{ $aboutField->title }}</h3>
                                 <p style="text-align: justify;">{{ $aboutField->value }}</p>
                             </div>
@@ -929,12 +771,19 @@
 
     {{-- Start Counter --}}
     <section class="counter_section">
+        <div style="background: #fff">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320" style="  margin-bottom: -15px;">
+                <path fill="#0D1216" fill-opacity="1" d="M0,192L34.3,208C68.6,224,137,256,206,250.7C274.3,245,343,203,411,192C480,181,549,203,617,192C685.7,181,754,139,823,138.7C891.4,139,960,181,1029,170.7C1097.1,160,1166,96,1234,74.7C1302.9,53,1371,75,1406,85.3L1440,96L1440,320L1405.7,320C1371.4,320,1303,320,1234,320C1165.7,320,1097,320,1029,320C960,320,891,320,823,320C754.3,320,686,320,617,320C548.6,320,480,320,411,320C342.9,320,274,320,206,320C137.1,320,69,320,34,320L0,320Z">
+                </path>
+            </svg>
+
+        </div>
         <div class="counter_main">
             <div class="container">
 
                 <div class="row justify-content-center">
                     @foreach ($counters as $counter)
-                        <div class="col-md-3 text-center item counter_section_item mt-5">
+                        <div class="col-md-4 text-center item counter_section_item mt-5">
                             <i class="fa {{ $counter->icon }}"></i>
                             <p id="number1" class="number counter">{{ $counter->value }}</p>
                             <p class="label">{{ $counter->title }}</p>
@@ -947,25 +796,17 @@
 
     <!-- Our services -->
     <section class="">
-        <div class="services-title position-relative pt-7" data-bg-img="{{ asset($info->service_image) }}"
-            style="">
+        <div class="services-title position-relative pt-7" 
+            style=""  dir="ltr">
             <div class="container">
                 <div class="row justify-content-center">
                     <div class="col-xl-6 col-lg-8">
                         <!-- Section title -->
                         <div class="section-title text-center">
                             <h2 class="text-white" data-animate="fadeInUp" data-delay=".1">خدمات المحترف </h2>
-
                         </div>
                     </div>
                 </div>
-            </div>
-        </div>
-
-        <div class="services-wrap bg-white position-relative pt-5 pb-5" dir="ltr">
-            <div class="container">
-                <!-- All services -->
-
                 <div class="row">
                     <div class="col-sm-12">
                         <div id="customers-testimonials" class="owl-carousel " data-animate="fadeInUp" data-delay="1.5">
@@ -990,7 +831,7 @@
                                             </div>
                                             <h3>{{ $service->title }}</h3>
                                             <h4>
-                                                {!! Str::limit(Helper::removeSpecialCharacter($service->brief), 140) !!}
+                                                {!! $service->intro !!}
                                             </h4>
 
                                         </div>
@@ -1057,13 +898,20 @@
                 </div>
             </div>
         </div>
+        <div>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320" style="  margin-bottom: -15px;">
+                <path fill="#fff" fill-opacity="1" d="M0,192L34.3,208C68.6,224,137,256,206,250.7C274.3,245,343,203,411,192C480,181,549,203,617,192C685.7,181,754,139,823,138.7C891.4,139,960,181,1029,170.7C1097.1,160,1166,96,1234,74.7C1302.9,53,1371,75,1406,85.3L1440,96L1440,320L1405.7,320C1371.4,320,1303,320,1234,320C1165.7,320,1097,320,1029,320C960,320,891,320,823,320C754.3,320,686,320,617,320C548.6,320,480,320,411,320C342.9,320,274,320,206,320C137.1,320,69,320,34,320L0,320Z">
+                </path>
+            </svg>
+
+        </div>
     </section>
     <!-- End Servers -->
 
 
 
     <!-- Reviews -->
-    <section class="pt-7 pb-7 bg-light">
+    <section class="pt-2 pb-7 bg-white">
         <div class="container">
             <div class="section-title text-center">
                 <h2 data-animate="fadeInUp" data-delay=".1">أراء العملاء</h2>

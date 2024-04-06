@@ -10,7 +10,7 @@
     <title> @yield('title')</title>
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="{{  $metaDescription ?? $info->description }}">
+    <meta name="description" content="{{ $metaDescription ?? $info->description }}">
     <meta name="author" content="Almohtarif">
 
     <link href="{{ asset($info->logo) }}" rel="shortcut icon" type="image/png">
@@ -138,7 +138,7 @@
                 <div class="col-md-4">
                     <div class="footer-info">
                         <h3 class="text-white" data-animate="fadeInUp" data-delay="0">{{ $info->title }}</h3>
-                        <p data-animate="fadeInUp" data-delay=".05">{{ $info->description }}</p>
+                        <p data-animate="fadeInUp" data-delay=".05">{{ $info->footer }}</p>
                         <ul class="footer-contacts list-unstyled">
                             <li data-animate="fadeInUp" data-delay=".1">
                                 <i class="fas fa-phone"></i>
@@ -162,13 +162,15 @@
                                 </li>
                             @endforeach
                         </ul>
-                        <p data-animate="fadeInUp" data-delay="1.5">هل ترغب بفرصة عمل في بيئة راقية ؟كن فرداً من فريق عمل المحترف و انضم لعائلتنا </p>
-                        <a data-animate="fadeInUp" data-delay="1.6" class="btn btn-secondary" href="{{ route('workWithUs') }}">أنضم الآن</a>
+                        <p data-animate="fadeInUp" data-delay="1.5">هل ترغب بفرصة عمل في بيئة راقية ؟كن فرداً من فريق
+                            عمل المحترف و انضم لعائلتنا </p>
+                        <a data-animate="fadeInUp" data-delay="1.6" class="btn btn-secondary"
+                            href="{{ route('workWithUs') }}">أنضم الآن</a>
                     </div>
                 </div>
                 <!-- End of Footer info -->
 
-                <!-- Footer posts -->
+                <!-- Footer services -->
                 <div class="col-md-4">
                     <div class="footer-posts">
                         <h3 class="text-white" data-animate="fadeInUp" data-delay=".5">@lang('site.services') </h3>
@@ -178,7 +180,7 @@
 
                                 <h4 class="cabin font-weight-normal"><a
                                         href="{{ route('service', $service->slug) }}">{{ $service->title }}</a></h4>
-                                <p>{!! Str::limit(Helper::removeSpecialCharacter($service->brief), 100) !!}</p>
+                                {{-- <p>{!! Str::limit(Helper::removeSpecialCharacter($service->intro), 100) !!}</p> --}}
                             </div>
                         @endforeach
 
@@ -186,9 +188,9 @@
                             data-delay=".65">@lang('site.view_all_services') <i class="fas fa-caret-right"></i></a>
                     </div>
                 </div>
-                <!-- End of Footer posts -->
+                <!-- End of Footer services -->
 
-                <!-- Footer newsletter -->
+                <!-- Footer blog -->
                 <div class="col-md-4">
                     <div class="footer-posts">
                         <h3 class="text-white" data-animate="fadeInUp" data-delay=".5">@lang('site.blog') </h3>
@@ -200,18 +202,18 @@
                                         style="height: 40px; aspect-ratio: 3 / 2;" alt="">
                                 </a>
                                 <span> <a
-                                        href="{{ route('blog', $blog->slug) }}">{{ $blog->updated_at->format('d F
-                                                                                                                                                                                                                                                                                Y') }}</a></span>
-                                <h4 class="cabin font-weight-normal"><a href="{{ route('blog', $blog->slug) }}">{{ $blog->title }}</a></h4>
-                                <p>{!! Str::limit(Helper::removeSpecialCharacter($blog->description), 100) !!}</p>
+                                        href="{{ route('blog', $blog->slug) }}">{{ $blog->updated_at->format('d F Y') }}</a></span>
+                                <h4 class="cabin font-weight-normal"><a
+                                        href="{{ route('blog', $blog->slug) }}">{{ $blog->title }}</a></h4>
+                                {{-- <p>{!! Str::limit(Helper::removeSpecialCharacter($blog->description), 100) !!}</p> --}}
                             </div>
                         @endforeach
 
-                        <a href="blog.html" class="roboto text-uppercase" data-animate="fadeInUp"
+                        <a href="{{ route('blogs') }}" class="roboto text-uppercase" data-animate="fadeInUp"
                             data-delay=".65">@lang('site.view_all_blog') <i class="fas fa-caret-right"></i></a>
                     </div>
                 </div>
-                <!-- End of Footer newsletter -->
+                <!-- End of Footer blog -->
             </div>
 
             <div class="bottom-footer">

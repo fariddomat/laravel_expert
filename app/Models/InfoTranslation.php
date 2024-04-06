@@ -8,5 +8,5 @@ class InfoTranslation extends Model
 {
     protected $table = 'info_translations';
     public $timestamps = false;
-    protected $fillable = ['title', 'description', 'work', 'work_description'];
+    protected $fillable = ['title', 'description', 'footer', 'work', 'work_description'];
 }

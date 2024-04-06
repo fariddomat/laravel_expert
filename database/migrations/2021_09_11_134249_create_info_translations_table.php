@@ -19,6 +19,7 @@ class CreateInfoTranslationsTable extends Migration
             $table->string('locale')->index();
             $table->text('title');
             $table->text('description');
+            $table->text('footer');
             $table->text('work');
             $table->text('work_description');
             $table->unique(['info_id', 'locale']);

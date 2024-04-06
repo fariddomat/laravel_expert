@@ -131,7 +131,7 @@ We may release future updates so it will overwrite this file. it's better and sa
         ==============================================*/
         
         var reviewSlider = new Swiper('.review-slider', {
-            slidesPerView: 3,
+            slidesPerView: 4,
             spaceBetween: 30,
             speed: 500,
             autoplay: {

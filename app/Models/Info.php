@@ -9,5 +9,5 @@ use Astrotomic\Translatable\Translatable;
 class Info extends Model implements TranslatableContract
 {
     use Translatable;
-    public $translatedAttributes = ['title', 'description', 'work', 'work_description'];
+    public $translatedAttributes = ['title', 'description', 'footer', 'work', 'work_description'];
 }

@@ -39,6 +39,11 @@
                 </div> --}}
 
                 <div class="form-group mb-3">
+                    <label for="ar[footer]" class="form-label">الوصف</label>
+                    <input type="text" name="ar[footer]" class="form-control" value="{{ old('ar.footer') ?? isset($info) ? $info->translate('ar')->footer : '' }}" dir="rtl">
+                </div>
+
+                <div class="form-group mb-3">
                     <label for="ar[work]" class="form-label">العمل</label>
                     <input type="text" name="ar[work]" class="form-control" value="{{ old('ar.work') ?? isset($info) ? $info->translate('ar')->work : '' }}" dir="rtl">
                 </div>

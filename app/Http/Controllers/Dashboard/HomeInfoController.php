@@ -25,6 +25,7 @@ class HomeInfoController extends Controller
         $rules = [
             'ar.title' => ['required'],
             'ar.description' => ['required'],
+            'ar.footer' => ['required'],
             'ar.work' => ['required'],
             'ar.work_description' => ['required'],
             'logo-icon' => ['nullable', 'image', 'mimes:jpeg,png,jpg,webp'],
@@ -50,6 +51,7 @@ class HomeInfoController extends Controller
 
         $info->translateOrNew('ar')->title = $validatedData['ar']['title'];
         $info->translateOrNew('ar')->description = $validatedData['ar']['description'];
+        $info->translateOrNew('ar')->footer = $validatedData['ar']['footer'];
         $info->translateOrNew('ar')->work = $validatedData['ar']['work'];
         $info->translateOrNew('ar')->work_description = $validatedData['ar']['work_description'];
 
