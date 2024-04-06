@@ -70,6 +70,10 @@
                     </div>
 
                     <div class="form-group mb-3">
+                        <label for="ar[intro]" class="form-label">النص الخارجي (اختياري)</label>
+                        <textarea class="form-control" id="ar[intro]" name="ar[intro]" rows="5" dir="rtl">{{ old('ar.intro') }}</textarea>
+                    </div>
+                    <div class="form-group mb-3">
                         <label for="ar[brief]" class="form-label">التعريف - Brief</label>
                         <textarea class="form-control" id="ar[brief]" name="ar[brief]" rows="5" dir="rtl">{{ old('ar.brief') }}</textarea>
                     </div>

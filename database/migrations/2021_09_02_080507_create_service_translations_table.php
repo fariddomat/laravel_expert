@@ -19,7 +19,7 @@ class CreateServiceTranslationsTable extends Migration
             $table->string('locale')->index();
             $table->string('title');
             $table->string('main_title');
-            // $table->string('index_name');
+            $table->text('intro')->nullable();
             $table->longText('brief');
             $table->unique(['service_id', 'locale']);
         });

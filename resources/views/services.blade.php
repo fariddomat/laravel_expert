@@ -28,6 +28,7 @@
             line-height: 1.5;
             margin: 0 0 17px 0;
             font-weight: 300;
+            direction: rtl;
         }
 
         .testimonial-name {
@@ -181,7 +182,7 @@
                                         </div>
                                         <h3>{{ $service->title }}</h3>
                                         <h4>
-                                            {!! Str::limit(Helper::removeSpecialCharacter($service->brief), 140) !!}
+                                            {!! $service->intro !!}
                                         </h4>
 
                                     </div>

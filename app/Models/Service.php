@@ -13,7 +13,7 @@ class Service extends Model implements Viewable,TranslatableContract
 
     use InteractsWithViews;
     use Translatable;
-    public $translatedAttributes = ['title', 'brief', 'main_title'];
+    public $translatedAttributes = ['title', 'intro', 'brief', 'main_title'];
     protected $guarded=[];
     public function indexItems()
     {

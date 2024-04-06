@@ -23,6 +23,17 @@
             });
 
         });
+        $(function() {
+            CKEDITOR.replace("ar[intro]", {
+                filebrowserBrowseUrl: imageGalleryBrowseUrl,
+                filebrowserUploadUrl: imageGalleryUploadUrl +
+                    "?_token=" +
+                    $("meta[name=csrf-token]").attr("content"),
+                removeButtons: "About",
+                contentsLangDirection: 'rtl'
+            });
+
+        });
     </script>
     <script src="{{ asset('dashboard/js/image_preview.js') }}"></script>
     <script>
@@ -117,6 +128,10 @@
 
 
 
+                    <div class="form-group mb-3">
+                        <label for="ar[intro]" class="form-label">النص الخارجي (اختياري)</label>
+                        <textarea class="form-control" id="ar[intro]" name="ar[intro]" rows="5" dir="rtl">{{ $service->translate('ar')->intro }}</textarea>
+                    </div>
 
                     <div class="form-group mb-3">
                         <label for="ar[brief]" class="form-label">التعريف - Brief</label>

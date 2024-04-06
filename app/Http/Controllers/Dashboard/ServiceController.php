@@ -35,6 +35,7 @@ class ServiceController extends Controller
         $rules = [
             'ar.title' => ['required'],
             'slug' => ['required', 'unique:services,slug'],
+            'ar.intro' => ['nullable'],
             'ar.brief' => ['required'],
             'ar.main_title' => ['required'],
 
@@ -57,6 +58,7 @@ class ServiceController extends Controller
         $service->position = Service::max('position') + 1;
 
         $service->translateOrNew('ar')->title = $validatedData['ar']['title'];
+        $service->translateOrNew('ar')->intro = $validatedData['ar']['intro'];
         $service->translateOrNew('ar')->brief = $validatedData['ar']['brief'];
         $service->translateOrNew('ar')->main_title = $validatedData['ar']['main_title'];
 
@@ -110,6 +112,7 @@ class ServiceController extends Controller
             'slug' => [
                 'required', 'unique:services,slug,' . $service->id
             ],
+            'ar.intro' => ['nullable'],
             'ar.brief' => ['required'],
             'ar.main_title' => ['required'],
 
@@ -127,6 +130,7 @@ class ServiceController extends Controller
         $validatedData = $request->validate($rules);
 
         $service->translate('ar')->title = $validatedData['ar']['title'];
+        $service->translate('ar')->intro = $validatedData['ar']['intro'];
         $service->translate('ar')->brief = $validatedData['ar']['brief'];
         $service->translate('ar')->main_title = $validatedData['ar']['main_title'];
 
