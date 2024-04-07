@@ -1381,13 +1381,13 @@ canvas {
     margin-bottom: .5rem;
     /* display: block; */
     /* font-size: 0.75rem; */
-    color: #919491;
+    /* color: #919491; */
 }
 .post-content span a {
-    color: #919491;
+    /* color: #919491; */
 }
 .post-content span a:hover {
-    color: #5dbd53;
+    color: #bd6c53;
 }
 .post-content span a:not(:last-child) {
     margin-right: 8px;
