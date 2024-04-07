@@ -3,6 +3,9 @@
 @section('title', trans('site.about'))
 @section('styles')
     <style>
+        .Team2{
+            display: none;
+        }
         .headsection {
             background: url("http://127.0.0.1:8000/home/img/travel.jpg");
             background-attachment: fixed;
@@ -317,9 +320,10 @@
             transform: rotateY(180deg);
             padding-top: 50px
         }
+
         .card-container.flipped {
-    transform: rotateY(180deg);
-}
+            transform: rotateY(180deg);
+        }
     </style>
 @endsection
 @section('scripts')
@@ -373,7 +377,7 @@
             });
 
             // Filter team members based on category
-            $('.filter-category li a').click(function(e) {
+            $('.filter-team  a').click(function(e) {
                 e.preventDefault();
 
                 var filter = $(this).data('filter');
@@ -389,7 +393,7 @@
                 });
 
                 // Update active class for navigation
-                $(this).closest('li').addClass('active').siblings().removeClass('active');
+                // $(this).closest('li').addClass('active').siblings().removeClass('active');
             });
 
             // Initially show all team members
@@ -517,31 +521,35 @@
                     </div>
                 </div>
             </div>
-            
-            <div class="row justify-content-center mb-4" data-animate="fadeInUp" data-delay=".4">
-                <div class="col-md-12">
-                    <ul class="nav nav-pills filter-category  overflow-auto">
 
+            <div class="section-title text-center">
+                <h2 data-animate="fadeInUp" data-delay=".1">الأقسام</h2>
+            </div>
+            <div class="swiper-container team-slider Team1">
+                <div class="swiper-wrapper filter-team">
 
-                        <li class="nav-item">
-                            <a class="nav-link btn btn-secondary active" data-filter="all" href="#">All</a>
-                        </li>
-                        @foreach ($teamRoles as $index => $teamRole)
-                            @php
-                                if ($index === 0) {
-                                    continue;
-                                }
-                            @endphp
-                            <li class="nav-item">
-                                <a class="nav-link btn btn-dark ml-2" data-filter="{{ $teamRole->name }}"
-                                    href="#">{{ $teamRole->name }}</a>
-                            </li>
-                        @endforeach
+                    @foreach ($teamRoles as $index => $teamRole)
+                        @php
+                            if ($index === 0) {
+                                continue;
+                            }
+                        @endphp
+                   
+                        <div class="swiper-slide single-team-slide">
+                            <!-- Author info -->
+                            <div class="d-flex align-items-center author-info-wrap">
+                                    <a class="nav-link btn btn-dark ml-2 @if ($index == 1) active @endif"
+                                    data-filter="{{ $teamRole->name }}" href="#">{{ $teamRole->name }}</a>
+                            </div>
+                            
+                        </div>
+                    @endforeach
 
-                    </ul>
                 </div>
             </div>
+            <div class="swiper-pagination team-pagination position-static" style="margin-bottom: 35px;"></div>
 
+         
             <!-- Members -->
             @php
                 $counter = 0;

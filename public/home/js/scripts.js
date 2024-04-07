@@ -154,6 +154,33 @@ We may release future updates so it will overwrite this file. it's better and sa
             }
         });
 
+
+        // Team Slider
+
+        var teamSlider = new Swiper('.team-slider', {
+            slidesPerView: 6,
+            spaceBetween: 20,
+            speed: 500,
+            autoplay: {
+                delay: 3000,
+                disableOnInteraction: true,
+            },
+            pagination: {
+                el: '.team-pagination',
+                clickable: true,
+            },
+            breakpoints: {
+                // when window width is <= 575px
+                575: {
+                    slidesPerView: 2
+                },
+                // when window width is <= 991px
+                991: {
+                    slidesPerView: 3
+                }
+            }
+        });
+
         
         /* 08: Video popup
         ==============================================*/
@@ -247,7 +274,7 @@ We may release future updates so it will overwrite this file. it's better and sa
                  stringsElement: '#typed-strings',
                 typeSpeed: 0,
                 backSpeed: 0,
-                loop: true
+                loop: false
             });
         }
 

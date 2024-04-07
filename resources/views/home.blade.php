@@ -2,6 +2,11 @@
 @section('title', trans('site.home'))
 @section('styles')
     <style>
+        .banner-content h1 {
+            font-size: 3.5rem;
+            font-weight: bold;
+        }
+
         section.sectionCounter {
             width: 100%;
             height: 100%;
@@ -151,7 +156,7 @@
             top: 0;
             right: 0;
             /* add slash at end of this line to show the red outline of the slice *
-                                        outline: solid 1px red; /**/
+                                            outline: solid 1px red; /**/
             width: 50%;
             height: 50%;
             transform-origin: 0% 100%;
@@ -206,7 +211,7 @@
                 /* unskew slice contents */
                 rotate(36deg);
             /* rotate by half the central angle of the slice
-                                           which is 50deg in this case */
+                                               which is 50deg in this case */
             background: #039be5;
         }
 
@@ -219,7 +224,7 @@
                 /* unskew slice contents */
                 rotate(36deg);
             /* rotate by half the central angle of the slice
-                                           which is 50deg in this case */
+                                               which is 50deg in this case */
             background: #0097a7;
         }
 
@@ -236,7 +241,7 @@
                 /* unskew slice contents */
                 rotate(36deg);
             /* rotate by half the central angle of the slice
-                                           which is 50deg in this case */
+                                               which is 50deg in this case */
             background: #006064;
         }
 
@@ -249,7 +254,7 @@
                 /* unskew slice contents */
                 rotate(36deg);
             /* rotate by half the central angle of the slice
-                                           which is 50deg in this case */
+                                               which is 50deg in this case */
             background: #00bfa5;
         }
 
@@ -266,7 +271,7 @@
                 /* unskew slice contents */
                 rotate(36deg);
             /* rotate by half the central angle of the slice
-                                           which is 50deg in this case */
+                                               which is 50deg in this case */
             background: #69f0ae;
         }
 
@@ -279,7 +284,7 @@
                 /* unskew slice contents */
                 rotate(36deg);
             /* rotate by half the central angle of the slice
-                                           which is 50deg in this case */
+                                               which is 50deg in this case */
             background: #f0b169;
         }
 
@@ -292,7 +297,7 @@
                 /* unskew slice contents */
                 rotate(36deg);
             /* rotate by half the central angle of the slice
-                                           which is 50deg in this case */
+                                               which is 50deg in this case */
             background: #d7f069;
         }
 
@@ -301,7 +306,7 @@
                 /* unskew slice contents */
                 rotate(36deg);
             /* rotate by half the central angle of the slice
-                                           which is 50deg in this case */
+                                               which is 50deg in this case */
             background: #69f0ae;
         }
 
@@ -1075,27 +1080,27 @@
         }
 
         /* .section-wrapper .shielding-layer:after {
-                                                                                                        content: "";
-                                                                                                        width: 71%;
-                                                                                                        height: 100%;
-                                                                                                        position: absolute;
-                                                                                                        top: 0;
-                                                                                                        right: 0;
-                                                                                                        z-index: 3;
-                                                                                                        background: linear-gradient(90deg, rgba(249, 249, 254, 0) rgba(249, 249, 254, 0.97) 0,);
-                                                                                                    }
+                                                                                                            content: "";
+                                                                                                            width: 71%;
+                                                                                                            height: 100%;
+                                                                                                            position: absolute;
+                                                                                                            top: 0;
+                                                                                                            right: 0;
+                                                                                                            z-index: 3;
+                                                                                                            background: linear-gradient(90deg, rgba(249, 249, 254, 0) rgba(249, 249, 254, 0.97) 0,);
+                                                                                                        }
 
-                                                                                                    .section-wrapper .shielding-layer:before {
-                                                                                                        pointer-events: none;
-                                                                                                        content: "";
-                                                                                                        width: calc(29% + 1px);
-                                                                                                        height: 100%;
-                                                                                                        position: absolute;
-                                                                                                        top: 0;
-                                                                                                        left: 0;
-                                                                                                        z-index: 3;
-                                                                                                        background: linear-gradient(90deg, rgba(249, 249, 254, 0.97) 0, rgba(249, 249, 254, 0));
-                                                                                                    } */
+                                                                                                        .section-wrapper .shielding-layer:before {
+                                                                                                            pointer-events: none;
+                                                                                                            content: "";
+                                                                                                            width: calc(29% + 1px);
+                                                                                                            height: 100%;
+                                                                                                            position: absolute;
+                                                                                                            top: 0;
+                                                                                                            left: 0;
+                                                                                                            z-index: 3;
+                                                                                                            background: linear-gradient(90deg, rgba(249, 249, 254, 0.97) 0, rgba(249, 249, 254, 0));
+                                                                                                        } */
 
         .section-wrapper:before {
             content: "";
@@ -1584,7 +1589,7 @@
                                     <p>{{ $info->title }}</p>
                                 </div>
 
-                                <h1 data-animate="fadeInUp" data-delay="1.2" class="typed"></h1>
+                                <h1 class="typed"></h1>
 
                                 <div id="typed-strings2">
                                     <p>{{ $info->description }}</p>
@@ -1687,12 +1692,12 @@
                 </div>
                 <div class="row">
                     <div class="col-md-12 text-left" data-animate="fadeInUp" data-delay=".1">
-                        <h2 class="heading-title">@lang('site.about_me')</h2>
+                        <h2 class="heading-title mt-3">@lang('site.about_me')</h2>
                         <hr class="line line-hr-primary">
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-md-6 align-self-center" data-animate="fadeInUp" data-delay=".2">
+                    <div class="col-md-6 pt-2" data-animate="fadeInUp" data-delay=".2">
                         <div class="about-p">{!! $about->about_me !!}</div>
 
                     </div>
@@ -1727,7 +1732,7 @@
                         @php
                             $current_angle = 0;
                             $total_slices = count($counters);
-                            $angle_increment = 360 / ($total_slices);
+                            $angle_increment = 360 / $total_slices;
                         @endphp
 
                         @foreach ($counters as $counter)
