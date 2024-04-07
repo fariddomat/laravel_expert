@@ -2,6 +2,9 @@
 @section('title', trans('site.home'))
 @section('styles')
     <style>
+        .main-footer {
+  box-shadow: unset;
+}
         .banner-content h1 {
             font-size: 3.5rem;
             font-weight: bold;
@@ -1847,35 +1850,20 @@
     <section id="section3" class="servers pt-7 bg-light section3 ">
         <div class="container">
             <div class="row">
-                <div class="col-xl-7 col-lg-5">
+                <div class="col-lg-5">
                     <div class="section-title">
-                        <h2 data-animate="fadeInUp" data-delay=".1">المزيد من الخدمات</h2>
-                        <p data-animate="fadeInUp" data-delay=".2">حتى نبقى معكم خلال الرحلة ولكي نؤمن أعلى درجات الدقة
-                            والسرعة التي نسعى اليها دائماً ,<br>شملت خدماتنا الحجوزات الفندقية والتأمين الصحي لمختلف دول
-                            العالم </p>
-                    </div>
-                    <ul class="data-centers list-unstyled list-item clearfix">
-                        <li></li>
-                        <li data-animate="fadeInUp" data-delay=".1" style="text-align: justify"><i
-                                class="fas fa-caret-right"></i>وحتى نبقى مستشاركم الأول منذ اللحظة الأولى
+                        <h2 data-animate="fadeInUp" data-delay=".1">الاستشارات</h2>
+                        <p data-animate="fadeInUp" data-delay=".2">وحتى نبقى مستشاركم الأول منذ اللحظة الأولى
                             نقدم لكم خدمة الاستشارات المجانية التي تحصلون من خلالها على إجابات كاملة لأسئلتكم واستفساراتكم
-                            عن كل ما يتعلق بالسفر والدراسة بالخارج
-
-                        </li>
-                        <li></li>
-                        <li data-animate="fadeInUp" data-delay=".2"><a class="btn btn-secondary"
+                            عن كل ما يتعلق بالسفر والدراسة بالخارج</p>
+                            <span data-animate="fadeInUp" data-delay=".2"><a class="btn btn-secondary"
                                 href="{{ route('contact') }}">أحجز موعدك الآن</a></li>
-                        </li>
-                        {{-- <li data-animate="fadeInUp" data-delay=".2"><i class="fas fa-caret-right"></i>الإمارات (169)
-                        </li>
-                        <li data-animate="fadeInUp" data-delay=".3"><i class="fas fa-caret-right"></i>رومانيا (151)</li>
-                        <li data-animate="fadeInUp" data-delay=".4"><i class="fas fa-caret-right"></i>هنغاريا
-                            (142)</li>
-                        <li data-animate="fadeInUp" data-delay=".5"><i class="fas fa-caret-right"></i>آسيا (70)</li>
-                        <li data-animate="fadeInUp" data-delay=".6"><i class="fas fa-caret-right"></i>افريقيا (40)</li> --}}
-                    </ul>
+                            </span>
+                    </div>
+                   
+                    
                 </div>
-                <div class="col-xl-5 col-lg-7 d-none d-lg-block">
+                <div class="col-lg-5 offset-lg-2 d-none d-lg-block">
                     <div class="server-map">
                         <img src="{{ asset('home/img/servers.png') }}" alt="">
                     </div>
@@ -1896,7 +1884,7 @@
 
 
     <!-- Reviews -->
-    <section class="pt-2 pb-7 bg-white">
+    <section class="pt-2 pb-7 bg-gradient" style="padding-bottom: 200px !important">
         <div class="container">
             <div class="section-title text-center">
                 <h2 data-animate="fadeInUp" data-delay=".1">أراء العملاء</h2>
