@@ -379,7 +379,6 @@
     </style>
 @endsection
 @section('scripts')
-    <script src="{{ asset('js/blog.js') }}"></script>
     <script id="dsq-count-scr" src="//almohtarif-2.disqus.com/count.js" async></script>
 @endsection
 

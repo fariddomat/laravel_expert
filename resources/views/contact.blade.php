@@ -46,22 +46,13 @@
 @endsection
 @section('scripts')
     <script>
-        // $('#contactFrom').submit(function() {
-        //     $('#btn-submit').prop("disabled", true);
-        //     $('#btn-spinner').show();
-        //     return true;
-        // });
 
-        //         $(document).ready(function() {
-        //   $('#contactFrom').parsley(); // Replace with your form's ID
-        // });
 
         $(document).ready(function() {
             $('.form-control').on('focusout', function() {
-                $(this).parsley().validate(); // Manually trigger validation on change
+                $(this).parsley().validate();
             });
 
-            // Repeat for other fields where you want validation on change
         });
     </script>
     <script>
@@ -88,7 +79,8 @@
                             $('#appointment_time').append('<option value="' +
                                 t
                                 .id + '">' + t.time + '</option>');
-                        })
+                        });
+                        
                         if (i == 0) {
                             $('#appointment_time').append(
                                 '<option>لا يوجد مواعيد متاحة</option>');

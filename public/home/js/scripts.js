@@ -32,7 +32,6 @@ We may release future updates so it will overwrite this file. it's better and sa
     "use strict";
     $(function(){
 
-        // FontAwesomeConfig = { searchPseudoElements: true };
 
         /* 01: Main menu
         ==============================================*/
@@ -47,14 +46,14 @@ We may release future updates so it will overwrite this file. it's better and sa
         });
 
         var mainHeader = $('.main-header');
-        
+
         if(mainHeader.length) {
             var sticky = new Waypoint.Sticky({
                 element: mainHeader[0]
             });
         }
 
-        
+
         /* 02: Movable image
         ==============================================*/
 
@@ -64,7 +63,7 @@ We may release future updates so it will overwrite this file. it's better and sa
             var parallaxImage = new Parallax(moveableImage[0]);
         }
 
-        
+
         /* 03: Background image
         ==============================================*/
 
@@ -83,13 +82,13 @@ We may release future updates so it will overwrite this file. it's better and sa
 
         /* 05: Smooth scroll for comment reply
         ==============================================*/
-        
+
         var $commentContent = $('.comment-content > a');
-        
+
         $commentContent.on('click', function(event){
             event.preventDefault();
             var $target = $('.comment-form');
-            
+
             if ( $target.length ) {
                 $('html, body').animate({
                     scrollTop: $target.offset().top - 120
@@ -99,10 +98,10 @@ We may release future updates so it will overwrite this file. it's better and sa
             }
         });
 
-        
+
         /* 06: Pricing slider
         ==============================================*/
-        
+
         var pricingSlider = new Swiper('.pricing-slider', {
             slidesPerView: 3,
             loop: true,
@@ -119,17 +118,17 @@ We may release future updates so it will overwrite this file. it's better and sa
                 clickable: true,
             },
             breakpoints: {
-                // when window width is <= 575px
+
                 575: {
                     slidesPerView: 1
                 }
             }
         });
 
-        
+
         /* 07: Review slider
         ==============================================*/
-        
+
         var reviewSlider = new Swiper('.review-slider', {
             slidesPerView: 4,
             spaceBetween: 30,
@@ -143,11 +142,9 @@ We may release future updates so it will overwrite this file. it's better and sa
                 clickable: true,
             },
             breakpoints: {
-                // when window width is <= 575px
                 575: {
                     slidesPerView: 1
                 },
-                // when window width is <= 991px
                 991: {
                     slidesPerView: 2
                 }
@@ -155,7 +152,7 @@ We may release future updates so it will overwrite this file. it's better and sa
         });
 
 
-        // Team Slider
+        /* Team Slider */
 
         var teamSlider = new Swiper('.team-slider', {
             slidesPerView: 6,
@@ -170,18 +167,16 @@ We may release future updates so it will overwrite this file. it's better and sa
                 clickable: true,
             },
             breakpoints: {
-                // when window width is <= 575px
                 575: {
                     slidesPerView: 2
                 },
-                // when window width is <= 991px
                 991: {
                     slidesPerView: 3
                 }
             }
         });
 
-        
+
         /* 08: Video popup
         ==============================================*/
 
@@ -194,14 +189,14 @@ We may release future updates so it will overwrite this file. it's better and sa
             });
         }
 
-        
+
         /* 09: Back to top button
         ==============================================*/
 
         var $backToTopBtn = $('.back-to-top');
 
         if ($backToTopBtn.length) {
-            var scrollTrigger = 400, // px
+            var scrollTrigger = 400,
             backToTop = function () {
                 var scrollTop = $(window).scrollTop();
                 if (scrollTop > scrollTrigger) {
@@ -225,7 +220,7 @@ We may release future updates so it will overwrite this file. it's better and sa
             });
         }
 
-        
+
         /* 10: Changing svg color
         ==============================================*/
 
@@ -234,35 +229,29 @@ We may release future updates so it will overwrite this file. it's better and sa
             var imgID = $img.attr('id');
             var imgClass = $img.attr('class');
             var imgURL = $img.attr('src');
-        
+
             jQuery.get(imgURL, function(data) {
-                // Get the SVG tag, ignore the rest
+
                 var $svg = jQuery(data).find('svg');
-        
-                // Add replaced image's ID to the new SVG
+
                 if(typeof imgID !== 'undefined') {
                     $svg = $svg.attr('id', imgID);
                 }
-                // Add replaced image's classes to the new SVG
                 if(typeof imgClass !== 'undefined') {
                     $svg = $svg.attr('class', imgClass+' replaced-svg');
                 }
-        
-                // Remove any invalid XML tags as per http://validator.w3.org
+
                 $svg = $svg.removeAttr('xmlns:a');
-                
-                // Check if the viewport is set, else we gonna set it if we can.
                 if(!$svg.attr('viewBox') && $svg.attr('height') && $svg.attr('width')) {
                     $svg.attr('viewBox', '0 0 ' + $svg.attr('height') + ' ' + $svg.attr('width'));
                 }
-        
-                // Replace image with new SVG
+
                 $img.replaceWith($svg);
-        
+
             }, 'xml');
         });
 
-        
+
         /* 11: Typed JS
         ==============================================*/
 
@@ -272,7 +261,7 @@ We may release future updates so it will overwrite this file. it's better and sa
         if(typedTarget.length) {
             var typed = new Typed(typedElement, {
                  stringsElement: '#typed-strings',
-                typeSpeed: 0,
+                typeSpeed: 100,
                 backSpeed: 0,
                 loop: false
             });
@@ -291,7 +280,7 @@ We may release future updates so it will overwrite this file. it's better and sa
         }
     });
 
-    
+
     /* 12: Preloader
     ==============================================*/
 

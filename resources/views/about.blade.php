@@ -494,7 +494,7 @@
                 <div class="col-md-auto" data-animate="fadeInUp" data-delay=".2">
                     <ul class="nav nav-pills">
                         <li class="nav-item">
-                            <a class="nav-link btn btn-dark ml-2" style="color: #fff">{{ $teams[0]->teamRole->name }}</a>
+                            <a class="nav-link btn btn-dark ml-2" style="color: #fff !important">{{ $teams[0]->teamRole->name }}</a>
                         </li>
                     </ul>
                 </div>
@@ -534,14 +534,14 @@
                                 continue;
                             }
                         @endphp
-                   
+
                         <div class="swiper-slide single-team-slide">
                             <!-- Author info -->
                             <div class="d-flex align-items-center author-info-wrap">
                                     <a class="nav-link btn btn-dark ml-2 @if ($index == 1) active @endif"
                                     data-filter="{{ $teamRole->name }}" href="#">{{ $teamRole->name }}</a>
                             </div>
-                            
+
                         </div>
                     @endforeach
 
@@ -549,7 +549,7 @@
             </div>
             <div class="swiper-pagination team-pagination position-static" style="margin-bottom: 35px;"></div>
 
-         
+
             <!-- Members -->
             @php
                 $counter = 0;

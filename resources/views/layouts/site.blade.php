@@ -38,9 +38,8 @@
 
 
     <link href="{{ asset('css/fonts.css') }}" rel="stylesheet">
-    <link rel="stylesheet"
-        href="{{ asset('fonts/Cairo/Cairo-VariableFont_slnt,wght.ttf') }},wght@0,400;0,700;1,400;1,700&display=swap">
 
+    
     {{-- icons --}}
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
     {{-- noty --}}
@@ -273,6 +272,7 @@
 
     {{-- aos --}}
     <script src="{{ asset('js/aos.js') }}"></script>
+
     @include('partials._session')
     @yield('scripts')
 </body>

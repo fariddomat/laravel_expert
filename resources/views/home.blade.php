@@ -3,8 +3,9 @@
 @section('styles')
     <style>
         .main-footer {
-  box-shadow: unset;
-}
+            box-shadow: unset;
+        }
+
         .banner-content h1 {
             font-size: 3.5rem;
             font-weight: bold;
@@ -159,7 +160,7 @@
             top: 0;
             right: 0;
             /* add slash at end of this line to show the red outline of the slice *
-                                            outline: solid 1px red; /**/
+                                                outline: solid 1px red; /**/
             width: 50%;
             height: 50%;
             transform-origin: 0% 100%;
@@ -214,7 +215,7 @@
                 /* unskew slice contents */
                 rotate(36deg);
             /* rotate by half the central angle of the slice
-                                               which is 50deg in this case */
+                                                   which is 50deg in this case */
             background: #039be5;
         }
 
@@ -227,7 +228,7 @@
                 /* unskew slice contents */
                 rotate(36deg);
             /* rotate by half the central angle of the slice
-                                               which is 50deg in this case */
+                                                   which is 50deg in this case */
             background: #0097a7;
         }
 
@@ -244,7 +245,7 @@
                 /* unskew slice contents */
                 rotate(36deg);
             /* rotate by half the central angle of the slice
-                                               which is 50deg in this case */
+                                                   which is 50deg in this case */
             background: #006064;
         }
 
@@ -257,7 +258,7 @@
                 /* unskew slice contents */
                 rotate(36deg);
             /* rotate by half the central angle of the slice
-                                               which is 50deg in this case */
+                                                   which is 50deg in this case */
             background: #00bfa5;
         }
 
@@ -274,7 +275,7 @@
                 /* unskew slice contents */
                 rotate(36deg);
             /* rotate by half the central angle of the slice
-                                               which is 50deg in this case */
+                                                   which is 50deg in this case */
             background: #69f0ae;
         }
 
@@ -287,7 +288,7 @@
                 /* unskew slice contents */
                 rotate(36deg);
             /* rotate by half the central angle of the slice
-                                               which is 50deg in this case */
+                                                   which is 50deg in this case */
             background: #f0b169;
         }
 
@@ -300,7 +301,7 @@
                 /* unskew slice contents */
                 rotate(36deg);
             /* rotate by half the central angle of the slice
-                                               which is 50deg in this case */
+                                                   which is 50deg in this case */
             background: #d7f069;
         }
 
@@ -309,7 +310,7 @@
                 /* unskew slice contents */
                 rotate(36deg);
             /* rotate by half the central angle of the slice
-                                               which is 50deg in this case */
+                                                   which is 50deg in this case */
             background: #69f0ae;
         }
 
@@ -1083,27 +1084,27 @@
         }
 
         /* .section-wrapper .shielding-layer:after {
-                                                                                                            content: "";
-                                                                                                            width: 71%;
-                                                                                                            height: 100%;
-                                                                                                            position: absolute;
-                                                                                                            top: 0;
-                                                                                                            right: 0;
-                                                                                                            z-index: 3;
-                                                                                                            background: linear-gradient(90deg, rgba(249, 249, 254, 0) rgba(249, 249, 254, 0.97) 0,);
-                                                                                                        }
+                                                                                                                content: "";
+                                                                                                                width: 71%;
+                                                                                                                height: 100%;
+                                                                                                                position: absolute;
+                                                                                                                top: 0;
+                                                                                                                right: 0;
+                                                                                                                z-index: 3;
+                                                                                                                background: linear-gradient(90deg, rgba(249, 249, 254, 0) rgba(249, 249, 254, 0.97) 0,);
+                                                                                                            }
 
-                                                                                                        .section-wrapper .shielding-layer:before {
-                                                                                                            pointer-events: none;
-                                                                                                            content: "";
-                                                                                                            width: calc(29% + 1px);
-                                                                                                            height: 100%;
-                                                                                                            position: absolute;
-                                                                                                            top: 0;
-                                                                                                            left: 0;
-                                                                                                            z-index: 3;
-                                                                                                            background: linear-gradient(90deg, rgba(249, 249, 254, 0.97) 0, rgba(249, 249, 254, 0));
-                                                                                                        } */
+                                                                                                            .section-wrapper .shielding-layer:before {
+                                                                                                                pointer-events: none;
+                                                                                                                content: "";
+                                                                                                                width: calc(29% + 1px);
+                                                                                                                height: 100%;
+                                                                                                                position: absolute;
+                                                                                                                top: 0;
+                                                                                                                left: 0;
+                                                                                                                z-index: 3;
+                                                                                                                background: linear-gradient(90deg, rgba(249, 249, 254, 0.97) 0, rgba(249, 249, 254, 0));
+                                                                                                            } */
 
         .section-wrapper:before {
             content: "";
@@ -1524,7 +1525,6 @@
     <script>
         jQuery(document).ready(function($) {
             "use strict";
-            //  TESTIMONIALS CAROUSEL HOOK
             $('#customers-testimonials').owlCarousel({
                 loop: true,
                 center: true,
@@ -1557,16 +1557,16 @@
             var currentScroll = window.pageYOffset || document.documentElement.scrollTop;
             var img = document.getElementById('section3');
             if (currentScroll > lastScrollTop) {
-                // Scrolling down
+
                 img.style.backgroundImage =
-                    "url('http://127.0.0.1:8000/home/img/icons/airplane.png')"; // Replace with your image path
+                    "url('http://127.0.0.1:8000/home/img/icons/airplane.png')";
             } else {
-                // Scrolling up
                 img.style.backgroundImage =
-                    "url('http://127.0.0.1:8000/home/img/icons/airplane2.png')"; // Replace with your image path
+                    "url('http://127.0.0.1:8000/home/img/icons/airplane2.png')";
+
             }
 
-            lastScrollTop = currentScroll <= 0 ? 0 : currentScroll; // For Mobile or negative scrolling
+            lastScrollTop = currentScroll <= 0 ? 0 : currentScroll;
         }, false);
     </script>
 
@@ -1603,7 +1603,7 @@
 
                                 <ul class="list-inline" data-animate="fadeInUp" data-delay="1.4">
                                     <li><a href="{{ route('about') }}" class="btn btn-secondary"
-                                            style="padding: 10px 25px">@lang('site.about_me')</a>
+                                            style="padding: 10px 25px !important;">@lang('site.about_me')</a>
                                     </li>
 
                                 </ul>
@@ -1660,7 +1660,7 @@
                                         <div class="shelter"></div>
                                     </div>
                                 </div>
- 
+
 
 
                             </div>
@@ -1856,12 +1856,12 @@
                         <p data-animate="fadeInUp" data-delay=".2">وحتى نبقى مستشاركم الأول منذ اللحظة الأولى
                             نقدم لكم خدمة الاستشارات المجانية التي تحصلون من خلالها على إجابات كاملة لأسئلتكم واستفساراتكم
                             عن كل ما يتعلق بالسفر والدراسة بالخارج</p>
-                            <span data-animate="fadeInUp" data-delay=".2"><a class="btn btn-secondary"
+                        <span data-animate="fadeInUp" data-delay=".2"><a class="btn btn-secondary"
                                 href="{{ route('contact') }}">أحجز موعدك الآن</a></li>
-                            </span>
+                        </span>
                     </div>
-                   
-                    
+
+
                 </div>
                 <div class="col-lg-5 offset-lg-2 d-none d-lg-block">
                     <div class="server-map">
