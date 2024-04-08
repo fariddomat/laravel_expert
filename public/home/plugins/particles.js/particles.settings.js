@@ -1,7 +1,7 @@
 var particlesJs='particles_js',particleTarget=$('#'+particlesJs);if(particleTarget.length){particlesJS(particlesJs,{
     "particles": {
       "number": {
-        "value": 47,
+        "value": 20,
         "density": {
           "enable": true,
           "value_area": 800
