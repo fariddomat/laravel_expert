@@ -1488,8 +1488,9 @@
 
         .owl-carousel .owl-item img {
             transform-style: preserve-3d;
-            max-width: 90px;
+            /* max-width: 90px; */
             margin: 0 auto 17px;
+            max-height: 155px;
         }
 
         #customers-testimonials.owl-carousel .owl-dots .owl-dot.active span,
@@ -1804,7 +1805,7 @@
                                         <div class="single-post" data-animate="">
                                             <div class="image-hover-wrap">
                                                 <img class="img-fluid" src="{{ asset($service->image) }}" alt=""
-                                                    style="aspect-ratio: 3 / 3;">
+                                                    style="">
                                                 <div
                                                     class="image-hover-content d-flex justify-content-center align-items-center text-center">
                                                     <ul class="list-inline">
