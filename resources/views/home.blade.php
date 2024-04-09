@@ -950,9 +950,8 @@
     </style>
     <style>
         .services-title {
-
-            background-image: url({{ asset('home/img/WorldMap.svg') }});
             height: auto;
+            background-image: url({{ asset('home/img/services.jpg') }});
             background-attachment: fixed !important;
             background-repeat: no-repeat !important;
             background-size: cover !important;
