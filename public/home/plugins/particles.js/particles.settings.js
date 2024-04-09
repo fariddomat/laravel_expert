@@ -20,7 +20,7 @@ var particlesJs='particles_js',particleTarget=$('#'+particlesJs);if(particleTarg
           "nb_sides": 4
         },
         "image": {
-          "src": "https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExYmkycDY0MDZ3bDh2aG4xdnU1cWUwNzh3NHprNmJzOGRxYjRtb21nayZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/1rMBUx1a89padJJT9c/giphy.gif",
+          "src": "/home/plugins/particles.js/giphy.gif",
           "width": 210,
           "height": 230
         }
