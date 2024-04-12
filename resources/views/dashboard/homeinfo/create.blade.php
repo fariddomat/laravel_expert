@@ -111,7 +111,16 @@
                 </div>
 
                 <div class="form-group mb-3">
-                    <img src="{{ isset($info) ? asset($info->service_image) : '#' }}" style="width: 300px;" class="img-thumbnail service-image-preview" alt="">
+                    <img src="{{ isset($info) ? asset($info->service_image) : '#' }}" style="width: 200px; height: 125px;" class="img-thumbnail service-image-preview" alt="">
+                </div>
+
+                <div class="form-group mb-3">
+                    <label>صورة قسم الخدمات - header</label>
+                    <input type="file" name="service_header_image" class="form-control service-image">
+                </div>
+
+                <div class="form-group mb-3">
+                    <img src="{{ isset($info) ? asset($info->service_header_image) : '#' }}" style="width: 300px;" class="img-thumbnail service-image-preview" alt="">
                 </div>
 
 

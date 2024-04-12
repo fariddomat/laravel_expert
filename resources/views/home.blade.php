@@ -951,7 +951,7 @@
     <style>
         .services-title {
             height: auto;
-            background-image: url({{ asset('home/img/services.jpg') }});
+            background-image: url({{ asset($info->service_image) }});
             background-attachment: fixed !important;
             background-repeat: no-repeat !important;
             background-size: cover !important;

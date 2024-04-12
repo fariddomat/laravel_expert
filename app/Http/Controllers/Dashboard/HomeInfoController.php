@@ -61,9 +61,10 @@ class HomeInfoController extends Controller
         // $info->translateOrNew('en')->work_description = $validatedData['en']['work_description'];
 
 
+        $helper = new ImageHelper;
         if ($request->has('logo_icon')) {
 
-            $helper = new ImageHelper;
+
             $helper->removeImageInPublicDirectory($info->logo_icon);
             $image = $request->file('logo_icon');
             $directory = '/photos/home';
@@ -72,7 +73,7 @@ class HomeInfoController extends Controller
         }
         if ($request->has('logo')) {
 
-            $helper = new ImageHelper;
+
             $helper->removeImageInPublicDirectory($info->logo);
             $image = $request->file('logo');
             $directory = '/photos/home';
@@ -81,7 +82,7 @@ class HomeInfoController extends Controller
         }
         if ($request->has('about_me_image')) {
 
-            $helper = new ImageHelper;
+
             $helper->removeImageInPublicDirectory($info->about_me_image);
             $image = $request->file('about_me_image');
             $directory = '/photos/home';
@@ -96,16 +97,25 @@ class HomeInfoController extends Controller
         // }
         if ($request->has('service_image')) {
 
-            $helper = new ImageHelper;
+
             $image = $request->file('service_image');
             $directory = '/photos/home';
-            $fullPath = $helper->storeImageInPublicDirectory($image, $directory, 1350,245);
+            $fullPath = $helper->storeImageInPublicDirectory($image, $directory, 1350,null);
             $info->service_image = $fullPath;
+        }
+
+        if ($request->has('service_header_image')) {
+
+
+            $image = $request->file('service_header_image');
+            $directory = '/photos/home';
+            $fullPath = $helper->storeImageInPublicDirectory($image, $directory, 1350,245);
+            $info->service_header_image = $fullPath;
         }
 
         if ($request->has('about_header_image')) {
 
-            $helper = new ImageHelper;
+
             $image = $request->file('about_header_image');
             $directory = '/photos/home';
             $fullPath = $helper->storeImageInPublicDirectory($image, $directory, 1350,245);
@@ -114,7 +124,7 @@ class HomeInfoController extends Controller
 
         if ($request->has('blog_header_image')) {
 
-            $helper = new ImageHelper;
+
             $image = $request->file('blog_header_image');
             $directory = '/photos/home';
             $fullPath = $helper->storeImageInPublicDirectory($image, $directory, 1350,245);
@@ -124,7 +134,7 @@ class HomeInfoController extends Controller
 
         if ($request->has('contact_header_image')) {
 
-            $helper = new ImageHelper;
+
             $image = $request->file('contact_header_image');
             $directory = '/photos/home';
             $fullPath = $helper->storeImageInPublicDirectory($image, $directory, 1350,245);
