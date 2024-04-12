@@ -111,7 +111,7 @@
                 </div>
 
                 <div class="form-group mb-3">
-                    <img src="{{ isset($info) ? asset($info->service_image) : '#' }}" style="width: 200px; height: 125px;" class="img-thumbnail service-image-preview" alt="">
+                    <img src="{{ isset($info) ? asset($info->service_image) : '#' }}" style="width: 200px;" class="img-thumbnail service-image-preview" alt="">
                 </div>
 
                 <div class="form-group mb-3">
