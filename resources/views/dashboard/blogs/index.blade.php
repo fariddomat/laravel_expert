@@ -51,21 +51,24 @@
                     <tr>
                         <th>#</th>
                         <th>العنوان</th>
+                        <th>الصورة</th>
                         <th>التصنيف</th>
-                        <th>عرض</th>
-                        <th>عرض في الصفحة الرئيسية</th>
+                        <th class="none">عرض</th>
+                        <th class="none">عرض في الصفحة الرئيسية</th>
                         <th>العمليات</th>
                     </tr>
                 </thead>
                 <tbody>
                     @foreach ($blogs as $index=>$blog)
                     <tr>
-                        <td>{{ $index+1 }}</td>
-                        <td>{{ $blog->title }}</td>
-                        <td>{{ $blog->Category->name }}</td>
-                        <td>{{ $blog->showed == 1 ? 'نعم' : 'مخفي' }}</td>
-                        <td>{{ $blog->show_at_home == 1 ? 'نعم' : 'مخفي' }}</td>
-                        <td>
+                        <td  class="d-flex px-2 py-1">{{ $index+1 }}</td>
+                        <td  class="d-flex px-2 py-1">{{ $blog->title }}</td>
+                        <td  class="d-flex px-2 py-1"><img class="avatar avatar-sm me-3 border-radius-lg" src="{{ asset($blog->image) }}" alt=""></td>
+
+                        <td  class="d-flex px-2 py-1">{{ $blog->Category->name }}</td>
+                        <td  class="d-flex px-2 py-1">{{ $blog->showed == 1 ? 'نعم' : 'مخفي' }}</td>
+                        <td  class="d-flex px-2 py-1">{{ $blog->show_at_home == 1 ? 'نعم' : 'مخفي' }}</td>
+                        <td  class="d-flex px-2 py-1">
                             <a href="{{ route('blog', $blog->slug) }}" class="btn btn-info btn-sm" target="_blank"> عرض</a>
                             <a href="{{ route('dashboard.blogs.edit', $blog->id) }}" class="btn btn-info btn-sm"><i class="fas fa-edit"></i> </a>
                             <form action="{{ route('dashboard.blogs.destroy', $blog->id) }}" method="post" style="display: inline-block">

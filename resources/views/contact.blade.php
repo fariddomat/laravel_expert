@@ -46,8 +46,6 @@
 @endsection
 @section('scripts')
     <script>
-
-
         $(document).ready(function() {
             $('.form-control').on('focusout', function() {
                 $(this).parsley().validate();
@@ -80,7 +78,7 @@
                                 t
                                 .id + '">' + t.time + '</option>');
                         });
-                        
+
                         if (i == 0) {
                             $('#appointment_time').append(
                                 '<option>لا يوجد مواعيد متاحة</option>');
@@ -180,8 +178,8 @@
                             <div class="col-md-6" data-animate="fadeInUp" data-delay=".5">
                                 <div class="form-group">
                                     <label for="">البريد الالكتروني</label>
-                                    <input type="email" name="email" value="{{ old('email') }}"
-                                        class="form-control" placeholder="@lang('contact.email')" data-parsley-type="email"
+                                    <input type="email" name="email" value="{{ old('email') }}" class="form-control"
+                                        placeholder="@lang('contact.email')" data-parsley-type="email"
                                         data-parsley-type-message="يجب ان تكون صيغة بريدالكتروني صحيحة."
                                         data-parsley-trigger="change">
                                 </div>
@@ -319,14 +317,22 @@
                             <br />@lang('contact.weekdays')
                         </h3>
                         <p data-animate="fadeInUp" data-delay="1.5">
-                        <p data-animate="fadeInUp" data-delay="1.5"><b>@lang('contact.whatsapp'):</b> <a
+                        <p data-animate="fadeInUp" data-delay="1.5"><b>@lang('contact.mobile'): </b> <a
+                                href="tel:+{{ $contactInfo->mobile }}" target="_blank">{{ $contactInfo->mobile }}</a>
+                        </p>
+                        <p data-animate="fadeInUp" data-delay="1.5"><b>@lang('contact.mobile'): </b> <a
+                                href="tel:+{{ $contactInfo->mobile2 }}" target="_blank">{{ $contactInfo->mobile2 }}</a>
+                        </p>
+                        <p data-animate="fadeInUp" data-delay="1.5"><b>الهاتف الأرضي: </b> <a
+                                href="tel:+{{ $contactInfo->mobile }}" target="_blank">{{ $contactInfo->phone }}</a>
+                        </p>
+                        <p data-animate="fadeInUp" data-delay="1.5"><b>@lang('contact.whatsapp'): </b> <a
                                 href="https://api.whatsapp.com/send?phone={{ $contactInfo->whatsapp }}"
                                 target="_blank">{{ $contactInfo->whatsapp }}</a></p>
-                        <p data-animate="fadeInUp" data-delay="1.5"><b>@lang('contact.email_me'):</b> <a
+                        <p data-animate="fadeInUp" data-delay="1.5"><b>@lang('contact.email_me'): </b> <a
                                 href="mailto:{{ $contactInfo->email }}">{{ $contactInfo->email }}</a></p>
                         <p data-animate="fadeInUp" data-delay="1.5"><i class="fa fa-map-marker-alt"></i>
-                            <b>@lang('contact.my_location'):</b> <a href="{{ $contactInfo->location_link }}"
-                                target="_blank">{{ $contactInfo->location }}</a>
+                            <b>الموقع:</b> {!! $contactInfo->location !!}
                         </p>
                         </p>
                     </div>

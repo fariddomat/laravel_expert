@@ -48,7 +48,6 @@ class BlogCategoryController extends Controller
 
         $image = $request->file('image');
         $directory = '/photos/blogCategories'; // Replace with the desired directory
-        // dd($directory);
         $helper = new ImageHelper;
         $fullPath = $helper->storeImageInPublicDirectory($image, $directory,100,100);
         // Save the full path with name in the database

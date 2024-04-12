@@ -16,6 +16,8 @@ class CreateContactInfosTable extends Migration
         Schema::create('contact_infos', function (Blueprint $table) {
             $table->id();
             $table->string('mobile');
+            $table->string('mobile2');
+            $table->string('phone');
             $table->string('email');
             $table->text('location_link');
             $table->string('whatsapp');

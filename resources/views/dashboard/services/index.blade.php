@@ -34,7 +34,7 @@
                 info: false,
                 columnDefs: [{
                     orderable: false,
-                    targets: [3]
+                    targets: [4]
                 }],
                 rowReorder: true,
                 // language: {
@@ -79,7 +79,7 @@
             // Filter event handler for select dropdown
             $('#parentServiceSelect').on('change', function() {
                 var selectedValue = $(this).val();
-                servicesTable.column(2).search(selectedValue ? '^' + selectedValue + '$' : '', true, false)
+                servicesTable.column(3).search(selectedValue ? '^' + selectedValue + '$' : '', true, false)
                     .draw();
                 console.log(selectedValue);
             });
@@ -113,6 +113,7 @@
                         <tr>
                             <th scope="card-block">#</th>
                             <th scope="card-block">الاسم</th>
+                            <th scope="card-block">الصورة</th>
                             <th scope="card-block">خدمة فرعية؟</th>
                             <th scope="card-block">عرض</th>
                             <th scope="card-block">عرض في الصفحة الرئيسية</th>
@@ -124,6 +125,7 @@
                             <tr>
                                 <td class="movee">{{ $index + 1 }}</td>
                                 <td>{{ $service->title }}</td>
+                                <td><img class="avatar avatar-sm me-3 border-radius-lg" src="{{ asset($service->image) }}" alt=""></td>
                                 <td
                                     data-parent-service-title="{{ $service->parentService ? $service->parentService->title : '' }}">
                                     @if ($service->parent_id == null)

@@ -1,6 +1,30 @@
 @extends('dashboard.layouts.app')
 @section('title', 'Contact Info')
 @section('contactinfoActive', 'active')
+@section('scripts')
+    <script src="{{ asset('dashboard/js/image_preview.js') }}"></script>
+    <script type="text/javascript">
+        var imageGalleryBrowseUrl = "{{ route('dashboard.imageGallery.browser') }}";
+        var imageGalleryUploadUrl = "{{ route('dashboard.imageGallery.uploader') }}";
+    </script>
+    <script src="{{asset('ckeditor/ckeditor.js')}}"></script>
+    <script>
+
+        var imageGalleryBrowseUrl = "{{ route('dashboard.imageGallery.browser') }}";
+        var imageGalleryUploadUrl = "{{ route('dashboard.imageGallery.uploader') }}";
+            $(function() {
+                CKEDITOR.replace("ar[location]", {
+                    filebrowserBrowseUrl: imageGalleryBrowseUrl,
+                    filebrowserUploadUrl: imageGalleryUploadUrl +
+                        "?_token=" +
+                        $("meta[name=csrf-token]").attr("content"),
+                    removeButtons: "About",
+                    contentsLangDirection: 'rtl'
+                });
+
+            });
+        </script>
+@endsection
 
 @section('content')
 
@@ -21,6 +45,14 @@
                     <input type="text" name="mobile" class="form-control" value="{{ $contactInfo->mobile }}">
                 </div>
                 <div class="form-group mb-3">
+                    <label for="mobile" class="form-label">2رقم الهاتف</label>
+                    <input type="text" name="mobile2" class="form-control" value="{{ $contactInfo->mobile2 }}">
+                </div>
+                <div class="form-group mb-3">
+                    <label for="mobile" class="form-label">رقم الأرضي</label>
+                    <input type="text" name="phone" class="form-control" value="{{ $contactInfo->phone }}">
+                </div>
+                <div class="form-group mb-3">
                     <label for="whatsapp" class="form-label">واتساب</label>
                     <input type="text" name="whatsapp" class="form-control" value="{{ $contactInfo->whatsapp }}">
                 </div>
@@ -33,8 +65,8 @@
                     <input type="text" name="location_link" class="form-control" value="{{ $contactInfo->location_link }}">
                 </div>
                 <div class="form-group mb-3">
-                    <label for="ar[location]" class="form-label">اسم الموقع</label>
-                    <input type="text" name="ar[location]" class="form-control" value="{{ $contactInfo->translate('ar')->location }}" dir="rtl">
+                    <label for="ar[location]" class="form-label">الموقع</label>
+                    <textarea name="ar[location]" id="" cols="30" rows="10">{{ $contactInfo->translate('ar')->location }}</textarea>
                 </div>
                 {{-- <div class="form-group mb-3">
                     <label for="en[location]" class="form-label">Location Name in English</label>

@@ -25,6 +25,8 @@ class ContactInfoController extends Controller
             'ar.location' => ['required'],
             // 'en.location' => ['required'],
             'mobile' => ['required'],
+            'mobile2' => ['required'],
+            'phone' => ['required'],
             'whatsapp' => ['required'],
             'email' => ['required'],
             'location_link' => ['required'],
@@ -33,6 +35,8 @@ class ContactInfoController extends Controller
 
         $contactInfo = ContactInfo::find(1);
         $contactInfo->mobile = $validatedData['mobile'];
+        $contactInfo->mobile2 = $validatedData['mobile2'];
+        $contactInfo->phone = $validatedData['phone'];
         $contactInfo->whatsapp = $validatedData['whatsapp'];
         $contactInfo->email = $validatedData['email'];
         $contactInfo->location_link = $validatedData['location_link'];

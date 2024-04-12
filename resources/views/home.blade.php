@@ -179,7 +179,7 @@
             height: 200%;
             border-radius: 50%;
             padding: 15px;
-            color: #fafafa;
+            color: #0D1216;
             font-size: 3em;
             text-align: center;
             transition: background-color .2s;
@@ -196,7 +196,7 @@
             font-size: 3em;
             right: 30%;
             top: -10%;
-            color: rgba(0, 0, 0, .1);
+            color: rgba(0, 0, 0, 0.1);
             position: absolute;
             z-index: -1;
         }
@@ -216,7 +216,7 @@
                 rotate(36deg);
             /* rotate by half the central angle of the slice
                                                    which is 50deg in this case */
-            background: #039be5;
+            background: #6e7472;
         }
 
         .slice:first-child .slice-contents:hover {
@@ -229,11 +229,11 @@
                 rotate(36deg);
             /* rotate by half the central angle of the slice
                                                    which is 50deg in this case */
-            background: #0097a7;
+            background: #778181;
         }
 
         .slice:nth-child(2) .slice-contents:hover {
-            background: #00414a !important;
+            background: #495e61 !important;
         }
 
         .slice:nth-child(2) .slice-contents i {
@@ -246,7 +246,7 @@
                 rotate(36deg);
             /* rotate by half the central angle of the slice
                                                    which is 50deg in this case */
-            background: #006064;
+            background: #7f969c;
         }
 
         .slice:nth-child(3) .slice-contents:hover {
@@ -259,7 +259,7 @@
                 rotate(36deg);
             /* rotate by half the central angle of the slice
                                                    which is 50deg in this case */
-            background: #00bfa5;
+            background: #a3afb7;
         }
 
         .slice:nth-child(4) .slice-contents:hover {
@@ -276,7 +276,7 @@
                 rotate(36deg);
             /* rotate by half the central angle of the slice
                                                    which is 50deg in this case */
-            background: #69f0ae;
+            background: #c7c9cf;
         }
 
         .slice:nth-child(5) .slice-contents:hover {
@@ -289,7 +289,7 @@
                 rotate(36deg);
             /* rotate by half the central angle of the slice
                                                    which is 50deg in this case */
-            background: #f0b169;
+            background: #b9b0b0;
         }
 
         .slice:nth-child(7) .slice-contents:hover {
@@ -1384,7 +1384,7 @@
     <style>
         .counter_section {
             padding: 0 0 50px;
-            background: #0D1216;
+            background: #E2E2E2;
             color: #E2E2E2;
             overflow: hidden;
         }
@@ -1721,7 +1721,7 @@
     <section class="counter_section">
         <div style="background: #fff">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320" style="  margin-bottom: -15px;">
-                <path fill="#0D1216" fill-opacity="1"
+                <path fill="#E2E2E2" fill-opacity="1"
                     d="M0,192L34.3,208C68.6,224,137,256,206,250.7C274.3,245,343,203,411,192C480,181,549,203,617,192C685.7,181,754,139,823,138.7C891.4,139,960,181,1029,170.7C1097.1,160,1166,96,1234,74.7C1302.9,53,1371,75,1406,85.3L1440,96L1440,320L1405.7,320C1371.4,320,1303,320,1234,320C1165.7,320,1097,320,1029,320C960,320,891,320,823,320C754.3,320,686,320,617,320C548.6,320,480,320,411,320C342.9,320,274,320,206,320C137.1,320,69,320,34,320L0,320Z">
                 </path>
             </svg>
