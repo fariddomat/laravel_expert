@@ -1327,7 +1327,7 @@
         }
 
         .headsection {
-            background: url("http://127.0.0.1:8000/home/img/travel.jpg");
+            background: url("{{ asset('/') }}/home/img/travel.jpg");
             background-attachment: fixed;
             position: relative;
             background-repeat: no-repeat;
@@ -1338,7 +1338,7 @@
         }
 
         .section1 {
-            /* background-image: url('http://127.0.0.1:8000/photos/home/icon.png'); */
+            /* background-image: url('{{ asset('/') }}photos/home/icon.png'); */
 
 
             position: absolute;
@@ -1357,7 +1357,7 @@
         }
 
         .section2 {
-            background: linear-gradient(rgba(255, 255, 255, .9), rgba(255, 255, 255, .5)), url("http://127.0.0.1:8000/home/img/icons/ticket.png");
+            background: linear-gradient(rgba(255, 255, 255, .9), rgba(255, 255, 255, .5)), url("{{ asset('/') }}home/img/icons/ticket.png");
             background-attachment: fixed;
             background-position: center;
             background-repeat: no-repeat;
@@ -1369,7 +1369,7 @@
         }
 
         .section3 {
-            background: linear-gradient(rgba(255, 255, 255, .5), rgba(255, 255, 255, .5)), url("http://127.0.0.1:8000/home/img/icons/airplane.png");
+            background: linear-gradient(rgba(255, 255, 255, .5), rgba(255, 255, 255, .5)), url("{{ asset('/') }}home/img/icons/airplane.png");
             background-attachment: fixed;
             background-position: center;
             background-repeat: no-repeat;
@@ -1559,10 +1559,10 @@
             if (currentScroll > lastScrollTop) {
 
                 img.style.backgroundImage =
-                    "url('http://127.0.0.1:8000/home/img/icons/airplane.png')";
+                    "url('{{ asset('/') }}home/img/icons/airplane.png')";
             } else {
                 img.style.backgroundImage =
-                    "url('http://127.0.0.1:8000/home/img/icons/airplane2.png')";
+                    "url('{{ asset('/') }}home/img/icons/airplane2.png')";
 
             }
 
