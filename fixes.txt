@@ -44,4 +44,6 @@ google recaptcha
 
 mobile friendly check
 
+social media in blog and site
+redirect broken links
 

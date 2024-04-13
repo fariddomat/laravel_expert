@@ -1,2 +1,15 @@
 User-agent: *
-Disallow:
+
+# Disallow crawling of the dashboard
+Disallow: /dashboard/
+
+# Disallow crawling of sensitive files and directories
+Disallow: /storage/
+Disallow: /.env
+Disallow: /vendor/
+
+# Allow crawling of everything else
+Allow: /
+
+# Sitemap location
+Sitemap: https://www.almohtarif-office.com/sitemap.xml

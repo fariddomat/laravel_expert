@@ -1603,7 +1603,7 @@
 
                                 <ul class="list-inline" data-animate="fadeInUp" data-delay="1.4">
                                     <li><a href="{{ route('about') }}" class="btn btn-secondary"
-                                            style="padding: 10px 25px !important;">@lang('site.about_me')</a>
+                                            style="padding: 10px 25px !important; margin-top: 25px !important;">@lang('site.about_me')</a>
                                     </li>
 
                                 </ul>
