@@ -203,7 +203,7 @@
     <!-- Page title -->
     <section class="page-title-wrap position-relative bg-light" data-bg-img="{{ asset($info->service_header_image) }}"
         data-animate="fadeInUp" data-delay="1.1">
-       <div id="particles_js"></div>
+        <div id="particles_js"></div>
         <div class="container container-top">
             <div class="row">
                 <div class="col-11">
@@ -336,17 +336,21 @@
                         <div class="col-md-12 wow fadeInUp" data-wow-delay=".5s"
                             @if ($service->parent_id != 1) style="margin-top:50px" @endif>
                             @foreach ($service->sections as $section)
-                                <div class="row mt-5 ml-5 mr-5 serviceSection" data-animate="fadeInUp" data-delay=".2" style=" border: 1px solid #e0e1e0;
+                                <div class="row mt-5 ml-5 mr-5 serviceSection" data-animate="fadeInUp" data-delay=".2"
+                                    style=" border: 1px solid #e0e1e0;
                                 background: #fff;
                                 box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.5);
                                 padding: 20px;
                                 border-radius: 10px;
                                 margin-bottom: 30px; /* Adjust spacing */">
                                     <div class="col-md-12">
-                                        <h3 class="service-section-title" style=" font-size: 24px; /* Adjust font size */
+                                        <h3 class="service-section-title"
+                                            style=" font-size: 24px; /* Adjust font size */
                                         font-weight: bold; color:#DF1F26;
-                                        margin-bottom: 15px; /* Adjust spacing */">{{ $section->title }}</h3>
-                                        <div style="  line-height: 1.6; /* Adjust line spacing */
+                                        margin-bottom: 15px; /* Adjust spacing */">
+                                            {{ $section->title }}</h3>
+                                        <div
+                                            style="  line-height: 1.6; /* Adjust line spacing */
                                         margin-bottom: 20px; /* Adjust spacing */">
                                             {!! $section->content !!}
                                         </div>
@@ -436,8 +440,21 @@
                                                     <div class="shadow-effect">
                                                         <div class="single-post" data-animate="">
                                                             <div class="image-hover-wrap">
-                                                                <img class="img-fluid" src="{{ asset($service->image) }}"
+                                                                @if ($service->image == null)
+                                                                <img class="img-fluid"
+                                                                    src="{{ asset('photos/services/service.png') }}"
                                                                     alt="">
+
+                                                                @elseif (file_exists(public_path() . $service->image))
+                                                                    <img class="img-fluid"
+                                                                        src="{{ asset($service->image) }}"
+                                                                        alt="">
+                                                                @else
+                                                                    <img class="img-fluid"
+                                                                        src="{{ asset('photos/services/service.png') }}"
+                                                                        alt="">
+                                                                @endif
+
                                                                 <div
                                                                     class="image-hover-content d-flex justify-content-center align-items-center text-center">
                                                                     <ul class="list-inline">
