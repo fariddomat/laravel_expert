@@ -49,7 +49,7 @@
             width: 400px;
             height: 400px;
             border-radius: 50%;
-            margin: 100px 0;
+            /* margin: 100px 0; */
             position: relative;
             z-index: 10;
             padding: 10px;
@@ -1363,15 +1363,7 @@
         }
 
         .section2 {
-            background: linear-gradient(rgba(255, 255, 255, .9), rgba(255, 255, 255, .5)), url("{{ asset('/') }}home/img/icons/ticket.png");
-            background-attachment: fixed;
-            background-position: center;
-            background-repeat: no-repeat;
-            opacity: 1;
-            transition: opacity 0.5s, transform 0.5s;
-            z-index: 1;
-            transition: opacity 0.5s;
-            background-size: auto;
+
         }
 
         .section3 {
