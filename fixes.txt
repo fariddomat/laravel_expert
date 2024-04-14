@@ -49,5 +49,3 @@ redirect broken links
 title and icon
 
 تكبير الخط وتلوين نبذة
-
-تصغير البادينغ عالكاونتر

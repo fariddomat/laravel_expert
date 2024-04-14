@@ -12,6 +12,12 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
 
     <style>
+          @media (max-width: 480px) {
+            .page-title h1{
+                display: none
+            }
+
+        }
         .page-title h1 {
             font-size: 2rem;
         }
@@ -213,8 +219,8 @@
                             <li><a href="{{ route('home') }}">@lang('site.home')</a></li>
                             <li><i class="fas fa-angle-double-right"></i></li>
                             <li><a href="{{ route('services') }}">@lang('site.services')</a></li>
-                            <li><i class="fas fa-angle-double-right"></i></li>
-                            <li><a href="">@lang('site.service_detail')</a></li>
+                            {{-- <li><i class="fas fa-angle-double-right"></i></li>
+                            <li><a href="">@lang('site.service_detail')</a></li> --}}
                         </ul>
                         <h1 data-animate="fadeInUp" data-delay="1.3">{{ $service->title }}</h1>
                     </div>

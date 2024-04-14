@@ -1761,7 +1761,8 @@
 
                 <div class="row">
                     <div class="col-md-12 text-left" data-animate="fadeInUp" data-delay=".1">
-                        <h2 class="heading-title mt-3 text-center">نبذة عن المحترف</h2>
+                        <h2 class="heading-title mt-3 text-center" style="font-size: 2.5rem;
+                        color: #DF1F26;">نبذة عن المحترف</h2>
                         <hr class="line line-hr-primary">
                     </div>
                 </div>

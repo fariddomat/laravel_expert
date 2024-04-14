@@ -92,6 +92,9 @@
     <section class="pt-7 pb-7 bg-gradient" data-animate="fadeInUp" data-delay="1.4">
         <div class="container">
             <div class="row">
+                <div class="col-md-12">
+                    <h1 class="text-center pb-2">الأسئلةالشائعة</h1>
+                </div>
                 <div class="col-md-8 offset-md-2">
                     <div id="accordion100" class="tm-accordion">
                         @foreach ($faqs as $index => $faq)

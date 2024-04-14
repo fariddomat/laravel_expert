@@ -52,11 +52,18 @@
     <link rel="stylesheet" href="{{ asset('css/aos.css') }}">
     <link rel="stylesheet" href="{{ asset('css/animate.css') }}">
     <style>
-        /* @media (max-width: 480px) {
+        @media (max-width: 480px) {
             .page-title {
-                padding-top: 2px !important;
-                padding-bottom: 8rem !important;
-                padding-right: 5rem;
+                padding-bottom: 0.8rem !important;
+                padding-top: 7.2rem !important;
+            }
+
+            .page-title h1, .page-title h2 {
+                display: none
+            }
+
+            .page-title ul {
+                /* margin-right: 2rem; */
             }
 
             .page-title-wrap {
@@ -64,7 +71,7 @@
                 background-size: 100% 100% !important;
                 background-repeat: no-repeat !important;
             }
-        } */
+        }
 
         header,
         .main-header {
@@ -131,6 +138,7 @@
                                     <li><a href="{{ route('blogs') }}">@lang('site.blog')</a></li>
                                     {{-- <li><a href="{{ route('home') }}#portfolio">@lang('site.my_works')</a></li> --}}
                                     <li><a href="{{ route('contact') }}">@lang('site.contact')</a></li>
+                                    <li><a href="{{ route('workWithUs') }}">انضم الآن</a></li>
                                     <li><a href="{{ route('faq') }}">@lang('site.FAQ')</a></li>
 
                                 </ul>

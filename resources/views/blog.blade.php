@@ -395,7 +395,7 @@
                             data-delay="1.2">
                             <li><a href="{{ route('home') }}">الرئيسية</a></li>
                             <li><i class="fas fa-angle-double-right"></i></li>
-                            <li><a href="#">تفاصيل المقال</a></li>
+                            <li><a href="#"> المقال</a></li>
                         </ul>
 
                     </div>

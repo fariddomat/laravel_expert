@@ -46,6 +46,140 @@
             /* Change color on focus */
         }
     </style>
+       <style>
+        .sspan {
+            position: absolute;
+            border-radius: 100vmax;
+        }
+
+        .widget-categories span {
+            position: relative;
+        }
+
+        .top {
+            top: 0;
+            left: 0;
+            width: 0;
+            height: 5px;
+            background: linear-gradient(90deg,
+                    transparent 50%,
+                    rgba(255, 49, 49, 0.5),
+                    rgb(255, 49, 49));
+        }
+
+        .bottom {
+            right: 0;
+            bottom: 0;
+            height: 5px;
+            background: linear-gradient(90deg,
+                    rgba(255, 49, 49, 0.5),
+                    rgb(255, 49, 49), transparent 50%);
+        }
+
+        .right {
+            top: 0;
+            right: 0;
+            width: 5px;
+            height: 0;
+            background: linear-gradient(180deg,
+                    transparent 30%,
+                    rgba(255, 49, 49, 0.5),
+                    rgb(255, 49, 49));
+        }
+
+        .left {
+            left: 0;
+            bottom: 0;
+            width: 5px;
+            height: 0;
+            background: linear-gradient(180deg,
+                    rgba(255, 49, 49, 0.5),
+                    rgb(255, 49, 49),
+                    transparent 70%);
+        }
+
+        .top {
+            animation: animateTop 3s ease-in-out infinite;
+        }
+
+        .bottom {
+            animation: animateBottom 3s ease-in-out infinite;
+        }
+
+        .right {
+            animation: animateRight 3s ease-in-out infinite;
+        }
+
+        .left {
+            animation: animateLeft 3s ease-in-out infinite;
+        }
+
+        @keyframes animateTop {
+            25% {
+                width: 100%;
+                opacity: 1;
+            }
+
+            30%,
+            100% {
+                opacity: 0;
+            }
+        }
+
+        @keyframes animateBottom {
+
+            0%,
+            50% {
+                opacity: 0;
+                width: 0;
+            }
+
+            75% {
+                opacity: 1;
+                width: 100%;
+            }
+
+            76%,
+            100% {
+                opacity: 0;
+            }
+        }
+
+        @keyframes animateRight {
+
+            0%,
+            25% {
+                opacity: 0;
+                height: 0;
+            }
+
+            50% {
+                opacity: 1;
+                height: 100%;
+            }
+
+            55%,
+            100% {
+                height: 100%;
+                opacity: 0;
+            }
+        }
+
+        @keyframes animateLeft {
+
+            0%,
+            75% {
+                opacity: 0;
+                bottom: 0;
+                height: 0;
+            }
+
+            100% {
+                opacity: 1;
+                height: 100%;
+            }
+        }
+    </style>
 @endsection
 @section('scripts')
     <script>
@@ -129,7 +263,7 @@
             <div class="container">
                 <div class="row align-items-lg-start">
                     <div class="col-lg-12 col-md-12" data-animate="fadeInUp" data-delay="1.6">
-                        <div class="contact-form-wrap" style="max-width: 65rem; margin: 0 auto;background: #fff">
+                        <div class="contact-form-wrap" style="max-width: 65rem; margin: 0 auto;background: #fff;  position: relative;">
                             <div class="text-center">
                                 <h2 data-animate="fadeInUp" data-delay="1.7">@lang('contact.get_in_touch')</h2>
                             </div>
@@ -307,6 +441,11 @@
                                     <p><small><i>* @lang('contact.we_all_know')</i></small></p>
                                 </div>
                             </form>
+
+                    <span class="sspan top"></span>
+                    <span class="sspan right"></span>
+                    <span class="sspan bottom"></span>
+                    <span class="sspan left"></span>
                         </div>
                     </div>
 
