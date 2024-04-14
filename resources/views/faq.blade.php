@@ -64,7 +64,7 @@
     <!-- Page title  -->
     <section class="page-title-wrap position-relative bg-light" data-bg-img="{{ asset($info->about_header_image) }}"
         data-animate="fadeInUp" data-delay="1.1">
-        <div id="particles_js"></div>
+       {{-- <div id="particles_js"></div> --}}
         <div class="container container-top">
             <div class="row">
                 <div class="col-11">
@@ -89,7 +89,7 @@
 
 
     <!-- FAQ -->
-    <section class="pt-7 pb-7" data-animate="fadeInUp" data-delay="1.4">
+    <section class="pt-7 pb-7 bg-gradient" data-animate="fadeInUp" data-delay="1.4">
         <div class="container">
             <div class="row">
                 <div class="col-md-8 offset-md-2">

@@ -316,7 +316,7 @@
     <!-- Page title -->
     <section class="page-title-wrap position-relative bg-light" data-bg-img="{{ asset($info->blog_header_image) }}"
         data-animate="fadeInUp" data-delay="1.1">
-        <div id="particles_js"></div>
+       {{-- <div id="particles_js"></div> --}}
         <div class="container container-top">
             <div class="row">
                 <div class="col-12">
@@ -337,7 +337,7 @@
     <!-- End of Banner -->
 
 
-    <section class="blog">
+    <section class="bg-gradient"><section class="blog">
         <div class="container">
             <div class="section_our_solution pt-5 pb-7">
                 <div class="row" style="  margin: 0 auto;">
@@ -390,7 +390,7 @@
         </div>
     </section>
     <!-- Blogs -->
-    <section class="blog  pt-7 pb-7">
+    <section class="blog  pt-7 pb-7 ">
         <div class="container">
             <div class="row">
                 <h3 class="col-md-12"
@@ -540,6 +540,7 @@
             </div>
         </div>
     </section>
-    <!-- End of Service -->
+    <!-- End of Service --></section>
+
 
 @endsection

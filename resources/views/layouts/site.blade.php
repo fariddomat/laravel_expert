@@ -7,7 +7,7 @@
 
     <!-- Document Title -->
     <link rel="icon" href="{{ asset($info->logo_icon) }}" type="image/png" sizes="16x16">
-    <title> @yield('title')</title>
+    <title>المحترف - @yield('title')</title>
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -21,7 +21,7 @@
     <link href="{{ asset($info->logo) }}" rel="apple-touch-icon" sizes="144x144">
 
     <!-- Favicon -->
-    <link rel="shortcut icon" type="image/png" href="favicon.png">
+    <link rel="shortcut icon" type="{{ asset($info->logo) }}" href="favicon.png">
 
     <!-- CSS Files -->
     <link href="https://fonts.googleapis.com/css?family=Cabin:400,400i,500i,700%7CRoboto:400,500,700" rel="stylesheet">
@@ -51,7 +51,30 @@
     {{-- aos --}}
     <link rel="stylesheet" href="{{ asset('css/aos.css') }}">
     <link rel="stylesheet" href="{{ asset('css/animate.css') }}">
+    <style>
+        /* @media (max-width: 480px) {
+            .page-title {
+                padding-top: 2px !important;
+                padding-bottom: 8rem !important;
+                padding-right: 5rem;
+            }
 
+            .page-title-wrap {
+                background: url({{ asset('home/img/header.png') }}) !important;
+                background-size: 100% 100% !important;
+                background-repeat: no-repeat !important;
+            }
+        } */
+
+        header,
+        .main-header {
+            background: #0d1216c4 !important;
+        }
+
+        .stuck {
+            background: #0d1216 !important;
+        }
+    </style>
 </head>
 
 <body>

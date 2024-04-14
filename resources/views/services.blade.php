@@ -91,11 +91,11 @@
             width: 20px;
         }
 
-@media (max-width: 768px) {
-    .single-post h3 {
-  font-size: 1.45rem !important;
-}
-}
+        @media (max-width: 768px) {
+            .single-post h3 {
+                font-size: 1.45rem !important;
+            }
+        }
     </style>
 @endsection
 @section('scripts')
@@ -135,7 +135,7 @@
     <!-- Page title -->
     <section class="page-title-wrap position-relative bg-light" data-bg-img="{{ asset($info->service_header_image) }}"
         data-animate="fadeInUp" data-delay="1.1">
-        <div id="particles_js"></div>
+        {{-- <div id="particles_js"></div> --}}
         <div class="container container-top">
             <div class="row">
                 <div class="col-12">
@@ -156,7 +156,7 @@
     <!-- End of Banner -->
 
     <!-- Service -->
-    <section class="testimonials blog" dir="ltr">
+    <section class="testimonials blog bg-gradient pb-7" dir="ltr">
         <div class="container">
 
             <div class="row">

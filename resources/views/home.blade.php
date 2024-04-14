@@ -2,6 +2,12 @@
 @section('title', trans('site.home'))
 @section('styles')
     <style>
+        @media (max-width: 991.98px) {
+            .servers {
+                padding-bottom: 0;
+            }
+        }
+
         .main-footer {
             box-shadow: unset;
         }
@@ -160,7 +166,7 @@
             top: 0;
             right: 0;
             /* add slash at end of this line to show the red outline of the slice *
-                                                outline: solid 1px red; /**/
+                                                    outline: solid 1px red; /**/
             width: 50%;
             height: 50%;
             transform-origin: 0% 100%;
@@ -215,7 +221,7 @@
                 /* unskew slice contents */
                 rotate(36deg);
             /* rotate by half the central angle of the slice
-                                                   which is 50deg in this case */
+                                                       which is 50deg in this case */
             background: #6e7472;
         }
 
@@ -228,7 +234,7 @@
                 /* unskew slice contents */
                 rotate(36deg);
             /* rotate by half the central angle of the slice
-                                                   which is 50deg in this case */
+                                                       which is 50deg in this case */
             background: #778181;
         }
 
@@ -245,7 +251,7 @@
                 /* unskew slice contents */
                 rotate(36deg);
             /* rotate by half the central angle of the slice
-                                                   which is 50deg in this case */
+                                                       which is 50deg in this case */
             background: #7f969c;
         }
 
@@ -258,7 +264,7 @@
                 /* unskew slice contents */
                 rotate(36deg);
             /* rotate by half the central angle of the slice
-                                                   which is 50deg in this case */
+                                                       which is 50deg in this case */
             background: #a3afb7;
         }
 
@@ -275,7 +281,7 @@
                 /* unskew slice contents */
                 rotate(36deg);
             /* rotate by half the central angle of the slice
-                                                   which is 50deg in this case */
+                                                       which is 50deg in this case */
             background: #c7c9cf;
         }
 
@@ -288,7 +294,7 @@
                 /* unskew slice contents */
                 rotate(36deg);
             /* rotate by half the central angle of the slice
-                                                   which is 50deg in this case */
+                                                       which is 50deg in this case */
             background: #b9b0b0;
         }
 
@@ -301,7 +307,7 @@
                 /* unskew slice contents */
                 rotate(36deg);
             /* rotate by half the central angle of the slice
-                                                   which is 50deg in this case */
+                                                       which is 50deg in this case */
             background: #d7f069;
         }
 
@@ -310,7 +316,7 @@
                 /* unskew slice contents */
                 rotate(36deg);
             /* rotate by half the central angle of the slice
-                                                   which is 50deg in this case */
+                                                       which is 50deg in this case */
             background: #69f0ae;
         }
 
@@ -1083,27 +1089,27 @@
         }
 
         /* .section-wrapper .shielding-layer:after {
-                                                                                                                content: "";
-                                                                                                                width: 71%;
-                                                                                                                height: 100%;
-                                                                                                                position: absolute;
-                                                                                                                top: 0;
-                                                                                                                right: 0;
-                                                                                                                z-index: 3;
-                                                                                                                background: linear-gradient(90deg, rgba(249, 249, 254, 0) rgba(249, 249, 254, 0.97) 0,);
-                                                                                                            }
+                                                                                                                    content: "";
+                                                                                                                    width: 71%;
+                                                                                                                    height: 100%;
+                                                                                                                    position: absolute;
+                                                                                                                    top: 0;
+                                                                                                                    right: 0;
+                                                                                                                    z-index: 3;
+                                                                                                                    background: linear-gradient(90deg, rgba(249, 249, 254, 0) rgba(249, 249, 254, 0.97) 0,);
+                                                                                                                }
 
-                                                                                                            .section-wrapper .shielding-layer:before {
-                                                                                                                pointer-events: none;
-                                                                                                                content: "";
-                                                                                                                width: calc(29% + 1px);
-                                                                                                                height: 100%;
-                                                                                                                position: absolute;
-                                                                                                                top: 0;
-                                                                                                                left: 0;
-                                                                                                                z-index: 3;
-                                                                                                                background: linear-gradient(90deg, rgba(249, 249, 254, 0.97) 0, rgba(249, 249, 254, 0));
-                                                                                                            } */
+                                                                                                                .section-wrapper .shielding-layer:before {
+                                                                                                                    pointer-events: none;
+                                                                                                                    content: "";
+                                                                                                                    width: calc(29% + 1px);
+                                                                                                                    height: 100%;
+                                                                                                                    position: absolute;
+                                                                                                                    top: 0;
+                                                                                                                    left: 0;
+                                                                                                                    z-index: 3;
+                                                                                                                    background: linear-gradient(90deg, rgba(249, 249, 254, 0.97) 0, rgba(249, 249, 254, 0));
+                                                                                                                } */
 
         .section-wrapper:before {
             content: "";
@@ -1383,7 +1389,7 @@
 
     <style>
         .counter_section {
-            padding: 0 0 50px;
+            padding: 0;
             background: #E2E2E2;
             color: #E2E2E2;
             overflow: hidden;
@@ -1582,7 +1588,7 @@
         <div class="shielding-layer"></div>
         <div class="">
             <div class="content">
-                <div id="particles_js"></div>
+               <div id="particles_js"></div>
                 <div class="container">
                     <div class=" row align-items-center" style="">
                         <div class="col-lg-7">
@@ -1693,25 +1699,7 @@
                         </div>
                     @endforeach
                 </div>
-                <div class="row">
-                    <div class="col-md-12 text-left" data-animate="fadeInUp" data-delay=".1">
-                        <h2 class="heading-title mt-3">@lang('site.about_me')</h2>
-                        <hr class="line line-hr-primary">
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-6 pt-2" data-animate="fadeInUp" data-delay=".2">
-                        <div class="about-p">{!! $about->about_me !!}</div>
 
-                    </div>
-                    <div class="col-md-5 offset-md-1" data-animate="fadeInUp" data-delay=".4">
-                        <div class="about-img animate-box" data-animate-effect="fadeInUp">
-                            <div class="img" style="  text-align: center;"> <img src="{{ asset($info->about_me_image) }}"
-                                    alt="" style="max-width: 250px">
-                            </div>
-                        </div>
-                    </div>
-                </div>
             </div>
         </div>
     </section>
@@ -1727,7 +1715,6 @@
             </svg>
 
         </div>
-
         <section class="container sectionCounter">
             <div class="circleWrapper">
                 <div class="circle">
@@ -1764,24 +1751,39 @@
 
 
         </section>
-
-
-        {{-- <div class="counter_main">
-            <div class="container">
-
-                <div class="row justify-content-center">
-                    @foreach ($counters as $counter)
-                        <div class="col-md-4 text-center item counter_section_item mt-5">
-                            <i class="fa {{ $counter->icon }}"></i>
-                            <p id="number1" class="number counter">{{ $counter->value }}</p>
-                            <p class="label">{{ $counter->title }}</p>
-                        </div>
-                    @endforeach
-                </div>
-            </div>
-        </div> --}}
     </section>
 
+     <!-- Features -->
+     <section class="pb-5-5 ">
+        <div style="background: #E2E2E2">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320" style="  margin-bottom: -15px;">
+                <path fill="#fff" fill-opacity="1"
+                    d="M0,192L34.3,208C68.6,224,137,256,206,250.7C274.3,245,343,203,411,192C480,181,549,203,617,192C685.7,181,754,139,823,138.7C891.4,139,960,181,1029,170.7C1097.1,160,1166,96,1234,74.7C1302.9,53,1371,75,1406,85.3L1440,96L1440,320L1405.7,320C1371.4,320,1303,320,1234,320C1165.7,320,1097,320,1029,320C960,320,891,320,823,320C754.3,320,686,320,617,320C548.6,320,480,320,411,320C342.9,320,274,320,206,320C137.1,320,69,320,34,320L0,320Z">
+                </path>
+            </svg>
+
+        </div>
+        <div class="container">
+
+            <div class="container-fluid">
+
+                <div class="row">
+                    <div class="col-md-12 text-left" data-animate="fadeInUp" data-delay=".1">
+                        <h2 class="heading-title mt-3 text-center">نبذة عن المحترف</h2>
+                        <hr class="line line-hr-primary">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-8 offset-md-2 pt-2" data-animate="fadeInUp" data-delay=".2">
+                        <div class="about-p">{!! $about->about_me !!}</div>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- End of Features -->
     <!-- Our services -->
     <section class="">
         <div class="services-title position-relative pt-7" style="" dir="ltr">
@@ -1852,7 +1854,7 @@
             <div class="row">
                 <div class="col-lg-5">
                     <div class="section-title">
-                        <h2 data-animate="fadeInUp" data-delay=".1">الاستشارات</h2>
+                        <h2 data-animate="fadeInUp" data-delay=".1">الاستشارات المجانية</h2>
                         <p data-animate="fadeInUp" data-delay=".2">وحتى نبقى مستشاركم الأول منذ اللحظة الأولى
                             نقدم لكم خدمة الاستشارات المجانية التي تحصلون من خلالها على إجابات كاملة لأسئلتكم واستفساراتكم
                             عن كل ما يتعلق بالسفر والدراسة بالخارج</p>
