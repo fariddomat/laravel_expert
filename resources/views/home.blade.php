@@ -166,7 +166,7 @@
             top: 0;
             right: 0;
             /* add slash at end of this line to show the red outline of the slice *
-                                                    outline: solid 1px red; /**/
+                                                        outline: solid 1px red; /**/
             width: 50%;
             height: 50%;
             transform-origin: 0% 100%;
@@ -221,7 +221,7 @@
                 /* unskew slice contents */
                 rotate(36deg);
             /* rotate by half the central angle of the slice
-                                                       which is 50deg in this case */
+                                                           which is 50deg in this case */
             background: #6e7472;
         }
 
@@ -234,7 +234,7 @@
                 /* unskew slice contents */
                 rotate(36deg);
             /* rotate by half the central angle of the slice
-                                                       which is 50deg in this case */
+                                                           which is 50deg in this case */
             background: #778181;
         }
 
@@ -251,7 +251,7 @@
                 /* unskew slice contents */
                 rotate(36deg);
             /* rotate by half the central angle of the slice
-                                                       which is 50deg in this case */
+                                                           which is 50deg in this case */
             background: #7f969c;
         }
 
@@ -264,7 +264,7 @@
                 /* unskew slice contents */
                 rotate(36deg);
             /* rotate by half the central angle of the slice
-                                                       which is 50deg in this case */
+                                                           which is 50deg in this case */
             background: #a3afb7;
         }
 
@@ -281,7 +281,7 @@
                 /* unskew slice contents */
                 rotate(36deg);
             /* rotate by half the central angle of the slice
-                                                       which is 50deg in this case */
+                                                           which is 50deg in this case */
             background: #c7c9cf;
         }
 
@@ -294,7 +294,7 @@
                 /* unskew slice contents */
                 rotate(36deg);
             /* rotate by half the central angle of the slice
-                                                       which is 50deg in this case */
+                                                           which is 50deg in this case */
             background: #b9b0b0;
         }
 
@@ -307,7 +307,7 @@
                 /* unskew slice contents */
                 rotate(36deg);
             /* rotate by half the central angle of the slice
-                                                       which is 50deg in this case */
+                                                           which is 50deg in this case */
             background: #d7f069;
         }
 
@@ -316,7 +316,7 @@
                 /* unskew slice contents */
                 rotate(36deg);
             /* rotate by half the central angle of the slice
-                                                       which is 50deg in this case */
+                                                           which is 50deg in this case */
             background: #69f0ae;
         }
 
@@ -1089,27 +1089,27 @@
         }
 
         /* .section-wrapper .shielding-layer:after {
-                                                                                                                    content: "";
-                                                                                                                    width: 71%;
-                                                                                                                    height: 100%;
-                                                                                                                    position: absolute;
-                                                                                                                    top: 0;
-                                                                                                                    right: 0;
-                                                                                                                    z-index: 3;
-                                                                                                                    background: linear-gradient(90deg, rgba(249, 249, 254, 0) rgba(249, 249, 254, 0.97) 0,);
-                                                                                                                }
+                                                                                                                        content: "";
+                                                                                                                        width: 71%;
+                                                                                                                        height: 100%;
+                                                                                                                        position: absolute;
+                                                                                                                        top: 0;
+                                                                                                                        right: 0;
+                                                                                                                        z-index: 3;
+                                                                                                                        background: linear-gradient(90deg, rgba(249, 249, 254, 0) rgba(249, 249, 254, 0.97) 0,);
+                                                                                                                    }
 
-                                                                                                                .section-wrapper .shielding-layer:before {
-                                                                                                                    pointer-events: none;
-                                                                                                                    content: "";
-                                                                                                                    width: calc(29% + 1px);
-                                                                                                                    height: 100%;
-                                                                                                                    position: absolute;
-                                                                                                                    top: 0;
-                                                                                                                    left: 0;
-                                                                                                                    z-index: 3;
-                                                                                                                    background: linear-gradient(90deg, rgba(249, 249, 254, 0.97) 0, rgba(249, 249, 254, 0));
-                                                                                                                } */
+                                                                                                                    .section-wrapper .shielding-layer:before {
+                                                                                                                        pointer-events: none;
+                                                                                                                        content: "";
+                                                                                                                        width: calc(29% + 1px);
+                                                                                                                        height: 100%;
+                                                                                                                        position: absolute;
+                                                                                                                        top: 0;
+                                                                                                                        left: 0;
+                                                                                                                        z-index: 3;
+                                                                                                                        background: linear-gradient(90deg, rgba(249, 249, 254, 0.97) 0, rgba(249, 249, 254, 0));
+                                                                                                                    } */
 
         .section-wrapper:before {
             content: "";
@@ -1362,9 +1362,7 @@
             transition: opacity 0.5s;
         }
 
-        .section2 {
-
-        }
+        .section2 {}
 
         .section3 {
             background: linear-gradient(rgba(255, 255, 255, .5), rgba(255, 255, 255, .5)), url("{{ asset('/') }}home/img/icons/airplane.png");
@@ -1382,9 +1380,22 @@
     <style>
         .counter_section {
             padding: 0;
-            background: #E2E2E2;
+            background-image: url({{ asset('home/img/counter.webp') }});
             color: #E2E2E2;
             overflow: hidden;
+            padding-top: 10rem;
+            padding-bottom: 8rem;
+            margin-bottom: 5rem;
+            background-size: 100% 100% !important;
+            background-repeat: no-repeat;
+        }
+
+        @media (max-width: 480px) {
+            .counter_section {
+                background-size: 200% 100% !important;
+                background-position: center;
+            }
+
         }
 
 
@@ -1580,7 +1591,7 @@
         <div class="shielding-layer"></div>
         <div class="">
             <div class="content">
-               <div id="particles_js"></div>
+                <div id="particles_js"></div>
                 <div class="container">
                     <div class=" row align-items-center" style="">
                         <div class="col-lg-7">
@@ -1699,14 +1710,14 @@
 
     {{-- Start Counter --}}
     <section class="counter_section">
-        <div style="background: #fff">
+        {{-- <div style="background: #fff">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320" style="  margin-bottom: -15px;">
                 <path fill="#E2E2E2" fill-opacity="1"
                     d="M0,192L34.3,208C68.6,224,137,256,206,250.7C274.3,245,343,203,411,192C480,181,549,203,617,192C685.7,181,754,139,823,138.7C891.4,139,960,181,1029,170.7C1097.1,160,1166,96,1234,74.7C1302.9,53,1371,75,1406,85.3L1440,96L1440,320L1405.7,320C1371.4,320,1303,320,1234,320C1165.7,320,1097,320,1029,320C960,320,891,320,823,320C754.3,320,686,320,617,320C548.6,320,480,320,411,320C342.9,320,274,320,206,320C137.1,320,69,320,34,320L0,320Z">
                 </path>
             </svg>
 
-        </div>
+        </div> --}}
         <section class="container sectionCounter">
             <div class="circleWrapper">
                 <div class="circle">
@@ -1745,23 +1756,24 @@
         </section>
     </section>
 
-     <!-- Features -->
-     <section class="pb-5-5 ">
-        <div style="background: #E2E2E2">
+    <!-- Features -->
+    <section class="pb-5-5 ">
+        {{-- <div style="background: #E2E2E2">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320" style="  margin-bottom: -15px;">
                 <path fill="#fff" fill-opacity="1"
                     d="M0,192L34.3,208C68.6,224,137,256,206,250.7C274.3,245,343,203,411,192C480,181,549,203,617,192C685.7,181,754,139,823,138.7C891.4,139,960,181,1029,170.7C1097.1,160,1166,96,1234,74.7C1302.9,53,1371,75,1406,85.3L1440,96L1440,320L1405.7,320C1371.4,320,1303,320,1234,320C1165.7,320,1097,320,1029,320C960,320,891,320,823,320C754.3,320,686,320,617,320C548.6,320,480,320,411,320C342.9,320,274,320,206,320C137.1,320,69,320,34,320L0,320Z">
                 </path>
             </svg>
 
-        </div>
+        </div> --}}
         <div class="container">
 
             <div class="container-fluid">
 
                 <div class="row">
                     <div class="col-md-12 text-left" data-animate="fadeInUp" data-delay=".1">
-                        <h2 class="heading-title mt-3 text-center" style="font-size: 2.5rem;
+                        <h2 class="heading-title mt-3 text-center"
+                            style="font-size: 2.5rem;
                         color: #DF1F26;">نبذة عن المحترف</h2>
                         <hr class="line line-hr-primary">
                     </div>

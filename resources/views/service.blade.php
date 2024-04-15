@@ -249,7 +249,7 @@
                                             background-size: cover !important;
                                             min-height: 600px !imporant;
                                             background-color: rgba(255,255,255,0.7) !important;
-                                            background-blend-mode: lighten !important; height: 600px !important">
+                                            background-blend-mode: lighten !important; height: 600px !important;box-shadow: inset 0 -8px 8px #fff !important;">
                                     <h2 class="col-md-12 pt-2 pb-2" data-animate="fadeInDown" data-delay="1.4"
                                         style="font-size: 3rem;text-align: center">{{ $service->title }}</h2>
 

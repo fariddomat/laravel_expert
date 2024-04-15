@@ -316,7 +316,7 @@
     <!-- Page title -->
     <section class="page-title-wrap position-relative bg-light" data-bg-img="{{ asset($info->blog_header_image) }}"
         data-animate="fadeInUp" data-delay="1.1">
-       {{-- <div id="particles_js"></div> --}}
+        {{-- <div id="particles_js"></div> --}}
         <div class="container container-top">
             <div class="row">
                 <div class="col-12">
@@ -337,113 +337,147 @@
     <!-- End of Banner -->
 
 
-    <section class="bg-gradient"><section class="blog">
-        <div class="container">
-            <div class="section_our_solution pt-5 pb-7">
-                <div class="row" style="  margin: 0 auto;">
-                    <div class="col-lg-12 col-md-12 col-sm-12">
-                        <div class="our_solution_category">
-                            @foreach ($categories as $index => $category)
+    <section class="bg-gradient">
+        <section class="blog">
+            <div class="container">
+                <div class="section_our_solution pt-5 pb-7">
 
-                                @if ($index % 2 == 0)
-                                    <div class="solution_cards_box" data-animate="fadeInUp"
-                                        data-delay="{{ 1.5 + $index / 8 }}">
-                                        <div class="solution_card">
-                                            <div class="hover_color_bubble"></div>
-                                            <div class="so_top_icon">
-                                                <img src="{{ asset($category->image) }}" alt="">
-                                            </div>
-                                            <div class="solu_title">
-                                                <a href="{{ route('blogs', ['category' => $category->id]) }}">
-                                                    <h3> {{ $category->name }} </h3>
-                                                </a>
+                    @isset($_GET['category'])
+                        <div class="row" style="margin-bottom: 100px">
+                            <h2 class="text-center" style="margin: 0 auto;">التصنيف:
+                                {{ $categories->where('id', $_GET['category'])->first()->name }}</h2>
+                        </div>
+                    @endisset
+
+                    
+                    @isset($_GET['search'])
+                        <div class="row" style="margin-bottom: 100px">
+                            <h2 class="text-center" style="margin: 0 auto;">البحث:
+                                {{ $_GET['search'] }}</h2>
+                        </div>
+                    @endisset
+
+                    
+                    
+                    @isset($_GET['tag'])
+                        <div class="row" style="margin-bottom: 100px">
+                            <h2 class="text-center" style="margin: 0 auto;">TAG:
+                                {{ App\models\Tag::where('id',$_GET['tag'])->first()->name }}</h2>
+                        </div>
+                    @endisset
+  
+                    @isset($_GET['author'])
+                        <div class="row" style="margin-bottom: 100px">
+                            <h2 class="text-center" style="margin: 0 auto;">الكاتب:
+                                {{ $_GET['author'] }}</h2>
+                        </div>
+                    @endisset
+
+                    <div class="row" style="  margin: 0 auto;">
+                        <div class="col-lg-12 col-md-12 col-sm-12">
+                            <div class="our_solution_category">
+                                @foreach ($categories as $index => $category)
+
+                                    @if ($index % 2 == 0)
+                                        <div class="solution_cards_box" data-animate="fadeInUp"
+                                            data-delay="{{ 1.5 + $index / 8 }}">
+                                            <div class="solution_card">
+                                                <div class="hover_color_bubble"></div>
+                                                <div class="so_top_icon">
+                                                    <img src="{{ asset($category->image) }}" alt="">
+                                                </div>
+                                                <div class="solu_title">
+                                                    <a href="{{ route('blogs', ['category' => $category->id]) }}">
+                                                        <h3> {{ $category->name }} </h3>
+                                                    </a>
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
-                                    <!--  -->
-                                @else
-                                    <div class="solution_cards_box sol_card_top_3" data-animate="fadeInUp"
-                                        data-delay="{{ 1.5 + $index / 8 }}">
-                                        <div class="solution_card">
-                                            <div class="hover_color_bubble"></div>
-                                            <div class="so_top_icon">
-                                                <img src="{{ asset($category->image) }}" alt="">
-                                            </div>
-                                            <div class="solu_title">
-                                                <a href="{{ route('blogs', ['category' => $category->id]) }}">
-                                                    <h3>{{ $category->name }} </h3>
-                                                </a>
+                                        <!--  -->
+                                    @else
+                                        <div class="solution_cards_box sol_card_top_3" data-animate="fadeInUp"
+                                            data-delay="{{ 1.5 + $index / 8 }}">
+                                            <div class="solution_card">
+                                                <div class="hover_color_bubble"></div>
+                                                <div class="so_top_icon">
+                                                    <img src="{{ asset($category->image) }}" alt="">
+                                                </div>
+                                                <div class="solu_title">
+                                                    <a href="{{ route('blogs', ['category' => $category->id]) }}">
+                                                        <h3>{{ $category->name }} </h3>
+                                                    </a>
 
+                                                </div>
                                             </div>
+
                                         </div>
+                                    @endif
+                                @endforeach
 
-                                    </div>
-                                @endif
-                            @endforeach
+                                <!--  -->
 
-                            <!--  -->
-
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
-    <!-- Blogs -->
-    <section class="blog  pt-7 pb-7 ">
-        <div class="container">
-            <div class="row">
-                <h3 class="col-md-12"
-                    style="text-align: center;font-size: 2rem;
+        </section>
+        <!-- Blogs -->
+        <section class="blog  pt-7 pb-7 ">
+            <div class="container">
+                <div class="row">
+                    <h3 class="col-md-12"
+                        style="text-align: center;font-size: 2rem;
                 margin-bottom: 35px;
                 font-weight: bold;"
-                    data-animate="fadeInUp" data-delay="1.5">المقالات</h3>
-                <div class="col-md-12" dir="ltr">
-                    @if ($blogs->count() == 0)
-                        <h3 style="text-align: center;
+                        data-animate="fadeInUp" data-delay="1.5">المقالات</h3>
+                    <div class="col-md-12" dir="ltr">
+                        @if ($blogs->count() == 0)
+                            <h3 style="text-align: center;
                     padding-top: 50px;
                     font-weight: bold;
                     font-size: 3rem;"
-                            data-animate="fadeInUp" data-delay="1.5">
-                            لا يوجد نتائج</h3>
-                    @endif
-                    <div id="customers-testimonials" class="owl-carousel " data-animate="fadeInUp" data-delay="1.5">
+                                data-animate="fadeInUp" data-delay="1.5">
+                                لا يوجد نتائج</h3>
+                        @endif
+                        <div id="customers-testimonials" class="owl-carousel " data-animate="fadeInUp" data-delay="1.5">
 
-                        @forelse ($blogs as $index => $blog)
-                            <!--TESTIMONIAL 1 -->
-                            <div class="item">
-                                <div class="shadow-effect">
-                                    <div class="single-post" data-animate="" style="padding: 0">
-                                        <div class="image-hover-wrap">
-                                            <img class="img-fluid" src="{{ asset($blog->image) }}" alt=""
-                                                style=" aspect-ratio: 3 / 2;">
-                                            <div
-                                                class="image-hover-content d-flex justify-content-center align-items-center text-center">
-                                                <ul class="list-inline">
-                                                    <li><a href="{{ route('blog', $blog->slug) }}"><i
-                                                                class="fas fa-link"></i></a></li>
-                                                    {{-- <li><a href="#"><i class="fas fa-share-alt"></i></a></li> --}}
-                                                </ul>
+                            @forelse ($blogs as $index => $blog)
+                                <!--TESTIMONIAL 1 -->
+                                <div class="item">
+                                    <div class="shadow-effect">
+                                        <div class="single-post" data-animate="" style="padding: 0">
+                                            <div class="image-hover-wrap">
+                                                <img class="img-fluid" src="{{ asset($blog->image) }}" alt=""
+                                                    style=" aspect-ratio: 3 / 2;">
+                                                <div
+                                                    class="image-hover-content d-flex justify-content-center align-items-center text-center">
+                                                    <ul class="list-inline">
+                                                        <li><a href="{{ route('blog', $blog->slug) }}"><i
+                                                                    class="fas fa-link"></i></a></li>
+                                                        {{-- <li><a href="#"><i class="fas fa-share-alt"></i></a></li> --}}
+                                                    </ul>
+                                                </div>
                                             </div>
-                                        </div>
-                                        <span> {{ $blog->updated_at->format('d F Y') }}</span>
-                                        <h3>{{ $blog->title }}</h3>
+                                            <span> {{ $blog->updated_at->format('d F Y') }}</span>
+                                            <h3>{{ $blog->title }}</h3>
 
+
+                                        </div>
 
                                     </div>
-
+                                    <div class="testimonial-name" style="background-color: #DF1F26">
+                                        <a href="{{ route('blog', $blog->slug) }}"
+                                            class="btn btn-secondary">@lang('site.read_more')<i
+                                                class="fas fa-caret-right"></i></a>
+                                    </div>
                                 </div>
-                                <div class="testimonial-name" style="background-color: #DF1F26">
-                                    <a href="{{ route('blog', $blog->slug) }}"
-                                        class="btn btn-secondary">@lang('site.read_more')<i class="fas fa-caret-right"></i></a>
-                                </div>
-                            </div>
-                            <!--END OF TESTIMONIAL 1 -->
-                        @endforeach
+                                <!--END OF TESTIMONIAL 1 -->
+                            @endforeach
+                        </div>
                     </div>
-                </div>
-                <!-- Sidebar -->
-                {{-- <div class="col-md-3" data-animate="fadeInUp" data-delay="1.5">
+                    <!-- Sidebar -->
+                    {{-- <div class="col-md-3" data-animate="fadeInUp" data-delay="1.5">
                     <aside>
                         <div class="single-widget" data-animate="fadeInUp" data-delay=".1">
                             <form>
@@ -537,10 +571,11 @@
 
                     </aside>
                 </div> --}}
+                </div>
             </div>
-        </div>
+        </section>
+        <!-- End of Service -->
     </section>
-    <!-- End of Service --></section>
 
 
 @endsection
