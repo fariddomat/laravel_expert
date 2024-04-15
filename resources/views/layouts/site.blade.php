@@ -80,6 +80,7 @@
                 background: url({{ asset('home/img/header.png') }}) !important;
                 background-size: 100% 100% !important;
                 background-repeat: no-repeat !important;
+                box-shadow: inset 0 -8px 8px #fff !important;
             }
         }
 

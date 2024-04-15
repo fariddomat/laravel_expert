@@ -8,6 +8,25 @@
 
 @section('styles')
     <style>
+         .table-responsive {
+            display: revert !important;
+            width: 100%;
+        }
+        .table-bordered td,
+        .table-bordered th {
+            padding-top: 20px;
+        }
+
+        @media (max-width: 480px) {
+            table {
+                max-width: 100%;
+            }
+
+            .post-content h2 {
+                font-size: 1.5rem !important;
+            }
+        }
+
         .fs-25 {
             font-size: 25px;
         }
@@ -164,10 +183,10 @@
         }
 
         /* .blog {
-                background-color: transparent;
-                background-image: linear-gradient(180deg, #FFF 30%, #0D1216 97%);
+                    background-color: transparent;
+                    background-image: linear-gradient(180deg, #FFF 30%, #0D1216 97%);
 
-            } */
+                } */
 
         .post-details {
             background: #fff;
@@ -379,6 +398,13 @@
     </style>
 @endsection
 @section('scripts')
+    <script>
+
+        $(document).ready(function() {
+            $("table").addClass("table table-striped table-hover table-bordered table-responsive");
+
+        });
+    </script>
     <script id="dsq-count-scr" src="//almohtarif-2.disqus.com/count.js" async></script>
 @endsection
 
@@ -386,7 +412,7 @@
     <!-- Page title -->
     <section class="page-title-wrap position-relative bg-light" data-bg-img="{{ asset($info->blog_header_image) }}"
         data-animate="fadeInUp" data-delay="1.1">
-       {{-- <div id="particles_js"></div> --}}
+        {{-- <div id="particles_js"></div> --}}
         <div class="container container-top">
             <div class="row">
                 <div class="col-11">
@@ -396,8 +422,9 @@
                             <li><a href="{{ route('home') }}">الرئيسية</a></li>
                             <li><i class="fas fa-angle-double-right"></i></li>
                             <li><a href="#"> المقال</a></li>
-                        </ul>
 
+                        </ul>
+                        <h2 data-animate="fadeInUp" data-delay="1.3" style="padding-bottom: 13px">@lang('site.blog')</h21>
                     </div>
                 </div>
                 <div class="col-1">
@@ -502,7 +529,7 @@
 
                             <div class="disquss-comment mt-50" data-animate="fadeInUp" data-delay=".5">
                                 <div id="disqus_thread"></div>
-                                <script>
+                                <script defer>
                                     /**
                                      *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
                                      *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables    */

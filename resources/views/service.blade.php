@@ -12,14 +12,48 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
 
     <style>
-          @media (max-width: 480px) {
-            .page-title h1{
+        .table-responsive {
+            display: revert !important;
+            width: 100%;
+        }
+
+        .table-bordered td,
+        .table-bordered th {
+            padding-top: 20px;
+        }
+
+        @media (max-width: 480px) {
+            table {
+                max-width: 100%;
+            }
+
+            span {
+                font-size: 14px;
+            }
+
+            .ml-5,
+            .mx-5 {
+                margin-right: 0.2rem !important;
+            }
+
+            .mr-5,
+            .mx-5 {
+                margin-left: 0.2rem !important;
+            }
+
+            p {
+                text-align: justify;
+            }
+
+            .page-title h1 {
                 display: none
             }
 
         }
+
         .page-title h1 {
             font-size: 2rem;
+            padding-bottom: 20px;
         }
 
         #customers-testimonials.owl-carousel .owl-dots .owl-dot span {
@@ -144,6 +178,8 @@
             border: 1px solid #e0e1e0;
             background: #fff;
             box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.5);
+            margin-left: -5px;
+            margin-right: -5px;
         }
 
         .serviceSec>div,
@@ -183,6 +219,7 @@
     </script>
     <script>
         $(document).ready(function() {
+            $("table").addClass("table table-striped table-hover table-bordered table-responsive");
             $('#accordion100').on('shown.bs.collapse', function(e) {
                 $(e.target).prev().find('.open-icon').hide();
                 $(e.target).prev().find('.close-icon').show();
@@ -209,7 +246,7 @@
     <!-- Page title -->
     <section class="page-title-wrap position-relative bg-light" data-bg-img="{{ asset($info->service_header_image) }}"
         data-animate="fadeInUp" data-delay="1.1">
-       {{-- <div id="particles_js"></div> --}}
+        {{-- <div id="particles_js"></div> --}}
         <div class="container container-top">
             <div class="row">
                 <div class="col-11">
@@ -236,7 +273,7 @@
     <!-- End of Banner -->
 
 
-    <section id="section-content " class="bg-gradient pt-7">
+    <section id="section-content " class="bg-gradient pt-7" style="overflow: hidden">
         <div class="container" style="max-width: 65rem">
             <div class="row">
                 <div class="col-md-12">
@@ -249,7 +286,7 @@
                                             background-size: cover !important;
                                             min-height: 600px !imporant;
                                             background-color: rgba(255,255,255,0.7) !important;
-                                            background-blend-mode: lighten !important; height: 600px !important;box-shadow: inset 0 -8px 8px #fff !important;">
+                                            background-blend-mode: lighten !important; ;box-shadow: inset 0 -8px 8px #fff !important;">
                                     <h2 class="col-md-12 pt-2 pb-2" data-animate="fadeInDown" data-delay="1.4"
                                         style="font-size: 3rem;text-align: center">{{ $service->title }}</h2>
 
@@ -425,15 +462,16 @@
                     <!-- End of FAQ -->
 
                     <!-- section begin -->
-                    <section id="" class="call-to-action bg-color  text-center  pt-2 pb-5"
+                    {{-- <section id="" class="call-to-action bg-color  text-center  pt-2 pb-5"
                         data-animate="fadeInUp" data-delay=".5">
                         <a href="{{ route('contact') }}" class="btn btn-secondary"
                             style="color: #fff; padding: 15px 50px">أحجز الآن</a>
-                    </section>
+                    </section> --}}
                     <!-- logo carousel section close -->
 
                     @if ($service->subServices->count() > 0)
-                        <section class="testimonials blog" dir="ltr" data-animate="fadeInUp" data-delay="1">
+                        <section class="testimonials blog" dir="ltr" data-animate="fadeInUp" data-delay="1"
+                            style="margin-top: 75px;">
                             <div class="container">
                                 <div class="row">
                                     <div class="col-sm-12">
@@ -446,20 +484,10 @@
                                                     <div class="shadow-effect">
                                                         <div class="single-post" data-animate="">
                                                             <div class="image-hover-wrap">
-                                                                @if ($service->image == null)
-                                                                <img class="img-fluid"
-                                                                    src="{{ asset('photos/services/service.png') }}"
+
+                                                                <img class="img-fluid" src="{{ asset($service->image) }}"
                                                                     alt="">
 
-                                                                @elseif (file_exists(public_path() . $service->image))
-                                                                    <img class="img-fluid"
-                                                                        src="{{ asset($service->image) }}"
-                                                                        alt="">
-                                                                @else
-                                                                    <img class="img-fluid"
-                                                                        src="{{ asset('photos/services/service.png') }}"
-                                                                        alt="">
-                                                                @endif
 
                                                                 <div
                                                                     class="image-hover-content d-flex justify-content-center align-items-center text-center">
@@ -493,9 +521,9 @@
                     <div class="disquss-comment mt-50" data-animate="fadeInUp" data-delay=".5"
                         style="background: white;
                     border-radius: 25px;
-                    padding: 2rem;">
+                    padding: 2rem;margin-top: 50px !important;">
                         <div id="disqus_thread"></div>
-                        <script>
+                        <script defer>
                             /**
                              *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
                              *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables    */

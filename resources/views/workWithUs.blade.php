@@ -19,6 +19,9 @@
         <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js" defer></script>
 
     <style>
+          .page-title h2 {
+            padding-bottom: 12px;
+        }
         .select2 {
             padding: 2px 0;
         }
