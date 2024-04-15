@@ -48,3 +48,6 @@ social media in blog and site
 redirect broken links
 title and icon
 
+
+add Lazy load to all images
+
