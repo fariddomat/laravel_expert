@@ -486,7 +486,7 @@
                                                             <div class="image-hover-wrap">
 
                                                                 <img class="img-fluid" src="{{ asset($service->image) }}"
-                                                                    alt="">
+                                                                    alt=""  loading="lazy">
 
 
                                                                 <div

@@ -349,7 +349,7 @@
                         </div>
                     @endisset
 
-                    
+
                     @isset($_GET['search'])
                         <div class="row" style="margin-bottom: 100px">
                             <h2 class="text-center" style="margin: 0 auto;">البحث:
@@ -357,15 +357,15 @@
                         </div>
                     @endisset
 
-                    
-                    
+
+
                     @isset($_GET['tag'])
                         <div class="row" style="margin-bottom: 100px">
                             <h2 class="text-center" style="margin: 0 auto;">TAG:
                                 {{ App\models\Tag::where('id',$_GET['tag'])->first()->name }}</h2>
                         </div>
                     @endisset
-  
+
                     @isset($_GET['author'])
                         <div class="row" style="margin-bottom: 100px">
                             <h2 class="text-center" style="margin: 0 auto;">الكاتب:
@@ -449,7 +449,7 @@
                                         <div class="single-post" data-animate="" style="padding: 0">
                                             <div class="image-hover-wrap">
                                                 <img class="img-fluid" src="{{ asset($blog->image) }}" alt=""
-                                                    style=" aspect-ratio: 3 / 2;">
+                                                    style=" aspect-ratio: 3 / 2;"  loading="lazy">
                                                 <div
                                                     class="image-hover-content d-flex justify-content-center align-items-center text-center">
                                                     <ul class="list-inline">

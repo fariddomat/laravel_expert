@@ -170,7 +170,7 @@
                                     <div class="single-post" data-animate="">
                                         <div class="image-hover-wrap">
                                             <img class="img-fluid" src="{{ asset($service->image) }}" alt=""
-                                                style="">
+                                                style="" loading="lazy">
                                             <div
                                                 class="image-hover-content d-flex justify-content-center align-items-center text-center">
                                                 <ul class="list-inline">
