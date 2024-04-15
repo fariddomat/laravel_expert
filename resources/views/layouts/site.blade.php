@@ -52,6 +52,12 @@
     <link rel="stylesheet" href="{{ asset('css/aos.css') }}">
     <link rel="stylesheet" href="{{ asset('css/animate.css') }}">
     <style>
+        @media only screen and (max-width: 768px) {
+            .no-mobile {
+                display: none;
+            }
+        }
+
         @media (max-width: 480px) {
             #particles_js {
                 display: none;
@@ -243,7 +249,8 @@
                                 <a href="{{ route('blog', $blog->slug) }}" class="float-left">
                                     <img class="img-fluid" src="{{ asset($blog->image) }}"
                                         style="width: 60px !important;
-                                        height: 40px !important;" alt="">
+                                        height: 40px !important;"
+                                        alt="">
                                 </a>
                                 <span> <a
                                         href="{{ route('blog', $blog->slug) }}">{{ $blog->updated_at->format('d F Y') }}</a></span>
@@ -302,18 +309,24 @@
     <script src="{{ asset('home/plugins/waypoints/jquery.waypoints.min.js') }}"></script>
     <script src="{{ asset('home/plugins/waypoints/sticky.min.js') }}"></script>
     <script src="{{ asset('home/plugins/swiper/swiper.min.js') }}"></script>
-    <script src="{{ asset('home/plugins/particles.js/particles.min.js') }}" defer></script>
-    <script src="{{ asset('home/plugins/particles.js/particles.settings.js') }}" defer></script>
-    {{-- <script src="{{ asset('home/plugins/magnific-popup/jquery.magnific-popup.min.js') }}"></script> --}}
-    <script src="{{ asset('home/plugins/parsley/parsley.min.js') }}"></script>
-    <script src="{{ asset('home/plugins/parallax/parallax.min.js') }}"></script>
-    <script src="{{ asset('home/plugins/retinajs/retina.min.js') }}"></script>
-    <script src="{{ asset('home/js/menu.min.js') }}"></script>
-    <script src="{{ asset('home/js/scripts.js') }}"></script>
-    <script src="{{ asset('home/js/custom.js') }}"></script>
 
-    <script src="{{ asset('js/owl.carousel.min.js') }}"></script>
-    <script src="{{ asset('js/jquery.countup.js') }}"></script>
+
+    <div class="no-mobile">
+        <script src="{{ asset('home/plugins/particles.js/particles.min.js') }}" defer></script>
+        <script src="{{ asset('home/plugins/particles.js/particles.settings.js') }}" defer></script>
+    </div>
+
+
+    {{-- <script src="{{ asset('home/plugins/magnific-popup/jquery.magnific-popup.min.js') }}"></script> --}}
+    <script src="{{ asset('home/plugins/parsley/parsley.min.js') }}" defer defer></script>
+    <script src="{{ asset('home/plugins/parallax/parallax.min.js') }}"></script>
+    {{-- <script src="{{ asset('home/plugins/retinajs/retina.min.js') }}"></script> --}}
+    <script src="{{ asset('home/js/menu.min.js') }}" defer></script>
+    <script src="{{ asset('home/js/scripts.js') }}" defer></script>
+    <script src="{{ asset('home/js/custom.js') }}" defer></script>
+
+    <script src="{{ asset('js/owl.carousel.min.js') }}" defer></script>
+    <script src="{{ asset('js/jquery.countup.js') }}" ></script>
 
     {{-- aos --}}
     <script src="{{ asset('js/aos.js') }}"></script>
@@ -321,14 +334,14 @@
     <script defer>
         jQuery(document).ready(function($) {
 
-        const genericLinks = document.querySelectorAll("a");
+            const genericLinks = document.querySelectorAll("a");
 
-        genericLinks.forEach(link => {
-            const linkText = link.textContent.trim();
-            const newAriaLabel = `Read more about ${linkText}`;
-            link.setAttribute("aria-label", newAriaLabel);
+            genericLinks.forEach(link => {
+                const linkText = link.textContent.trim();
+                const newAriaLabel = `Read more about ${linkText}`;
+                link.setAttribute("aria-label", newAriaLabel);
+            });
         });
-    });
     </script>
     @include('partials._session')
     @yield('scripts')
