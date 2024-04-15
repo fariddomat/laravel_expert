@@ -24,10 +24,11 @@
     <link rel="shortcut icon" type="{{ asset($info->logo) }}" href="favicon.png">
 
     <!-- CSS Files -->
-    <link href="https://fonts.googleapis.com/css?family=Cabin:400,400i,500i,700%7CRoboto:400,500,700" rel="stylesheet">
+
+    {{-- <link href="https://fonts.googleapis.com/css?family=Cabin:400,400i,500i,700%7CRoboto:400,500,700" rel="stylesheet" async> --}}
     <link rel="stylesheet" href="{{ asset('home/css/bootstrap-rtl.min.css') }}">
     <link rel="stylesheet" href="{{ asset('home/plugins/swiper/swiper.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('home/plugins/magnific-popup/magnific-popup.min.css') }}">
+    {{-- <link rel="stylesheet" href="{{ asset('home/plugins/magnific-popup/magnific-popup.min.css') }}"> --}}
     <link rel="stylesheet" href="{{ asset('home/css/style.css') }}">
     <link rel="stylesheet" href="{{ asset('home/css/responsive.css') }}">
     <link rel="stylesheet" href="{{ asset('home/css/style-rtl.css') }}">
@@ -42,10 +43,9 @@
 
 
     {{-- icons --}}
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    {{-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" async/> --}}
     {{-- noty --}}
     <link rel="stylesheet" href="{{ asset('noty/noty.css') }}">
-    <script src="{{ asset('noty/noty.min.js') }}" defer></script>
     @yield('styles')
 
     {{-- aos --}}
@@ -53,12 +53,22 @@
     <link rel="stylesheet" href="{{ asset('css/animate.css') }}">
     <style>
         @media (max-width: 480px) {
+            #particles_js {
+                display: none;
+            }
+
+            #headsection {
+                background-color: rgba(255, 255, 255, 0.7) !important;
+                background-blend-mode: lighten !important;
+            }
+
             .page-title {
                 padding-bottom: 0.8rem !important;
                 padding-top: 7.2rem !important;
             }
 
-            .page-title h1, .page-title h2 {
+            .page-title h1,
+            .page-title h2 {
                 display: none
             }
 
@@ -82,6 +92,7 @@
             background: #0d1216 !important;
         }
     </style>
+
 </head>
 
 <body>
@@ -230,7 +241,8 @@
                                 data-delay="{{ 0.55 + $index / 10 }}">
                                 <a href="{{ route('blog', $blog->slug) }}" class="float-left">
                                     <img class="img-fluid" src="{{ asset($blog->image) }}"
-                                        style="height: 40px; aspect-ratio: 3 / 2;" alt="">
+                                        style="width: 60px !important;
+                                        height: 40px !important;" alt="">
                                 </a>
                                 <span> <a
                                         href="{{ route('blog', $blog->slug) }}">{{ $blog->updated_at->format('d F Y') }}</a></span>
@@ -289,9 +301,9 @@
     <script src="{{ asset('home/plugins/waypoints/jquery.waypoints.min.js') }}"></script>
     <script src="{{ asset('home/plugins/waypoints/sticky.min.js') }}"></script>
     <script src="{{ asset('home/plugins/swiper/swiper.min.js') }}"></script>
-    <script src="{{ asset('home/plugins/particles.js/particles.min.js') }}"></script>
-    <script src="{{ asset('home/plugins/particles.js/particles.settings.js') }}"></script>
-    <script src="{{ asset('home/plugins/magnific-popup/jquery.magnific-popup.min.js') }}"></script>
+    <script src="{{ asset('home/plugins/particles.js/particles.min.js') }}" defer></script>
+    <script src="{{ asset('home/plugins/particles.js/particles.settings.js') }}" defer></script>
+    {{-- <script src="{{ asset('home/plugins/magnific-popup/jquery.magnific-popup.min.js') }}"></script> --}}
     <script src="{{ asset('home/plugins/parsley/parsley.min.js') }}"></script>
     <script src="{{ asset('home/plugins/parallax/parallax.min.js') }}"></script>
     <script src="{{ asset('home/plugins/retinajs/retina.min.js') }}"></script>
@@ -304,7 +316,19 @@
 
     {{-- aos --}}
     <script src="{{ asset('js/aos.js') }}"></script>
+    <script src="{{ asset('noty/noty.min.js') }}"></script>
+    <script defer>
+        jQuery(document).ready(function($) {
 
+        const genericLinks = document.querySelectorAll("a");
+
+        genericLinks.forEach(link => {
+            const linkText = link.textContent.trim();
+            const newAriaLabel = `Read more about ${linkText}`;
+            link.setAttribute("aria-label", newAriaLabel);
+        });
+    });
+    </script>
     @include('partials._session')
     @yield('scripts')
 </body>

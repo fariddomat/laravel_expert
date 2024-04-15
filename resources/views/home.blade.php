@@ -2,6 +2,10 @@
 @section('title', trans('site.home'))
 @section('styles')
     <style>
+
+        .owl-carousel .owl-item img {
+        aspect-ratio: 6/4;
+        }
         @media (max-width: 991.98px) {
             .servers {
                 padding-bottom: 0;
@@ -1499,7 +1503,7 @@
             transform-style: preserve-3d;
             /* max-width: 90px; */
             margin: 0 auto 17px;
-            max-height: 155px;
+            /* max-height: 155px; */
         }
 
         #customers-testimonials.owl-carousel .owl-dots .owl-dot.active span,
@@ -1568,10 +1572,10 @@
             if (currentScroll > lastScrollTop) {
 
                 img.style.backgroundImage =
-                    "url('{{ asset('/') }}home/img/icons/airplane.png')";
+                    "url({{ asset('/home/img/icons/airplane.png') }})";
             } else {
                 img.style.backgroundImage =
-                    "url('{{ asset('/') }}home/img/icons/airplane2.png')";
+                    "url({{ asset('/home/img/icons/airplane2.png') }})";
 
             }
 
@@ -1812,7 +1816,7 @@
                                         <div class="single-post" data-animate="">
                                             <div class="image-hover-wrap">
                                                 <img class="img-fluid" src="{{ asset($service->image) }}" alt=""
-                                                    style="">
+                                                    style=""  loading="lazy">
                                                 <div
                                                     class="image-hover-content d-flex justify-content-center align-items-center text-center">
                                                     <ul class="list-inline">
@@ -1872,7 +1876,7 @@
                 </div>
                 <div class="col-lg-5 offset-lg-2 d-none d-lg-block">
                     <div class="server-map">
-                        <img src="{{ asset('home/img/servers.png') }}" alt="">
+                        <img src="{{ asset('home/img/servers.png') }}" alt="" loading="lazy">
                     </div>
                 </div>
             </div>

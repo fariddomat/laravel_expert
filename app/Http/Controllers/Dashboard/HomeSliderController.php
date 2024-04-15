@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Dashboard;
 
+use App\Helpers\ImageHelper;
 use App\Models\HomeSlider;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
@@ -34,9 +35,20 @@ class HomeSliderController extends Controller
         $validatedData = $request->validate($rules);
         $homeSlider  = new HomeSlider();
         $homeSlider->lang=$request->lang;
-        $image = $request->file('image');
-        $filename = $image->getClientOriginalName();
-        $homeSlider->image = $image->storeAs('photos/homeSlider', $filename);
+        // $image = $request->file('image');
+        // $filename = $image->getClientOriginalName();
+        // $homeSlider->image = $image->storeAs('photos/homeSlider', $filename);
+        $helper = new ImageHelper;
+
+        if ($request->has('image')) {
+
+
+            $helper->removeImageInPublicDirectory($homeSlider->image);
+            $image = $request->file('image');
+            $directory = '/photos/home';
+            $fullPath = $helper->storeImageInPublicDirectory($image, $directory);
+            $homeSlider->image = $fullPath;
+        }
         $homeSlider->save();
         session()->flash('success', 'Image Added Successfully');
         return redirect()->route('dashboard.homeinfoSliderImages.index');
