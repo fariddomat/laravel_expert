@@ -506,7 +506,7 @@
                     <div class="card">
                         <div class="card-container">
                             <div class="card-face front-face">
-                                <img src="{{ asset($teams[0]->image) }}" alt style="padding: 20px">
+                                <img src="{{ asset($teams[0]->image) }}" alt style="padding: 20px"  loading="lazy">
                                 {{ $teams[0]->name }}
                                 <div style="padding: 25px">{{ $teams[0]->title }}</div>
                             </div>
@@ -567,7 +567,7 @@
                         <div class="card">
                             <div class="card-container">
                                 <div class="card-face front-face">
-                                    <img src="{{ asset($team->image) }}" alt style="padding: 20px">
+                                    <img src="{{ asset($team->image) }}" alt style="padding: 20px"  loading="lazy">
                                     {{ $team->name }}
                                     <div style="padding: 25px">{{ $team->title }}</div>
                                 </div>
