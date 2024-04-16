@@ -26,7 +26,7 @@
     <!-- CSS Files -->
 
     {{-- <link href="https://fonts.googleapis.com/css?family=Cabin:400,400i,500i,700%7CRoboto:400,500,700" rel="stylesheet" async> --}}
-    <link rel="stylesheet" href="{{ asset('home/css/bootstrap-rtl.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('home/css/bootstrap-rtl.min.css') }}"  media="print" onload="this.media='all'">
     <link rel="stylesheet" href="{{ asset('home/plugins/swiper/swiper.min.css') }}">
     {{-- <link rel="stylesheet" href="{{ asset('home/plugins/magnific-popup/magnific-popup.min.css') }}"> --}}
     <link rel="stylesheet" href="{{ asset('home/css/style.css') }}">
@@ -41,6 +41,9 @@
 
     <link href="{{ asset('css/fonts.css') }}" rel="stylesheet">
 
+    {{--  non critical css --}}
+    <link href="{{ asset('fonts/fontawesome-free-6.4.2-web/css/all.css') }}"
+        rel="stylesheet"  media="print" onload="this.media='all'">
 
     {{-- icons --}}
     {{-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" async/> --}}
@@ -205,8 +208,8 @@
                         <ul class="social-links list-inline mb-0">
                             @foreach ($socialMedias as $index => $socialMedia)
                                 <li data-animate="fadeInUp" data-delay="{{ 0.25 + $index / 8 }}">
-                                    <a href="{{ $socialMedia->link }}" target="_blank"><i
-                                            class="fab {{ $socialMedia->icon }}"></i></a>
+                                    <a href="{{ $socialMedia->link }}" target="_blank" style="color:#E2E2E2 "><i
+                                            class="fa-brands {{ $socialMedia->icon }}"></i></a>
 
                                 </li>
                             @endforeach
@@ -346,9 +349,6 @@
     @include('partials._session')
     @yield('scripts')
 
-    {{--  non critical css --}}
-    <link href="{{ asset('fonts/fontawesome-free-6.4.2-web/css/all.css') }}"
-        rel="stylesheet">
 </body>
 
 </html>
