@@ -123,7 +123,7 @@
                             @foreach ($socialMedias as $socialMedia)
                                 <li>
                                     <a href="{{ $socialMedia->link }}" target="_blank"><i
-                                            class="fab {{ $socialMedia->icon }}"></i></a>
+                                            class="fa-brands {{ $socialMedia->icon }}"></i></a>
 
                                 </li>
                             @endforeach
@@ -345,6 +345,10 @@
     </script>
     @include('partials._session')
     @yield('scripts')
+
+    {{--  non critical css --}}
+    <link href="{{ asset('fonts/fontawesome-free-6.4.2-web/css/all.css') }}"
+        rel="stylesheet">
 </body>
 
 </html>

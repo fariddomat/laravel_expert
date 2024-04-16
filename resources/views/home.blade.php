@@ -1389,7 +1389,7 @@
             overflow: hidden;
             padding-top: 10rem;
             padding-bottom: 8rem;
-            margin-bottom: 5rem;
+            margin-bottom: 1rem;
             background-size: 100% 100% !important;
             background-repeat: no-repeat;
         }
@@ -1686,7 +1686,7 @@
     <!-- End of Banner -->
 
     <!-- Features -->
-    <section class="pt-7 pb-5-5 section2">
+    <section class="pt-7 pb-2 section2">
         <div class="container">
 
             <div class="container-fluid">
