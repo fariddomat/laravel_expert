@@ -176,7 +176,7 @@
             top: 0;
             right: 0;
             /* add slash at end of this line to show the red outline of the slice *
-                                                                outline: solid 1px red; /**/
+                                                                    outline: solid 1px red; /**/
             width: 50%;
             height: 50%;
             transform-origin: 0% 100%;
@@ -189,6 +189,24 @@
 
 
         .slice-contents {
+            position: absolute;
+            left: -100%;
+            width: 200%;
+            height: 200%;
+            border-radius: 50%;
+            padding: 15px;
+            color: #0D1216;
+            font-size: 3em;
+            text-align: center;
+            transition: background-color .2s;
+            overflow: hidden;
+            cursor: pointer;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+
             position: absolute;
             left: -100%;
             width: 200%;
@@ -229,10 +247,32 @@
         .slice:first-child .slice-contents {
             transform: skewY(18deg)
                 /* unskew slice contents */
-                rotate(36deg);
+                rotate(30deg);
             /* rotate by half the central angle of the slice
-                                                                   which is 50deg in this case */
+                                                                       which is 50deg in this case */
             background: #6e7472;
+        }
+
+        .slice:first-child .slice-contents .counterTitle{
+            padding-right: 0px;
+            max-width: 135px;
+        }
+        .slice:first-child .slice-contents .counterIcon{
+            padding-right: 5px
+        }
+        .slice:first-child .slice-contents .counter{
+            padding-right: 0px;
+        }
+
+
+        .slice:nth-child(6) .slice-contents .counterTitle{
+            padding-right: 5px;
+        }
+        .slice:nth-child(6) .slice-contents .counterIcon{
+            padding-right: 10px
+        }
+        .slice:nth-child(6) .slice-contents .counter{
+            padding-right: 5px;
         }
 
         .slice:first-child .slice-contents:hover {
@@ -242,9 +282,9 @@
         .slice:nth-child(2) .slice-contents {
             transform: skewY(18deg)
                 /* unskew slice contents */
-                rotate(36deg);
+                rotate(30deg);
             /* rotate by half the central angle of the slice
-                                                                   which is 50deg in this case */
+                                                                       which is 50deg in this case */
             background: #778181;
         }
 
@@ -259,9 +299,9 @@
         .slice:nth-child(3) .slice-contents {
             transform: skewY(18deg)
                 /* unskew slice contents */
-                rotate(36deg);
+                rotate(30deg);
             /* rotate by half the central angle of the slice
-                                                                   which is 50deg in this case */
+                                                                       which is 50deg in this case */
             background: #7f969c;
         }
 
@@ -272,9 +312,9 @@
         .slice:nth-child(4) .slice-contents {
             transform: skewY(18deg)
                 /* unskew slice contents */
-                rotate(36deg);
+                rotate(30deg);
             /* rotate by half the central angle of the slice
-                                                                   which is 50deg in this case */
+                                                                       which is 50deg in this case */
             background: #a3afb7;
         }
 
@@ -289,9 +329,9 @@
         .slice:nth-child(5) .slice-contents {
             transform: skewY(18deg)
                 /* unskew slice contents */
-                rotate(36deg);
+                rotate(30deg);
             /* rotate by half the central angle of the slice
-                                                                   which is 50deg in this case */
+                                                                       which is 50deg in this case */
             background: #c7c9cf;
         }
 
@@ -302,9 +342,9 @@
         .slice:nth-child(6) .slice-contents {
             transform: skewY(18deg)
                 /* unskew slice contents */
-                rotate(36deg);
+                rotate(30deg);
             /* rotate by half the central angle of the slice
-                                                                   which is 50deg in this case */
+                                                                       which is 50deg in this case */
             background: #b9b0b0;
         }
 
@@ -315,18 +355,18 @@
         .slice:nth-child(7) .slice-contents {
             transform: skewY(18deg)
                 /* unskew slice contents */
-                rotate(36deg);
+                rotate(30deg);
             /* rotate by half the central angle of the slice
-                                                                   which is 50deg in this case */
+                                                                       which is 50deg in this case */
             background: #d7f069;
         }
 
         .slice:nth-child(8) .slice-contents {
             transform: skewY(18deg)
                 /* unskew slice contents */
-                rotate(36deg);
+                rotate(30deg);
             /* rotate by half the central angle of the slice
-                                                                   which is 50deg in this case */
+                                                                       which is 50deg in this case */
             background: #69f0ae;
         }
 
@@ -1109,27 +1149,27 @@
         }
 
         /* .section-wrapper .shielding-layer:after {
-                                                                                                                                content: "";
-                                                                                                                                width: 71%;
-                                                                                                                                height: 100%;
-                                                                                                                                position: absolute;
-                                                                                                                                top: 0;
-                                                                                                                                right: 0;
-                                                                                                                                z-index: 3;
-                                                                                                                                background: linear-gradient(90deg, rgba(249, 249, 254, 0) rgba(249, 249, 254, 0.97) 0,);
-                                                                                                                            }
+                                                                                                                                    content: "";
+                                                                                                                                    width: 71%;
+                                                                                                                                    height: 100%;
+                                                                                                                                    position: absolute;
+                                                                                                                                    top: 0;
+                                                                                                                                    right: 0;
+                                                                                                                                    z-index: 3;
+                                                                                                                                    background: linear-gradient(90deg, rgba(249, 249, 254, 0) rgba(249, 249, 254, 0.97) 0,);
+                                                                                                                                }
 
-                                                                                                                            .section-wrapper .shielding-layer:before {
-                                                                                                                                pointer-events: none;
-                                                                                                                                content: "";
-                                                                                                                                width: calc(29% + 1px);
-                                                                                                                                height: 100%;
-                                                                                                                                position: absolute;
-                                                                                                                                top: 0;
-                                                                                                                                left: 0;
-                                                                                                                                z-index: 3;
-                                                                                                                                background: linear-gradient(90deg, rgba(249, 249, 254, 0.97) 0, rgba(249, 249, 254, 0));
-                                                                                                                            } */
+                                                                                                                                .section-wrapper .shielding-layer:before {
+                                                                                                                                    pointer-events: none;
+                                                                                                                                    content: "";
+                                                                                                                                    width: calc(29% + 1px);
+                                                                                                                                    height: 100%;
+                                                                                                                                    position: absolute;
+                                                                                                                                    top: 0;
+                                                                                                                                    left: 0;
+                                                                                                                                    z-index: 3;
+                                                                                                                                    background: linear-gradient(90deg, rgba(249, 249, 254, 0.97) 0, rgba(249, 249, 254, 0));
+                                                                                                                                } */
 
         .section-wrapper:before {
             content: "";
@@ -1615,7 +1655,8 @@
 
     <script defer>
         $('.counter').countUp({
-triggerOnce:true});
+            triggerOnce: true
+        });
     </script>
 
 @endsection
