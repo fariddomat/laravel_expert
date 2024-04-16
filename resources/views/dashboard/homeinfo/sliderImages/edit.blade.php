@@ -23,11 +23,14 @@
                 @method('PUT')
 
                 <div class="form-group mb-3">
-                    <label>Lang</label>
-                    <select name="lang" class="form-control" id="">
-                        <option value="ar" @if ($image->lang=='ar')
+                    <label>Type</label>
+                    <select name="type" class="form-control" id="">
+                        <option value="1" @if ($image->type=='1')
                             selected
-                        @endif>Arabic</option>
+                        @endif>Desktop</option>
+                        <option value="2" @if ($image->type=='2')
+                            selected
+                        @endif>Mobile</option>
                         {{-- <option value="en" @if ($image->lang=='en')
                             selected
                         @endif>English</option> --}}

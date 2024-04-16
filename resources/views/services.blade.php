@@ -4,6 +4,13 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
     <style>
+
+        .single-post span {
+            font-size: 1rem;
+            color: #000;
+            font-weight: normal;
+        }
+
         .owl-carousel .owl-item img {
             max-width: unset;
         }

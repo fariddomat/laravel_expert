@@ -4,6 +4,13 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
 
     <style>
+
+        .single-post span {
+            font-size: 1rem;
+            color: #000;
+            font-weight: normal;
+        }
+
         .owl-carousel .owl-item img {
             max-width: unset !important;
         }

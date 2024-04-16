@@ -20,6 +20,12 @@ class CreateInfosTable extends Migration
             $table->string('about_me_image');
             // $table->string('about_me_image_en');
             $table->string('service_image');
+            $table->string('service_image_mobile');
+
+
+            $table->string('counter_image');
+            $table->string('counter_image_mobile');
+
             $table->string('service_header_image');
             $table->string('about_header_image');
             $table->string('blog_header_image');

@@ -29,12 +29,12 @@ class HomeSliderController extends Controller
     public function store(Request $request)
     {
         $rules = [
-            'lang'=>'required',
+            'type'=>'required',
             'image' => ['required', 'image', 'mimes:jpeg,png,jpg,webp'],
         ];
         $validatedData = $request->validate($rules);
         $homeSlider  = new HomeSlider();
-        $homeSlider->lang=$request->lang;
+        $homeSlider->type=$request->type;
         // $image = $request->file('image');
         // $filename = $image->getClientOriginalName();
         // $homeSlider->image = $image->storeAs('photos/homeSlider', $filename);
@@ -64,11 +64,11 @@ class HomeSliderController extends Controller
     public function update(Request $request, HomeSlider $image)
     {
         $rules = [
-            'lang'=>'required',
+            'type'=>'required',
             'image' => ['nullable', 'image', 'mimes:jpeg,png,jpg,webp'],
         ];
         $validatedData = $request->validate($rules);
-        $image->lang=$request->lang;
+        $image->type=$request->type;
 
         if ($request->has('image')) {
             Storage::disk('local')->delete($image->image);

@@ -55,6 +55,9 @@
     <link rel="stylesheet" href="{{ asset('css/aos.css') }}">
     <link rel="stylesheet" href="{{ asset('css/animate.css') }}">
     <style>
+         html {
+    scroll-behavior: smooth;
+    }
         @media only screen and (max-width: 768px) {
             .no-mobile {
                 display: none;
@@ -253,7 +256,7 @@
                                     <img class="img-fluid" src="{{ asset($blog->image) }}"
                                         style="width: 60px !important;
                                         height: 40px !important;"
-                                        alt="">
+                                        alt=""  loading="lazy">
                                 </a>
                                 <span> <a
                                         href="{{ route('blog', $blog->slug) }}">{{ $blog->updated_at->format('d F Y') }}</a></span>
@@ -321,11 +324,11 @@
 
 
     {{-- <script src="{{ asset('home/plugins/magnific-popup/jquery.magnific-popup.min.js') }}"></script> --}}
-    <script src="{{ asset('home/plugins/parsley/parsley.min.js') }}" defer defer></script>
+    <script src="{{ asset('home/plugins/parsley/parsley.min.js') }}"  defer></script>
     <script src="{{ asset('home/plugins/parallax/parallax.min.js') }}"></script>
     {{-- <script src="{{ asset('home/plugins/retinajs/retina.min.js') }}"></script> --}}
     <script src="{{ asset('home/js/menu.min.js') }}" defer></script>
-    <script src="{{ asset('home/js/scripts.js') }}" defer></script>
+    <script src="{{ asset('home/js/scripts.js') }}" ></script>
     <script src="{{ asset('home/js/custom.js') }}" defer></script>
 
     <script src="{{ asset('js/owl.carousel.min.js') }}" defer></script>

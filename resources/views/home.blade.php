@@ -2,10 +2,16 @@
 @section('title', trans('site.home'))
 @section('styles')
     <style>
+        .single-post span {
+            font-size: 1rem;
+            color: #000;
+            font-weight: normal;
+        }
 
         .owl-carousel .owl-item img {
-        aspect-ratio: 6/4;
+            aspect-ratio: 6/4;
         }
+
         @media (max-width: 991.98px) {
             .servers {
                 padding-bottom: 0;
@@ -170,7 +176,7 @@
             top: 0;
             right: 0;
             /* add slash at end of this line to show the red outline of the slice *
-                                                        outline: solid 1px red; /**/
+                                                                outline: solid 1px red; /**/
             width: 50%;
             height: 50%;
             transform-origin: 0% 100%;
@@ -225,7 +231,7 @@
                 /* unskew slice contents */
                 rotate(36deg);
             /* rotate by half the central angle of the slice
-                                                           which is 50deg in this case */
+                                                                   which is 50deg in this case */
             background: #6e7472;
         }
 
@@ -238,7 +244,7 @@
                 /* unskew slice contents */
                 rotate(36deg);
             /* rotate by half the central angle of the slice
-                                                           which is 50deg in this case */
+                                                                   which is 50deg in this case */
             background: #778181;
         }
 
@@ -255,7 +261,7 @@
                 /* unskew slice contents */
                 rotate(36deg);
             /* rotate by half the central angle of the slice
-                                                           which is 50deg in this case */
+                                                                   which is 50deg in this case */
             background: #7f969c;
         }
 
@@ -268,7 +274,7 @@
                 /* unskew slice contents */
                 rotate(36deg);
             /* rotate by half the central angle of the slice
-                                                           which is 50deg in this case */
+                                                                   which is 50deg in this case */
             background: #a3afb7;
         }
 
@@ -285,7 +291,7 @@
                 /* unskew slice contents */
                 rotate(36deg);
             /* rotate by half the central angle of the slice
-                                                           which is 50deg in this case */
+                                                                   which is 50deg in this case */
             background: #c7c9cf;
         }
 
@@ -298,7 +304,7 @@
                 /* unskew slice contents */
                 rotate(36deg);
             /* rotate by half the central angle of the slice
-                                                           which is 50deg in this case */
+                                                                   which is 50deg in this case */
             background: #b9b0b0;
         }
 
@@ -311,7 +317,7 @@
                 /* unskew slice contents */
                 rotate(36deg);
             /* rotate by half the central angle of the slice
-                                                           which is 50deg in this case */
+                                                                   which is 50deg in this case */
             background: #d7f069;
         }
 
@@ -320,7 +326,7 @@
                 /* unskew slice contents */
                 rotate(36deg);
             /* rotate by half the central angle of the slice
-                                                           which is 50deg in this case */
+                                                                   which is 50deg in this case */
             background: #69f0ae;
         }
 
@@ -967,6 +973,16 @@
             background-size: cover !important;
         }
 
+        @media (max-width: 480px) {
+            .services-title {
+                height: auto;
+                background-image: url({{ asset($info->service_image_mobile) }});
+                background-attachment: fixed !important;
+                background-repeat: no-repeat !important;
+                background-size: 100% 100% !important;
+            }
+        }
+
         dfn {
             font-style: italic
         }
@@ -1093,27 +1109,27 @@
         }
 
         /* .section-wrapper .shielding-layer:after {
-                                                                                                                        content: "";
-                                                                                                                        width: 71%;
-                                                                                                                        height: 100%;
-                                                                                                                        position: absolute;
-                                                                                                                        top: 0;
-                                                                                                                        right: 0;
-                                                                                                                        z-index: 3;
-                                                                                                                        background: linear-gradient(90deg, rgba(249, 249, 254, 0) rgba(249, 249, 254, 0.97) 0,);
-                                                                                                                    }
+                                                                                                                                content: "";
+                                                                                                                                width: 71%;
+                                                                                                                                height: 100%;
+                                                                                                                                position: absolute;
+                                                                                                                                top: 0;
+                                                                                                                                right: 0;
+                                                                                                                                z-index: 3;
+                                                                                                                                background: linear-gradient(90deg, rgba(249, 249, 254, 0) rgba(249, 249, 254, 0.97) 0,);
+                                                                                                                            }
 
-                                                                                                                    .section-wrapper .shielding-layer:before {
-                                                                                                                        pointer-events: none;
-                                                                                                                        content: "";
-                                                                                                                        width: calc(29% + 1px);
-                                                                                                                        height: 100%;
-                                                                                                                        position: absolute;
-                                                                                                                        top: 0;
-                                                                                                                        left: 0;
-                                                                                                                        z-index: 3;
-                                                                                                                        background: linear-gradient(90deg, rgba(249, 249, 254, 0.97) 0, rgba(249, 249, 254, 0));
-                                                                                                                    } */
+                                                                                                                            .section-wrapper .shielding-layer:before {
+                                                                                                                                pointer-events: none;
+                                                                                                                                content: "";
+                                                                                                                                width: calc(29% + 1px);
+                                                                                                                                height: 100%;
+                                                                                                                                position: absolute;
+                                                                                                                                top: 0;
+                                                                                                                                left: 0;
+                                                                                                                                z-index: 3;
+                                                                                                                                background: linear-gradient(90deg, rgba(249, 249, 254, 0.97) 0, rgba(249, 249, 254, 0));
+                                                                                                                            } */
 
         .section-wrapper:before {
             content: "";
@@ -1384,7 +1400,7 @@
     <style>
         .counter_section {
             padding: 0;
-            background-image: url({{ asset('home/img/counter.webp') }});
+            background-image: url({{ asset($info->counter_image) }});
             color: #E2E2E2;
             overflow: hidden;
             padding-top: 10rem;
@@ -1396,8 +1412,10 @@
 
         @media (max-width: 480px) {
             .counter_section {
-                background-size: 200% 100% !important;
-                background-position: center;
+                background-image: url({{ asset($info->counter_image_mobile) }});
+
+                background-size: 100% 100% !important;
+                background-repeat: no-repeat;
             }
 
         }
@@ -1435,7 +1453,7 @@
 
 
         .headsection {
-            background: url("{{ $homeSlider->first()->image }}");
+            background: url("{{ $homeSlider->where('type', '1')->first()->image }}");
             background-attachment: fixed;
             position: relative;
             background-repeat: no-repeat;
@@ -1443,6 +1461,16 @@
             transition: opacity 0.5s, transform 0.5s;
             z-index: 1;
             background-size: cover;
+        }
+
+        @media (max-width:480px) {
+            .headsection {
+                background: url("{{ $homeSlider->where('type', '2')->first()->image }}");
+                background-attachment: fixed;
+                position: relative;
+                background-repeat: no-repeat;
+                background-size: 100% 100% !important;
+            }
         }
     </style>
     <style>
@@ -1537,6 +1565,7 @@
 @section('scripts')
     <script>
         jQuery(document).ready(function($) {
+
             "use strict";
             $('#customers-testimonials').owlCarousel({
                 loop: true,
@@ -1584,8 +1613,9 @@
     </script>
 
 
-    <script>
-        $('.counter').countUp();
+    <script defer>
+        $('.counter').countUp({
+triggerOnce:true});
     </script>
 
 @endsection
@@ -1617,6 +1647,9 @@
                                 <ul class="list-inline" data-animate="fadeInUp" data-delay="1.4">
                                     <li><a href="{{ route('about') }}" class="btn btn-secondary"
                                             style="padding: 10px 25px !important; margin-top: 25px !important;">@lang('site.about_me')</a>
+                                    </li>
+                                    <li><a href="#ServicesSection" class="btn btn-secondary"
+                                            style="padding: 10px 25px !important; margin-top: 25px !important;">خدماتنا</a>
                                     </li>
 
                                 </ul>
@@ -1685,35 +1718,42 @@
     </div>
     <!-- End of Banner -->
 
-    <!-- Features -->
-    <section class="pt-7 pb-2 section2">
+    <!-- about us -->
+    <section class="pb-5-5 ">
+        {{-- <div style="background: #E2E2E2">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320" style="  margin-bottom: -15px;">
+                <path fill="#fff" fill-opacity="1"
+                    d="M0,192L34.3,208C68.6,224,137,256,206,250.7C274.3,245,343,203,411,192C480,181,549,203,617,192C685.7,181,754,139,823,138.7C891.4,139,960,181,1029,170.7C1097.1,160,1166,96,1234,74.7C1302.9,53,1371,75,1406,85.3L1440,96L1440,320L1405.7,320C1371.4,320,1303,320,1234,320C1165.7,320,1097,320,1029,320C960,320,891,320,823,320C754.3,320,686,320,617,320C548.6,320,480,320,411,320C342.9,320,274,320,206,320C137.1,320,69,320,34,320L0,320Z">
+                </path>
+            </svg>
+
+        </div> --}}
         <div class="container">
 
             <div class="container-fluid">
+
                 <div class="row">
-                    <h2 class="" data-animate="fadeIn Up" data-delay=".1" style="margin: 0 auto 75px;">إمتيازات تجعل
-                        شركة المحترف الأفضل على الإطلاق </h2>
+                    <div class="col-md-12 text-left" data-animate="fadeInUp" data-delay=".3">
+                        <h2 class="heading-title mt-3 text-center"
+                            style="font-size: 2.5rem;
+                        color: #DF1F26;">نبذة عن المحترف</h2>
+                        <hr class="line line-hr-primary">
+                    </div>
                 </div>
                 <div class="row">
+                    <div class="col-md-8 offset-md-2 pt-2" data-animate="fadeInUp" data-delay=".5">
+                        <div class="about-p">{!! $about->about_me !!}</div>
 
-                    @foreach ($aboutFields as $aboutField)
-                        <div class="col-md-4">
-                            <div class="single-feature text-center" data-animate="fadeInUp" data-delay=".1">
-                                <i class="fa {{ $aboutField->icon }}" style="font-size: 3rem; color:#DF1F26;"></i>
-                                <h3>{{ $aboutField->title }}</h3>
-                                <p style="text-align: justify;">{{ $aboutField->value }}</p>
-                            </div>
-                        </div>
-                    @endforeach
+                    </div>
+
                 </div>
-
             </div>
         </div>
     </section>
-    <!-- End of Features -->
+    <!-- End of about us -->
 
     {{-- Start Counter --}}
-    <section class="counter_section">
+    <section class="counter_section" data-animate="fadeInUp" data-delay=".6">
         {{-- <div style="background: #fff">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320" style="  margin-bottom: -15px;">
                 <path fill="#E2E2E2" fill-opacity="1"
@@ -1724,7 +1764,7 @@
         </div> --}}
         <section class="container sectionCounter">
             <div class="circleWrapper">
-                <div class="circle">
+                <div class="circle" data-animate="fadeInUp" data-delay=".8">
                     <ul class='pie'>
                         @php
                             $current_angle = 0;
@@ -1761,40 +1801,34 @@
     </section>
 
     <!-- Features -->
-    <section class="pb-5-5 ">
-        {{-- <div style="background: #E2E2E2">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320" style="  margin-bottom: -15px;">
-                <path fill="#fff" fill-opacity="1"
-                    d="M0,192L34.3,208C68.6,224,137,256,206,250.7C274.3,245,343,203,411,192C480,181,549,203,617,192C685.7,181,754,139,823,138.7C891.4,139,960,181,1029,170.7C1097.1,160,1166,96,1234,74.7C1302.9,53,1371,75,1406,85.3L1440,96L1440,320L1405.7,320C1371.4,320,1303,320,1234,320C1165.7,320,1097,320,1029,320C960,320,891,320,823,320C754.3,320,686,320,617,320C548.6,320,480,320,411,320C342.9,320,274,320,206,320C137.1,320,69,320,34,320L0,320Z">
-                </path>
-            </svg>
-
-        </div> --}}
+    <section class="pt-7 pb-2 section2">
         <div class="container">
 
             <div class="container-fluid">
-
                 <div class="row">
-                    <div class="col-md-12 text-left" data-animate="fadeInUp" data-delay=".1">
-                        <h2 class="heading-title mt-3 text-center"
-                            style="font-size: 2.5rem;
-                        color: #DF1F26;">نبذة عن المحترف</h2>
-                        <hr class="line line-hr-primary">
-                    </div>
+                    <h2 class="" data-animate="fadeIn Up" data-delay=".1" style="margin: 0 auto 75px;">امتيازات تجعل
+                        شركة المحترف الأفضل على الإطلاق </h2>
                 </div>
                 <div class="row">
-                    <div class="col-md-8 offset-md-2 pt-2" data-animate="fadeInUp" data-delay=".2">
-                        <div class="about-p">{!! $about->about_me !!}</div>
 
-                    </div>
-
+                    @foreach ($aboutFields as $aboutField)
+                        <div class="col-md-4">
+                            <div class="single-feature text-center" data-animate="fadeInUp" data-delay=".1">
+                                <i class="fa {{ $aboutField->icon }}" style="font-size: 3rem; color:#DF1F26;"></i>
+                                <h3>{{ $aboutField->title }}</h3>
+                                <p style="text-align: justify;">{{ $aboutField->value }}</p>
+                            </div>
+                        </div>
+                    @endforeach
                 </div>
+
             </div>
         </div>
     </section>
     <!-- End of Features -->
+
     <!-- Our services -->
-    <section class="">
+    <section class="" id="ServicesSection">
         <div class="services-title position-relative pt-7" style="" dir="ltr">
             <div class="container">
                 <div class="row justify-content-center">
@@ -1816,7 +1850,7 @@
                                         <div class="single-post" data-animate="">
                                             <div class="image-hover-wrap">
                                                 <img class="img-fluid" src="{{ asset($service->image) }}" alt=""
-                                                    style=""  loading="lazy">
+                                                    style="" loading="lazy">
                                                 <div
                                                     class="image-hover-content d-flex justify-content-center align-items-center text-center">
                                                     <ul class="list-inline">

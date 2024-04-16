@@ -32,6 +32,10 @@ class HomeInfoController extends Controller
             'logo' => ['nullable', 'image', 'mimes:jpeg,png,jpg,webp'],
             'about_me_image' => ['nullable', 'image', 'mimes:jpeg,png,jpg,webp'],
             'service_image' => ['nullable', 'image', 'mimes:jpeg,png,jpg,webp'],
+            'service_image_mobile' => ['nullable', 'image', 'mimes:jpeg,png,jpg,webp'],
+            'counter_image' => ['nullable', 'image', 'mimes:jpeg,png,jpg,webp'],
+            'counter_image_mobile' => ['nullable', 'image', 'mimes:jpeg,png,jpg,webp'],
+            'service_header_image' => ['nullable', 'image', 'mimes:jpeg,png,jpg,webp'],
             'about_header_image' => ['nullable', 'image', 'mimes:jpeg,png,jpg,webp'],
             'contact_header_image' => ['nullable', 'image', 'mimes:jpeg,png,jpg,webp'],
             'blog_header_image' => ['nullable', 'image', 'mimes:jpeg,png,jpg,webp'],
@@ -102,6 +106,38 @@ class HomeInfoController extends Controller
             $directory = '/photos/home';
             $fullPath = $helper->storeImageInPublicDirectory($image, $directory, 1350,null);
             $info->service_image = $fullPath;
+        }
+
+
+
+        if ($request->has('service_image_mobile')) {
+
+
+            $image = $request->file('service_image_mobile');
+            $directory = '/photos/home';
+            $fullPath = $helper->storeImageInPublicDirectory($image, $directory);
+            $info->service_image_mobile = $fullPath;
+        }
+
+
+
+        if ($request->has('counter_image')) {
+
+
+            $image = $request->file('counter_image');
+            $directory = '/photos/home';
+            $fullPath = $helper->storeImageInPublicDirectory($image, $directory);
+            $info->counter_image = $fullPath;
+        }
+
+
+        if ($request->has('counter_image_mobile')) {
+
+
+            $image = $request->file('counter_image_mobile');
+            $directory = '/photos/home';
+            $fullPath = $helper->storeImageInPublicDirectory($image, $directory);
+            $info->counter_image_mobile = $fullPath;
         }
 
         if ($request->has('service_header_image')) {

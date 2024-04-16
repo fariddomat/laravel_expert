@@ -23,6 +23,13 @@
         }
 
         @media (max-width: 480px) {
+            .serviceRow{
+                padding: 0 5px !important;
+            }
+            .serviceSection{
+                margin-top: 1rem !important;
+                padding: 15px 0 !important;
+            }
             table {
                 max-width: 100%;
             }
@@ -290,7 +297,7 @@
                                     <h2 class="col-md-12 pt-2 pb-2" data-animate="fadeInDown" data-delay="1.4"
                                         style="font-size: 3rem;text-align: center">{{ $service->title }}</h2>
 
-                                    <div class="" style="padding: 2rem;">{!! $service->brief !!}</div>
+                                    <div class="" style="">{!! $service->brief !!}</div>
                                     <div class="row" style="margin-top:35px">
                                         @foreach ($service->indexItems as $item)
                                             <div class="col-12 col-md-12">
@@ -376,7 +383,7 @@
                                 <img src="{{ asset($service->index_image_2) }}" class="img-responsive" alt="">
                             </div>
                         @endif
-                        <div class="col-md-12 wow fadeInUp" data-wow-delay=".5s"
+                        <div class="col-md-12 wow fadeInUp serviceRow" data-wow-delay=".5s"
                             @if ($service->parent_id != 1) style="margin-top:50px" @endif>
                             @foreach ($service->sections as $section)
                                 <div class="row mt-5 ml-5 mr-5 serviceSection" data-animate="fadeInUp" data-delay=".2"
@@ -384,8 +391,7 @@
                                 background: #fff;
                                 box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.5);
                                 padding: 20px;
-                                border-radius: 10px;
-                                margin-bottom: 30px; /* Adjust spacing */">
+                                border-radius: 10px; /* Adjust spacing */">
                                     <div class="col-md-12">
                                         <h3 class="service-section-title"
                                             style=" font-size: 24px; /* Adjust font size */
@@ -412,7 +418,16 @@
                                 </div>
                             @endforeach
                         </div>
+
+                    @if ($service->subServices->count() > 0)
+                   <div class="col-md-12 text-center">
+                    <a href="#serviceSerivces" class="btn btn-secondary"
+                    style="padding: 10px 25px !important; margin-top: 25px !important;">خدماتنا</a>
+
+                   </div>
+                    @endif
                     </div>
+
 
                     <!-- FAQ -->
                     @if ($service->questions->count() > 0)
@@ -470,12 +485,14 @@
                     <!-- logo carousel section close -->
 
                     @if ($service->subServices->count() > 0)
-                        <section class="testimonials blog" dir="ltr" data-animate="fadeInUp" data-delay="1"
-                            style="margin-top: 75px;">
+                        <section id="serviceSerivces" class="testimonials blog" dir="ltr" data-animate="fadeInUp" data-delay="1"
+                            style="padding-top: 75px;">
                             <div class="container">
                                 <div class="row">
                                     <div class="col-sm-12">
-                                        <h2 class="text-center">الخدمات الفرعية</h2>
+                                        <h2 class="text-center">
+                                            {{-- الخدمات الفرعية --}}
+                                        </h2>
                                         <div id="customers-testimonials" class="owl-carousel " data-animate="fadeInUp"
                                             data-delay="1.5">
                                             @foreach ($service->subServices as $index => $service)

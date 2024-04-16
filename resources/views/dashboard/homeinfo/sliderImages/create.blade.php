@@ -21,9 +21,10 @@
             <form action="{{ route('dashboard.homeinfoSliderImages.store') }}" method="post" enctype="multipart/form-data">
                 @csrf()
                 <div class="form-group mb-3">
-                    <label>Lang</label>
-                    <select name="lang" class="form-control" id="">
-                        <option value="ar">Arabic</option>
+                    <label>type</label>
+                    <select name="type" class="form-control" id="">
+                        <option value="1">Desktop</option>
+                        <option value="2">Mobile</option>
                         {{-- <option value="en">English</option> --}}
                     </select>
                 </div>

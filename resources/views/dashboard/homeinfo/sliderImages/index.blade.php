@@ -18,7 +18,7 @@
                     <tr>
                         <th>#</th>
                         <th>Image</th>
-                        <th>Lange</th>
+                        <th>type</th>
                         <th>Delete</th>
                     </tr>
                 </thead>
@@ -27,7 +27,11 @@
                     <tr>
                         <td>{{ $key + 1 }}</td>
                         <td> <img src="{{asset($homeinfoSliderImage->image)}}" style="width: 125px; height: auto;" alt=""> </td>
-                        <td>{{ $homeinfoSliderImage->lang }}</td>
+                        <td>@if ($homeinfoSliderImage->type == 1)
+                            desktop
+                            @else
+                            mobile
+                        @endif</td>
                         {{-- <td>
                             <a href="{{ route('dashboard.homeinfoSliderImages.edit', $homeinfoSliderImage->id) }}" class="btn btn-info btn-sm"><i class="fas fa-edit"></i> edit</a> --}}
                         </td>
