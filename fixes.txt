@@ -69,5 +69,5 @@ add Lazy load to all images
 16#
 17
 حساب للتوظيف
-
 loading with logo
+locations in home

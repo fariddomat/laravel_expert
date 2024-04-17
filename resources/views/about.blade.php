@@ -346,7 +346,7 @@
             padding-top: 50px
         }
 
-        .card-container.flipped {
+        .card.flipped {
             transform: rotateY(180deg);
         }
     </style>
@@ -484,10 +484,14 @@
                 height: 100%;
             }
         }
+
+        .card-container {
+            z-index: 50000;
+        }
     </style>
 
-<style>
-    .card {
+    <style>
+        .card {
             width: 252px;
             height: 410px;
             perspective: 1000px;
@@ -498,7 +502,7 @@
             margin-bottom: 35px;
             margin: 0 auto;
             margin-bottom: 35px;
-            box-shadow: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22);
+            box-shadow: 0 19px 38px rgba(0, 0, 0, 0.30), 0 15px 12px rgba(0, 0, 0, 0.22);
         }
 
         .card img {
@@ -513,65 +517,56 @@
         .card-face {
             border-bottom-left-radius: 15px 30% !important;
         }
-    @media (max-width: 480px) {
-        .card {
-            width: 252px;
-            height: 390px;
-            perspective: 1000px;
-            cursor: pointer;
-            border-radius: 10px;
-            background-color: unset;
-            border: unset;
-            margin-bottom: 35px;
-            margin: 0 auto;
-            margin-bottom: 15px;
-            box-shadow: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22);
-        }
 
-        .card img {
-            width: 100%;
-            height: 100%;
-            padding: 0;
-            border-radius: 10px 10px 0 0;
-            margin-bottom: 10px;
-        }
+        @media (max-width: 480px) {
+            .card {
+                width: 252px;
+                height: 445px;
+                perspective: 1000px;
+                cursor: pointer;
+                border-radius: 10px;
+                background-color: unset;
+                border: unset;
+                margin: 0 auto;
+                margin-bottom: 60px !important;
+                box-shadow: 0 19px 38px rgba(0, 0, 0, 0.30), 0 15px 12px rgba(0, 0, 0, 0.22);
+            }
 
-    }
-</style>
+            .card img {
+                width: 100%;
+                height: 100%;
+                padding: 0;
+                border-radius: 10px 10px 0 0;
+                margin-bottom: 10px;
+            }
+
+        }
+    </style>
 @endsection
 @section('scripts')
 
 
     <script>
-        var lastScrollTop = 0;
+        $(document).ready(function() {
+            // Check if it's a mobile device
+            if (window.innerWidth <= 768) { // Adjust breakpoint as needed
+                $('.card').on('click', function(event) {
+                    var clickedElement = $(event.target);
+                    var cardContainer = $(this).find('.card-container');
 
-        window.addEventListener("scroll", function() {
-            var currentScroll = window.pageYOffset || document.documentElement.scrollTop;
-            var img = document.getElementById('section3');
-            if (currentScroll > lastScrollTop) {
-                // Scrolling down
-                img.style.backgroundImage =
-                    "url('http://127.0.0.1:8000/home/img/icons/airplane.png')"; // Replace with your image path
-            } else {
-                // Scrolling up
-                img.style.backgroundImage =
-                    "url('http://127.0.0.1:8000/home/img/icons/airplane2.png')"; // Replace with your image path
+                    var backContainer = $(this).find('.back-face');
+                    if (backContainer.hasClass('back-face') || !cardContainer.hasClass('flipped')) {
+                        cardContainer.removeClass('flipped');
+                    } else {
+                        cardContainer.addClass('flipped');
+                    }
+                });
             }
-
-            lastScrollTop = currentScroll <= 0 ? 0 : currentScroll; // For Mobile or negative scrolling
-        }, false);
+        });
     </script>
     <script defer>
         $(document).ready(function() {
 
-            $(document).ready(function() {
-                // Check if it's a mobile device
-                if (window.innerWidth <= 768) { // Adjust breakpoint as needed
-                    $('.card').on('click', function() {
-                        $(this).find('.card-container').toggleClass('flipped');
-                    });
-                }
-            });
             // Owl Carousel for team gallery
             $('.team-gallery').owlCarousel({
                 loop: true,
@@ -717,7 +712,7 @@
                     <div class="card">
                         <div class="card-container">
                             <div class="card-face front-face">
-                                <img src="{{ asset($teams[0]->image) }}" alt style="padding: 20px" loading="lazy">
+                                <img src="{{ asset($teams[0]->image) }}" alt style="padding: 20px">
                                 {{ $teams[0]->name }}
                                 <div style="padding: 25px">{{ $teams[0]->title }}</div>
                             </div>
@@ -778,13 +773,14 @@
                         <div class="card">
                             <div class="card-container">
                                 <div class="card-face front-face">
-                                    <img src="{{ asset($team->image) }}" alt style="padding: 20px" loading="lazy">
+                                    <img src="{{ asset($team->image) }}" alt style="padding: 20px">
                                     {{ $team->name }}
                                     <div style="padding: 25px">{{ $team->title }}</div>
                                 </div>
                                 <div class="card-Face back-face"
                                     style="
-                                max-height: 380px;overflow-y: scroll;">
+
+                                overflow-y: scroll;">
                                     <div class="container about">
 
                                         <p>{!! $team->description !!}</p>
