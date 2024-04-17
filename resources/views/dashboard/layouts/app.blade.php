@@ -142,7 +142,7 @@
                             منصات التواصل الاجتماعي
                         </a>
                     </li>
-{{-- 
+{{--
                     <li class="nav-item">
                         <a class="nav-link @yield('partnerActive')" href="{{ route('dashboard.partnerSlider.index') }}">
                             شركائنا
@@ -198,7 +198,7 @@
                 @endif
                 <li class="nav-item">
                     <a class="nav-link @yield('blogcategoriesActive')" href="{{ route('dashboard.blogcategories.index') }}">
-                        التصنيفات
+                        تصنيفات المدونة
                     </a>
                 </li>
                 <li class="nav-item">
