@@ -4,7 +4,9 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
 
     <style>
-
+.solution_card .solu_title h3 {
+  text-align: center;
+}
         .single-post span {
             font-size: 1rem;
             color: #000;

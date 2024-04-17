@@ -357,18 +357,23 @@ class SiteController extends Controller
         $sms = SMS::where('type', 'contact')->first();
 
         $info = array(
-            'type' => 'contact us',
             'name' => $request->name,
-            'email' => $request->email,
             'mobile' => $request->mobile,
-            'data' => $request->message
+
+            'contact_method' => $request->contact_method,
+            'dob' => $request->dob,
+            'city' => $request->city,
+            'cert_degree' => $request->cert_degree,
+            'start_at' => $start_at,
+
+            'data' => $contact->services
         );
         try {
             //code...
             Mail::send('mail', $info, function ($message) use ($contact) {
-                $message->to("info@project.com", "info")
-                    ->subject('New Contact us');
-                $message->from('card-ordrer@project.com', 'Almohtarif');
+                $message->to("fariddomat.000@gmail.com", "Almohtarif")
+                    ->subject('طلب استشارة مجانية جديد');
+                $message->from('support@almohtarif-office.com', 'Almohtarif');
             });
         } catch (\Throwable $th) {
             //throw $th;
