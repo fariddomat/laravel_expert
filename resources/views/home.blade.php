@@ -2,6 +2,9 @@
 @section('title', trans('site.home'))
 @section('styles')
     <style>
+        .single-post{
+            margin-bottom: 5px;
+        }
         .single-post span {
             font-size: 1rem;
             color: #000;
@@ -176,7 +179,7 @@
             top: 0;
             right: 0;
             /* add slash at end of this line to show the red outline of the slice *
-                                                                    outline: solid 1px red; /**/
+                                                                            outline: solid 1px red; /**/
             width: 50%;
             height: 50%;
             transform-origin: 0% 100%;
@@ -249,29 +252,33 @@
                 /* unskew slice contents */
                 rotate(30deg);
             /* rotate by half the central angle of the slice
-                                                                       which is 50deg in this case */
+                                                                               which is 50deg in this case */
             background: #6e7472;
         }
 
-        .slice:first-child .slice-contents .counterTitle{
+        .slice:first-child .slice-contents .counterTitle {
             padding-right: 0px;
             max-width: 135px;
         }
-        .slice:first-child .slice-contents .counterIcon{
+
+        .slice:first-child .slice-contents .counterIcon {
             padding-right: 5px
         }
-        .slice:first-child .slice-contents .counter{
+
+        .slice:first-child .slice-contents .counter {
             padding-right: 0px;
         }
 
 
-        .slice:nth-child(6) .slice-contents .counterTitle{
+        .slice:nth-child(6) .slice-contents .counterTitle {
             padding-right: 5px;
         }
-        .slice:nth-child(6) .slice-contents .counterIcon{
+
+        .slice:nth-child(6) .slice-contents .counterIcon {
             padding-right: 10px
         }
-        .slice:nth-child(6) .slice-contents .counter{
+
+        .slice:nth-child(6) .slice-contents .counter {
             padding-right: 5px;
         }
 
@@ -284,7 +291,7 @@
                 /* unskew slice contents */
                 rotate(30deg);
             /* rotate by half the central angle of the slice
-                                                                       which is 50deg in this case */
+                                                                               which is 50deg in this case */
             background: #778181;
         }
 
@@ -301,7 +308,7 @@
                 /* unskew slice contents */
                 rotate(30deg);
             /* rotate by half the central angle of the slice
-                                                                       which is 50deg in this case */
+                                                                               which is 50deg in this case */
             background: #7f969c;
         }
 
@@ -314,7 +321,7 @@
                 /* unskew slice contents */
                 rotate(30deg);
             /* rotate by half the central angle of the slice
-                                                                       which is 50deg in this case */
+                                                                               which is 50deg in this case */
             background: #a3afb7;
         }
 
@@ -331,7 +338,7 @@
                 /* unskew slice contents */
                 rotate(30deg);
             /* rotate by half the central angle of the slice
-                                                                       which is 50deg in this case */
+                                                                               which is 50deg in this case */
             background: #c7c9cf;
         }
 
@@ -344,7 +351,7 @@
                 /* unskew slice contents */
                 rotate(30deg);
             /* rotate by half the central angle of the slice
-                                                                       which is 50deg in this case */
+                                                                               which is 50deg in this case */
             background: #b9b0b0;
         }
 
@@ -357,7 +364,7 @@
                 /* unskew slice contents */
                 rotate(30deg);
             /* rotate by half the central angle of the slice
-                                                                       which is 50deg in this case */
+                                                                               which is 50deg in this case */
             background: #d7f069;
         }
 
@@ -366,7 +373,7 @@
                 /* unskew slice contents */
                 rotate(30deg);
             /* rotate by half the central angle of the slice
-                                                                       which is 50deg in this case */
+                                                                               which is 50deg in this case */
             background: #69f0ae;
         }
 
@@ -1149,27 +1156,27 @@
         }
 
         /* .section-wrapper .shielding-layer:after {
-                                                                                                                                    content: "";
-                                                                                                                                    width: 71%;
-                                                                                                                                    height: 100%;
-                                                                                                                                    position: absolute;
-                                                                                                                                    top: 0;
-                                                                                                                                    right: 0;
-                                                                                                                                    z-index: 3;
-                                                                                                                                    background: linear-gradient(90deg, rgba(249, 249, 254, 0) rgba(249, 249, 254, 0.97) 0,);
-                                                                                                                                }
+                                                                                                                                            content: "";
+                                                                                                                                            width: 71%;
+                                                                                                                                            height: 100%;
+                                                                                                                                            position: absolute;
+                                                                                                                                            top: 0;
+                                                                                                                                            right: 0;
+                                                                                                                                            z-index: 3;
+                                                                                                                                            background: linear-gradient(90deg, rgba(249, 249, 254, 0) rgba(249, 249, 254, 0.97) 0,);
+                                                                                                                                        }
 
-                                                                                                                                .section-wrapper .shielding-layer:before {
-                                                                                                                                    pointer-events: none;
-                                                                                                                                    content: "";
-                                                                                                                                    width: calc(29% + 1px);
-                                                                                                                                    height: 100%;
-                                                                                                                                    position: absolute;
-                                                                                                                                    top: 0;
-                                                                                                                                    left: 0;
-                                                                                                                                    z-index: 3;
-                                                                                                                                    background: linear-gradient(90deg, rgba(249, 249, 254, 0.97) 0, rgba(249, 249, 254, 0));
-                                                                                                                                } */
+                                                                                                                                        .section-wrapper .shielding-layer:before {
+                                                                                                                                            pointer-events: none;
+                                                                                                                                            content: "";
+                                                                                                                                            width: calc(29% + 1px);
+                                                                                                                                            height: 100%;
+                                                                                                                                            position: absolute;
+                                                                                                                                            top: 0;
+                                                                                                                                            left: 0;
+                                                                                                                                            z-index: 3;
+                                                                                                                                            background: linear-gradient(90deg, rgba(249, 249, 254, 0.97) 0, rgba(249, 249, 254, 0));
+                                                                                                                                        } */
 
         .section-wrapper:before {
             content: "";
@@ -1456,6 +1463,7 @@
 
                 background-size: 100% 100% !important;
                 background-repeat: no-repeat;
+                box-shadow: inset 0px -8px 8px #fff, inset 0px 10px 5px #fff !important;
             }
 
         }
@@ -1574,7 +1582,28 @@
             /* max-height: 155px; */
         }
 
-        #customers-testimonials.owl-carousel .owl-dots .owl-dot.active span,
+        /*
+            .owl-carousel .owl-stage {
+                display: flex;
+            }
+
+            .owl-carousel .owl-stage .item {
+                display: flex;
+                flex: 1 0 auto;
+                height: 100%;
+            }
+
+            .owl-carousel .owl-stage .single-post {
+        position: relative;
+        overflow: hidden;
+        /* margin-bottom: 80px; */
+        /*This is optional*/
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
+        }
+
+        */ #customers-testimonials.owl-carousel .owl-dots .owl-dot.active span,
         #customers-testimonials.owl-carousel .owl-dots .owl-dot:hover span {
             background: #3190E7;
             transform: translate3d(0px, -50%, 0px) scale(0.7);
@@ -1599,6 +1628,27 @@
             transform-origin: 50% 50% 0;
             transition: all 250ms ease-out 0s;
             width: 20px;
+        }
+
+        .owl-carousel .owl-stage {
+            display: flex;
+        }
+
+        .article-items {
+            display: flex;
+            flex: 1 0 auto;
+            height: 100%;
+        }
+
+        .aticle-box {
+            position: relative;
+            overflow: hidden;
+            /* margin-bottom: 80px; */
+            /*This is optional*/
+            display: flex;
+            flex-direction: column;
+            align-items: stretch;
+            padding-bottom: 0;
         }
     </style>
 @endsection
@@ -1628,6 +1678,8 @@
                     }
                 }
             });
+
+
         });
     </script>
 
@@ -1685,7 +1737,7 @@
                                         class="typed-second"></span>
                                 </h2>
 
-                                <ul class="list-inline" data-animate="fadeInUp" data-delay="1.4">
+                                {{-- <ul class="list-inline" data-animate="fadeInUp" data-delay="1.4">
                                     <li><a href="{{ route('about') }}" class="btn btn-secondary"
                                             style="padding: 10px 25px !important; margin-top: 25px !important;">@lang('site.about_me')</a>
                                     </li>
@@ -1693,7 +1745,7 @@
                                             style="padding: 10px 25px !important; margin-top: 25px !important;">خدماتنا</a>
                                     </li>
 
-                                </ul>
+                                </ul> --}}
 
                             </div>
                         </div>
@@ -1847,7 +1899,8 @@
 
             <div class="container-fluid">
                 <div class="row">
-                    <h2 class="" data-animate="fadeIn Up" data-delay=".1" style="margin: 0 auto 75px;">امتيازات تجعل
+                    <h2 class="" data-animate="fadeIn Up" data-delay=".1"
+                        style="margin: 0 auto 75px; text-align: center;">امتيازات تجعل
                         شركة المحترف الأفضل على الإطلاق </h2>
                 </div>
                 <div class="row">
@@ -1886,8 +1939,8 @@
 
                             @foreach ($services as $index => $service)
                                 <!--TESTIMONIAL 1 -->
-                                <div class="item">
-                                    <div class="shadow-effect">
+                                <div class="item article-items">
+                                    <div class="shadow-effect aticle-box">
                                         <div class="single-post" data-animate="">
                                             <div class="image-hover-wrap">
                                                 <img class="img-fluid" src="{{ asset($service->image) }}" alt=""
@@ -1908,13 +1961,15 @@
                                             </h4>
 
                                         </div>
-
-                                    </div>
-                                    <div class="testimonial-name" style="background-color: #DF1F26">
+                                        <div class="testimonial-name" style="background-color: #DF1F26;position: absolute;
+                                        bottom: 25px;left: 50%; transform: translateX(-50%);">
                                         <a href="{{ route('service', $service->slug) }}"
                                             class="btn btn-secondary">@lang('site.read_more')<i
                                                 class="fas fa-caret-right"></i></a>
                                     </div>
+                                    </div>
+
+
                                 </div>
                                 <!--END OF TESTIMONIAL 1 -->
                             @endforeach

@@ -405,7 +405,7 @@
 
                                     <input type="date" id="appointment_date" name="appointment_date"
                                         class="form-control datepicker" id="date" placeholder="Appointment Date"
-                                        min="{{ now()->toDateString('Y-m-d') }}" data-parsley-required="true"
+                                        min="{{date('Y-m-d', strtotime('+1 day'))}}" data-parsley-required="true"
                                         data-parsley-required-message="التاريخ مطلوب." data-parsley-trigger="change">
                                     <div class="validate"></div>
                                 </div>
