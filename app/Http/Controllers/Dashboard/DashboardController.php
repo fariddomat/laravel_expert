@@ -27,7 +27,8 @@ class DashboardController extends Controller
         $contact_us=ContactUs::count();
         $workWithUs=WorkWithUs::count();
         $visitors=VisitorInformation::count();
+        $visitors_u=VisitorInformation::distinct('ip')->count();
 
-        return view('dashboard.home', compact('blogs', 'blogCategories', 'services', 'contact_us', 'workWithUs', 'visitors'));
+        return view('dashboard.home', compact('blogs', 'blogCategories', 'services', 'contact_us', 'workWithUs', 'visitors', 'visitors_u'));
     }
 }

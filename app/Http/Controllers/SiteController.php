@@ -56,7 +56,7 @@ class SiteController extends Controller
         $workCategories = WorkCategory::where('showed', 1)->orderBy('position', 'asc')->get();
         $works = Work::with(['category'])->where('showed', 1)->where('show_at_home', 1)->get();
         $blogCategories = BlogCategory::where('showed', 1)->orderBy('position', 'asc')->get();
-        $blogs = Blog::with(['category'])->where('showed', 1)->where('show_at_home', 1)->get();
+        $blogs = Blog::latest()->with(['category'])->where('showed', 1)->where('show_at_home', 1)->get();
         $clients = Client::all();
         $services = Service::where('showed', 1)->where('show_at_home', 1)->limit(3)->get();
         $contactInfo = ContactInfo::find(1);

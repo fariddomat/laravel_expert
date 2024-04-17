@@ -97,7 +97,7 @@
                                 <button type="button" class="btn btn-transparent active p-a-0 pull-left">
                                     <i class="icon-bag "></i>
                                 </button>
-                                <h4 class="m-b-0"><a class="a"  href="{{ route('dashboard.visitors.index') }}">{{ $visitors }}</a> </h4>
+                                <h4 class="m-b-0"><a class="a"  href="{{ route('dashboard.visitors.index') }}">{{ $visitors }} / {{ $visitors_u }}</a> </h4>
                                 <p><a class="a"  href="{{ route('dashboard.visitors.index') }}">زوار الموقع</a> </p>
                             </div>
 

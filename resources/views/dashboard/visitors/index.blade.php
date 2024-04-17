@@ -188,10 +188,10 @@
                                 <tr>
                                     <td>{{ $key + 1 }}</td>
                                     <td>{{ $item->title }}</td>
-                                    <td>{{ views($item)->period($day)->count() }}</td>
-                                    <td>{{ views($item)->period($week)->count() }}</td>
-                                    <td>{{ views($item)->period($month)->count() }}</td>
-                                    <td>{{ views($item)->count() }}</td>
+                                    <td>{{ views($item)->period($day)->count() }} / {{ views($item)->period($day)->unique()->count() }}</td>
+                                    <td>{{ views($item)->period($week)->count() }} / {{ views($item)->period($week)->unique()->count() }}</td>
+                                    <td>{{ views($item)->period($month)->count() }} / {{ views($item)->period($month)->unique()->count() }}</td>
+                                    <td>{{ views($item)->count() }} / {{ views($item)->unique()->count() }}</td>
 
                                 </tr>
                             @endforeach
@@ -226,10 +226,10 @@
                                 <tr>
                                     <td>{{ $key + 1 }}</td>
                                     <td>{{ $item->title }}</td>
-                                    <td>{{ views($item)->period($day)->count() }}</td>
-                                    <td>{{ views($item)->period($week)->count() }}</td>
-                                    <td>{{ views($item)->period($month)->count() }}</td>
-                                    <td>{{ views($item)->count() }}</td>
+                                    <td>{{ views($item)->period($day)->count() }} / {{ views($item)->period($day)->unique()->count() }}</td>
+                                    <td>{{ views($item)->period($week)->count() }} / {{ views($item)->period($week)->unique()->count() }}</td>
+                                    <td>{{ views($item)->period($month)->count() }} / {{ views($item)->period($month)->unique()->count() }}</td>
+                                    <td>{{ views($item)->count() }} / {{ views($item)->unique()->count() }}</td>
 
                                 </tr>
                             @endforeach
