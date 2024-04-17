@@ -10,6 +10,7 @@ use App\Models\Service;
 use Illuminate\Support\Str;
 use Illuminate\Validation\Rule;
 use Illuminate\Support\Facades\Validator;
+
 class ServiceController extends Controller
 {
     public function __construct()
@@ -24,7 +25,7 @@ class ServiceController extends Controller
     }
     public function create()
     {
-        $services=Service::all();
+        $services = Service::all();
 
         return view('dashboard.services.create', compact('services'));
     }
@@ -45,6 +46,7 @@ class ServiceController extends Controller
 
             'image' => ['nullable', 'image', 'mimes:jpeg,png,jpg,webp'],
             'index_image' => ['nullable', 'image', 'mimes:jpeg,png,jpg,webp'],
+            'index_image_mobile' => ['nullable', 'image', 'mimes:jpeg,png,jpg,webp'],
             'index_image_2' => ['nullable', 'image', 'mimes:jpeg,png,jpg,webp'],
 
             'showed' => ['nullable'],
@@ -66,12 +68,12 @@ class ServiceController extends Controller
         // $service->translateOrNew('en')->brief = $validatedData['en']['brief'];
         // $service->translateOrNew('en')->main_title = $validatedData['en']['main_title'];
 
-            $helper = new ImageHelper;
-        $service->parent_id=$request->parent_id;
+        $helper = new ImageHelper;
+        $service->parent_id = $request->parent_id;
         if ($request->has('image')) {
-            $image = $request->file('image');
-            $filename = $image->getClientOriginalName();
-            $service->image = $image->storeAs('photos/services', $filename);
+            // $image = $request->file('image');
+            // $filename = $image->getClientOriginalName();
+            // $service->image = $image->storeAs('photos/services', $filename);
 
             $image = $request->file('image');
             $directory = '/photos/services';
@@ -83,13 +85,20 @@ class ServiceController extends Controller
             $directory = '/photos/services';
             $fullPath = $helper->storeImageInPublicDirectory($image, $directory, 800, 500);
             $service->index_image = $fullPath;
- }
+        }
+
+        if ($request->has('index_image_mobile')) {
+            $image = $request->file('index_image_mobile');
+            $directory = '/photos/services';
+            $fullPath = $helper->storeImageInPublicDirectory($image, $directory);
+            $service->index_image_mobile = $fullPath;
+        }
         if ($request->has('index_image_2')) {
             $image = $request->file('index_image_2');
             $directory = '/photos/services';
             $fullPath = $helper->storeImageInPublicDirectory($image, $directory, 800, 500);
             $service->index_image_2 = $fullPath;
-            }
+        }
         $service->showed  = $request->has('showed') ? 1 : 0;
         $service->show_at_home  = $request->has('show_at_home') ? 1 : 0;
         $service->slug = Str::slug($validatedData['slug'], '-');
@@ -101,7 +110,7 @@ class ServiceController extends Controller
     public function edit(Service $service)
     {
         // dd(true);
-        $services=Service::all();
+        $services = Service::all();
         return view('dashboard.services.edit', compact('service', 'services'));
     }
 
@@ -122,6 +131,7 @@ class ServiceController extends Controller
 
             'image' => ['nullable', 'image', 'mimes:jpeg,png,jpg,webp'],
             'index_image' => ['nullable', 'image', 'mimes:jpeg,png,jpg,webp'],
+            'index_image_mobile' => ['nullable', 'image', 'mimes:jpeg,png,jpg,webp'],
             'index_image_2' => ['nullable', 'image', 'mimes:jpeg,png,jpg,webp'],
 
             'showed' => ['nullable'],
@@ -138,9 +148,9 @@ class ServiceController extends Controller
         // $service->translate('en')->brief = $validatedData['en']['brief'];
         // $service->translate('en')->main_title = $validatedData['en']['main_title'];
 
-        $service->parent_id=$request->parent_id;
+        $service->parent_id = $request->parent_id;
 
-            $helper = new ImageHelper;
+        $helper = new ImageHelper;
         if ($request->has('image')) {
 
             $helper->removeImageInPublicDirectory($service->image);
@@ -157,7 +167,13 @@ class ServiceController extends Controller
             $fullPath = $helper->storeImageInPublicDirectory($image, $directory, 800, 500);
             $service->index_image = $fullPath;
         }
-
+        if ($request->has('index_image_mobile')) {
+            $helper->removeImageInPublicDirectory($service->index_image_mobile);
+            $image = $request->file('index_image_mobile');
+            $directory = '/photos/services';
+            $fullPath = $helper->storeImageInPublicDirectory($image, $directory);
+            $service->index_image_mobile = $fullPath;
+        }
         if ($request->has('index_image_2')) {
             $helper->removeImageInPublicDirectory($service->index_image_2);
             $image = $request->file('index_image_2');
@@ -185,9 +201,9 @@ class ServiceController extends Controller
 
     public function destroyIndexImage2(Service $service)
     {
-        if ($service->index_image_2) {
-            Storage::disk('local')->delete($service->index_image_2);
-            $service->index_image_2 = null;
+        if ($service->index_image_mobile) {
+            Storage::disk('local')->delete($service->index_image_mobile);
+            $service->index_image_mobile = null;
             $service->save();
         }
     }

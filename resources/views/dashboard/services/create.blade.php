@@ -116,6 +116,7 @@
                         <input type="file" name="index_image" class="form-control logo">
                     </div>
 
+
                     <div class="form-group mb-3">
                         <img src="" style="width: 300px; display: none;" class="img-thumbnail logo-preview"
                             alt="">
@@ -123,14 +124,26 @@
 
 
                     <div class="form-group mb-3">
-                        <label>الصورة الرئيسية 2</label>
-                        <input type="file" name="index_image_2" class="form-control logo2">
+                        <label>الصورة الرئيسية (موبايل)</label>
+                        <input type="file" name="index_image_mobile" class="form-control logo2">
                     </div>
+
 
                     <div class="form-group mb-3">
                         <img src="" style="width: 300px; display: none;" class="img-thumbnail logo-preview-2"
                             alt="">
                     </div>
+
+{{--
+                    <div class="form-group mb-3">
+                        <label>الصورة الرئيسية 2</label>
+                        <input type="file" name="index_image_2" class="form-control logo2">
+                    </div> --}}
+
+                    {{-- <div class="form-group mb-3">
+                        <img src="" style="width: 300px; display: none;" class="img-thumbnail logo-preview-2"
+                            alt="">
+                    </div> --}}
 
                     <div class="form-group mb-3">
                         <label>الخدمة التابع لها</label>

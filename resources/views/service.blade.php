@@ -22,7 +22,30 @@
             padding-top: 20px;
         }
 
+        .bg-image-index {
+            padding-right: 25px;
+            padding-top: 50px;
+            min-height: 600px;
+            background-image: url({{ asset($service->index_image) }});
+            background-size: cover !important;
+            background-color: rgba(255, 255, 255, 0.7) !important;
+            background-blend-mode: lighten !important;
+            ;
+            box-shadow: inset 0 -8px 8px #fff !important;
+        }
+
         @media (max-width: 480px) {
+            .bg-image-index {
+            padding-right: 25px;
+            padding-top: 50px;
+            min-height: 600px;
+            background-image: url({{ asset($service->index_image_mobile) }});
+            background-size: cover !important;
+            background-color: rgba(255, 255, 255, 0.7) !important;
+            background-blend-mode: lighten !important;
+            ;
+            box-shadow: inset 0 -8px 8px #fff !important;
+        }
             .serviceRow {
                 padding: 0 5px !important;
             }
@@ -289,13 +312,7 @@
                     <div class="row serviceSec pb-7" style="" data-animate="fadeInDown" data-delay="1.4">
                         @if ($service->parent_id == '1')
                             <div data-animate="slideInRight" data-delay=".5">
-                                <div class="col-md-12 wow "
-                                    style="padding-right: 25px; padding-top:50px;
-                                            background-image: url({{ asset($service->index_image) }});
-                                            background-size: cover !important;
-                                            min-height: 600px !imporant;
-                                            background-color: rgba(255,255,255,0.7) !important;
-                                            background-blend-mode: lighten !important; ;box-shadow: inset 0 -8px 8px #fff !important;">
+                                <div class="col-md-12 wow bg-image-index" style="">
                                     <h2 class="col-md-12 pt-2 pb-2" data-animate="fadeInDown" data-delay="1.4"
                                         style="font-size: 3rem;text-align: center">{{ $service->title }}</h2>
 

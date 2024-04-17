@@ -197,17 +197,17 @@
 
 
                     <div class="form-group mb-3">
-                        <label>الصورة الرئيسية 2
+                        <label>الصورة الرئيسية (موبايل)
                         </label>
-                        <input type="file" name="index_image_2" class="form-control logo2">
+                        <input type="file" name="index_image_mobile" class="form-control logo2">
                     </div>
 
                     <div class="form-group mb-3">
-                        @if ($service->index_image_2)
+                        @if ($service->index_image_mobile)
                             <div class="img-wrap del2">
                                 <span id="delete-index-img-2" class="close" data-bs-toggle="tooltip" data-bs-placement="top"
                                     title="Delete">&times;</span>
-                                <img id="index-img-2" src="{{ asset($service->index_image_2) }}" style="width: 300px;"
+                                <img id="index-img-2" src="{{ asset($service->index_image_mobile) }}" style="width: 300px;"
                                     class="img-thumbnail logo-preview-2" alt="">
                             </div>
                         @else

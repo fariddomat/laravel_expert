@@ -19,6 +19,9 @@ class CreateServicesTable extends Migration
             $table->string('slug');
             $table->string('image')->nullable();
             $table->string('index_image')->nullable();
+            // index_image_mobile
+            $table->string('index_image_mobile')->nullable();
+
             $table->string('index_image_2')->nullable();
             $table->boolean('showed');
             $table->boolean('show_at_home');
