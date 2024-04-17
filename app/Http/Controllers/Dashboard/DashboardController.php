@@ -16,7 +16,7 @@ class DashboardController extends Controller
 
     public function __construct()
     {
-        $this->middleware(['role:superadministrator|blogger']);
+        $this->middleware(['role:superadministrator|blogger|hr']);
     }
 
     public function home()

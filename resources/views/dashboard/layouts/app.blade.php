@@ -122,6 +122,7 @@
                         </a>
                     </li> --}}
                     {{-- workWithUsActive --}}
+
                     <li class="nav-item">
                         <a class="nav-link @yield('workWithUsActive')" href="{{ route('dashboard.workWithUs.index') }}">
                             استمارة التوظيف
@@ -196,6 +197,15 @@
                         </a>
                     </li> --}}
                 @endif
+
+                @if ( auth()->user()->hasRole(['hr']))
+                <li class="nav-item">
+                    <a class="nav-link @yield('workWithUsActive')" href="{{ route('dashboard.workWithUs.index') }}">
+                        استمارة التوظيف
+                    </a>
+                </li>
+                @endif
+                @if ( auth()->user()->hasRole(['superadministrator','blogger']))
                 <li class="nav-item">
                     <a class="nav-link @yield('blogcategoriesActive')" href="{{ route('dashboard.blogcategories.index') }}">
                         تصنيفات المدونة
@@ -211,6 +221,8 @@
                         آراء العملاء
                     </a>
                 </li>
+
+                @endif
                 @if (auth()->user()->hasRole('superadministrator'))
                     {{-- <li class="nav-item">
                         <a class="nav-link @yield('blogPDFActive')" href="{{ route('dashboard.blogPDF.create') }}">

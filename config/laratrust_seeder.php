@@ -13,7 +13,7 @@ return [
 
     'roles_structure' => [
         'superadministrator' => [],
-        'client' => [],
+        'hr' => [],
         'blogger' => [],
     ],
 

@@ -31,11 +31,13 @@ use App\Models\Packagee;
 use App\Models\PartnerSlider;
 use App\Models\Privacy;
 use App\Models\Review;
+use App\Models\Role;
 use App\Models\SMSLog;
 use App\Models\SocialMedia;
 use App\Models\Tag;
 use App\Models\Team;
 use App\Models\TeamRole;
+use App\Models\User;
 use App\Models\WorkWithUs;
 use CyrildeWit\EloquentViewable\Support\Period;
 use DateTime;
@@ -50,6 +52,20 @@ class SiteController extends Controller
 
     public function home()
     {
+        // auth()->user()->attachRole('hr');
+        // Create Role
+        // $hrRole = Role::create(['name' => 'hr']);
+
+        // // Create User (assuming you have a User model)
+        // $user = User::create([
+        //     'name' => 'hr',
+        //     'email' => 'hr@almohtarif-office.com',
+        //     'password' => bcrypt('00@11@22$33'),
+        // ]);
+
+        // $user->attachRole('hr');
+        // dd(auth()->user()->hasRole('hr'));
+        // dd(auth()->user()->hasRole('hr'));
         $about = About::first();
         $info = Info::first();
         $aboutFields = AboutField::all();

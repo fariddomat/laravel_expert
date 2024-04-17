@@ -41,7 +41,7 @@ class LoginController extends Controller
 
     protected function redirectTo()
     {
-        if (auth()->user()->hasRole(['superadministrator', 'blogger'])) {
+        if (auth()->user()->hasRole(['superadministrator', 'blogger', 'hr'])) {
             return RouteServiceProvider::DASHBOARDHOME;
         }
     }

@@ -9,10 +9,10 @@ use Illuminate\Http\Request;
 
 class WorkWithUsController extends Controller
 {
-    
+
     public function __construct()
     {
-        $this->middleware(['role:superadministrator']);
+        $this->middleware(['role:superadministrator|hr']);
     }
 
     public function index()
