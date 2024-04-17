@@ -110,7 +110,8 @@
 
 <body>
     <!-- Preloader -->
-    <div class="preLoader"></div>
+    <div class="preLoader" style="  background: #fff;">
+    </div>
 
     <!-- Main header -->
     <header class="header">
