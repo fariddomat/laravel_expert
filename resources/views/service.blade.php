@@ -23,13 +23,15 @@
         }
 
         @media (max-width: 480px) {
-            .serviceRow{
+            .serviceRow {
                 padding: 0 5px !important;
             }
-            .serviceSection{
+
+            .serviceSection {
                 margin-top: 1rem !important;
                 padding: 15px 0 !important;
             }
+
             table {
                 max-width: 100%;
             }
@@ -297,6 +299,13 @@
                                     <h2 class="col-md-12 pt-2 pb-2" data-animate="fadeInDown" data-delay="1.4"
                                         style="font-size: 3rem;text-align: center">{{ $service->title }}</h2>
 
+                                    @if ($service->subServices->count() > 0)
+                                        <div class="col-md-12 text-center">
+                                            <a href="#serviceSerivces" class="btn btn-secondary"
+                                                style="padding: 10px 25px !important; margin-bottom: 25px !important;">خدماتنا</a>
+
+                                        </div>
+                                    @endif
                                     <div class="" style="">{!! $service->brief !!}</div>
                                     <div class="row" style="margin-top:35px">
                                         @foreach ($service->indexItems as $item)
@@ -318,6 +327,13 @@
                             <h2 class="col-md-12 pt-2 pb-2" data-animate="fadeInDown" data-delay="1.4"
                                 style="font-size: 3rem;text-align: center">{{ $service->title }}</h2>
 
+                            @if ($service->subServices->count() > 0)
+                                <div class="col-md-12 text-center">
+                                    <a href="#serviceSerivces" class="btn btn-secondary"
+                                        style="padding: 10px 25px !important; margin-bottom: 25px !important;">خدماتنا</a>
+
+                                </div>
+                            @endif
                             <div class="col-md-6 wow " style="margin-top:50px ;" data-animate="slideInRight"
                                 data-delay=".5">
                                 <div>{!! $service->brief !!}</div>
@@ -355,6 +371,13 @@
                             <h2 class="col-md-12 pt-2 pb-2" data-animate="fadeInDown" data-delay="1.4"
                                 style="font-size: 3rem;text-align: center">{{ $service->title }}</h2>
 
+                            @if ($service->subServices->count() > 0)
+                                <div class="col-md-12 text-center">
+                                    <a href="#serviceSerivces" class="btn btn-secondary"
+                                        style="padding: 10px 25px !important; margin-bottom: 25px !important;">خدماتنا</a>
+
+                                </div>
+                            @endif
                             <div class="col-md-12 wow " style="padding:0 2rem; margin-top:50px" data-animate="slideInRight"
                                 data-delay=".5">
                                 <div>{!! $service->brief !!}</div>
@@ -419,13 +442,7 @@
                             @endforeach
                         </div>
 
-                    @if ($service->subServices->count() > 0)
-                   <div class="col-md-12 text-center">
-                    <a href="#serviceSerivces" class="btn btn-secondary"
-                    style="padding: 10px 25px !important; margin-top: 25px !important;">خدماتنا</a>
 
-                   </div>
-                    @endif
                     </div>
 
 
@@ -485,8 +502,8 @@
                     <!-- logo carousel section close -->
 
                     @if ($service->subServices->count() > 0)
-                        <section id="serviceSerivces" class="testimonials blog" dir="ltr" data-animate="fadeInUp" data-delay="1"
-                            style="padding-top: 75px;">
+                        <section id="serviceSerivces" class="testimonials blog" dir="ltr" data-animate="fadeInUp"
+                            data-delay="1" style="padding-top: 75px;">
                             <div class="container">
                                 <div class="row">
                                     <div class="col-sm-12">
@@ -503,7 +520,7 @@
                                                             <div class="image-hover-wrap">
 
                                                                 <img class="img-fluid" src="{{ asset($service->image) }}"
-                                                                    alt=""  loading="lazy">
+                                                                    alt="" loading="lazy">
 
 
                                                                 <div
