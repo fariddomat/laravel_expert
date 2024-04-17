@@ -2,10 +2,35 @@
 
 @section('title', trans('site.about'))
 @section('styles')
+
     <style>
-        .Team2{
+        @media (max-width: 480px) {
+            .card {
+                width: 252px;
+                height: 324px;
+                perspective: 1000px;
+                cursor: pointer;
+                border-radius: 10px;
+                background-color: unset;
+                border: unset;
+                margin-bottom: 35px;
+                margin: 0 auto;
+                margin-bottom: 15px;
+            }
+
+            .card img {
+                width: 100%;
+                height: 100%;
+                padding: 0;
+                border-radius: 10px 10px 0 0;
+            }
+        }
+    </style>
+    <style>
+        .Team2 {
             display: none;
         }
+
         .headsection {
             background: url("http://127.0.0.1:8000/home/img/travel.jpg");
             background-attachment: fixed;
@@ -326,138 +351,191 @@
         }
     </style>
 
-<style>
-    .sspan {
-        position: absolute;
-        border-radius: 100vmax;
-    }
-
-    .widget-categories span {
-        position: relative;
-    }
-
-    .top {
-        top: 0;
-        left: 0;
-        width: 0;
-        height: 5px;
-        background: linear-gradient(90deg,
-                transparent 50%,
-                rgba(255, 49, 49, 0.5),
-                rgb(255, 49, 49));
-    }
-
-    .bottom {
-        right: 0;
-        bottom: 0;
-        height: 5px;
-        background: linear-gradient(90deg,
-                rgba(255, 49, 49, 0.5),
-                rgb(255, 49, 49), transparent 50%);
-    }
-
-    .right {
-        top: 0;
-        right: 0;
-        width: 5px;
-        height: 0;
-        background: linear-gradient(180deg,
-                transparent 30%,
-                rgba(255, 49, 49, 0.5),
-                rgb(255, 49, 49));
-    }
-
-    .left {
-        left: 0;
-        bottom: 0;
-        width: 5px;
-        height: 0;
-        background: linear-gradient(180deg,
-                rgba(255, 49, 49, 0.5),
-                rgb(255, 49, 49),
-                transparent 70%);
-    }
-
-    .top {
-        animation: animateTop 3s ease-in-out infinite;
-    }
-
-    .bottom {
-        animation: animateBottom 3s ease-in-out infinite;
-    }
-
-    .right {
-        animation: animateRight 3s ease-in-out infinite;
-    }
-
-    .left {
-        animation: animateLeft 3s ease-in-out infinite;
-    }
-
-    @keyframes animateTop {
-        25% {
-            width: 100%;
-            opacity: 1;
+    <style>
+        .sspan {
+            position: absolute;
+            border-radius: 100vmax;
         }
 
-        30%,
-        100% {
-            opacity: 0;
+        .widget-categories span {
+            position: relative;
         }
-    }
 
-    @keyframes animateBottom {
-
-        0%,
-        50% {
-            opacity: 0;
+        .top {
+            top: 0;
+            left: 0;
             width: 0;
+            height: 5px;
+            background: linear-gradient(90deg,
+                    transparent 50%,
+                    rgba(255, 49, 49, 0.5),
+                    rgb(255, 49, 49));
         }
 
-        75% {
-            opacity: 1;
-            width: 100%;
-        }
-
-        76%,
-        100% {
-            opacity: 0;
-        }
-    }
-
-    @keyframes animateRight {
-
-        0%,
-        25% {
-            opacity: 0;
-            height: 0;
-        }
-
-        50% {
-            opacity: 1;
-            height: 100%;
-        }
-
-        55%,
-        100% {
-            height: 100%;
-            opacity: 0;
-        }
-    }
-
-    @keyframes animateLeft {
-
-        0%,
-        75% {
-            opacity: 0;
+        .bottom {
+            right: 0;
             bottom: 0;
-            height: 0;
+            height: 5px;
+            background: linear-gradient(90deg,
+                    rgba(255, 49, 49, 0.5),
+                    rgb(255, 49, 49), transparent 50%);
         }
 
-        100% {
-            opacity: 1;
-            height: 100%;
+        .right {
+            top: 0;
+            right: 0;
+            width: 5px;
+            height: 0;
+            background: linear-gradient(180deg,
+                    transparent 30%,
+                    rgba(255, 49, 49, 0.5),
+                    rgb(255, 49, 49));
         }
+
+        .left {
+            left: 0;
+            bottom: 0;
+            width: 5px;
+            height: 0;
+            background: linear-gradient(180deg,
+                    rgba(255, 49, 49, 0.5),
+                    rgb(255, 49, 49),
+                    transparent 70%);
+        }
+
+        .top {
+            animation: animateTop 3s ease-in-out infinite;
+        }
+
+        .bottom {
+            animation: animateBottom 3s ease-in-out infinite;
+        }
+
+        .right {
+            animation: animateRight 3s ease-in-out infinite;
+        }
+
+        .left {
+            animation: animateLeft 3s ease-in-out infinite;
+        }
+
+        @keyframes animateTop {
+            25% {
+                width: 100%;
+                opacity: 1;
+            }
+
+            30%,
+            100% {
+                opacity: 0;
+            }
+        }
+
+        @keyframes animateBottom {
+
+            0%,
+            50% {
+                opacity: 0;
+                width: 0;
+            }
+
+            75% {
+                opacity: 1;
+                width: 100%;
+            }
+
+            76%,
+            100% {
+                opacity: 0;
+            }
+        }
+
+        @keyframes animateRight {
+
+            0%,
+            25% {
+                opacity: 0;
+                height: 0;
+            }
+
+            50% {
+                opacity: 1;
+                height: 100%;
+            }
+
+            55%,
+            100% {
+                height: 100%;
+                opacity: 0;
+            }
+        }
+
+        @keyframes animateLeft {
+
+            0%,
+            75% {
+                opacity: 0;
+                bottom: 0;
+                height: 0;
+            }
+
+            100% {
+                opacity: 1;
+                height: 100%;
+            }
+        }
+    </style>
+
+<style>
+    .card {
+            width: 252px;
+            height: 410px;
+            perspective: 1000px;
+            cursor: pointer;
+            border-radius: 10px;
+            background-color: unset;
+            border: unset;
+            margin-bottom: 35px;
+            margin: 0 auto;
+            margin-bottom: 35px;
+            box-shadow: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22);
+        }
+
+        .card img {
+            width: 100%;
+            height: 100%;
+            padding: 0;
+            border-radius: 10px 10px 0 0;
+            margin-bottom: 10px
+        }
+
+
+        .card-face {
+            border-bottom-left-radius: 15px 30% !important;
+        }
+    @media (max-width: 480px) {
+        .card {
+            width: 252px;
+            height: 390px;
+            perspective: 1000px;
+            cursor: pointer;
+            border-radius: 10px;
+            background-color: unset;
+            border: unset;
+            margin-bottom: 35px;
+            margin: 0 auto;
+            margin-bottom: 15px;
+            box-shadow: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22);
+        }
+
+        .card img {
+            width: 100%;
+            height: 100%;
+            padding: 0;
+            border-radius: 10px 10px 0 0;
+            margin-bottom: 10px;
+        }
+
     }
 </style>
 @endsection
@@ -541,7 +619,7 @@
     <!-- Page title  -->
     <section class="page-title-wrap position-relative bg-light" data-bg-img="{{ asset($info->about_header_image) }}"
         data-animate="fadeInUp" data-delay="1.1">
-       {{-- <div id="particles_js"></div> --}}
+        {{-- <div id="particles_js"></div> --}}
         <div class="container container-top">
             <div class="row">
                 <div class="col-11">
@@ -596,10 +674,10 @@
                         </div>
                     </div>
                 </div>
-            <span class="sspan top"></span>
-            <span class="sspan right"></span>
-            <span class="sspan bottom"></span>
-            <span class="sspan left"></span>
+                <span class="sspan top"></span>
+                <span class="sspan right"></span>
+                <span class="sspan bottom"></span>
+                <span class="sspan left"></span>
 
             </div>
 
@@ -626,7 +704,8 @@
                     <ul class="nav nav-pills" style="  display: flex;
                     justify-content: center;">
                         <li class="nav-item">
-                            <a class="nav-link btn btn-dark ml-2" style="color: #fff !important">{{ $teams[0]->teamRole->name }}</a>
+                            <a class="nav-link btn btn-dark ml-2"
+                                style="color: #fff !important">{{ $teams[0]->teamRole->name }}</a>
                         </li>
                     </ul>
                 </div>
@@ -638,7 +717,7 @@
                     <div class="card">
                         <div class="card-container">
                             <div class="card-face front-face">
-                                <img src="{{ asset($teams[0]->image) }}" alt style="padding: 20px"  loading="lazy">
+                                <img src="{{ asset($teams[0]->image) }}" alt style="padding: 20px" loading="lazy">
                                 {{ $teams[0]->name }}
                                 <div style="padding: 25px">{{ $teams[0]->title }}</div>
                             </div>
@@ -670,7 +749,7 @@
                         <div class="swiper-slide single-team-slide">
                             <!-- Author info -->
                             <div class="d-flex align-items-center author-info-wrap">
-                                    <a class="nav-link btn btn-dark ml-2 @if ($index == 1) active @endif"
+                                <a class="nav-link btn btn-dark ml-2 @if ($index == 1) active @endif"
                                     data-filter="{{ $teamRole->name }}" href="#">{{ $teamRole->name }}</a>
                             </div>
 
@@ -699,12 +778,13 @@
                         <div class="card">
                             <div class="card-container">
                                 <div class="card-face front-face">
-                                    <img src="{{ asset($team->image) }}" alt style="padding: 20px"  loading="lazy">
+                                    <img src="{{ asset($team->image) }}" alt style="padding: 20px" loading="lazy">
                                     {{ $team->name }}
                                     <div style="padding: 25px">{{ $team->title }}</div>
                                 </div>
-                                <div class="card-Face back-face" style="overflow-y: scroll;
-                                max-height: 345px;">
+                                <div class="card-Face back-face"
+                                    style="
+                                max-height: 380px;overflow-y: scroll;">
                                     <div class="container about">
 
                                         <p>{!! $team->description !!}</p>
