@@ -20,7 +20,12 @@
     <script src="{{ asset('dashboard/js/contactUs.js') }}"></script>
     <script src="https://cdn.datatables.net/v/bs5/dt-2.0.3/b-3.0.1/r-3.0.1/rr-1.5.0/datatables.min.js" defer></script>
 
-    <script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.7/pdfmake.min.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.7/vfs_fonts.js" defer></script>
+    <script
+    src="https://cdn.datatables.net/v/bs5/jszip-3.10.1/dt-2.0.3/b-3.0.1/b-colvis-3.0.1/b-html5-3.0.1/b-print-3.0.1/r-3.0.1/rr-1.5.0/datatables.min.js"
+    defer></script><script defer>
+
         $(document).ready(function() {
             $('#contactsTable').DataTable({
                 responsive: true,
@@ -31,6 +36,24 @@
                 language: {
                     url: '//cdn.datatables.net/plug-ins/2.0.3/i18n/ar.json',
                 },
+                dom: 'Bfrtip',
+                buttons: [{
+                        extend: 'print',
+                        exportOptions: {
+                            columns: 'th:not(:last-child)'
+                        }
+                    },
+                    {
+                        extend: 'excelHtml5',
+                        exportOptions: {
+                            columns: 'th:not(:last-child)'
+                        },
+                        customize: function(xlsx) {
+                            var sheet = xlsx.xl.worksheets['sheet1.xml'];
+                            $('sheet', sheet).attr('rightToLeft', 'true');
+                        }
+                    }
+                ]
             });
         });
     </script>
@@ -88,16 +111,16 @@
                                         No Services
                                     @endif
                                 </td>
-                                        <td>{{ $contact->start_at }}</td>
-                                        <td>{{ $contact->phone }}</td>
-                                        <td>{{ $contact->contact_method }}</td>
-                                        <td>{{ $contact->dob }}</td>
-                                        <td>{{ $contact->city }}</td>
-                                        <td>{{ $contact->cert_degree }}</td>
+                                <td>{{ $contact->start_at }}</td>
+                                <td>{{ $contact->phone }}</td>
+                                <td>{{ $contact->contact_method }}</td>
+                                <td>{{ $contact->dob }}</td>
+                                <td>{{ $contact->city }}</td>
+                                <td>{{ $contact->cert_degree }}</td>
 
-                                <td>{{ $contact->message }}</td>
                                 <td>{{ $contact->created_at->format('Y-m-d H:i:s') }}</td>
-                                <td>{{ $contact->ip }}</td>
+
+                                <td>{{ $contact->message }}</td><td>{{ $contact->ip }}</td>
                                 <td>
                                     @if ($contact->status == 1)
                                         <button type="button"
