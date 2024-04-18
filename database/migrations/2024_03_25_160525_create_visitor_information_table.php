@@ -16,7 +16,7 @@ class CreateVisitorInformationTable extends Migration
         Schema::create('visitor_information', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('ip')->nullable();
-            $table->string('user_agent')->nullable();
+            $table->text('user_agent')->nullable();
             $table->string('url')->nullable();
             $table->string('device')->nullable();
             $table->string('browser')->nullable();

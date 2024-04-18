@@ -44,6 +44,7 @@ class VisitorInformationMiddleware
         ];
 
         if (in_array($url, $allowedUrls)) {
+          try {
             DB::table('visitor_information')->insert([
                 'ip' => $ip,
                 'user_agent' => $userAgent,
@@ -52,6 +53,9 @@ class VisitorInformationMiddleware
                 'browser' => $browser,
                 'created_at' => now(),
             ]);
+          } catch (\Throwable $th) {
+            //throw $th;
+          }
         }
 
         // Pass the request to the next middleware or controller

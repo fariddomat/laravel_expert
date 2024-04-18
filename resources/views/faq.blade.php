@@ -105,7 +105,7 @@
                                         @else
                                         false @endif"
                                         aria-controls="collapse10{{ $index + 1 }}">
-                                        {{ $index + 1 }} # {{ $faq->question }}
+                                        {{ $index + 1 }} - {{ $faq->question }}
                                         <i class="fas fa-chevron-down accordion-controls-icon open-icon"
                                             @if ($index == 0) style="display: none" @endif></i>
                                         <i class="fas fa-chevron-up accordion-controls-icon close-icon"
