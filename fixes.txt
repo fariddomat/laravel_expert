@@ -71,4 +71,6 @@ add Lazy load to all images
 حساب للتوظيف#
 loading with logo#
 
-locations in home
+locations in home #
+replace # with - #
+fixe email redirect #

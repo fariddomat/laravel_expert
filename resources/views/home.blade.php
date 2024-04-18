@@ -2000,6 +2000,13 @@
                         <span data-animate="fadeInUp" data-delay=".2"><a class="btn btn-secondary"
                                 href="{{ route('contact') }}">أحجز موعدك الآن</a></li>
                         </span>
+                        <div class="col-md-12">
+                            <p data-animate="fadeInUp" data-delay="1.5"><i class="fa fa-map-marker-alt"></i>
+                                <b>الموقع:</b>
+                                <div  data-animate="fadeInUp" data-delay="1.6"> {!! $contactInfo->location !!}</div>
+
+                            </p>
+                        </div>
                     </div>
 
 
