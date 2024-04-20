@@ -1651,6 +1651,39 @@
             padding-bottom: 0;
         }
     </style>
+
+<style>
+    .tm-accordion .card:first-child {
+        /* border-radius: 15px 15px 0 0; */
+    }
+
+    .tm-accordion .card {
+
+        margin-bottom: 15px;
+    }
+
+    .tm-accordion .card .card-header {
+        background-color: #fff;
+        border-top: none;
+    }
+
+    .tm-accordion .card .card-header .title {
+        padding: 1rem 2rem;
+        margin: 0;
+        position: relative;
+    }
+
+    .tm-accordion .card .card-header .title .accordion-controls-icon {
+        opacity: 0.4;
+        position: absolute;
+        left: 20px;
+        top: 50%;
+        -webkit-transform: translateY(-50%);
+        -ms-transform: translateY(-50%);
+        transform: translateY(-50%);
+        transition: all 0.4s ease-in-out;
+    }
+</style>
 @endsection
 @section('scripts')
     <script>
@@ -1708,6 +1741,28 @@
     <script defer>
         $('.counter').countUp({
             triggerOnce: true
+        });
+    </script>
+     <script>
+        $(document).ready(function() {
+            $('#accordion100').on('shown.bs.collapse', function(e) {
+                $(e.target).prev().find('.open-icon').hide();
+                $(e.target).prev().find('.close-icon').show();
+            }).on('hidden.bs.collapse', function(e) {
+                $(e.target).prev().find('.open-icon').show();
+                $(e.target).prev().find('.close-icon').hide();
+            });
+        });
+    </script>
+    <script>
+        $(document).ready(function() {
+            $('#accordion100').on('shown.bs.collapse', function(e) {
+                var target = $(e.target); // Get the target section
+                var offset = target.prev().height(); // Calculate offset based on previous section's height
+                $('html, body').animate({
+                    scrollTop: target.offset().top - offset - 90
+                }, 500); // Animate scrolling with duration (adjust as needed)
+            });
         });
     </script>
 
@@ -2001,10 +2056,36 @@
                                 href="{{ route('contact') }}">أحجز موعدك الآن</a></li>
                         </span>
                         <div class="col-md-12">
-                            <p data-animate="fadeInUp" data-delay="1.5"><i class="fa fa-map-marker-alt"></i>
-                                <b>الموقع:</b>
-                                <div  data-animate="fadeInUp" data-delay="1.6"> {!! $contactInfo->location !!}</div>
+                            <p data-animate="fadeInUp" data-delay="1.5">
+                                <h2 style="margin-bottom: 25px"><i class="fa fa-map-marker-alt" style="font-size: 30px; margin-left: 15px"></i>الموقع:</h2>
+                                    <div id="accordion100" class="tm-accordion">
+                                        @foreach ($locations as $index => $location)
+                                            <div class="card" {{-- data-animate="fadeInUp" data-delay="{{ 0.1 + $index / 8 }}" --}}>
+                                                <div class="card-header p-0" id="heading10{{ $index + 1 }}">
+                                                    <h5 class="title" data-toggle="collapse" data-target="#collapse10{{ $index + 1 }}"
+                                                        aria-expanded="@if ($index == 0) true
+                                                        @else
+                                                        false @endif"
+                                                        aria-controls="collapse10{{ $index + 1 }}">
+                                                        {{ $index + 1 }} - {{ $location->name }}
+                                                        <i class="fas fa-chevron-down accordion-controls-icon open-icon"
+                                                            @if ($index == 0) style="display: none" @endif></i>
+                                                        <i class="fas fa-chevron-up accordion-controls-icon close-icon"
+                                                            @if ($index != 0) style="display: none" @endif
+                                                            aria-hidden="true"></i>
 
+                                                    </h5>
+                                                </div>
+                                                <div id="collapse10{{ $index + 1 }}"
+                                                    class="collapse @if ($index == 0) show @endif"
+                                                    aria-labelledby="heading10{{ $index + 1 }}" data-parent="#accordion100">
+                                                    <div class="card-body">
+                                                        {!! $location->description !!}</div>
+                                                </div>
+                                            </div>
+                                        @endforeach
+
+                                    </div>
                             </p>
                         </div>
                     </div>
@@ -2028,7 +2109,23 @@
         </div>
     </section>
     <!-- End Servers -->
+{{--
+    <section class="pt-2 pb-7 bg-light" style="padding-bottom: 200px !important; background-image: url({{ asset('home/img/who.jpg') }})">
+        <div class="container">
+            <div class="section-title text-center">
+                <div class="row">
+                    <div class="col-lg-6">
+                        <h2 data-animate="fadeInUp" data-delay=".1">من نحن</h2>
+                        <h4>نحن فريق من الشباب المدربين والمؤهلين لنضع كامل خبرتنا بين أيديكم
 
+                            مع الإجابة على كامل استفساراتكم وفي أي وقت</h4>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+     --}}
 
 
     <!-- Reviews -->

@@ -71,6 +71,11 @@
                 </div> --}}
 
 
+                <div class="form-group mr-3 mb-3">
+                    <label>الموقع</label>
+                    <a href="{{ route('dashboard.locations.index') }}" class="btn btn-primary">Location</a>
+                </div>
+
                     <div class="form-group mb-3">
                         <label>الصورة الرئيسية</label>
                         <a href="{{ route('dashboard.homeinfoSliderImages.index') }}" class="btn btn-primary">Image</a>

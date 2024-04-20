@@ -47,7 +47,7 @@ Route::group(
         Route::get('/services/{service:slug}', 'SiteController@service')->name('service');
         Route::get('/services/{service:slug}/order', 'SiteController@orderService')->name('service.order');
         Route::post('/services/{service:slug}/order', 'SiteController@storeOrderService')->name('service.order.store');
-      
+
         Route::get('/works/{work:slug}', 'SiteController@work')->name('work');
         Route::get('/blogs', 'SiteController@blogs')->name('blogs');
         Route::get('/blogs/{blog:slug}', 'SiteController@blog')->name('blog');
@@ -78,6 +78,7 @@ Route::group(['prefix' => '/dashboard', 'middleware' => ['auth', 'setArLocale'],
     Route::resource('package_services', 'Dashboard\PackageServiceController')->except(['index', 'create', 'edit']);
 
     Route::resource('visitors', 'Dashboard\VisitorController');
+    Route::resource('locations', 'Dashboard\LocationController');
 
     Route::resource('counters', 'Dashboard\CounterController');
     Route::resource('reviews', 'Dashboard\ReviewController');

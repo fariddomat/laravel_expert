@@ -36,28 +36,7 @@
     </style>
 @endsection
 @section('scripts')
-    <script>
-        $(document).ready(function() {
-            $('#accordion100').on('shown.bs.collapse', function(e) {
-                $(e.target).prev().find('.open-icon').hide();
-                $(e.target).prev().find('.close-icon').show();
-            }).on('hidden.bs.collapse', function(e) {
-                $(e.target).prev().find('.open-icon').show();
-                $(e.target).prev().find('.close-icon').hide();
-            });
-        });
-    </script>
-    <script>
-        $(document).ready(function() {
-            $('#accordion100').on('shown.bs.collapse', function(e) {
-                var target = $(e.target); // Get the target section
-                var offset = target.prev().height(); // Calculate offset based on previous section's height
-                $('html, body').animate({
-                    scrollTop: target.offset().top - offset - 90
-                }, 500); // Animate scrolling with duration (adjust as needed)
-            });
-        });
-    </script>
+   om
 @endsection
 @section('content')
 

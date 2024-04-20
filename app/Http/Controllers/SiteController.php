@@ -27,6 +27,7 @@ use App\Models\GlobalSMS;
 use App\Models\SMS;
 use App\Helpers\SMS as SMSHelper;
 use App\Models\HomeSlider;
+use App\Models\Location;
 use App\Models\Packagee;
 use App\Models\PartnerSlider;
 use App\Models\Privacy;
@@ -84,7 +85,8 @@ class SiteController extends Controller
         $packages = Packagee::all();
         $counters = Counter::all();
         $reviews = Review::latest()->get();
-        return view('home', compact('info', 'about', 'aboutFields', 'workCategories', 'works', 'clients', 'blogs', 'blogCategories', 'services', 'contactInfo', 'allServices', 'contactInfo', 'homeSlider', 'experinceSlider', 'packages', 'counters', 'reviews'));
+        $locations = Location::all();
+        return view('home', compact('info', 'about', 'aboutFields', 'workCategories', 'works', 'clients', 'blogs', 'blogCategories', 'services', 'contactInfo', 'allServices', 'contactInfo', 'homeSlider', 'experinceSlider', 'packages', 'counters', 'reviews', 'locations'));
     }
 
     public function about()
