@@ -174,7 +174,7 @@
                             <!--TESTIMONIAL 1 -->
                             <div class="item">
                                 <div class="shadow-effect">
-                                    <div class="single-post" data-animate="">
+                                    <div class="single-post" data-animate="" style="padding: 0">
                                         <div class="image-hover-wrap">
                                             <img class="img-fluid" src="{{ asset($service->image) }}" alt=""
                                                 style="" loading="lazy">
@@ -188,10 +188,11 @@
                                                 </ul>
                                             </div>
                                         </div>
-                                        <h3>{{ $service->title }}</h3>
-                                        <h4>
-                                            {!! $service->intro !!}
-                                        </h4>
+                                        <div style="padding: 15px">
+                                            <h3>{{ $service->title }}</h3>
+                                            <h4>
+                                                {!! $service->intro !!}
+                                            </h4></div>
 
                                     </div>
 
