@@ -23,6 +23,10 @@ class CreateInfosTable extends Migration
             $table->string('service_image_mobile');
 
 
+            $table->string('who_image');
+            $table->string('who_image_mobile');
+
+
             $table->string('counter_image');
             $table->string('counter_image_mobile');
 

@@ -2,9 +2,10 @@
 @section('title', trans('site.home'))
 @section('styles')
     <style>
-        .single-post{
+        .single-post {
             margin-bottom: 5px;
         }
+
         .single-post span {
             font-size: 1rem;
             color: #000;
@@ -13,6 +14,43 @@
 
         .owl-carousel .owl-item img {
             aspect-ratio: 6/4;
+        }
+
+        .who_we {
+            box-shadow: inset 0px -8px 8px #fff !important;
+            position: relative;
+            padding-bottom: 200px !important;
+            min-height: 600px;
+            background-image: url({{ asset($info->who_image) }});
+            background-size: 100% 100%;
+            background-repeat: no-repeat
+        }
+
+        .who_we a {
+            padding: 15px 55px !important;
+            margin-top: 25px !important;
+            position: absolute;
+            bottom: 25%;
+            right: 10%;
+        }
+
+        @media (max-width: 480px) {
+            .who_we {
+
+            box-shadow: inset 0px -8px 8px #fff, inset 0px 8px 8px #f8f8f8 !important;
+                background-image: url({{ asset($info->who_image_mobile) }});
+                background-size: 100% 100%;
+                background-repeat: no-repeat
+            }
+
+            .who_we a {
+                position: absolute;
+                bottom: 50%;
+                right: 10%;
+                left: 50%;
+                transform: translateX(-50%) !important;
+
+            }
         }
 
         @media (max-width: 991.98px) {
@@ -179,7 +217,7 @@
             top: 0;
             right: 0;
             /* add slash at end of this line to show the red outline of the slice *
-                                                                            outline: solid 1px red; /**/
+                                                                                    outline: solid 1px red; /**/
             width: 50%;
             height: 50%;
             transform-origin: 0% 100%;
@@ -252,7 +290,7 @@
                 /* unskew slice contents */
                 rotate(30deg);
             /* rotate by half the central angle of the slice
-                                                                               which is 50deg in this case */
+                                                                                       which is 50deg in this case */
             background: #6e7472;
         }
 
@@ -291,7 +329,7 @@
                 /* unskew slice contents */
                 rotate(30deg);
             /* rotate by half the central angle of the slice
-                                                                               which is 50deg in this case */
+                                                                                       which is 50deg in this case */
             background: #778181;
         }
 
@@ -308,7 +346,7 @@
                 /* unskew slice contents */
                 rotate(30deg);
             /* rotate by half the central angle of the slice
-                                                                               which is 50deg in this case */
+                                                                                       which is 50deg in this case */
             background: #7f969c;
         }
 
@@ -321,7 +359,7 @@
                 /* unskew slice contents */
                 rotate(30deg);
             /* rotate by half the central angle of the slice
-                                                                               which is 50deg in this case */
+                                                                                       which is 50deg in this case */
             background: #a3afb7;
         }
 
@@ -338,7 +376,7 @@
                 /* unskew slice contents */
                 rotate(30deg);
             /* rotate by half the central angle of the slice
-                                                                               which is 50deg in this case */
+                                                                                       which is 50deg in this case */
             background: #c7c9cf;
         }
 
@@ -351,7 +389,7 @@
                 /* unskew slice contents */
                 rotate(30deg);
             /* rotate by half the central angle of the slice
-                                                                               which is 50deg in this case */
+                                                                                       which is 50deg in this case */
             background: #b9b0b0;
         }
 
@@ -364,7 +402,7 @@
                 /* unskew slice contents */
                 rotate(30deg);
             /* rotate by half the central angle of the slice
-                                                                               which is 50deg in this case */
+                                                                                       which is 50deg in this case */
             background: #d7f069;
         }
 
@@ -373,7 +411,7 @@
                 /* unskew slice contents */
                 rotate(30deg);
             /* rotate by half the central angle of the slice
-                                                                               which is 50deg in this case */
+                                                                                       which is 50deg in this case */
             background: #69f0ae;
         }
 
@@ -1156,27 +1194,27 @@
         }
 
         /* .section-wrapper .shielding-layer:after {
-                                                                                                                                            content: "";
-                                                                                                                                            width: 71%;
-                                                                                                                                            height: 100%;
-                                                                                                                                            position: absolute;
-                                                                                                                                            top: 0;
-                                                                                                                                            right: 0;
-                                                                                                                                            z-index: 3;
-                                                                                                                                            background: linear-gradient(90deg, rgba(249, 249, 254, 0) rgba(249, 249, 254, 0.97) 0,);
-                                                                                                                                        }
+                                                                                                                                                    content: "";
+                                                                                                                                                    width: 71%;
+                                                                                                                                                    height: 100%;
+                                                                                                                                                    position: absolute;
+                                                                                                                                                    top: 0;
+                                                                                                                                                    right: 0;
+                                                                                                                                                    z-index: 3;
+                                                                                                                                                    background: linear-gradient(90deg, rgba(249, 249, 254, 0) rgba(249, 249, 254, 0.97) 0,);
+                                                                                                                                                }
 
-                                                                                                                                        .section-wrapper .shielding-layer:before {
-                                                                                                                                            pointer-events: none;
-                                                                                                                                            content: "";
-                                                                                                                                            width: calc(29% + 1px);
-                                                                                                                                            height: 100%;
-                                                                                                                                            position: absolute;
-                                                                                                                                            top: 0;
-                                                                                                                                            left: 0;
-                                                                                                                                            z-index: 3;
-                                                                                                                                            background: linear-gradient(90deg, rgba(249, 249, 254, 0.97) 0, rgba(249, 249, 254, 0));
-                                                                                                                                        } */
+                                                                                                                                                .section-wrapper .shielding-layer:before {
+                                                                                                                                                    pointer-events: none;
+                                                                                                                                                    content: "";
+                                                                                                                                                    width: calc(29% + 1px);
+                                                                                                                                                    height: 100%;
+                                                                                                                                                    position: absolute;
+                                                                                                                                                    top: 0;
+                                                                                                                                                    left: 0;
+                                                                                                                                                    z-index: 3;
+                                                                                                                                                    background: linear-gradient(90deg, rgba(249, 249, 254, 0.97) 0, rgba(249, 249, 254, 0));
+                                                                                                                                                } */
 
         .section-wrapper:before {
             content: "";
@@ -1583,20 +1621,20 @@
         }
 
         /*
-            .owl-carousel .owl-stage {
-                display: flex;
-            }
+                    .owl-carousel .owl-stage {
+                        display: flex;
+                    }
 
-            .owl-carousel .owl-stage .item {
-                display: flex;
-                flex: 1 0 auto;
-                height: 100%;
-            }
+                    .owl-carousel .owl-stage .item {
+                        display: flex;
+                        flex: 1 0 auto;
+                        height: 100%;
+                    }
 
-            .owl-carousel .owl-stage .single-post {
-        position: relative;
-        overflow: hidden;
-        /* margin-bottom: 80px; */
+                    .owl-carousel .owl-stage .single-post {
+                position: relative;
+                overflow: hidden;
+                /* margin-bottom: 80px; */
         /*This is optional*/
         display: flex;
         flex-direction: column;
@@ -1652,38 +1690,38 @@
         }
     </style>
 
-<style>
-    .tm-accordion .card:first-child {
-        /* border-radius: 15px 15px 0 0; */
-    }
+    <style>
+        .tm-accordion .card:first-child {
+            /* border-radius: 15px 15px 0 0; */
+        }
 
-    .tm-accordion .card {
+        .tm-accordion .card {
 
-        margin-bottom: 15px;
-    }
+            margin-bottom: 15px;
+        }
 
-    .tm-accordion .card .card-header {
-        background-color: #fff;
-        border-top: none;
-    }
+        .tm-accordion .card .card-header {
+            background-color: #fff;
+            border-top: none;
+        }
 
-    .tm-accordion .card .card-header .title {
-        padding: 1rem 2rem;
-        margin: 0;
-        position: relative;
-    }
+        .tm-accordion .card .card-header .title {
+            padding: 1rem 2rem;
+            margin: 0;
+            position: relative;
+        }
 
-    .tm-accordion .card .card-header .title .accordion-controls-icon {
-        opacity: 0.4;
-        position: absolute;
-        left: 20px;
-        top: 50%;
-        -webkit-transform: translateY(-50%);
-        -ms-transform: translateY(-50%);
-        transform: translateY(-50%);
-        transition: all 0.4s ease-in-out;
-    }
-</style>
+        .tm-accordion .card .card-header .title .accordion-controls-icon {
+            opacity: 0.4;
+            position: absolute;
+            left: 20px;
+            top: 50%;
+            -webkit-transform: translateY(-50%);
+            -ms-transform: translateY(-50%);
+            transform: translateY(-50%);
+            transition: all 0.4s ease-in-out;
+        }
+    </style>
 @endsection
 @section('scripts')
     <script>
@@ -1743,7 +1781,7 @@
             triggerOnce: true
         });
     </script>
-     <script>
+    <script>
         $(document).ready(function() {
             $('#accordion100').on('shown.bs.collapse', function(e) {
                 $(e.target).prev().find('.open-icon').hide();
@@ -2018,12 +2056,13 @@
                                             </div>
 
                                         </div>
-                                        <div class="testimonial-name" style="background-color: #DF1F26;position: absolute;
+                                        <div class="testimonial-name"
+                                            style="background-color: #DF1F26;position: absolute;
                                         bottom: 25px;left: 50%; transform: translateX(-50%);">
-                                        <a href="{{ route('service', $service->slug) }}"
-                                            class="btn btn-secondary">@lang('site.read_more')<i
-                                                class="fas fa-caret-right"></i></a>
-                                    </div>
+                                            <a href="{{ route('service', $service->slug) }}"
+                                                class="btn btn-secondary">@lang('site.read_more')<i
+                                                    class="fas fa-caret-right"></i></a>
+                                        </div>
                                     </div>
 
 
@@ -2059,35 +2098,37 @@
                         </span>
                         <div class="col-md-12">
                             <p data-animate="fadeInUp" data-delay="1.5">
-                                <h2 style="margin-bottom: 25px"><i class="fa fa-map-marker-alt" style="font-size: 30px; margin-left: 15px"></i>الموقع:</h2>
-                                    <div id="accordion100" class="tm-accordion">
-                                        @foreach ($locations as $index => $location)
-                                            <div class="card" {{-- data-animate="fadeInUp" data-delay="{{ 0.1 + $index / 8 }}" --}}>
-                                                <div class="card-header p-0" id="heading10{{ $index + 1 }}">
-                                                    <h5 class="title" data-toggle="collapse" data-target="#collapse10{{ $index + 1 }}"
-                                                        aria-expanded="@if ($index == 0) true
+                            <h2 style="margin-bottom: 25px"><i class="fa fa-map-marker-alt"
+                                    style="font-size: 30px; margin-left: 15px"></i>الموقع:</h2>
+                            <div id="accordion100" class="tm-accordion">
+                                @foreach ($locations as $index => $location)
+                                    <div class="card" {{-- data-animate="fadeInUp" data-delay="{{ 0.1 + $index / 8 }}" --}}>
+                                        <div class="card-header p-0" id="heading10{{ $index + 1 }}">
+                                            <h5 class="title" data-toggle="collapse"
+                                                data-target="#collapse10{{ $index + 1 }}"
+                                                aria-expanded="@if ($index == 0) true
                                                         @else
                                                         false @endif"
-                                                        aria-controls="collapse10{{ $index + 1 }}">
-                                                        {{ $index + 1 }} - {{ $location->name }}
-                                                        <i class="fas fa-chevron-down accordion-controls-icon open-icon"
-                                                            @if ($index == 0) style="display: none" @endif></i>
-                                                        <i class="fas fa-chevron-up accordion-controls-icon close-icon"
-                                                            @if ($index != 0) style="display: none" @endif
-                                                            aria-hidden="true"></i>
+                                                aria-controls="collapse10{{ $index + 1 }}">
+                                                {{ $index + 1 }} - {{ $location->name }}
+                                                <i class="fas fa-chevron-down accordion-controls-icon open-icon"
+                                                    @if ($index == 0) style="display: none" @endif></i>
+                                                <i class="fas fa-chevron-up accordion-controls-icon close-icon"
+                                                    @if ($index != 0) style="display: none" @endif
+                                                    aria-hidden="true"></i>
 
-                                                    </h5>
-                                                </div>
-                                                <div id="collapse10{{ $index + 1 }}"
-                                                    class="collapse @if ($index == 0) show @endif"
-                                                    aria-labelledby="heading10{{ $index + 1 }}" data-parent="#accordion100">
-                                                    <div class="card-body">
-                                                        {!! $location->description !!}</div>
-                                                </div>
-                                            </div>
-                                        @endforeach
-
+                                            </h5>
+                                        </div>
+                                        <div id="collapse10{{ $index + 1 }}"
+                                            class="collapse @if ($index == 0) show @endif"
+                                            aria-labelledby="heading10{{ $index + 1 }}" data-parent="#accordion100">
+                                            <div class="card-body">
+                                                {!! $location->description !!}</div>
+                                        </div>
                                     </div>
+                                @endforeach
+
+                            </div>
                             </p>
                         </div>
                     </div>
@@ -2101,33 +2142,24 @@
                 </div>
             </div>
         </div>
-        <div>
+        {{-- <div>
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320" style="  margin-bottom: -15px;">
                 <path fill="#fff" fill-opacity="1"
                     d="M0,192L34.3,208C68.6,224,137,256,206,250.7C274.3,245,343,203,411,192C480,181,549,203,617,192C685.7,181,754,139,823,138.7C891.4,139,960,181,1029,170.7C1097.1,160,1166,96,1234,74.7C1302.9,53,1371,75,1406,85.3L1440,96L1440,320L1405.7,320C1371.4,320,1303,320,1234,320C1165.7,320,1097,320,1029,320C960,320,891,320,823,320C754.3,320,686,320,617,320C548.6,320,480,320,411,320C342.9,320,274,320,206,320C137.1,320,69,320,34,320L0,320Z">
                 </path>
             </svg>
 
-        </div>
+        </div> --}}
     </section>
     <!-- End Servers -->
-{{--
-    <section class="pt-2 pb-7 bg-light" style="padding-bottom: 200px !important; background-image: url({{ asset('home/img/who.jpg') }})">
-        <div class="container">
-            <div class="section-title text-center">
-                <div class="row">
-                    <div class="col-lg-6">
-                        <h2 data-animate="fadeInUp" data-delay=".1">من نحن</h2>
-                        <h4>نحن فريق من الشباب المدربين والمؤهلين لنضع كامل خبرتنا بين أيديكم
 
-                            مع الإجابة على كامل استفساراتكم وفي أي وقت</h4>
-                    </div>
-                </div>
-            </div>
+    {{-- who --}}
+    <section class="pt-2 pb-7 bg-light who_we">
+        <a data-animate="fadeInUp" data-delay=".1" href="{{ route('about') }}"
+            class="btn btn-secondary">@lang('site.about_me')</a>
 
-        </div>
     </section>
-     --}}
+    {{-- end who --}}
 
 
     <!-- Reviews -->

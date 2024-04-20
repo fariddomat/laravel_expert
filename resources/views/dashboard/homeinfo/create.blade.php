@@ -162,12 +162,38 @@
                         <input type="file" name="counter_image_mobile" class="form-control service-image">
                     </div>
 
+
                     <div class="form-group mb-3">
                         <img src="{{ isset($info) ? asset($info->counter_image_mobile) : '#' }}" style="width: 200px;"
                             class="img-thumbnail service-image-preview" alt="">
                     </div>
 
                     {{-- end new --}}
+
+                    {{-- who --}}
+
+                    <div class="form-group mb-3">
+                        <label>صورة قسم من نحن</label>
+                        <input type="file" name="who_image" class="form-control service-image">
+                    </div>
+
+
+                    <div class="form-group mb-3">
+                        <img src="{{ isset($info) ? asset($info->who_image) : '#' }}" style="width: 200px;"
+                            class="img-thumbnail service-image-preview" alt="">
+                    </div>
+
+                    <div class="form-group mb-3">
+                        <label>صورة قسم من نحن (موبايل)</label>
+                        <input type="file" name="who_image_mobile" class="form-control service-image">
+                    </div>
+
+                    <div class="form-group mb-3">
+                        <img src="{{ isset($info) ? asset($info->who_image_mobile) : '#' }}" style="width: 200px;"
+                            class="img-thumbnail service-image-preview" alt="">
+                    </div>
+
+                    {{-- end who --}}
                     <div class="form-group mb-3">
                         <label>صور قسم الخدمات - header</label>
                         <input type="file" name="service_header_image" class="form-control service-image">
