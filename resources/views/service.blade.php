@@ -36,16 +36,17 @@
 
         @media (max-width: 480px) {
             .bg-image-index {
-            padding-right: 25px;
-            padding-top: 50px;
-            min-height: 600px;
-            background-image: url({{ asset($service->index_image_mobile) }});
-            background-size: cover !important;
-            background-color: rgba(255, 255, 255, 0.7) !important;
-            background-blend-mode: lighten !important;
-            ;
-            box-shadow: inset 0 -8px 8px #fff !important;
-        }
+                padding-right: 25px;
+                padding-top: 50px;
+                min-height: 600px;
+                background-image: url({{ asset($service->index_image_mobile) }});
+                background-size: cover !important;
+                background-color: rgba(255, 255, 255, 0.7) !important;
+                background-blend-mode: lighten !important;
+                ;
+                box-shadow: inset 0 -8px 8px #fff !important;
+            }
+
             .serviceRow {
                 padding: 0 5px !important;
             }
@@ -531,37 +532,69 @@
                                             data-delay="1.5">
                                             @foreach ($service->subServices as $index => $service)
                                                 <!--TESTIMONIAL 1 -->
-                                                <div class="item">
-                                                    <div class="shadow-effect">
-                                                        <div class="single-post" data-animate="" style="padding: 0">
-                                                            <div class="image-hover-wrap">
+                                               @if ($service->parent_id !=1)
+                                               <div class="item">
+                                                <div class="shadow-effect">
+                                                    <div class="single-post" data-animate="" style="padding: 0">
+                                                        <div class="image-hover-wrap">
 
-                                                                <img class="img-fluid" src="{{ asset($service->image) }}"
-                                                                    alt="" loading="lazy">
+                                                            <img class="img-fluid" src="{{ asset($service->image) }}"
+                                                                alt="" loading="lazy">
 
 
-                                                                <div
-                                                                    class="image-hover-content d-flex justify-content-center align-items-center text-center">
-                                                                    <ul class="list-inline">
-                                                                        <li><a
-                                                                                href="{{ route('service', $service->slug) }}"><i
-                                                                                    class="fas fa-link"></i></a>
-                                                                        </li>
-                                                                        {{-- <li><a href="#"><i class="fas fa-share-alt"></i></a></li> --}}
-                                                                    </ul>
-                                                                </div>
-                                                            </div>
-                                                            <div style="padding: 15px">
-                                                                <h3>{{ $service->title }}</h3>
+                                                            <div
+                                                                class="image-hover-content d-flex justify-content-center align-items-center text-center">
+                                                                <ul class="list-inline">
+                                                                    <li><a
+                                                                            href="{{ route('service', $service->slug) }}"><i
+                                                                                class="fas fa-link"></i></a>
+                                                                    </li>
+                                                                    {{-- <li><a href="#"><i class="fas fa-share-alt"></i></a></li> --}}
+                                                                </ul>
                                                             </div>
                                                         </div>
-                                                    </div>
-                                                    <div class="testimonial-name" style="background-color: #DF1F26">
-                                                        <a href="{{ route('service', $service->slug) }}"
-                                                            class="btn btn-secondary">@lang('site.read_more')<i
-                                                                class="fas fa-caret-right"></i></a>
+                                                        <div style="padding: 15px">
+                                                            <h3>{{ $service->title }}</h3>
+                                                        </div>
                                                     </div>
                                                 </div>
+                                                <div class="testimonial-name" style="background-color: #DF1F26">
+                                                    <a href="{{ route('service', $service->slug) }}"
+                                                        class="btn btn-secondary">@lang('site.read_more')<i
+                                                            class="fas fa-caret-right"></i></a>
+                                                </div>
+                                            </div>
+                                               @else
+                                               <div class="item" style="background-image: url({{ asset($service->image) }});      background-repeat: no-repeat;
+                                                background-size: 100% 100%;height: 400px;
+border-radius: 15px;">
+
+                                                    <div class="single-post" data-animate="" style="padding: 0; border: unset !important; margin-bottom: 5px">
+                                                        <div class="image-hover-wrap">
+
+                                                            <div
+                                                                class="image-hover-content d-flex justify-content-center align-items-center text-center">
+                                                                <ul class="list-inline">
+                                                                    <li><a
+                                                                            href="{{ route('service', $service->slug) }}"><i
+                                                                                class="fas fa-link"></i></a>
+                                                                    </li>
+                                                                    {{-- <li><a href="#"><i class="fas fa-share-alt"></i></a></li> --}}
+                                                                </ul>
+                                                            </div>
+                                                        </div>
+                                                        <div style="padding: 15px; padding-bottom: 0">
+                                                            <h3 style="padding-top: 70% !important;">{{ $service->title }}</h3>
+                                                        </div>
+                                                    </div>
+
+                                                <div class="testimonial-name" style="background-color: #DF1F26;padding-top: 0">
+                                                    <a href="{{ route('service', $service->slug) }}"
+                                                        class="btn btn-secondary">@lang('site.read_more')<i
+                                                            class="fas fa-caret-right"></i></a>
+                                                </div>
+                                            </div>
+                                               @endif
                                                 <!--END OF TESTIMONIAL 1 -->
                                             @endforeach
                                         </div>

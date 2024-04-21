@@ -77,7 +77,7 @@ class ServiceController extends Controller
 
             $image = $request->file('image');
             $directory = '/photos/services';
-            $fullPath = $helper->storeImageInPublicDirectory($image, $directory, 235, 160);
+            $fullPath = $helper->storeImageInPublicDirectory($image, $directory);
             $service->image = $fullPath;
         }
         if ($request->has('index_image')) {
@@ -156,7 +156,7 @@ class ServiceController extends Controller
             $helper->removeImageInPublicDirectory($service->image);
             $image = $request->file('image');
             $directory = '/photos/services';
-            $fullPath = $helper->storeImageInPublicDirectory($image, $directory, 265, 160);
+            $fullPath = $helper->storeImageInPublicDirectory($image, $directory);
             $service->image = $fullPath;
         }
         if ($request->has('index_image')) {
