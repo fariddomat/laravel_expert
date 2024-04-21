@@ -27,7 +27,7 @@
         }
 
         .who_we a {
-            padding: 15px 55px !important;
+            padding: 25px 75px !important;
             margin-top: 25px !important;
             position: absolute;
             bottom: 25%;
@@ -44,8 +44,9 @@
             }
 
             .who_we a {
+            padding: 15px 55px !important;
                 position: absolute;
-                bottom: 50%;
+                bottom: 60%;
                 right: 10%;
                 left: 50%;
                 transform: translateX(-50%) !important;
@@ -2099,7 +2100,7 @@
                         <div class="col-md-12">
                             <p data-animate="fadeInUp" data-delay="1.5">
                             <h2 style="margin-bottom: 25px"><i class="fa fa-map-marker-alt"
-                                    style="font-size: 30px; margin-left: 15px"></i>الموقع:</h2>
+                                    style="font-size: 30px; margin-left: 15px"></i>أفرع شركة المحترف:</h2>
                             <div id="accordion100" class="tm-accordion">
                                 @foreach ($locations as $index => $location)
                                     <div class="card" {{-- data-animate="fadeInUp" data-delay="{{ 0.1 + $index / 8 }}" --}}>
