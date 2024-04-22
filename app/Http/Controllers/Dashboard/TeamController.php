@@ -6,8 +6,12 @@ use App\Helpers\ImageHelper;
 use App\Http\Controllers\Controller;
 use App\Models\Team;
 use App\Models\TeamRole;
+use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Validator;
 
 class TeamController extends Controller
 {
@@ -19,7 +23,18 @@ class TeamController extends Controller
 
     public function index(Request $request)
     {
-        $team = Team::all();
+        // Schema::table('teams', function (Blueprint $table) {
+        //     $table->integer('position')->change();
+        //     DB::statement('UPDATE teams SET position = id');
+        // });
+        // $teams = Team::orderBy('id')->get();
+        // $i=1;
+        // foreach ($teams as $team) {
+        //     $team->position=$i;
+        //     $i++;
+        //     $team->save();
+        // }
+        $team = Team::orderBy('position')->get();
         return view('dashboard.team.index', compact('team'));
     }
 
@@ -38,7 +53,7 @@ class TeamController extends Controller
         ]);
         $team  = Team::create($request->all());
 
-        
+
         $helper = new ImageHelper;
         $image = $request->file('image');
         $directory = '/photos/team';
@@ -87,9 +102,52 @@ class TeamController extends Controller
     public function destroy($team)
     {
         $team = Team::findOrFail($team);
+        $p=$team->position;
         Storage::disk('local')->delete($team->image);
+
         $team->delete();
+        $teams = Team::where('position', '>', $p)->get();
+        foreach ($teams as $team) {
+            $team->position--;
+            $team->save();
+        }
+
         session()->flash('success', 'Image Deleted Successfully');
         return redirect()->back();
+    }
+
+    public function reorder(Request $request)
+    {
+        $validator = Validator::make($request->all(), [
+            'from' => 'required|integer',
+            'to' => 'required|integer',
+        ]);
+        if ($validator->fails()) {
+            return response()->json(['status' => '0']);
+        }
+        $from = $request->from;
+        $to = $request->to;
+        $movedTeam = Team::where('position', $from)->first();
+        $toTeam = Team::where('position', $to)->first();
+        // if ($movedTeam == null || $toTeam == null) {
+        //     return response()->json(['status' => '0']);
+        // }
+        // dd($from);
+        if ($from < $to) {
+            $teams = Team::whereBetween('position', [$from + 1, $to])->get();
+            foreach ($teams as $team) {
+                $team->decrement('position');
+            }
+            $movedTeam->position = $to;
+            $movedTeam->save();
+        } else if ($from > $to) {
+            $teams = Team::whereBetween('position', [$to, $from - 1])->get();
+            foreach ($teams as $team) {
+                $team->increment('position');
+            }
+            $movedTeam->position = $to;
+            $movedTeam->save();
+        }
+        return response()->json(['status' => '1']);
     }
 }

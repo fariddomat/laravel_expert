@@ -196,6 +196,8 @@ Route::group(['prefix' => '/dashboard', 'middleware' => ['auth', 'setArLocale'],
     Route::resource('partnerSlider', 'Dashboard\PartnerController');
     Route::resource('experinceSlider', 'Dashboard\ExperinceController');
     Route::resource('team', 'Dashboard\TeamController');
+    Route::post('/teams/reorder', 'Dashboard\TeamController@reorder')->name('teams.reorder');
+
     Route::resource('teamRoles', 'Dashboard\TeamRoleController');
     Route::resource('faqs', 'Dashboard\FaqController');
     Route::resource('dayOfWorks', 'Dashboard\DayOfWorkController');

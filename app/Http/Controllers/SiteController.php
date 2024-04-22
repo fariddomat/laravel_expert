@@ -97,7 +97,7 @@ class SiteController extends Controller
         $aboutImages = AboutImage::where('showed', 1)->orderBy('id')->get();
         // dd($aboutImages);
         $counter = range($aboutImages->count(), 1);
-        $teams = Team::all();
+        $teams = Team::orderBy('position')->get();
         $teamRoles = TeamRole::all();
         $partnerSlider = PartnerSlider::all();
         $experinceSlider = ExperinceSlider::all();
