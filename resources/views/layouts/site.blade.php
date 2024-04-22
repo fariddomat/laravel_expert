@@ -26,7 +26,8 @@
     <!-- CSS Files -->
 
     {{-- <link href="https://fonts.googleapis.com/css?family=Cabin:400,400i,500i,700%7CRoboto:400,500,700" rel="stylesheet" async> --}}
-    <link rel="stylesheet" href="{{ asset('home/css/bootstrap-rtl.min.css') }}"  media="print" onload="this.media='all'">
+    <link rel="stylesheet" href="{{ asset('home/css/bootstrap-rtl.min.css') }}" media="print"
+        onload="this.media='all'">
     <link rel="stylesheet" href="{{ asset('home/plugins/swiper/swiper.min.css') }}">
     {{-- <link rel="stylesheet" href="{{ asset('home/plugins/magnific-popup/magnific-popup.min.css') }}"> --}}
     <link rel="stylesheet" href="{{ asset('home/css/style.css') }}">
@@ -42,8 +43,8 @@
     <link href="{{ asset('css/fonts.css') }}" rel="stylesheet">
 
     {{--  non critical css --}}
-    <link href="{{ asset('fonts/fontawesome-free-6.4.2-web/css/all.css') }}"
-        rel="stylesheet"  media="print" onload="this.media='all'">
+    <link href="{{ asset('fonts/fontawesome-free-6.4.2-web/css/all.css') }}" rel="stylesheet" media="print"
+        onload="this.media='all'">
 
     {{-- icons --}}
     {{-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" async/> --}}
@@ -55,9 +56,10 @@
     <link rel="stylesheet" href="{{ asset('css/aos.css') }}">
     <link rel="stylesheet" href="{{ asset('css/animate.css') }}">
     <style>
-         html {
-    scroll-behavior: smooth;
-    }
+        html {
+            scroll-behavior: smooth;
+        }
+
         @media only screen and (max-width: 768px) {
             .no-mobile {
                 display: none;
@@ -257,7 +259,7 @@
                                     <img class="img-fluid" src="{{ asset($blog->image) }}"
                                         style="width: 60px !important;
                                         height: 40px !important;"
-                                        alt=""  loading="lazy">
+                                        alt="" loading="lazy">
                                 </a>
                                 <span> <a
                                         href="{{ route('blog', $blog->slug) }}">{{ $blog->updated_at->format('d F Y') }}</a></span>
@@ -325,15 +327,15 @@
 
 
     {{-- <script src="{{ asset('home/plugins/magnific-popup/jquery.magnific-popup.min.js') }}"></script> --}}
-    <script src="{{ asset('home/plugins/parsley/parsley.min.js') }}"  defer></script>
+    <script src="{{ asset('home/plugins/parsley/parsley.min.js') }}" defer></script>
     <script src="{{ asset('home/plugins/parallax/parallax.min.js') }}"></script>
     {{-- <script src="{{ asset('home/plugins/retinajs/retina.min.js') }}"></script> --}}
     <script src="{{ asset('home/js/menu.min.js') }}" defer></script>
-    <script src="{{ asset('home/js/scripts.js') }}" ></script>
+    <script src="{{ asset('home/js/scripts.js') }}"></script>
     <script src="{{ asset('home/js/custom.js') }}" defer></script>
 
     <script src="{{ asset('js/owl.carousel.min.js') }}" defer></script>
-    <script src="{{ asset('js/jquery.countup.js') }}" ></script>
+    <script src="{{ asset('js/jquery.countup.js') }}"></script>
 
     {{-- aos --}}
     <script src="{{ asset('js/aos.js') }}"></script>
