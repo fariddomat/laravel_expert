@@ -389,7 +389,7 @@ class SiteController extends Controller
         try {
             //code...
             Mail::send('mail', $info, function ($message) use ($contact) {
-                $message->to("fariddomat.000@gmail.com", "Almohtarif")
+                $message->to("almohtarif.contact.form@gmail.com", "Almohtarif")
                     ->subject('طلب استشارة مجانية جديد');
                 $message->from('support@almohtarif-office.com', 'Almohtarif');
             });
