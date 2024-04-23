@@ -27,6 +27,7 @@
                         <td>{{ $key + 1 }}</td>
                         <td>{{ $item->name }}</td>
                         <td>
+                            <a href="{{ route('dashboard.locations.edit', $item) }}" class="btn btn-sm btn-warning">تعديل</a>
                             <form action="{{ route('dashboard.locations.destroy', $item) }}" method="post" style="display: inline-block">
                                 @csrf()
                                 @method('delete')

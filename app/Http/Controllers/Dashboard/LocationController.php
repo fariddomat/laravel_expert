@@ -54,17 +54,28 @@ class LocationController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(Location $location)
     {
-        //
+
+        return view('dashboard.locations.edit', compact('location'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, Location $location)
     {
-        //
+
+        $request->validate([
+            'name'=>'required',
+            'description'=> 'required'
+        ]);
+        $location->update(request()->all());
+
+
+
+        session()->flash('success', 'Update Successfully !');
+        return redirect()->route('dashboard.locations.index');
     }
 
     /**
