@@ -4,6 +4,9 @@
 @section('styles')
 
     <style>
+    .card img{
+        max-height: 335px;
+    }
         @media (max-width: 480px) {
             .card {
                 width: 252px;
