@@ -544,6 +544,8 @@
             }
 
         }
+        .back-face {
+  max-height: 380px;}
     </style>
 @endsection
 @section('scripts')
