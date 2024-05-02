@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 
     <!-- jQuery and FullCalendar JS files -->
-
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.13.3/themes/base/jquery-ui.css">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
@@ -18,12 +18,16 @@
             margin-bottom: 25px;
         }
 
+
         .form-check-label {
             margin-bottom: 0;
             padding: 0 25px;
         }
-        .section-title p a, .section-title p b,.section-title p svg{
-            color:#fff
+
+        .section-title p a,
+        .section-title p b,
+        .section-title p svg {
+            color: #fff
         }
     </style>
 
@@ -46,7 +50,7 @@
             /* Change color on focus */
         }
     </style>
-       <style>
+    <style>
         .sspan {
             position: absolute;
             border-radius: 100vmax;
@@ -180,12 +184,163 @@
             }
         }
     </style>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/intl-tel-input@21.2.7/build/css/intlTelInput.css">
+    <style>
+        .col-md-6 {
+            position: initial !important;
+        }
+
+        .intl-tel-input,
+        .iti {
+            width: 100%;
+        }
+
+        .iti__flag-container {
+            direction: ltr;
+        }
+
+        /* .animated {
+          -webkit-animation-fill-mode: unset !important;
+          animation-fill-mode: unset !important;
+        } */
+
+        .phone-input-group {
+    display: flex; /* Use flexbox for alignment */
+}
+
+.city-code-container {
+    /* Style the container as needed */
+}
+
+#city_code {
+    /* Style the select element to match the input field */
+    border: 1px solid #ced4da;
+    border-radius: 0.25rem;
+    padding: 0.375rem 0.75rem;
+}
+    </style>
 @endsection
 @section('scripts')
+    <script src="https://cdn.jsdelivr.net/npm/intl-tel-input@21.2.7/build/js/intlTelInput.min.js"></script>
+    <script>
+        const input = document.querySelector("#mobile_code");
+        const fullPhoneInput = document.querySelector("#full_phone");
+
+        const iti = window.intlTelInput(input, {
+            initialCountry: "sy",
+            separateDialCode: true,
+            utilsScript: "https://cdn.jsdelivr.net/npm/intl-tel-input@21.2.7/build/js/utils.js",
+        });
+
+        function updateFullPhoneNumber() {
+            const countryData = iti.getSelectedCountryData(); // Get selected country data
+            const countryDialCode = countryData.dialCode; // Get the country code
+            const nationalNumber = input.value.trim(); // Get the national number entered
+
+            if (nationalNumber) {
+                const fullPhoneNumber = `+${countryDialCode}${nationalNumber}`; // Construct the full phone number
+                const cleanedPhoneNumber = fullPhoneNumber.replace(/\s+/g, ''); // \s+ matches all whitespace characters
+                 fullPhoneInput.value = cleanedPhoneNumber;
+            } else {
+                fullPhoneInput.value = "";
+            }
+        }
+
+        // Event listener for when the input value changes
+        input.addEventListener("input", updateFullPhoneNumber);
+
+        // Event listener for when the country changes
+        input.addEventListener("countrychange", updateFullPhoneNumber);
+    </script>
+
+<script>
+
+    $(document).ready(function() {
+        var cityCodes = [
+    { code: "011", city: "دمشق" },
+    { code: "021", city: "حلب" },
+    { code: "031", city: "حمص" },
+    { code: "033", city: "حماه" },
+    { code: "041", city: "اللاذقية" },
+    { code: "043", city: "طرطوس" },
+    { code: "016", city: "السويداء" },
+    { code: "015", city: "درعا" },
+    { code: "014", city: "القنيطرة" },
+    { code: "051", city: "دير الزور" },
+    { code: "022", city: "الرقة" },
+    { code: "052", city: "الحسكة" },
+    { code: "023", city: "إدلب" },
+    // ... Add more city codes as needed
+];
+    var optionsHTML = "";
+    for (var i = 0; i < cityCodes.length; i++) {
+        var city = cityCodes[i];
+        optionsHTML += '<option value="'+city.code+'">' + city.city + ' (' + city.code + ')' + '</option>';
+    }
+
+    $("#city_code").html(optionsHTML);
+
+    // Populate city code dropdown
+    $.each(cityCodes, function(index, city) {
+        console.log(city.code);
+        $("#city_code").append($("")
+                               .attr("value", city.code)
+                               .text(city.city + " (" + city.code + ")"));
+    });
+
+
+    // Update phone input on city code change
+    $("#city_code").change(function() {
+        var selectedCode = $(this).val();
+        $("#phone").val(selectedCode + "-"); // Prepend code to input value
+    });
+});
+</script>
     <script>
         $(document).ready(function() {
+
+            function updateRequiredFields() {
+        var selectedMethod = $("#contact_method").val();
+        // Remove required attribute from all fields
+        $("#email").removeAttr("data-parsley-required");
+        $("#mobile_code").removeAttr("data-parsley-required");
+        $("#phone").removeAttr("data-parsley-required");
+
+
+        $('#email').parsley().validate();
+                $('#mobile_code').parsley().validate();
+                $('#phone').parsley().validate();
+
+        // Add required attribute based on selected method
+        switch (selectedMethod) {
+            case "email":
+                $("#email").attr("data-parsley-required", true);
+
+                break;
+            case "mobile":
+            case "whatsapp":
+                $("#mobile_code").attr("data-parsley-required", true);
+                break;
+            case "phone":
+                $("#phone").attr("data-parsley-required", true);
+                break;
+
+            // Add cases for other contact methods as needed
+        }
+    }
             $('.form-control').on('focusout', function() {
+                updateRequiredFields();
                 $(this).parsley().validate();
+
+
+            });
+            $('.iti__selected-country').on('click', function() {
+                $(this).parsley().validate();
+                $('.animated').attr("style", "-webkit-animation-fill-mode: initial;");
+                $('.animated').attr("style", "animation-fill-mode: initial;");
+                // $('.col-md-6').removeClass('fadeInUp');
+
             });
 
         });
@@ -225,6 +380,17 @@
             });
         });
     </script>
+
+      <script src="https://code.jquery.com/ui/1.13.3/jquery-ui.js"></script>
+<script>
+    $(function() {
+    $.datepicker.setDefaults( $.datepicker.regional[ "ar" ] ); // Set Arabic locale
+    $("#datepicker").datepicker({
+        dateFormat: "dd/mm/yy",
+        maxDate:0
+    });
+});
+    </script>
 @endsection
 
 @section('content')
@@ -263,189 +429,228 @@
             <div class="container">
                 <div class="row align-items-lg-start">
                     <div class="col-lg-12 col-md-12" data-animate="fadeInUp" data-delay="1.6">
-                        <div class="contact-form-wrap" style="max-width: 65rem; margin: 0 auto;background: #fff;  position: relative;">
+                        <div class="contact-form-wrap"
+                            style="max-width: 65rem; margin: 0 auto;background: #fff;  position: relative;">
                             <div class="text-center">
                                 <h2 data-animate="fadeInUp" data-delay="1.7">@lang('contact.get_in_touch')</h2>
                             </div>
                             @include('partials._errors')
-                            <form id="contactFrom" method="post" action="{{ route('contact.post') }}" class="row"
-                                data-animate="fadeInUp" data-delay="1.6" data-parsley-trigger="change">
-                                @csrf()
 
-                                {{-- HonyBot hidden input Start --}}
-                                <input type="hidden" name="username" value="">
-                                {{-- HonyBot hidden input End --}}
-
-                                <div class="col-md-6" data-animate="fadeInUp" data-delay=".1">
-                                    <div class="form-group">
-                                        <label for="">الاسم الكامل</label>
-                                        <input type="text" name="name" value="{{ old('name') }}"
-                                            class="form-control" placeholder="@lang('contact.name')"
-                                            data-parsley-required="true" data-parsley-required-message="الاسم مطلوب."
-                                            data-parsley-trigger="change">
-
-                                    </div>
-                                </div>
-
-
-                                <div class="col-md-6" data-animate="fadeInUp" data-delay=".2">
-                                    <div class="form-group">
-                                        <label for="dob">تاريخ الميلاد</label>
-                                        <input type="date" name="dob" value="{{ old('dob') }}"
-                                            class="form-control" data-parsley-required="true"
-                                            data-parsley-required-message="تاريخ الميلاد مطلوب."
-                                            data-parsley-trigger="change">
-                                    </div>
-                                </div>
-                                <div class="col-md-6" data-animate="fadeInUp" data-delay=".3">
-                                    <div class="form-group">
-                                        <label for="">رقم الهاتف الجوال</label>
-                                        <input type="tel" name="mobile" value="{{ old('mobile') }}"
-                                            class="form-control" placeholder="+963 934 770 008" data-parsley-required="true"
-                                            data-parsley-required-message="رقم الهاتف مطلوب." data-parsley-trigger="change">
-                                    </div>
-                                </div>
-
-                                <div class="col-md-6" data-animate="fadeInUp" data-delay=".4">
-                                    <div class="form-group">
-                                        <label for="">رقم الهاتف الأرضي</label>
-                                        <input type="tel" name="phone" value="{{ old('phone') }}"
-                                            class="form-control" placeholder="031-2129925">
-                                    </div>
-                                </div>
-
-
-                                <div class="col-md-6" data-animate="fadeInUp" data-delay=".5">
-                                    <div class="form-group">
-                                        <label for="">البريد الالكتروني</label>
-                                        <input type="email" name="email" value="{{ old('email') }}"
-                                            class="form-control" placeholder="@lang('contact.email')"
-                                            data-parsley-type="email"
-                                            data-parsley-type-message="يجب ان تكون صيغة بريدالكتروني صحيحة."
-                                            data-parsley-trigger="change">
-                                    </div>
-                                </div>
-
-                                <div class="col-md-6" data-animate="fadeInUp" data-delay=".6">
-                                    <div class="form-group">
-                                        <label for="contact_method">وسيلة الاتصال المفضلة</label>
-                                        <select name="contact_method" class="form-control" data-parsley-required="true"
-                                            data-parsley-required-message="وسيلة الاتصال مطلوبة."
-                                            data-parsley-trigger="change">
-                                            <option value="email" @if (old('contact_method') == 'email') selected @endif>
-                                                @lang('contact.email')
-                                            </option>
-                                            <option value="mobile" @if (old('contact_method') == 'mobile') selected @endif>
-                                                @lang('contact.mobile')
-                                            </option>
-
-                                            <option value="phone" @if (old('contact_method') == 'phone') selected @endif>
-                                                الهاتف الأرضي
-                                            </option>
-                                            <option value="whatsapp" @if (old('contact_method') == 'whatsapp') selected @endif>
-                                                @lang('contact.whatsapp')
-                                            </option>
-
-                                            <option value="telegram" @if (old('contact_method') == 'telegram') selected @endif>
-                                                تلغرام
-                                            </option>
-                                            {{-- Add more options as needed based on your schema --}}
-                                        </select>
-                                    </div>
-                                </div>
-
-                                <div class="col-md-6" data-animate="fadeInUp" data-delay=".7">
-                                    <div class="form-group">
-                                        <label for="city">المدينة</label>
-                                        <input type="text" name="city" value="{{ old('city') }}"
-                                            class="form-control" placeholder="" data-parsley-required="true"
-                                            data-parsley-required-message="المدينة مطلوبة." data-parsley-trigger="change">
-                                    </div>
-                                </div>
-
-                                <div class="col-md-6" data-animate="fadeInUp" data-delay=".8">
-                                    <div class="form-group">
-                                        <label for="cert_degree">آخر شهادة حصلة عليها</label>
-                                        <select name="cert_degree" class="form-control" data-parsley-required="true"
-                                            data-parsley-required-message="الشهادة مطلوبة." data-parsley-trigger="change">
-                                            <option value="ابتدائية">ابتدائية</option>
-                                            <option value="إعدادية">إعدادية</option>
-                                            <option value="ثانوية عامة">ثانوية عامة</option>
-                                            <option value="بكالوريوس">بكالوريوس</option>
-                                            <option value="ماجستير">ماجستير</option>
-                                            <option value="دكتوراه">دكتوراه</option>
-                                            <option value="غير ذلك">غير ذلك</option>
-                                        </select>
-                                    </div>
-                                </div>
-
-                                <div class="col-md-12" style="margin-top: 25px" data-animate="fadeInUp" data-delay=".9">
-                                    <div class="form-group">
-                                        <label for="">@lang('contact.service')</label>
-
-                                        @foreach ($services as $service)
-                                            <div class="form-check form-switch">
-                                                <input class="form-check-input" type="checkbox" name="services[]"
-                                                    value="{{ $service->id }}" data-parsley-required="true"
-                                                    data-parsley-required-message="تحديد خدمة على الأقل مطلوب."
-                                                    data-parsley-trigger="change">
-                                                <label class="form-check-label"
-                                                    for="service">{{ $service->title }}</label>
-                                            </div>
-                                        @endforeach
-                                        <div class="form-check form-switch">
-                                            <input class="form-check-input" type="checkbox" name="services[]"
-                                                value="0">
-                                            <label class="form-check-label" for="service"> @lang('site.other_services')</label>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-6 form-group mt-3" data-animate="fadeInUp" data-delay=".9">
-                                    <label for="">حجز موعد - التاريخ:</label>
-
-                                    <input type="date" id="appointment_date" name="appointment_date"
-                                        class="form-control datepicker" id="date" placeholder="Appointment Date"
-                                        min="{{date('Y-m-d', strtotime('+1 day'))}}" data-parsley-required="true"
-                                        data-parsley-required-message="التاريخ مطلوب." data-parsley-trigger="change">
-                                    <div class="validate"></div>
-                                </div>
-
-                                <div class="col-md-6 form-group mt-3" data-animate="fadeInUp" data-delay=".9">
-                                    <label for="">الوقت:</label>
-                                    <select name="appointment_time" id="appointment_time" class="form-control"
-                                        data-parsley-required="true" data-parsley-required-message="الوقت مطلوب."
+                            <div class="form-area">
+                                <div class="form-inner">
+                                    <form id="contactFrom" method="post" action="{{ route('contact.post') }}"
+                                        class="row" data-animate="fadeInUp" data-delay="1.6"
                                         data-parsley-trigger="change">
-                                        <option value="">اختر تاريخ من فضلك</option>
-                                    </select>
-                                    <div class="validate"></div>
-                                </div>
+                                        @csrf()
 
-                                <div class="col-md-12" data-animate="fadeInUp" data-delay="1">
-                                    <div class="form-group">
-                                        <textarea name="message" id="message" cols="30" rows="4" class="form-control"
-                                            placeholder="@lang('contact.message')"></textarea>
-                                    </div>
-                                </div>
-                                <div class="col-md-12" style="margin: 15px 0" data-animate="fadeInUp" data-delay=".8">
-                                    <div class="form-group">
-                                        <button id="btn-submit" type="submit"
-                                            class="btn btn-primary btn-square btn-block">
-                                            @lang('contact.send_message')
-                                            <span id="btn-spinner" style="display: none;"
-                                                class="spinner-border spinner-border-sm" role="status"
-                                                aria-hidden="true"></span>
-                                        </button>
-                                    </div>
-                                </div>
-                                <div class="col-md-12" data-animate="fadeInUp" data-delay="1.1">
-                                    <p><small><i>* @lang('contact.we_all_know')</i></small></p>
-                                </div>
-                            </form>
+                                        {{-- HonyBot hidden input Start --}}
+                                        <input type="hidden" name="username" value="">
+                                        {{-- HonyBot hidden input End --}}
 
-                    <span class="sspan top"></span>
-                    <span class="sspan right"></span>
-                    <span class="sspan bottom"></span>
-                    <span class="sspan left"></span>
+                                        <div class="col-md-6" data-animate="fadeInUp" data-delay=".1">
+                                            <div class="form-group">
+                                                <label for="">الاسم الكامل</label>
+                                                <input type="text" name="name" value="{{ old('name') }}"
+                                                    class="form-control" placeholder="@lang('contact.name')"
+                                                    data-parsley-required="true"
+                                                    data-parsley-required-message="الاسم مطلوب."
+                                                    data-parsley-trigger="change">
+
+                                            </div>
+                                        </div>
+
+
+                                        <div class="col-md-6" data-animate="fadeInUp" data-delay=".2">
+                                            <div class="form-group">
+                                                <label for="dob">تاريخ الميلاد</label>
+                                                <input id="datepicker" type="text" name="dob" placeholder="dd/mm/YYYY"
+                                                    class="form-control" data-parsley-required="true"
+                                                    data-parsley-required-message="تاريخ الميلاد مطلوب."
+                                                    data-parsley-trigger="submit">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6" data-animate="fadeInUp" data-delay=".3">
+                                            <div class="form-group">
+                                                <label for="">رقم الهاتف الجوال</label>
+                                                <input id="mobile_code" type="tel" name="mobil"
+                                                    value="{{ old('mobil') }}" class="form-control"
+                                                    placeholder="934 770 008"
+                                                    data-parsley-required="true"
+                                                    data-parsley-required-message="رقم الهاتف مطلوب."
+                                                    data-parsley-trigger="change">
+
+                                                <input type="hidden" id="full_phone" name="mobile">
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-6" data-animate="fadeInUp" data-delay=".4">
+                                            <div class="form-group ">
+                                                <label for="">رقم الهاتف الأرضي</label>
+                                                <div class="phone-input-group">
+                                                    <div class="city-code-container">
+                                                        <select id="city_code">
+                                                            <option value="">Select City Code</option>
+                                                        </select>
+                                                    </div>
+                                                    <input id="phone" type="tel" name="phone" value="{{ old('phone') }}"
+                                                           class="form-control" placeholder="031-2129925"
+                                                           data-parsley-required-message="رقم الهاتف مطلوب."
+                                                           data-parsley-trigger="change">
+                                                </div>
+
+                                            </div>
+                                        </div>
+
+
+                                        <div class="col-md-6" data-animate="fadeInUp" data-delay=".5">
+                                            <div class="form-group">
+                                                <label for="">البريد الالكتروني</label>
+                                                <input id="email" type="email" name="email" value="{{ old('email') }}"
+                                                    class="form-control" placeholder="@lang('contact.email')"
+                                                    data-parsley-type="email"
+                                                    data-parsley-type-message="يجب ان تكون صيغة بريدالكتروني صحيحة."
+
+                                                    data-parsley-required-message="البريد الالكتروني مطلوب."
+                                                    data-parsley-trigger="change">
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-6" data-animate="fadeInUp" data-delay=".6">
+                                            <div class="form-group">
+                                                <label for="contact_method">وسيلة الاتصال المفضلة</label>
+                                                <select id="contact_method" name="contact_method" class="form-control"
+                                                    data-parsley-required="true"
+                                                    data-parsley-required-message="وسيلة الاتصال مطلوبة."
+                                                    data-parsley-trigger="change">
+                                                    <option value="mobile"
+                                                        @if (old('contact_method') == 'mobile') selected @endif>
+                                                        @lang('contact.mobile')
+                                                    </option>
+
+                                                    <option value="email"
+                                                        @if (old('contact_method') == 'email') selected @endif>
+                                                        @lang('contact.email')
+                                                    </option>
+                                                    <option value="phone"
+                                                        @if (old('contact_method') == 'phone') selected @endif>
+                                                        الهاتف الأرضي
+                                                    </option>
+                                                    <option value="whatsapp"
+                                                        @if (old('contact_method') == 'whatsapp') selected @endif>
+                                                        @lang('contact.whatsapp')
+                                                    </option>
+
+                                                    <option value="telegram"
+                                                        @if (old('contact_method') == 'telegram') selected @endif>
+                                                        تلغرام
+                                                    </option>
+                                                    {{-- Add more options as needed based on your schema --}}
+                                                </select>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-6" data-animate="fadeInUp" data-delay=".7">
+                                            <div class="form-group">
+                                                <label for="city">المدينة</label>
+                                                <input type="text" name="city" value="{{ old('city') }}"
+                                                    class="form-control" placeholder="" data-parsley-required="true"
+                                                    data-parsley-required-message="المدينة مطلوبة."
+                                                    data-parsley-trigger="change">
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-6" data-animate="fadeInUp" data-delay=".8">
+                                            <div class="form-group">
+                                                <label for="cert_degree">آخر شهادة حصلة عليها</label>
+                                                <select name="cert_degree" class="form-control"
+                                                    data-parsley-required="true"
+                                                    data-parsley-required-message="الشهادة مطلوبة."
+                                                    data-parsley-trigger="change">
+                                                    <option value="ابتدائية">ابتدائية</option>
+                                                    <option value="إعدادية">إعدادية</option>
+                                                    <option value="ثانوية عامة">ثانوية عامة</option>
+                                                    <option value="بكالوريوس">بكالوريوس</option>
+                                                    <option value="ماجستير">ماجستير</option>
+                                                    <option value="دكتوراه">دكتوراه</option>
+                                                    <option value="غير ذلك">غير ذلك</option>
+                                                </select>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-12" style="margin-top: 25px" data-animate="fadeInUp"
+                                            data-delay=".9">
+                                            <div class="form-group">
+                                                <label for="">@lang('contact.service')</label>
+
+                                                @foreach ($services as $service)
+                                                    <div class="form-check form-switch">
+                                                        <input class="form-check-input" type="checkbox" name="services[]"
+                                                            value="{{ $service->id }}" data-parsley-required="true"
+                                                            data-parsley-required-message="تحديد خدمة على الأقل مطلوب."
+                                                            data-parsley-trigger="change">
+                                                        <label class="form-check-label"
+                                                            for="service">{{ $service->title }}</label>
+                                                    </div>
+                                                @endforeach
+                                                <div class="form-check form-switch">
+                                                    <input class="form-check-input" type="checkbox" name="services[]"
+                                                        value="0">
+                                                    <label class="form-check-label" for="service">
+                                                        @lang('site.other_services')</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 form-group mt-3" data-animate="fadeInUp" data-delay=".9">
+                                            <label for="">حجز موعد - التاريخ:</label>
+
+                                            <input type="date" id="appointment_date" name="appointment_date"
+                                                class="form-control datepicker" id="date"
+                                                placeholder="Appointment Date"
+                                                min="{{ date('Y-m-d', strtotime('+1 day')) }}"
+                                                data-parsley-required="true"
+                                                data-parsley-required-message="التاريخ مطلوب."
+                                                data-parsley-trigger="change">
+                                            <div class="validate"></div>
+                                        </div>
+
+                                        <div class="col-md-6 form-group mt-3" data-animate="fadeInUp" data-delay=".9">
+                                            <label for="">الوقت:</label>
+                                            <select name="appointment_time" id="appointment_time" class="form-control"
+                                                data-parsley-required="true" data-parsley-required-message="الوقت مطلوب."
+                                                data-parsley-trigger="change">
+                                                <option value="">اختر تاريخ من فضلك</option>
+                                            </select>
+                                            <div class="validate"></div>
+                                        </div>
+
+                                        <div class="col-md-12" data-animate="fadeInUp" data-delay="1">
+                                            <div class="form-group">
+                                                <textarea name="message" id="message" cols="30" rows="4" class="form-control"
+                                                    placeholder="@lang('contact.message')"></textarea>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12" style="margin: 15px 0" data-animate="fadeInUp"
+                                            data-delay=".8">
+                                            <div class="form-group">
+                                                <button id="btn-submit" type="submit"
+                                                    class="btn btn-primary btn-square btn-block">
+                                                    @lang('contact.send_message')
+                                                    <span id="btn-spinner" style="display: none;"
+                                                        class="spinner-border spinner-border-sm" role="status"
+                                                        aria-hidden="true"></span>
+                                                </button>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12" data-animate="fadeInUp" data-delay="1.1">
+                                            <p><small><i>* @lang('contact.we_all_know')</i></small></p>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                            <span class="sspan top"></span>
+                            <span class="sspan right"></span>
+                            <span class="sspan bottom"></span>
+                            <span class="sspan left"></span>
                         </div>
                     </div>
 
@@ -462,29 +667,30 @@
                             <div class="row">
                                 <div class="col-md-6">
                                     <p data-animate="fadeInUp" data-delay="1.5">
-                                        <p data-animate="fadeInUp" data-delay="1.5"><b>@lang('contact.mobile'): </b> <a
-                                                href="tel:+{{ $contactInfo->mobile }}"
-                                                target="_blank">{{ $contactInfo->mobile }}</a>
-                                        </p>
-                                        <p data-animate="fadeInUp" data-delay="1.5"><b>@lang('contact.mobile'): </b> <a
-                                                href="tel:+{{ $contactInfo->mobile2 }}"
-                                                target="_blank">{{ $contactInfo->mobile2 }}</a>
-                                        </p>
-                                        <p data-animate="fadeInUp" data-delay="1.5"><b>الهاتف الأرضي: </b> <a
-                                                href="tel:+{{ $contactInfo->mobile }}" target="_blank">{{ $contactInfo->phone }}</a>
-                                        </p>
-                                        <p data-animate="fadeInUp" data-delay="1.5"><b>@lang('contact.whatsapp'): </b> <a
-                                                href="https://api.whatsapp.com/send?phone={{ $contactInfo->whatsapp }}"
-                                                target="_blank">{{ $contactInfo->whatsapp }}</a></p>
-                                        <p data-animate="fadeInUp" data-delay="1.5"><b>@lang('contact.email_me'): </b> <a
-                                                href="mailto:{{ $contactInfo->email }}">{{ $contactInfo->email }}</a></p>
+                                    <p data-animate="fadeInUp" data-delay="1.5"><b>@lang('contact.mobile'): </b> <a
+                                            href="tel:+{{ $contactInfo->mobile }}"
+                                            target="_blank">{{ $contactInfo->mobile }}</a>
+                                    </p>
+                                    <p data-animate="fadeInUp" data-delay="1.5"><b>@lang('contact.mobile'): </b> <a
+                                            href="tel:+{{ $contactInfo->mobile2 }}"
+                                            target="_blank">{{ $contactInfo->mobile2 }}</a>
+                                    </p>
+                                    <p data-animate="fadeInUp" data-delay="1.5"><b>الهاتف الأرضي: </b> <a
+                                            href="tel:+{{ $contactInfo->mobile }}"
+                                            target="_blank" dir="ltr">{{ $contactInfo->phone }}</a>
+                                    </p>
+                                    <p data-animate="fadeInUp" data-delay="1.5"><b>@lang('contact.whatsapp'): </b> <a
+                                            href="https://api.whatsapp.com/send?phone={{ $contactInfo->whatsapp }}"
+                                            target="_blank">{{ $contactInfo->whatsapp }}</a></p>
+                                    <p data-animate="fadeInUp" data-delay="1.5"><b>@lang('contact.email_me'): </b> <a
+                                            href="mailto:{{ $contactInfo->email }}">{{ $contactInfo->email }}</a></p>
 
-                                        </p>
+                                    </p>
                                 </div>
                                 <div class="col-md-6">
                                     <p data-animate="fadeInUp" data-delay="1.5"><i class="fa fa-map-marker-alt"></i>
                                         <b>الموقع:</b>
-                                        <div  data-animate="fadeInUp" data-delay="1.6"> {!! $contactInfo->location !!}</div>
+                                    <div data-animate="fadeInUp" data-delay="1.6"> {!! $contactInfo->location !!}</div>
 
                                     </p>
                                 </div>

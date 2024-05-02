@@ -33,6 +33,7 @@ use App\Models\PartnerSlider;
 use App\Models\Privacy;
 use App\Models\Review;
 use App\Models\Role;
+use App\Models\ServiceComment;
 use App\Models\SMSLog;
 use App\Models\SocialMedia;
 use App\Models\Tag;
@@ -320,11 +321,11 @@ class SiteController extends Controller
         $rules = [
             'name' => ['required'],
             'email' => ['nullable', 'email'],
-            'mobile' => ['required'],
+            'mobile' => ['nullable'],
 
             'phone' => ['nullable'],
             'contact_method' => ['required'],
-            'dob' => ['required', 'date'],
+            'dob' => ['required'],
             'city' => ['required'],
             'cert_degree' => ['required'],
 
@@ -356,7 +357,7 @@ class SiteController extends Controller
         $contact = new ContactUs();
         $contact->name = $validatedData['name'];
         $contact->email =  $validatedData['email'] ?? '';
-        $contact->mobile =  $validatedData['mobile'];
+        $contact->mobile =  $validatedData['mobile'] ?? '';
 
         $contact->phone =  $validatedData['phone'] ?? '';
         $contact->contact_method =  $validatedData['contact_method'];
@@ -377,7 +378,8 @@ class SiteController extends Controller
         $info = array(
             'name' => $request->name,
             'mobile' => $request->mobile,
-
+            'phone' => $request->phone,
+            'email' => $request->email,
             'contact_method' => $request->contact_method,
             'dob' => $request->dob,
             'city' => $request->city,
@@ -472,4 +474,35 @@ class SiteController extends Controller
         $info = Info::first();
         return view('faq', compact('faqs', 'info'));
     }
+
+    public function postComment(Request $request){
+        $request->validate([
+            'service_id'=> 'required',
+            'name'=> 'required',
+            'email'=> 'required|email',
+            'name'=> 'required',
+        ]);
+        $comment=ServiceComment::create($request->all());
+
+        $info = array(
+            'name' => $request->name,
+            'email' => $request->email,
+            'service' => $comment->service->title,
+            'comment' => $request->content,
+        );
+        try {
+            //code...
+            Mail::send('mail', $info, function ($message)  {
+                $message->to("almohtarif.contact.form@gmail.com", "Almohtarif")
+                    ->subject('تم إضافة تعليق جديد');
+                $message->from('support@almohtarif-office.com', 'Almohtarif');
+            });
+        } catch (\Throwable $th) {
+            // throw $th;
+        }
+
+        session()->flash('success', trans('تم إضافة التعليق بنجاح'));
+        return redirect()->back();
+    }
+
 }

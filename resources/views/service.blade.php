@@ -4,6 +4,9 @@
 @endphp
 @section('title')
     {{ $service->title }}
+    @php
+        $serviceComment=$service->id;
+    @endphp
 @endsection
 
 
@@ -528,48 +531,91 @@
                                         <h2 class="text-center">
                                             {{-- الخدمات الفرعية --}}
                                         </h2>
-                                        <div id="customers-testimonials" class="owl-carousel " data-animate="fadeInUp"
-                                            data-delay="1.5">
-                                            @foreach ($service->subServices as $index => $service)
-                                                <!--TESTIMONIAL 1 -->
-                                               @if ($service->parent_id !=1)
-                                               <div class="item">
-                                                <div class="shadow-effect">
-                                                    <div class="single-post" data-animate="" style="padding: 0">
-                                                        <div class="image-hover-wrap">
+                                        @if ($service->subServices->count() <=2)
+                                        <div class="row" style="  justify-content: center; margin-bottom:50px">
+                                        @foreach ($service->subServices as $index => $service)
+                                            <!--TESTIMONIAL 1 -->
+                                                <div class="item col-md-4 ">
+                                                    <div class="shadow-effect">
+                                                        <div class="single-post" data-animate="" style="padding: 0">
+                                                            <div class="image-hover-wrap">
 
-                                                            <img class="img-fluid" src="{{ asset($service->image) }}"
-                                                                alt="" loading="lazy">
+                                                                <img class="img-fluid"
+                                                                    src="{{ asset($service->image) }}" alt=""
+                                                                    loading="lazy">
 
 
-                                                            <div
-                                                                class="image-hover-content d-flex justify-content-center align-items-center text-center">
-                                                                <ul class="list-inline">
-                                                                    <li><a
-                                                                            href="{{ route('service', $service->slug) }}"><i
-                                                                                class="fas fa-link"></i></a>
-                                                                    </li>
-                                                                    {{-- <li><a href="#"><i class="fas fa-share-alt"></i></a></li> --}}
-                                                                </ul>
+                                                                <div
+                                                                    class="image-hover-content d-flex justify-content-center align-items-center text-center">
+                                                                    <ul class="list-inline">
+                                                                        <li><a
+                                                                                href="{{ route('service', $service->slug) }}"><i
+                                                                                    class="fas fa-link"></i></a>
+                                                                        </li>
+                                                                        {{-- <li><a href="#"><i class="fas fa-share-alt"></i></a></li> --}}
+                                                                    </ul>
+                                                                </div>
+                                                            </div>
+                                                            <div style="padding: 15px">
+                                                                <h3>{{ $service->title }}</h3>
                                                             </div>
                                                         </div>
-                                                        <div style="padding: 15px">
-                                                            <h3>{{ $service->title }}</h3>
-                                                        </div>
+                                                    </div>
+                                                    <div class="testimonial-name" style="background-color: #DF1F26">
+                                                        <a href="{{ route('service', $service->slug) }}"
+                                                            class="btn btn-secondary">@lang('site.read_more')<i
+                                                                class="fas fa-caret-right"></i></a>
                                                     </div>
                                                 </div>
-                                                <div class="testimonial-name" style="background-color: #DF1F26">
-                                                    <a href="{{ route('service', $service->slug) }}"
-                                                        class="btn btn-secondary">@lang('site.read_more')<i
-                                                            class="fas fa-caret-right"></i></a>
-                                                </div>
-                                            </div>
-                                               @else
-                                               <div class="item" style="background-image: url({{ asset($service->image) }});      background-repeat: no-repeat;
-                                                background-size: 100% 100%;height: 400px;
-border-radius: 15px;">
 
-                                                    <div class="single-post" data-animate="" style="padding: 0; border: unset !important; margin-bottom: 5px">
+                                            <!--END OF TESTIMONIAL 1 -->
+                                        @endforeach
+                                    </div>
+                                        @else
+                                        <div id="customers-testimonials" class="owl-carousel " data-animate="fadeInUp"
+                                        data-delay="1.5">
+                                        @foreach ($service->subServices as $index => $service)
+                                            <!--TESTIMONIAL 1 -->
+                                            @if ($service->parent_id != 1)
+                                                <div class="item">
+                                                    <div class="shadow-effect">
+                                                        <div class="single-post" data-animate="" style="padding: 0">
+                                                            <div class="image-hover-wrap">
+
+                                                                <img class="img-fluid"
+                                                                    src="{{ asset($service->image) }}" alt=""
+                                                                    loading="lazy">
+
+
+                                                                <div
+                                                                    class="image-hover-content d-flex justify-content-center align-items-center text-center">
+                                                                    <ul class="list-inline">
+                                                                        <li><a
+                                                                                href="{{ route('service', $service->slug) }}"><i
+                                                                                    class="fas fa-link"></i></a>
+                                                                        </li>
+                                                                        {{-- <li><a href="#"><i class="fas fa-share-alt"></i></a></li> --}}
+                                                                    </ul>
+                                                                </div>
+                                                            </div>
+                                                            <div style="padding: 15px">
+                                                                <h3>{{ $service->title }}</h3>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="testimonial-name" style="background-color: #DF1F26">
+                                                        <a href="{{ route('service', $service->slug) }}"
+                                                            class="btn btn-secondary">@lang('site.read_more')<i
+                                                                class="fas fa-caret-right"></i></a>
+                                                    </div>
+                                                </div>
+                                            @else
+                                                <div class="item"
+                                                    style="background-image: url({{ asset($service->image) }});      background-repeat: no-repeat;
+                                            background-size: 100% 100%;height: 400px;border-radius: 15px;">
+
+                                                    <div class="single-post" data-animate=""
+                                                        style="padding: 0; border: unset !important; margin-bottom: 5px">
                                                         <div class="image-hover-wrap">
 
                                                             <div
@@ -584,20 +630,23 @@ border-radius: 15px;">
                                                             </div>
                                                         </div>
                                                         <div style="padding: 15px; padding-bottom: 0">
-                                                            <h3 style="padding-top: 70% !important;">{{ $service->title }}</h3>
+                                                            <h3 style="padding-top: 70% !important;">
+                                                                {{ $service->title }}</h3>
                                                         </div>
                                                     </div>
 
-                                                <div class="testimonial-name" style="background-color: #DF1F26;padding-top: 0">
-                                                    <a href="{{ route('service', $service->slug) }}"
-                                                        class="btn btn-secondary">@lang('site.read_more')<i
-                                                            class="fas fa-caret-right"></i></a>
+                                                    <div class="testimonial-name"
+                                                        style="background-color: #DF1F26;padding-top: 0">
+                                                        <a href="{{ route('service', $service->slug) }}"
+                                                            class="btn btn-secondary">@lang('site.read_more')<i
+                                                                class="fas fa-caret-right"></i></a>
+                                                    </div>
                                                 </div>
-                                            </div>
-                                               @endif
-                                                <!--END OF TESTIMONIAL 1 -->
-                                            @endforeach
-                                        </div>
+                                            @endif
+                                            <!--END OF TESTIMONIAL 1 -->
+                                        @endforeach
+                                    </div>
+                                        @endif
                                     </div>
                                 </div>
                             </div>
@@ -608,27 +657,26 @@ border-radius: 15px;">
                         style="background: white;
                     border-radius: 25px;
                     padding: 2rem;margin-top: 50px !important;">
-                        <div id="disqus_thread"></div>
-                        <script defer>
-                            /**
-                             *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
-                             *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables    */
-                            /*
-                            var disqus_config = function () {
-                            this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
-                            this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
-                            };
-                            */
-                            (function() { // DON'T EDIT BELOW THIS LINE
-                                var d = document,
-                                    s = d.createElement('script');
-                                s.src = 'https://almohtarif-2.disqus.com/embed.js';
-                                s.setAttribute('data-timestamp', +new Date());
-                                (d.head || d.body).appendChild(s);
-                            })();
-                        </script>
-                        <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments
-                                powered by Disqus.</a></noscript>
+ <div class="comment-form mt-5">
+    <h3 class="mb-4 font-weight-bold" data-animate="fadeInUp" data-delay=".1">عبر عن رأيك بالخدمة</h3>
+    <form action="{{ route('postComment') }}" method="post"><div class="form-row">
+
+        @csrf
+        @method('POST')
+        @include('partials._errors')
+        <input type="hidden" name="service_id" value="{{ $serviceComment }}">
+            <div class="col-md-6">
+                <input name="name" type="text" class="form-control" placeholder="الاسم" data-animate="fadeInUp" data-delay=".3" required>
+            </div>
+            <div class="col-md-6">
+                <input name="email" type="email" class="form-control" placeholder="البريد الالكتروني" data-animate="fadeInUp" data-delay=".4" required>
+            </div>
+        </div>
+        <textarea name="content" class="form-control" placeholder="اكتب التعليق هنا.." data-animate="fadeInUp" data-delay=".2" required></textarea>
+
+        <button class="btn btn-square btn-primary mt-3" data-animate="fadeInUp" data-delay=".6">أضف تعليق</button>
+    </form>
+</div>
                     </div>
 
 

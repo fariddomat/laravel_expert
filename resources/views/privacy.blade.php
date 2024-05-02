@@ -24,7 +24,7 @@
         </div>
         <div class="row">
             <!-- Contact Info -->
-            <div class="col-md-12 mb-4" style="padding-left: 50px; padding-right: 50px">
+            <div class="col-md-12 mb-4" style="padding-left: 50px; padding-right: 50px" dir="ltr">
                 {{-- @if (app()->getLocale() == 'ar') --}}
                {!! $privacy->ar !!}
                {{-- @else

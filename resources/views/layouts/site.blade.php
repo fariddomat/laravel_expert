@@ -106,6 +106,15 @@
         .stuck {
             background: #0d1216 !important;
         }
+        .social-links i{
+            font-size: 20px;
+        }
+
+        .social-links i:hover{
+            font-size: 22px;
+            color: #DF1F26 ;
+        }
+
     </style>
 
 </head>
@@ -127,16 +136,7 @@
                         </ul>
                     </div>
                     <div class="col-md-3 d-none d-md-block">
-                        <!-- Header social icons -->
-                        <ul class="social-icons text-right list-inline m-0">
-                            @foreach ($socialMedias as $socialMedia)
-                                <li>
-                                    <a href="{{ $socialMedia->link }}" target="_blank"><i
-                                            class="fa-brands {{ $socialMedia->icon }}"></i></a>
-
-                                </li>
-                            @endforeach
-                        </ul>
+                        https://www.almohtarif-office.com
                     </div>
                 </div>
             </div>

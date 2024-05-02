@@ -74,4 +74,8 @@ class Service extends Model implements Viewable,TranslatableContract
         });
     }
 
+    public function service_comments(){
+        return $this->hasMany(ServiceComment::class);
+    }
+
 }

@@ -37,6 +37,10 @@ Route::group(
         Route::get('/privacy', 'SiteController@privacy')->name('privacy');
         Route::get('/contact-us', 'SiteController@contact')->name('contact');
         Route::post('/contact-us', 'SiteController@postContact')->name('contact.post');
+
+        // postComment
+        Route::post('/postComment', 'SiteController@postComment')->name('postComment');
+
         // workWithUs
         Route::get('/workWithUs', 'SiteController@workWithUs')->name('workWithUs');
         Route::post('/workWithUs', 'SiteController@postWorkWithUs')->name('workWithUs.post');
@@ -77,6 +81,7 @@ Route::group(['prefix' => '/dashboard', 'middleware' => ['auth', 'setArLocale'],
     Route::resource('packages', 'Dashboard\PackageController');
     Route::resource('package_services', 'Dashboard\PackageServiceController')->except(['index', 'create', 'edit']);
 
+    Route::resource('service_comments', 'Dashboard\ServiceCommentController');
     Route::resource('visitors', 'Dashboard\VisitorController');
     Route::resource('locations', 'Dashboard\LocationController');
 

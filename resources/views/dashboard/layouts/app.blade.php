@@ -116,6 +116,11 @@
                             الخدمات
                         </a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link @yield('serviceCommentsActive')" href="{{ route('dashboard.service_comments.index') }}">
+                            التعليقات
+                        </a>
+                    </li>
                     {{-- <li class="nav-item">
                         <a class="nav-link @yield('orderservicesActive')" href="{{ route('dashboard.orderservices.index') }}">
                             طلبات الخدمات

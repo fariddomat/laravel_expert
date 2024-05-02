@@ -20,7 +20,7 @@ class CreateContactUsTable extends Migration
             $table->string('mobile');
             $table->string('phone')->nullable();
             $table->string('contact_method');
-            $table->date('dob');
+            $table->text('dob');
             $table->dateTime('start_at');
             $table->string('city');
             $table->string('cert_degree');
