@@ -292,7 +292,7 @@
                 rotate(30deg);
             /* rotate by half the central angle of the slice
                                                                                        which is 50deg in this case */
-            background: #6e7472;
+            background: rgb(173, 181, 189);
         }
 
         .slice:first-child .slice-contents .counterTitle {
@@ -321,9 +321,6 @@
             padding-right: 5px;
         }
 
-        .slice:first-child .slice-contents:hover {
-            background: #014567 !important;
-        }
 
         .slice:nth-child(2) .slice-contents {
             transform: skewY(18deg)
@@ -331,12 +328,10 @@
                 rotate(30deg);
             /* rotate by half the central angle of the slice
                                                                                        which is 50deg in this case */
-            background: #778181;
+            background: rgb(206, 212, 218);
         }
 
-        .slice:nth-child(2) .slice-contents:hover {
-            background: #495e61 !important;
-        }
+
 
         .slice:nth-child(2) .slice-contents i {
             transform: rotate(-72deg);
@@ -348,12 +343,9 @@
                 rotate(30deg);
             /* rotate by half the central angle of the slice
                                                                                        which is 50deg in this case */
-            background: #7f969c;
+            background: rgb(222, 226, 230);
         }
 
-        .slice:nth-child(3) .slice-contents:hover {
-            background: #00292d !important;
-        }
 
         .slice:nth-child(4) .slice-contents {
             transform: skewY(18deg)
@@ -361,12 +353,9 @@
                 rotate(30deg);
             /* rotate by half the central angle of the slice
                                                                                        which is 50deg in this case */
-            background: #a3afb7;
+            background: rgb(230, 230, 233);
         }
 
-        .slice:nth-child(4) .slice-contents:hover {
-            background: #006554 !important;
-        }
 
         .slice:nth-child(4) .slice-contents i {
             transform: rotate(180deg);
@@ -378,12 +367,9 @@
                 rotate(30deg);
             /* rotate by half the central angle of the slice
                                                                                        which is 50deg in this case */
-            background: #c7c9cf;
+            background: rgb(233, 236, 239);
         }
 
-        .slice:nth-child(5) .slice-contents:hover {
-            background: #27654a !important;
-        }
 
         .slice:nth-child(6) .slice-contents {
             transform: skewY(18deg)
@@ -391,12 +377,9 @@
                 rotate(30deg);
             /* rotate by half the central angle of the slice
                                                                                        which is 50deg in this case */
-            background: #b9b0b0;
+            background: rgb(248, 249, 250);
         }
 
-        .slice:nth-child(7) .slice-contents:hover {
-            background: #27654a !important;
-        }
 
         .slice:nth-child(7) .slice-contents {
             transform: skewY(18deg)
@@ -417,11 +400,6 @@
         }
 
         .slice:nth-child(8) .slice-contents:hover {
-            background: #27654a !important;
-        }
-
-
-        .slice:nth-child(5) .slice-contents:hover {
             background: #27654a !important;
         }
 
