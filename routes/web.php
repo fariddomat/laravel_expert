@@ -12,7 +12,7 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
+// ini_set('memory_limit', '1024M');
 Auth::routes(['register' => false]);
 
 // Clear cashe route

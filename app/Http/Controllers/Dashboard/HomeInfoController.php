@@ -88,7 +88,7 @@ class HomeInfoController extends Controller
         if ($request->has('service_image')) {
             $image = $request->file('service_image');
             $directory = '/photos/home';
-            $fullPath = $helper->storeImageInPublicDirectory($image, $directory, 1350,null);
+            $fullPath = $helper->storeImageInPublicDirectory($image, $directory, 1600,860);
             $info->service_image = $fullPath;
         }
         if ($request->has('service_image_mobile')) {
@@ -113,7 +113,7 @@ class HomeInfoController extends Controller
         if ($request->has('who_image')) {
             $image = $request->file('who_image');
             $directory = '/photos/home';
-            $fullPath = $helper->storeImageInPublicDirectory($image, $directory);
+            $fullPath = $helper->storeImageInPublicDirectory($image, $directory , 1600 , 450);
             $info->who_image = $fullPath;
         }
         if ($request->has('who_image_mobile')) {

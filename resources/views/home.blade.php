@@ -30,8 +30,10 @@
             padding: 25px 75px !important;
             margin-top: 25px !important;
             position: absolute;
-            bottom: 25%;
-            right: 10%;
+            bottom: 45%;
+
+            left: 50%;
+                transform: translateX(-50%) !important;
         }
 
         @media (max-width: 480px) {
@@ -2135,7 +2137,7 @@
     {{-- who --}}
     <section class="pt-2 pb-7 bg-light who_we">
         <a data-animate="fadeInUp" data-delay=".1" href="{{ route('about') }}"
-            class="btn btn-secondary">@lang('site.about_me')</a>
+        class="btn btn-secondary">@lang('site.about_me')</a>
 
     </section>
     {{-- end who --}}
