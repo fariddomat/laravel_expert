@@ -325,7 +325,7 @@ class SiteController extends Controller
 
             'phone' => ['nullable'],
             'contact_method' => ['required'],
-            'dob' => ['required'],
+            // 'dob' => ['required'],
             'city' => ['nullable'],
             'cert_degree' => ['required'],
 
@@ -354,6 +354,9 @@ class SiteController extends Controller
             session()->flash('success', trans('contact.sent_successfully'));
             return redirect()->back();
         }
+
+        $dob= $request->day."/".$request->month."/".$request->year;
+        // dd($dob);
         $contact = new ContactUs();
         $contact->name = $validatedData['name'];
         $contact->email =  $validatedData['email'] ?? '';
@@ -361,7 +364,7 @@ class SiteController extends Controller
 
         $contact->phone =  $validatedData['phone'] ?? '';
         $contact->contact_method =  $validatedData['contact_method'];
-        $contact->dob =  $validatedData['dob'];
+        $contact->dob =  $dob;
         $contact->city =  $validatedData['city'] ?? '';
         $contact->cert_degree =  $validatedData['cert_degree'];
         $contact->start_at =  $start_At;
@@ -381,7 +384,7 @@ class SiteController extends Controller
             'phone' => $request->phone,
             'email' => $request->email,
             'contact_method' => $request->contact_method,
-            'dob' => $request->dob,
+            'dob' => $dob,
             'city' => $request->city,
             'cert_degree' => $request->cert_degree,
             'start_at' => $start_At,

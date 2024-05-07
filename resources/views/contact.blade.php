@@ -10,6 +10,9 @@
     <link rel="stylesheet" href="https://code.jquery.com/ui/1.13.3/themes/base/jquery-ui.css">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.8.0/js/bootstrap-datepicker.min.js"></script>
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.10.2/fullcalendar.min.js"></script>
     <style>
@@ -463,13 +466,62 @@
 
                                         <div class="col-md-6" data-animate="fadeInUp" data-delay=".2">
                                             <div class="form-group">
-                                                <label for="dob">تاريخ الميلاد</label>
-                                                <input id="datepicker" type="text" name="dob" placeholder="dd/mm/YYYY"
-                                                    class="form-control" data-parsley-required="true"
-                                                    data-parsley-required-message="تاريخ الميلاد مطلوب."
-                                                    data-parsley-trigger="submit">
+                                                <div class="row">
+                                                    <div class="col-md-4">
+                                                        <div class="form-group">
+                                                            <label for="day">تاريخ الميلاد  - اليوم:</label>
+                                                            <select class="form-control" id="day" name="day">
+                                                                @for ($i = 1; $i <= 31; $i++)
+                                                                    <option value="{{ $i }}">{{ $i }}</option>
+                                                                @endfor
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-4">
+                                                        <div class="form-group">
+                                                            <label for="month">الشهر:</label>
+                                                            <select class="form-control" id="month" name="month"  onchange="updateDays()">
+                                                                @foreach (range(1, 12) as $month)
+                                                                    <option value="{{ $month }}">{{ $month }}</option>
+                                                                @endforeach
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-4">
+                                                        <div class="form-group">
+                                                            <label for="year">السنة:</label>
+                                                            <select class="form-control" id="year" name="year">
+                                                                @for ($year = date('Y'); $year >= 1900; $year--)
+                                                                    <option value="{{ $year }}">{{ $year }}</option>
+                                                                @endfor
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
                                             </div>
                                         </div>
+                                        <script>
+                                            function updateDays() {
+                                                const month = document.getElementById('month').value;
+                                                const year = document.getElementById('year').value;
+                                                const daySelect = document.getElementById('day');
+                                                const lastDay = new Date(year, month, 0).getDate(); // Get the last day of the month
+
+                                                // Clear existing options
+                                                while (daySelect.options.length > 0) {
+                                                    daySelect.remove(0);
+                                                }
+
+                                                // Add days according to the selected month and year
+                                                for (let i = 1; i <= lastDay; i++) {
+                                                    const option = document.createElement('option');
+                                                    option.value = i;
+                                                    option.textContent = i;
+                                                    daySelect.appendChild(option);
+                                                }
+                                            }
+                                        </script>
                                         <div class="col-md-6" data-animate="fadeInUp" data-delay=".3">
                                             <div class="form-group">
                                                 <label for="">رقم الهاتف الجوال</label>
