@@ -4,9 +4,10 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
 
     <style>
-.solution_card .solu_title h3 {
-  text-align: center;
-}
+        .solution_card .solu_title h3 {
+            text-align: center;
+        }
+
         .single-post span {
             font-size: 1rem;
             color: #000;
@@ -296,7 +297,7 @@
         jQuery(document).ready(function($) {
             "use strict";
             //  TESTIMONIALS CAROUSEL HOOK
-            $('#customers-testimonials').owlCarousel({
+            var owl= $('#customers-testimonials').owlCarousel({
                 loop: true,
                 center: true,
                 items: 3,
@@ -304,6 +305,8 @@
                 autoplay: true,
                 dots: true,
                 autoplayTimeout: 2500,
+                responsiveRefreshRate : 10,
+                autoplayHoverPause: true, // Stops autoplay
                 smartSpeed: 450,
                 responsive: {
                     0: {
@@ -317,6 +320,11 @@
                     }
                 }
             });
+
+            owl.on('mouseleave',function(){
+   owl.trigger('stop.owl.autoplay'); //this is main line to fix it
+   owl.trigger('play.owl.autoplay', [1000]);
+});
         });
     </script>
 @endsection
@@ -371,7 +379,7 @@
                     @isset($_GET['tag'])
                         <div class="row" style="margin-bottom: 100px">
                             <h2 class="text-center" style="margin: 0 auto;">TAG:
-                                {{ App\models\Tag::where('id',$_GET['tag'])->first()->name }}</h2>
+                                {{ App\models\Tag::where('id', $_GET['tag'])->first()->name }}</h2>
                         </div>
                     @endisset
 
@@ -458,7 +466,7 @@
                                         <div class="single-post" data-animate="" style="padding: 0">
                                             <div class="image-hover-wrap">
                                                 <img class="img-fluid" src="{{ asset($blog->image) }}" alt=""
-                                                    style=" aspect-ratio: 3 / 2;"  loading="lazy">
+                                                    style=" aspect-ratio: 3 / 2;" loading="lazy">
                                                 <div
                                                     class="image-hover-content d-flex justify-content-center align-items-center text-center">
                                                     <ul class="list-inline">

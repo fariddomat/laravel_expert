@@ -4,7 +4,6 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
     <style>
-
         .single-post span {
             font-size: 1rem;
             color: #000;
@@ -110,7 +109,7 @@
         jQuery(document).ready(function($) {
             "use strict";
             //  TESTIMONIALS CAROUSEL HOOK
-            $('#customers-testimonials').owlCarousel({
+            var owl=$('#customers-testimonials').owlCarousel({
                 loop: true,
                 center: true,
                 items: 3,
@@ -118,6 +117,9 @@
                 autoplay: true,
                 dots: true,
                 autoplayTimeout: 2500,
+
+                responsiveRefreshRate : 10,
+                autoplayHoverPause: true, // Stops autoplay
                 smartSpeed: 450,
                 responsive: {
                     0: {
@@ -131,11 +133,19 @@
                     }
                 }
             });
+            owl.on('mouseleave',function(){
+   owl.trigger('stop.owl.autoplay'); //this is main line to fix it
+   owl.trigger('play.owl.autoplay', [1000]);
+});
         });
+
+
     </script>
 
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-    <script></script>
+    <script>
+
+    </script>
 @endsection
 @section('content')
 
@@ -192,7 +202,8 @@
                                             <h3>{{ $service->title }}</h3>
                                             <h4>
                                                 {!! $service->intro !!}
-                                            </h4></div>
+                                            </h4>
+                                        </div>
 
                                     </div>
 

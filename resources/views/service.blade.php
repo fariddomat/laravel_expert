@@ -5,7 +5,7 @@
 @section('title')
     {{ $service->title }}
     @php
-        $serviceComment=$service->id;
+        $serviceComment = $service->id;
     @endphp
 @endsection
 
@@ -230,7 +230,7 @@
         jQuery(document).ready(function($) {
             "use strict";
             //  TESTIMONIALS CAROUSEL HOOK
-            $('#customers-testimonials').owlCarousel({
+            var owl = $('#customers-testimonials').owlCarousel({
                 loop: true,
                 center: true,
                 items: 3,
@@ -238,6 +238,8 @@
                 autoplay: true,
                 dots: true,
                 autoplayTimeout: 2500,
+                responsiveRefreshRate: 10,
+                autoplayHoverPause: true, // Stops autoplay
                 smartSpeed: 450,
                 responsive: {
                     0: {
@@ -250,6 +252,10 @@
                         items: 3
                     }
                 }
+            });
+            owl.on('mouseleave', function() {
+                owl.trigger('stop.owl.autoplay'); //this is main line to fix it
+                owl.trigger('play.owl.autoplay', [1000]);
             });
         });
     </script>
@@ -531,121 +537,123 @@
                                         <h2 class="text-center">
                                             {{-- الخدمات الفرعية --}}
                                         </h2>
-                                        @if ($service->subServices->count() <=2)
-                                        <div class="row" style="  justify-content: center; margin-bottom:50px">
-                                        @foreach ($service->subServices as $index => $service)
-                                            <!--TESTIMONIAL 1 -->
-                                                <div class="item col-md-4 ">
-                                                    <div class="shadow-effect">
-                                                        <div class="single-post" data-animate="" style="padding: 0">
-                                                            <div class="image-hover-wrap">
+                                        @if ($service->subServices->count() <= 2)
+                                            <div class="row" style="  justify-content: center; margin-bottom:50px">
+                                                @foreach ($service->subServices as $index => $service)
+                                                    <!--TESTIMONIAL 1 -->
+                                                    <div class="item col-md-4 ">
+                                                        <div class="shadow-effect">
+                                                            <div class="single-post" data-animate="" style="padding: 0">
+                                                                <div class="image-hover-wrap">
 
-                                                                <img class="img-fluid"
-                                                                    src="{{ asset($service->image) }}" alt=""
-                                                                    loading="lazy">
+                                                                    <img class="img-fluid"
+                                                                        src="{{ asset($service->image) }}" alt=""
+                                                                        loading="lazy">
 
 
-                                                                <div
-                                                                    class="image-hover-content d-flex justify-content-center align-items-center text-center">
-                                                                    <ul class="list-inline">
-                                                                        <li><a
-                                                                                href="{{ route('service', $service->slug) }}"><i
-                                                                                    class="fas fa-link"></i></a>
-                                                                        </li>
-                                                                        {{-- <li><a href="#"><i class="fas fa-share-alt"></i></a></li> --}}
-                                                                    </ul>
+                                                                    <div
+                                                                        class="image-hover-content d-flex justify-content-center align-items-center text-center">
+                                                                        <ul class="list-inline">
+                                                                            <li><a
+                                                                                    href="{{ route('service', $service->slug) }}"><i
+                                                                                        class="fas fa-link"></i></a>
+                                                                            </li>
+                                                                            {{-- <li><a href="#"><i class="fas fa-share-alt"></i></a></li> --}}
+                                                                        </ul>
+                                                                    </div>
+                                                                </div>
+                                                                <div style="padding: 15px">
+                                                                    <h3>{{ $service->title }}</h3>
                                                                 </div>
                                                             </div>
-                                                            <div style="padding: 15px">
-                                                                <h3>{{ $service->title }}</h3>
-                                                            </div>
+                                                        </div>
+                                                        <div class="testimonial-name" style="background-color: #DF1F26">
+                                                            <a href="{{ route('service', $service->slug) }}"
+                                                                class="btn btn-secondary">@lang('site.read_more')<i
+                                                                    class="fas fa-caret-right"></i></a>
                                                         </div>
                                                     </div>
-                                                    <div class="testimonial-name" style="background-color: #DF1F26">
-                                                        <a href="{{ route('service', $service->slug) }}"
-                                                            class="btn btn-secondary">@lang('site.read_more')<i
-                                                                class="fas fa-caret-right"></i></a>
-                                                    </div>
-                                                </div>
 
-                                            <!--END OF TESTIMONIAL 1 -->
-                                        @endforeach
-                                    </div>
+                                                    <!--END OF TESTIMONIAL 1 -->
+                                                @endforeach
+                                            </div>
                                         @else
-                                        <div id="customers-testimonials" class="owl-carousel " data-animate="fadeInUp"
-                                        data-delay="1.5">
-                                        @foreach ($service->subServices as $index => $service)
-                                            <!--TESTIMONIAL 1 -->
-                                            @if ($service->parent_id != 1)
-                                                <div class="item">
-                                                    <div class="shadow-effect">
-                                                        <div class="single-post" data-animate="" style="padding: 0">
-                                                            <div class="image-hover-wrap">
+                                            <div id="customers-testimonials" class="owl-carousel "
+                                                data-animate="fadeInUp" data-delay="1.5">
+                                                @foreach ($service->subServices as $index => $service)
+                                                    <!--TESTIMONIAL 1 -->
+                                                    @if ($service->parent_id != 1)
+                                                        <div class="item">
+                                                            <div class="shadow-effect">
+                                                                <div class="single-post" data-animate=""
+                                                                    style="padding: 0">
+                                                                    <div class="image-hover-wrap">
 
-                                                                <img class="img-fluid"
-                                                                    src="{{ asset($service->image) }}" alt=""
-                                                                    loading="lazy">
+                                                                        <img class="img-fluid"
+                                                                            src="{{ asset($service->image) }}"
+                                                                            alt="" loading="lazy">
 
 
-                                                                <div
-                                                                    class="image-hover-content d-flex justify-content-center align-items-center text-center">
-                                                                    <ul class="list-inline">
-                                                                        <li><a
-                                                                                href="{{ route('service', $service->slug) }}"><i
-                                                                                    class="fas fa-link"></i></a>
-                                                                        </li>
-                                                                        {{-- <li><a href="#"><i class="fas fa-share-alt"></i></a></li> --}}
-                                                                    </ul>
+                                                                        <div
+                                                                            class="image-hover-content d-flex justify-content-center align-items-center text-center">
+                                                                            <ul class="list-inline">
+                                                                                <li><a
+                                                                                        href="{{ route('service', $service->slug) }}"><i
+                                                                                            class="fas fa-link"></i></a>
+                                                                                </li>
+                                                                                {{-- <li><a href="#"><i class="fas fa-share-alt"></i></a></li> --}}
+                                                                            </ul>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div style="padding: 15px">
+                                                                        <h3>{{ $service->title }}</h3>
+                                                                    </div>
                                                                 </div>
                                                             </div>
-                                                            <div style="padding: 15px">
-                                                                <h3>{{ $service->title }}</h3>
+                                                            <div class="testimonial-name"
+                                                                style="background-color: #DF1F26">
+                                                                <a href="{{ route('service', $service->slug) }}"
+                                                                    class="btn btn-secondary">@lang('site.read_more')<i
+                                                                        class="fas fa-caret-right"></i></a>
                                                             </div>
                                                         </div>
-                                                    </div>
-                                                    <div class="testimonial-name" style="background-color: #DF1F26">
-                                                        <a href="{{ route('service', $service->slug) }}"
-                                                            class="btn btn-secondary">@lang('site.read_more')<i
-                                                                class="fas fa-caret-right"></i></a>
-                                                    </div>
-                                                </div>
-                                            @else
-                                                <div class="item"
-                                                    style="background-image: url({{ asset($service->image) }});      background-repeat: no-repeat;
+                                                    @else
+                                                        <div class="item"
+                                                            style="background-image: url({{ asset($service->image) }});      background-repeat: no-repeat;
                                             background-size: 100% 100%;height: 400px;border-radius: 15px;">
 
-                                                    <div class="single-post" data-animate=""
-                                                        style="padding: 0; border: unset !important; margin-bottom: 5px">
-                                                        <div class="image-hover-wrap">
+                                                            <div class="single-post" data-animate=""
+                                                                style="padding: 0; border: unset !important; margin-bottom: 5px">
+                                                                <div class="image-hover-wrap">
 
-                                                            <div
-                                                                class="image-hover-content d-flex justify-content-center align-items-center text-center">
-                                                                <ul class="list-inline">
-                                                                    <li><a
-                                                                            href="{{ route('service', $service->slug) }}"><i
-                                                                                class="fas fa-link"></i></a>
-                                                                    </li>
-                                                                    {{-- <li><a href="#"><i class="fas fa-share-alt"></i></a></li> --}}
-                                                                </ul>
+                                                                    <div
+                                                                        class="image-hover-content d-flex justify-content-center align-items-center text-center">
+                                                                        <ul class="list-inline">
+                                                                            <li><a
+                                                                                    href="{{ route('service', $service->slug) }}"><i
+                                                                                        class="fas fa-link"></i></a>
+                                                                            </li>
+                                                                            {{-- <li><a href="#"><i class="fas fa-share-alt"></i></a></li> --}}
+                                                                        </ul>
+                                                                    </div>
+                                                                </div>
+                                                                <div style="padding: 15px; padding-bottom: 0">
+                                                                    <h3 style="padding-top: 70% !important;">
+                                                                        {{ $service->title }}</h3>
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="testimonial-name"
+                                                                style="background-color: #DF1F26;padding-top: 0">
+                                                                <a href="{{ route('service', $service->slug) }}"
+                                                                    class="btn btn-secondary">@lang('site.read_more')<i
+                                                                        class="fas fa-caret-right"></i></a>
                                                             </div>
                                                         </div>
-                                                        <div style="padding: 15px; padding-bottom: 0">
-                                                            <h3 style="padding-top: 70% !important;">
-                                                                {{ $service->title }}</h3>
-                                                        </div>
-                                                    </div>
-
-                                                    <div class="testimonial-name"
-                                                        style="background-color: #DF1F26;padding-top: 0">
-                                                        <a href="{{ route('service', $service->slug) }}"
-                                                            class="btn btn-secondary">@lang('site.read_more')<i
-                                                                class="fas fa-caret-right"></i></a>
-                                                    </div>
-                                                </div>
-                                            @endif
-                                            <!--END OF TESTIMONIAL 1 -->
-                                        @endforeach
-                                    </div>
+                                                    @endif
+                                                    <!--END OF TESTIMONIAL 1 -->
+                                                @endforeach
+                                            </div>
                                         @endif
                                     </div>
                                 </div>
@@ -657,26 +665,33 @@
                         style="background: white;
                     border-radius: 25px;
                     padding: 2rem;margin-top: 50px !important;">
- <div class="comment-form mt-5">
-    <h3 class="mb-4 font-weight-bold" data-animate="fadeInUp" data-delay=".1">عبر عن رأيك بالخدمة</h3>
-    <form action="{{ route('postComment') }}" method="post"><div class="form-row">
+                        <div class="comment-form mt-5">
+                            <h3 class="mb-4 font-weight-bold" data-animate="fadeInUp" data-delay=".1">عبر عن رأيك بالخدمة
+                            </h3>
+                            <form action="{{ route('postComment') }}" method="post">
+                                <div class="form-row">
 
-        @csrf
-        @method('POST')
-        @include('partials._errors')
-        <input type="hidden" name="service_id" value="{{ $serviceComment }}">
-            <div class="col-md-6">
-                <input name="name" type="text" class="form-control" placeholder="الاسم" data-animate="fadeInUp" data-delay=".3" required>
-            </div>
-            <div class="col-md-6">
-                <input name="email" type="email" class="form-control" placeholder="البريد الالكتروني" data-animate="fadeInUp" data-delay=".4" required>
-            </div>
-        </div>
-        <textarea name="content" class="form-control" placeholder="اكتب التعليق هنا.." data-animate="fadeInUp" data-delay=".2" required></textarea>
+                                    @csrf
+                                    @method('POST')
+                                    @include('partials._errors')
+                                    <input type="hidden" name="service_id" value="{{ $serviceComment }}">
+                                    <div class="col-md-6">
+                                        <input name="name" type="text" class="form-control" placeholder="الاسم"
+                                            data-animate="fadeInUp" data-delay=".3" required>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <input name="email" type="email" class="form-control"
+                                            placeholder="البريد الالكتروني" data-animate="fadeInUp" data-delay=".4"
+                                            required>
+                                    </div>
+                                </div>
+                                <textarea name="content" class="form-control" placeholder="اكتب التعليق هنا.." data-animate="fadeInUp"
+                                    data-delay=".2" required></textarea>
 
-        <button class="btn btn-square btn-primary mt-3" data-animate="fadeInUp" data-delay=".6">أضف تعليق</button>
-    </form>
-</div>
+                                <button class="btn btn-square btn-primary mt-3" data-animate="fadeInUp"
+                                    data-delay=".6">أضف تعليق</button>
+                            </form>
+                        </div>
                     </div>
 
 

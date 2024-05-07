@@ -33,22 +33,22 @@
             bottom: 45%;
 
             left: 50%;
-                transform: translateX(-50%) !important;
+            transform: translateX(-50%) !important;
         }
 
         @media (max-width: 480px) {
             .who_we {
 
-            box-shadow: inset 0px -8px 8px #fff, inset 0px 8px 8px #f8f8f8 !important;
+                box-shadow: inset 0px -8px 8px #fff, inset 0px 8px 8px #f8f8f8 !important;
                 background-image: url({{ asset($info->who_image_mobile) }});
                 background-size: 100% 100%;
                 background-repeat: no-repeat
             }
 
             .who_we a {
-            padding: 15px 55px !important;
+                padding: 15px 55px !important;
                 position: absolute;
-                bottom: 60%;
+                bottom: 45%;
                 right: 10%;
                 left: 50%;
                 transform: translateX(-50%) !important;
@@ -220,7 +220,7 @@
             top: 0;
             right: 0;
             /* add slash at end of this line to show the red outline of the slice *
-                                                                                    outline: solid 1px red; /**/
+                                                                                                outline: solid 1px red; /**/
             width: 50%;
             height: 50%;
             transform-origin: 0% 100%;
@@ -293,7 +293,7 @@
                 /* unskew slice contents */
                 rotate(30deg);
             /* rotate by half the central angle of the slice
-                                                                                       which is 50deg in this case */
+                                                                                                   which is 50deg in this case */
             background: rgb(173, 181, 189);
         }
 
@@ -329,7 +329,7 @@
                 /* unskew slice contents */
                 rotate(30deg);
             /* rotate by half the central angle of the slice
-                                                                                       which is 50deg in this case */
+                                                                                                   which is 50deg in this case */
             background: rgb(206, 212, 218);
         }
 
@@ -344,7 +344,7 @@
                 /* unskew slice contents */
                 rotate(30deg);
             /* rotate by half the central angle of the slice
-                                                                                       which is 50deg in this case */
+                                                                                                   which is 50deg in this case */
             background: rgb(222, 226, 230);
         }
 
@@ -354,7 +354,7 @@
                 /* unskew slice contents */
                 rotate(30deg);
             /* rotate by half the central angle of the slice
-                                                                                       which is 50deg in this case */
+                                                                                                   which is 50deg in this case */
             background: rgb(230, 230, 233);
         }
 
@@ -368,7 +368,7 @@
                 /* unskew slice contents */
                 rotate(30deg);
             /* rotate by half the central angle of the slice
-                                                                                       which is 50deg in this case */
+                                                                                                   which is 50deg in this case */
             background: rgb(233, 236, 239);
         }
 
@@ -378,7 +378,7 @@
                 /* unskew slice contents */
                 rotate(30deg);
             /* rotate by half the central angle of the slice
-                                                                                       which is 50deg in this case */
+                                                                                                   which is 50deg in this case */
             background: rgb(248, 249, 250);
         }
 
@@ -388,7 +388,7 @@
                 /* unskew slice contents */
                 rotate(30deg);
             /* rotate by half the central angle of the slice
-                                                                                       which is 50deg in this case */
+                                                                                                   which is 50deg in this case */
             background: #d7f069;
         }
 
@@ -397,7 +397,7 @@
                 /* unskew slice contents */
                 rotate(30deg);
             /* rotate by half the central angle of the slice
-                                                                                       which is 50deg in this case */
+                                                                                                   which is 50deg in this case */
             background: #69f0ae;
         }
 
@@ -1175,27 +1175,27 @@
         }
 
         /* .section-wrapper .shielding-layer:after {
-                                                                                                                                                    content: "";
-                                                                                                                                                    width: 71%;
-                                                                                                                                                    height: 100%;
-                                                                                                                                                    position: absolute;
-                                                                                                                                                    top: 0;
-                                                                                                                                                    right: 0;
-                                                                                                                                                    z-index: 3;
-                                                                                                                                                    background: linear-gradient(90deg, rgba(249, 249, 254, 0) rgba(249, 249, 254, 0.97) 0,);
-                                                                                                                                                }
+                                                                                                                                                                content: "";
+                                                                                                                                                                width: 71%;
+                                                                                                                                                                height: 100%;
+                                                                                                                                                                position: absolute;
+                                                                                                                                                                top: 0;
+                                                                                                                                                                right: 0;
+                                                                                                                                                                z-index: 3;
+                                                                                                                                                                background: linear-gradient(90deg, rgba(249, 249, 254, 0) rgba(249, 249, 254, 0.97) 0,);
+                                                                                                                                                            }
 
-                                                                                                                                                .section-wrapper .shielding-layer:before {
-                                                                                                                                                    pointer-events: none;
-                                                                                                                                                    content: "";
-                                                                                                                                                    width: calc(29% + 1px);
-                                                                                                                                                    height: 100%;
-                                                                                                                                                    position: absolute;
-                                                                                                                                                    top: 0;
-                                                                                                                                                    left: 0;
-                                                                                                                                                    z-index: 3;
-                                                                                                                                                    background: linear-gradient(90deg, rgba(249, 249, 254, 0.97) 0, rgba(249, 249, 254, 0));
-                                                                                                                                                } */
+                                                                                                                                                            .section-wrapper .shielding-layer:before {
+                                                                                                                                                                pointer-events: none;
+                                                                                                                                                                content: "";
+                                                                                                                                                                width: calc(29% + 1px);
+                                                                                                                                                                height: 100%;
+                                                                                                                                                                position: absolute;
+                                                                                                                                                                top: 0;
+                                                                                                                                                                left: 0;
+                                                                                                                                                                z-index: 3;
+                                                                                                                                                                background: linear-gradient(90deg, rgba(249, 249, 254, 0.97) 0, rgba(249, 249, 254, 0));
+                                                                                                                                                            } */
 
         .section-wrapper:before {
             content: "";
@@ -1602,20 +1602,20 @@
         }
 
         /*
-                    .owl-carousel .owl-stage {
-                        display: flex;
-                    }
+                                .owl-carousel .owl-stage {
+                                    display: flex;
+                                }
 
-                    .owl-carousel .owl-stage .item {
-                        display: flex;
-                        flex: 1 0 auto;
-                        height: 100%;
-                    }
+                                .owl-carousel .owl-stage .item {
+                                    display: flex;
+                                    flex: 1 0 auto;
+                                    height: 100%;
+                                }
 
-                    .owl-carousel .owl-stage .single-post {
-                position: relative;
-                overflow: hidden;
-                /* margin-bottom: 80px; */
+                                .owl-carousel .owl-stage .single-post {
+                            position: relative;
+                            overflow: hidden;
+                            /* margin-bottom: 80px; */
         /*This is optional*/
         display: flex;
         flex-direction: column;
@@ -1709,7 +1709,7 @@
         jQuery(document).ready(function($) {
 
             "use strict";
-            $('#customers-testimonials').owlCarousel({
+            var d = $('#customers-testimonials').owlCarousel({
                 loop: true,
                 center: true,
                 items: 3,
@@ -1717,6 +1717,8 @@
                 autoplay: true,
                 dots: true,
                 autoplayTimeout: 2500,
+                responsiveRefreshRate: 10,
+                autoplayHoverPause: true,
                 smartSpeed: 450,
                 responsive: {
                     0: {
@@ -1731,6 +1733,10 @@
                 }
             });
 
+            d.on('mouseleave', function() {
+                d.trigger('stop.owl.autoplay');
+                d.trigger('play.owl.autoplay', [1000]);
+            });
 
         });
     </script>
@@ -2137,7 +2143,7 @@
     {{-- who --}}
     <section class="pt-2 pb-7 bg-light who_we">
         <a data-animate="fadeInUp" data-delay=".1" href="{{ route('about') }}"
-        class="btn btn-secondary">@lang('site.about_me')</a>
+            class="btn btn-secondary">@lang('site.about_me')</a>
 
     </section>
     {{-- end who --}}

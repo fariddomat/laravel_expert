@@ -136,7 +136,7 @@
                         </ul>
                     </div>
                     <div class="col-md-3 d-none d-md-block">
-                        https://www.almohtarif-office.com
+                        <br>
                     </div>
                 </div>
             </div>
@@ -177,7 +177,7 @@
                         <!-- Client area -->
                         <ul class="client-area text-right list-inline m-0" data-animate="fadeInUp" data-delay="1.1">
 
-                            <li><a class="btn btn-secondary" href="{{ route('contact') }}">أحجز الآن</a></li>
+                            <li><a class="btn btn-secondary" href="{{ route('contact') }}">أحجز استشارتك الآن</a></li>
                         </ul>
                     </div>
                 </div>
@@ -195,34 +195,34 @@
                 <!-- Footer info -->
                 <div class="col-md-4">
                     <div class="footer-info">
-                        <h3 class="text-white" data-animate="fadeInUp" data-delay="0">{{ $info->title }}</h3>
-                        <p data-animate="fadeInUp" data-delay=".05">{{ $info->footer }}</p>
+                        <h3 class="text-white">{{ $info->title }}</h3>
+                        <p>{{ $info->footer }}</p>
                         <ul class="footer-contacts list-unstyled">
-                            <li data-animate="fadeInUp" data-delay=".1">
+                            <li>
                                 <i class="fas fa-phone"></i>
                                 <a href="tel:{{ $contactInfo->mobile }}">{{ $contactInfo->mobile }}</a>
                             </li>
-                            <li data-animate="fadeInUp" data-delay=".15">
+                            <li>
                                 <i class="fas fa-envelope"></i>
                                 <a href="mailto:{{ $contactInfo->email }}">{{ $contactInfo->email }}</a>
                             </li>
-                            <li data-animate="fadeInUp" data-delay=".2">
+                            <li>
                                 <i class="fas fa-map-marker-alt"></i>
                                 <span>{{ $contactInfo->location_link }}</span>
                             </li>
                         </ul>
                         <ul class="social-links list-inline mb-0">
                             @foreach ($socialMedias as $index => $socialMedia)
-                                <li data-animate="fadeInUp" data-delay="{{ 0.25 + $index / 8 }}">
+                                <li >
                                     <a href="{{ $socialMedia->link }}" target="_blank" style="color:#E2E2E2 "><i
                                             class="fa-brands {{ $socialMedia->icon }}"></i></a>
 
                                 </li>
                             @endforeach
                         </ul>
-                        <p data-animate="fadeInUp" data-delay="1.5">هل ترغب بفرصة عمل في بيئة راقية ؟كن فرداً من فريق
+                        <p>هل ترغب بفرصة عمل في بيئة راقية ؟كن فرداً من فريق
                             عمل المحترف و انضم لعائلتنا </p>
-                        <a data-animate="fadeInUp" data-delay="1.6" class="btn btn-secondary"
+                        <a class="btn btn-secondary"
                             href="{{ route('workWithUs') }}">أنضم الآن</a>
                     </div>
                 </div>
@@ -231,10 +231,9 @@
                 <!-- Footer services -->
                 <div class="col-md-4">
                     <div class="footer-posts">
-                        <h3 class="text-white" data-animate="fadeInUp" data-delay=".5">@lang('site.services') </h3>
+                        <h3 class="text-white">@lang('site.services') </h3>
                         @foreach ($servicesA as $index => $service)
-                            <div class="single-footer-post clearfix" data-animate="fadeInUp"
-                                data-delay="{{ 0.55 + $index / 10 }}">
+                            <div class="single-footer-post clearfix">
 
                                 <h4 class="cabin font-weight-normal"><a
                                         href="{{ route('service', $service->slug) }}">{{ $service->title }}</a></h4>
@@ -242,8 +241,7 @@
                             </div>
                         @endforeach
 
-                        <a href="{{ route('services') }}" class="roboto text-uppercase" data-animate="fadeInUp"
-                            data-delay=".65">@lang('site.view_all_services') <i class="fas fa-caret-right"></i></a>
+                        <a href="{{ route('services') }}" class="roboto text-uppercase" >@lang('site.view_all_services') <i class="fas fa-caret-right"></i></a>
                     </div>
                 </div>
                 <!-- End of Footer services -->
@@ -251,10 +249,9 @@
                 <!-- Footer blog -->
                 <div class="col-md-4">
                     <div class="footer-posts">
-                        <h3 class="text-white" data-animate="fadeInUp" data-delay=".5">@lang('site.blog') </h3>
+                        <h3 class="text-white">@lang('site.blog') </h3>
                         @foreach ($blogs as $index => $blog)
-                            <div class="single-footer-post clearfix" data-animate="fadeInUp"
-                                data-delay="{{ 0.55 + $index / 10 }}">
+                            <div class="single-footer-post clearfix">
                                 <a href="{{ route('blog', $blog->slug) }}" class="float-left">
                                     <img class="img-fluid" src="{{ asset($blog->image) }}"
                                         style="width: 60px !important;
@@ -269,8 +266,7 @@
                             </div>
                         @endforeach
 
-                        <a href="{{ route('blogs') }}" class="roboto text-uppercase" data-animate="fadeInUp"
-                            data-delay=".65">@lang('site.view_all_blog') <i class="fas fa-caret-right"></i></a>
+                        <a href="{{ route('blogs') }}" class="roboto text-uppercase" >@lang('site.view_all_blog') <i class="fas fa-caret-right"></i></a>
                     </div>
                 </div>
                 <!-- End of Footer blog -->
@@ -280,15 +276,14 @@
                 <div class="row">
                     <!-- Copyright -->
                     <div class="col-md-5 order-last order-md-first">
-                        <p class="copyright" data-animate="fadeInDown" data-delay=".85">&copy; جميع الحقوق محفوظة |
+                        <p class="copyright">&copy; جميع الحقوق محفوظة |
                             شركة المحترف {{ now()->year }} </p><span>by : <a
                                 href="mailto:fariddomat.000@gmail.com">@FaridDomat</a></span>
                     </div>
 
                     <!-- Footer menu -->
                     <div class="col-md-7 order-first order-md-last">
-                        <ul class="footer-menu list-inline text-md-right mb-md-0" data-animate="fadeInDown"
-                            data-delay=".95">
+                        <ul class="footer-menu list-inline text-md-right mb-md-0" >
                             <li>
                                 <a href="{{ route('privacy') }}">@lang('site.privacy')</a>
                             </li>
