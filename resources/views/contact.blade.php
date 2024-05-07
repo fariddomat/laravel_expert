@@ -276,7 +276,7 @@
     var optionsHTML = "";
     for (var i = 0; i < cityCodes.length; i++) {
         var city = cityCodes[i];
-        optionsHTML += '<option value="'+city.code+'">' + city.city + ' (' + city.code + ')' + '</option>';
+        optionsHTML += '<option value="'+city.code+'">' + city.city + '</option>';
     }
 
     $("#city_code").html(optionsHTML);
@@ -319,6 +319,7 @@
 
                 break;
             case "mobile":
+            case "telegram":
             case "whatsapp":
                 $("#mobile_code").attr("data-parsley-required", true);
                 break;
@@ -474,7 +475,7 @@
                                                 <label for="">رقم الهاتف الجوال</label>
                                                 <input id="mobile_code" type="tel" name="mobil"
                                                     value="{{ old('mobil') }}" class="form-control"
-                                                    placeholder="934 770 008"
+                                                    placeholder="ادخل رقمك هنا"
                                                     data-parsley-required="true"
                                                     data-parsley-required-message="رقم الهاتف مطلوب."
                                                     data-parsley-trigger="change">
@@ -488,7 +489,7 @@
                                                 <label for="">رقم الهاتف الأرضي</label>
                                                 <div class="phone-input-group">
                                                     <div class="city-code-container">
-                                                        <select id="city_code">
+                                                        <select id="city_code" class="form-control">
                                                             <option value="">Select City Code</option>
                                                         </select>
                                                     </div>
@@ -553,9 +554,7 @@
                                             <div class="form-group">
                                                 <label for="city">المدينة</label>
                                                 <input type="text" name="city" value="{{ old('city') }}"
-                                                    class="form-control" placeholder="" data-parsley-required="true"
-                                                    data-parsley-required-message="المدينة مطلوبة."
-                                                    data-parsley-trigger="change">
+                                                    class="form-control" placeholder="" >
                                             </div>
                                         </div>
 

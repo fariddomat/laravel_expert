@@ -326,7 +326,7 @@ class SiteController extends Controller
             'phone' => ['nullable'],
             'contact_method' => ['required'],
             'dob' => ['required'],
-            'city' => ['required'],
+            'city' => ['nullable'],
             'cert_degree' => ['required'],
 
             'services' => ['required', 'array'],
@@ -362,7 +362,7 @@ class SiteController extends Controller
         $contact->phone =  $validatedData['phone'] ?? '';
         $contact->contact_method =  $validatedData['contact_method'];
         $contact->dob =  $validatedData['dob'];
-        $contact->city =  $validatedData['city'];
+        $contact->city =  $validatedData['city'] ?? '';
         $contact->cert_degree =  $validatedData['cert_degree'];
         $contact->start_at =  $start_At;
 

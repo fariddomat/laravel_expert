@@ -17,12 +17,12 @@ class CreateContactUsTable extends Migration
             $table->id();
             $table->string('name');
             $table->string('email')->nullable();
-            $table->string('mobile');
+            $table->string('mobile')->nullable();
             $table->string('phone')->nullable();
             $table->string('contact_method');
             $table->text('dob');
             $table->dateTime('start_at');
-            $table->string('city');
+            $table->string('city')->nullable();
             $table->string('cert_degree');
             $table->text('message')->nullable();
             $table->tinyInteger('status');
