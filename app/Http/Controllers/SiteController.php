@@ -500,6 +500,12 @@ class SiteController extends Controller
                     ->subject('تم إضافة تعليق جديد');
                 $message->from('support@almohtarif-office.com', 'Almohtarif');
             });
+
+            Mail::send('mail_comment', $info, function ($message) use($info)  {
+                $message->to($info['email'], $info['name'])
+                    ->subject('شركة المحترف للسياحة والسفر');
+                $message->from('support@almohtarif-office.com', 'Almohtarif');
+            });
         } catch (\Throwable $th) {
             // throw $th;
         }
