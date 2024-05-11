@@ -452,10 +452,8 @@
                                             style="  line-height: 1.6; /* Adjust line spacing */
                                         margin-bottom: 20px; /* Adjust spacing */">
                                             {!! $section->content !!}
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row">
+
+                                            <div class="row">
                                     @foreach ($section->images as $sectionImage)
                                         <div class="col-12 col-md" data-animate="fadeInUp" data-delay=".3">
                                             <div class="pt-3 text-center">
@@ -466,6 +464,10 @@
                                         </div>
                                     @endforeach
                                 </div>
+                                        </div>
+                                    </div>
+                                </div>
+
                             @endforeach
                         </div>
 
@@ -541,7 +543,42 @@
                                             <div class="row" style="  justify-content: center; margin-bottom:50px">
                                                 @foreach ($service->subServices as $index => $service)
                                                     <!--TESTIMONIAL 1 -->
-                                                    <div class="item col-md-4 ">
+                                                    @if ($service->parent_id ==36)
+                                                    <div class="item col-md-4 offset-md-1"
+                                                    style="background-image: url({{ asset($service->image) }});      background-repeat: no-repeat;
+                                                        background-size: 100% 100%;height: 450px;border-radius: 15px; margin-top:25px">
+
+                                                    <div class="single-post" data-animate=""
+                                                        style="padding: 0; border: unset !important; margin-bottom: 5px">
+                                                        <div class="image-hover-wrap">
+
+                                                            <div
+                                                                class="image-hover-content d-flex justify-content-center align-items-center text-center">
+                                                                <ul class="list-inline">
+                                                                    <li><a
+                                                                            href="{{ route('service', $service->slug) }}"><i
+                                                                                class="fas fa-link"></i></a>
+                                                                    </li>
+                                                                    {{-- <li><a href="#"><i class="fas fa-share-alt"></i></a></li> --}}
+                                                                </ul>
+                                                            </div>
+                                                        </div>
+                                                        <div style="padding: 15px; padding-bottom: 0">
+                                                            <h3 style="padding-top: 95% !important; text-align: center">
+                                                                {{ $service->title }}</h3>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="testimonial-name"
+                                                        style="background-color: #DF1F26;padding-top: 0">
+                                                        <a href="{{ route('service', $service->slug) }}"
+                                                            class="btn btn-secondary">@lang('site.read_more')<i
+                                                                class="fas fa-caret-right"></i></a>
+                                                    </div>
+                                                </div>
+                                                    @else
+
+                                                    <div class="item col-md-4 " style="margin-bottom: 25px;">
                                                         <div class="shadow-effect">
                                                             <div class="single-post" data-animate="" style="padding: 0">
                                                                 <div class="image-hover-wrap">
@@ -573,6 +610,7 @@
                                                                     class="fas fa-caret-right"></i></a>
                                                         </div>
                                                     </div>
+                                                    @endif
 
                                                     <!--END OF TESTIMONIAL 1 -->
                                                 @endforeach
@@ -582,7 +620,7 @@
                                                 data-animate="fadeInUp" data-delay="1.5">
                                                 @foreach ($service->subServices as $index => $service)
                                                     <!--TESTIMONIAL 1 -->
-                                                    @if ($service->parent_id != 1)
+                                                    @if ($service->parent_id != 1 && $service->parent_id !=8  && $service->parent_id !=27)
                                                         <div class="item">
                                                             <div class="shadow-effect">
                                                                 <div class="single-post" data-animate=""
@@ -638,7 +676,7 @@
                                                                     </div>
                                                                 </div>
                                                                 <div style="padding: 15px; padding-bottom: 0">
-                                                                    <h3 style="padding-top: 70% !important;">
+                                                                    <h3 style="padding-top: 75% !important; font-weight: bolder;">
                                                                         {{ $service->title }}</h3>
                                                                 </div>
                                                             </div>

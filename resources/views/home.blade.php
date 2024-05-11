@@ -1547,6 +1547,7 @@
 
         #customers-testimonials.owl-carousel .owl-dots .owl-dot span {
             background: #DF1F26 !important;
+            margin-top: 25px !important;
             margin-bottom: 25px !important;
         }
 
@@ -1669,6 +1670,12 @@
             align-items: stretch;
             padding-bottom: 0;
         }
+        #customers-testimonials .item {
+            padding: 15px;
+            max-width: 320px;
+            height: 500px !important;
+            margin: 0 auto;
+        }
     </style>
 
     <style>
@@ -1782,11 +1789,11 @@
     <script>
         $(document).ready(function() {
             $('#accordion100').on('shown.bs.collapse', function(e) {
-                var target = $(e.target); // Get the target section
-                var offset = target.prev().height(); // Calculate offset based on previous section's height
+                var target = $(e.target);
+                var offset = target.prev().height();
                 $('html, body').animate({
                     scrollTop: target.offset().top - offset - 90
-                }, 500); // Animate scrolling with duration (adjust as needed)
+                }, 500);
             });
         });
     </script>
@@ -1805,16 +1812,20 @@
                             <!-- Banner content -->
                             <div class="banner-content">
                                 <div id="typed-strings">
-                                    <p>{{ $info->title }}</p>
+                                    <h1  data-animate="fadeInUp" data-delay="1.2"  style="font-size: 3.5rem;
+                                    font-weight: bold;color: #0D1216;margin-bottom: 1rem;line-height: 1.2;">{{ $info->title }}</h1>
                                 </div>
 
                                 <h1 class="typed"></h1>
 
-                                <div id="typed-strings2">
-                                    <p>{{ $info->description }}</p>
-                                </div>
                                 <h2 data-animate="fadeInUp" data-delay="1.3" class=""><span
                                         class="typed-second"></span>
+                                <div id="typed-strings2">
+                                    <p style="font-size: 1.1rem;
+                                    font-weight: 700;
+                                    color: #555c55;
+                                    text-transform: capitalize;line-height: 1.2;">{{ $info->description }}</p>
+                                </div>
                                 </h2>
 
                                 {{-- <ul class="list-inline" data-animate="fadeInUp" data-delay="1.4">
@@ -2004,7 +2015,7 @@
     <!-- Our services -->
     <section class="" id="ServicesSection">
         <div class="services-title position-relative pt-7" style="" dir="ltr">
-            <div class="container">
+            <div class="container" style="max-width: 65rem">
                 <div class="row justify-content-center">
                     <div class="col-xl-6 col-lg-8">
                         <!-- Section title -->
@@ -2013,58 +2024,51 @@
                         </div>
                     </div>
                 </div>
-                <div class="row">
+                <div class="row mt-5">
                     <div class="col-sm-12">
                         <div id="customers-testimonials" class="owl-carousel " data-animate="fadeInUp" data-delay="1.5">
 
                             @foreach ($services as $index => $service)
                                 <!--TESTIMONIAL 1 -->
-                                <div class="item article-items">
-                                    <div class="shadow-effect aticle-box">
-                                        <div class="single-post" data-animate="" style="padding: 0">
-                                            <div class="image-hover-wrap">
-                                                <img class="img-fluid" src="{{ asset($service->image) }}" alt=""
-                                                    style="" loading="lazy">
-                                                <div
-                                                    class="image-hover-content d-flex justify-content-center align-items-center text-center">
-                                                    <ul class="list-inline">
-                                                        <li><a href="{{ route('service', $service->slug) }}"><i
-                                                                    class="fas fa-link"></i></a>
-                                                        </li>
-                                                        {{-- <li><a href="#"><i class="fas fa-share-alt"></i></a></li> --}}
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                            <div style="padding: 15px">
-                                                <h3>{{ $service->title }}</h3>
-                                                <h4>
-                                                    {!! $service->intro !!}
-                                                </h4>
-                                            </div>
+                                <div class="item"
+                                    style="background-image: url({{ asset($service->image) }});      background-repeat: no-repeat;
+                               background-size: 100% 100%;height: 400px;border-radius: 15px;">
 
+                                    <div class="single-post" data-animate=""
+                                        style="padding: 0; border: unset !important; margin-bottom: 5px">
+                                        <div class="image-hover-wrap">
+
+                                            <div
+                                                class="image-hover-content d-flex justify-content-center align-items-center text-center">
+                                                <ul class="list-inline">
+                                                    <li><a href="{{ route('service', $service->slug) }}"><i
+                                                                class="fas fa-link"></i></a>
+                                                    </li>
+                                                    {{-- <li><a href="#"><i class="fas fa-share-alt"></i></a></li> --}}
+                                                </ul>
+                                            </div>
                                         </div>
-                                        <div class="testimonial-name"
-                                            style="background-color: #DF1F26;position: absolute;
-                                        bottom: 25px;left: 50%; transform: translateX(-50%);">
-                                            <a href="{{ route('service', $service->slug) }}"
-                                                class="btn btn-secondary">@lang('site.read_more')<i
-                                                    class="fas fa-caret-right"></i></a>
+                                        <div style="padding: 15px; padding-bottom: 0">
+                                            <h3
+                                                style="padding-top: 70% !important; padding-bottom: 0; padding-bottom: 8px;
+                                            margin-bottom: 0;">
+                                                {{ $service->title }}</h3>
+                                            <h4 style="margin-bottom: 25px; direction: rtl;">
+                                                {!! $service->intro !!}
+                                            </h4>
                                         </div>
                                     </div>
 
-
+                                    <div class="testimonial-name" style="background-color: #DF1F26;padding-top: 0">
+                                        <a href="{{ route('service', $service->slug) }}"
+                                            class="btn btn-secondary">@lang('site.read_more')<i class="fas fa-caret-right"></i></a>
+                                    </div>
                                 </div>
                                 <!--END OF TESTIMONIAL 1 -->
                             @endforeach
                         </div>
                     </div>
                 </div>
-
-                {{-- <!-- Service contact info -->
-                <div class="roboto text-center font-weight-medium" data-animate="fadeInUp" data-delay=".65">
-                    <p>If you have any questions in your mind, Just <a href="contact.html">click here</a> to write or you
-                        can <br>Call to <a href="tel:1234567890">(+1) 234-567-890</a></p>
-                </div> --}}
             </div>
         </div>
     </section>

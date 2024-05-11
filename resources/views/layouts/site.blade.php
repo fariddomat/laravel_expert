@@ -107,11 +107,11 @@
             background: #0d1216 !important;
         }
         .social-links i{
+            margin-top: 3px;
             font-size: 20px;
         }
 
         .social-links i:hover{
-            font-size: 22px;
             color: #DF1F26 ;
         }
 
@@ -128,15 +128,19 @@
     <header class="header">
         <div class="header-top bg-primary" data-animate="fadeInDown" data-delay=".5">
             <div class="container">
-                <div class="row align-items-center">
-                    <div class="col-md-9">
-                        <!-- Header info -->
-                        <ul class="header-info list-inline text-white mb-md-0">
-                            {{-- <li>Your Location : Dhaka, Bangladesh</li> --}}
+                <div class="row justify-content-center" style="  padding-top: 3px;
+                padding-bottom: 2px;">
+
+                    <div class="col-md-12 d-none d-md-block text-center">
+                        <ul class="social-links list-inline mb-0">
+                            @foreach ($socialMedias as $index => $socialMedia)
+                                <li >
+                                    <a href="{{ $socialMedia->link }}" target="_blank" style="color:#E2E2E2 "><i
+                                            class="fa-brands {{ $socialMedia->icon }}"></i></a>
+
+                                </li>
+                            @endforeach
                         </ul>
-                    </div>
-                    <div class="col-md-3 d-none d-md-block">
-                        <br>
                     </div>
                 </div>
             </div>
@@ -309,15 +313,15 @@
     <script src="{{ asset('home/js/jquery-3.2.1.min.js') }}"></script>
     <script src="{{ asset('home/js/fontawesome-all.min.js') }}"></script>
     <script src="{{ asset('home/js/bootstrap.bundle.min.js') }}"></script>
-    <script src="{{ asset('home/plugins/typed.js/typed.min.js') }}"></script>
+    <script src="{{ asset('home/plugins/typed.js/typed.min.js') }}?v=v=51120241"></script>
     <script src="{{ asset('home/plugins/waypoints/jquery.waypoints.min.js') }}"></script>
     <script src="{{ asset('home/plugins/waypoints/sticky.min.js') }}"></script>
     <script src="{{ asset('home/plugins/swiper/swiper.min.js') }}"></script>
 
 
     <div class="no-mobile">
-        <script src="{{ asset('home/plugins/particles.js/particles.min.js') }}" defer></script>
-        <script src="{{ asset('home/plugins/particles.js/particles.settings.js') }}" defer></script>
+        <script src="{{ asset('home/plugins/particles.js/particles.min.js?v=v=51120241') }}" defer></script>
+        <script src="{{ asset('home/plugins/particles.js/particles.settings.js?v=v=51120241') }}" defer></script>
     </div>
 
 
@@ -326,7 +330,7 @@
     <script src="{{ asset('home/plugins/parallax/parallax.min.js') }}"></script>
     {{-- <script src="{{ asset('home/plugins/retinajs/retina.min.js') }}"></script> --}}
     <script src="{{ asset('home/js/menu.min.js') }}" defer></script>
-    <script src="{{ asset('home/js/scripts.js') }}"></script>
+    <script src="{{ asset('home/js/scripts.js?v=v=51120241') }}"></script>
     <script src="{{ asset('home/js/custom.js') }}" defer></script>
 
     <script src="{{ asset('js/owl.carousel.min.js') }}" defer></script>

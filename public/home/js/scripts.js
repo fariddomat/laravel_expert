@@ -254,6 +254,7 @@ We may release future updates so it will overwrite this file. it's better and sa
 
         /* 11: Typed JS
         ==============================================*/
+        if (!isMobile()) {
 
         var typedElement = '.typed',
             typedTarget = $(typedElement);
@@ -278,8 +279,8 @@ We may release future updates so it will overwrite this file. it's better and sa
                 loop: false
             });
         }
+}
     });
-
 
     /* 12: Preloader
     ==============================================*/
@@ -321,3 +322,8 @@ We may release future updates so it will overwrite this file. it's better and sa
     });
 
 })(jQuery);
+
+
+function isMobile() {
+    return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+}

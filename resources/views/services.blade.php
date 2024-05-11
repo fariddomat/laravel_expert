@@ -16,6 +16,7 @@
 
         #customers-testimonials.owl-carousel .owl-dots .owl-dot span {
             background: #DF1F26 !important;
+            margin-top: 50px !important;
             margin-bottom: 25px !important;
         }
 
@@ -66,7 +67,7 @@
         .owl-carousel .owl-item img {
             transform-style: preserve-3d;
             /* max-width: 90px; */
-            max-height: 155px;
+            /* max-height: 155px; */
             margin: 0 auto 17px;
         }
 
@@ -97,6 +98,13 @@
             width: 20px;
         }
 
+        #customers-testimonials .item {
+            padding: 15px;
+            max-width: 320px;
+            height: 500px !important;
+            margin: 0 auto;
+        }
+
         @media (max-width: 768px) {
             .single-post h3 {
                 font-size: 1.45rem !important;
@@ -109,7 +117,7 @@
         jQuery(document).ready(function($) {
             "use strict";
             //  TESTIMONIALS CAROUSEL HOOK
-            var owl=$('#customers-testimonials').owlCarousel({
+            var owl = $('#customers-testimonials').owlCarousel({
                 loop: true,
                 center: true,
                 items: 3,
@@ -118,7 +126,7 @@
                 dots: true,
                 autoplayTimeout: 2500,
 
-                responsiveRefreshRate : 10,
+                responsiveRefreshRate: 10,
                 autoplayHoverPause: true, // Stops autoplay
                 smartSpeed: 450,
                 responsive: {
@@ -133,19 +141,15 @@
                     }
                 }
             });
-            owl.on('mouseleave',function(){
-   owl.trigger('stop.owl.autoplay'); //this is main line to fix it
-   owl.trigger('play.owl.autoplay', [1000]);
-});
+            owl.on('mouseleave', function() {
+                owl.trigger('stop.owl.autoplay'); //this is main line to fix it
+                owl.trigger('play.owl.autoplay', [1000]);
+            });
         });
-
-
     </script>
 
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-    <script>
-
-    </script>
+    <script></script>
 @endsection
 @section('content')
 
@@ -174,41 +178,44 @@
 
     <!-- Service -->
     <section class="testimonials blog bg-gradient pb-7" dir="ltr">
-        <div class="container">
+        <div class="container" style="max-width: 65rem">
 
-            <div class="row">
+            <div class="row mt-5">
                 <div class="col-sm-12">
                     <div id="customers-testimonials" class="owl-carousel " data-animate="fadeInUp" data-delay="1.5">
 
                         @foreach ($services as $index => $service)
                             <!--TESTIMONIAL 1 -->
-                            <div class="item">
-                                <div class="shadow-effect">
-                                    <div class="single-post" data-animate="" style="padding: 0">
-                                        <div class="image-hover-wrap">
-                                            <img class="img-fluid" src="{{ asset($service->image) }}" alt=""
-                                                style="" loading="lazy">
-                                            <div
-                                                class="image-hover-content d-flex justify-content-center align-items-center text-center">
-                                                <ul class="list-inline">
-                                                    <li><a href="{{ route('service', $service->slug) }}"><i
-                                                                class="fas fa-link"></i></a>
-                                                    </li>
-                                                    {{-- <li><a href="#"><i class="fas fa-share-alt"></i></a></li> --}}
-                                                </ul>
-                                            </div>
-                                        </div>
-                                        <div style="padding: 15px">
-                                            <h3>{{ $service->title }}</h3>
-                                            <h4>
-                                                {!! $service->intro !!}
-                                            </h4>
-                                        </div>
+                            <div class="item"
+                                style="background-image: url({{ asset($service->image) }});      background-repeat: no-repeat;
+                           background-size: 100% 100%;height: 400px;border-radius: 15px;">
 
+                                <div class="single-post" data-animate=""
+                                    style="padding: 0; border: unset !important; margin-bottom: 5px">
+                                    <div class="image-hover-wrap">
+
+                                        <div
+                                            class="image-hover-content d-flex justify-content-center align-items-center text-center">
+                                            <ul class="list-inline">
+                                                <li><a href="{{ route('service', $service->slug) }}"><i
+                                                            class="fas fa-link"></i></a>
+                                                </li>
+                                                {{-- <li><a href="#"><i class="fas fa-share-alt"></i></a></li> --}}
+                                            </ul>
+                                        </div>
                                     </div>
-
+                                    <div style="padding: 15px; padding-bottom: 0">
+                                        <h3
+                                            style="padding-top: 70% !important; padding-bottom: 0; padding-bottom: 8px;
+                                        margin-bottom: 0;">
+                                            {{ $service->title }}</h3>
+                                        <h4 style="margin-bottom: 25px; direction: rtl;">
+                                            {!! $service->intro !!}
+                                        </h4>
+                                    </div>
                                 </div>
-                                <div class="testimonial-name" style="background-color: #DF1F26">
+
+                                <div class="testimonial-name" style="background-color: #DF1F26;padding-top: 0">
                                     <a href="{{ route('service', $service->slug) }}"
                                         class="btn btn-secondary">@lang('site.read_more')<i class="fas fa-caret-right"></i></a>
                                 </div>

@@ -1,3 +1,8 @@
+
+function isMobile() {
+    return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+}
+if (!isMobile()) {
 var particlesJs='particles_js',particleTarget=$('#'+particlesJs);if(particleTarget.length){particlesJS(particlesJs,{
     "particles": {
       "number": {
@@ -108,3 +113,4 @@ var particlesJs='particles_js',particleTarget=$('#'+particlesJs);if(particleTarg
     },
     "retina_detect": true
   });}
+}

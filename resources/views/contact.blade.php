@@ -248,6 +248,13 @@
             } else {
                 fullPhoneInput.value = "";
             }
+
+            if(countryDialCode != '963'){
+                $('#city_code').hide();
+            }else{
+                $('#city_code').show();
+
+            }
         }
 
         // Event listener for when the input value changes
@@ -546,7 +553,7 @@
                                                         </select>
                                                     </div>
                                                     <input id="phone" type="tel" name="phone" value="{{ old('phone') }}"
-                                                           class="form-control" placeholder="031-2129925"
+                                                           class="form-control" placeholder="أدخل الرقم الأرضي"
                                                            data-parsley-required-message="رقم الهاتف مطلوب."
                                                            data-parsley-trigger="change">
                                                 </div>
