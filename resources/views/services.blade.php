@@ -207,7 +207,7 @@
                                     <div style="padding: 15px; padding-bottom: 0">
                                         <h3
                                             style="padding-top: 70% !important; padding-bottom: 0; padding-bottom: 8px;
-                                        margin-bottom: 0;">
+                                        margin-bottom: 0; font-weight: bold">
                                             {{ $service->title }}</h3>
                                         <h4 style="margin-bottom: 25px; direction: rtl;">
                                             {!! $service->intro !!}

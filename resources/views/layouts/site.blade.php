@@ -42,10 +42,10 @@
 
     <link href="{{ asset('css/fonts.css') }}" rel="stylesheet">
 
-    {{--  non critical css --}}
+     {{-- non critical css --}}
     <link href="{{ asset('fonts/fontawesome-free-6.4.2-web/css/all.css') }}" rel="stylesheet" media="print"
         onload="this.media='all'">
-
+    
     {{-- icons --}}
     {{-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" async/> --}}
     {{-- noty --}}
@@ -212,7 +212,7 @@
                             </li>
                             <li>
                                 <i class="fas fa-map-marker-alt"></i>
-                                <span>{{ $contactInfo->location_link }}</span>
+                                <a href="{{ $contactInfo->location_link }}" target="_blank">{{ $contactInfo->location_link }}</a>
                             </li>
                         </ul>
                         <ul class="social-links list-inline mb-0">
@@ -313,10 +313,10 @@
     <script src="{{ asset('home/js/jquery-3.2.1.min.js') }}"></script>
     <script src="{{ asset('home/js/fontawesome-all.min.js') }}"></script>
     <script src="{{ asset('home/js/bootstrap.bundle.min.js') }}"></script>
-    <script src="{{ asset('home/plugins/typed.js/typed.min.js') }}?v=v=51120241"></script>
-    <script src="{{ asset('home/plugins/waypoints/jquery.waypoints.min.js') }}"></script>
-    <script src="{{ asset('home/plugins/waypoints/sticky.min.js') }}"></script>
-    <script src="{{ asset('home/plugins/swiper/swiper.min.js') }}"></script>
+    <script src="{{ asset('home/plugins/typed.js/typed.min.js') }}?v=v=51120241" defer></script>
+    <script src="{{ asset('home/plugins/waypoints/jquery.waypoints.min.js') }}" ></script>
+    <script src="{{ asset('home/plugins/waypoints/sticky.min.js') }}" defer></script>
+    <script src="{{ asset('home/plugins/swiper/swiper.min.js') }}" defer></script>
 
 
     <div class="no-mobile">
@@ -337,8 +337,8 @@
     <script src="{{ asset('js/jquery.countup.js') }}"></script>
 
     {{-- aos --}}
-    <script src="{{ asset('js/aos.js') }}"></script>
-    <script src="{{ asset('noty/noty.min.js') }}"></script>
+    <script src="{{ asset('js/aos.js') }}" defer></script>
+    <script src="{{ asset('noty/noty.min.js') }}" defer></script>
     <script defer>
         jQuery(document).ready(function($) {
 

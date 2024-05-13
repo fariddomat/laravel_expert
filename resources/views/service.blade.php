@@ -224,6 +224,18 @@
             overflow-y: hidden;
         }
     </style>
+
+    <style>
+        .single-post h3{
+            font-weight: bold;
+            text-shadow: 2px 2px #E2E2E2;
+            }
+        @media (max-width: 480px) {
+            .single-post h3{
+                font-size: 1.6rem !important;
+
+            }
+        }</style>
 @endsection
 @section('scripts')
     <script>
@@ -543,7 +555,7 @@
                                             <div class="row" style="  justify-content: center; margin-bottom:50px">
                                                 @foreach ($service->subServices as $index => $service)
                                                     <!--TESTIMONIAL 1 -->
-                                                    @if ($service->parent_id ==36)
+                                                    @if ($service->parent_id ==36 || $service->parent_id ==2 || $service->parent_id ==18  )
                                                     <div class="item col-md-4 offset-md-1"
                                                     style="background-image: url({{ asset($service->image) }});      background-repeat: no-repeat;
                                                         background-size: 100% 100%;height: 450px;border-radius: 15px; margin-top:25px">
@@ -620,7 +632,7 @@
                                                 data-animate="fadeInUp" data-delay="1.5">
                                                 @foreach ($service->subServices as $index => $service)
                                                     <!--TESTIMONIAL 1 -->
-                                                    @if ($service->parent_id != 1 && $service->parent_id !=8  && $service->parent_id !=27)
+                                                    @if ($service->parent_id != 1  && $service->parent_id !=2 && $service->parent_id !=18  && $service->parent_id !=8  && $service->parent_id !=27)
                                                         <div class="item">
                                                             <div class="shadow-effect">
                                                                 <div class="single-post" data-animate=""
@@ -676,7 +688,9 @@
                                                                     </div>
                                                                 </div>
                                                                 <div style="padding: 15px; padding-bottom: 0">
-                                                                    <h3 style="padding-top: 75% !important; font-weight: bolder;">
+                                                                    <h3 style="padding-top: 75% !important; font-weight: bolder;
+                                                                    text-shadow: 2px 2px #E2E2E2;
+                                                                    color: #DF1F26;">
                                                                         {{ $service->title }}</h3>
                                                                 </div>
                                                             </div>

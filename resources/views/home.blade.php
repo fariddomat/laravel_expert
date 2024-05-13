@@ -2051,7 +2051,7 @@
                                         <div style="padding: 15px; padding-bottom: 0">
                                             <h3
                                                 style="padding-top: 70% !important; padding-bottom: 0; padding-bottom: 8px;
-                                            margin-bottom: 0;">
+                                            margin-bottom: 0; font-weight: bold">
                                                 {{ $service->title }}</h3>
                                             <h4 style="margin-bottom: 25px; direction: rtl;">
                                                 {!! $service->intro !!}
@@ -2166,7 +2166,7 @@
                             <!-- Author info -->
                             <div class="d-flex align-items-center author-info-wrap">
                                 <img class="img-thumbnail mr-3" src="{{ asset($review->image) }}" alt=""
-                                    data-animate="fadeInUp" data-delay=".1" style="max-width: 100px;aspect-ratio: 3/3;">
+                                    data-animate="fadeInUp" data-delay=".1" loading="lazy" style="max-width: 100px;aspect-ratio: 3/3;" >
                                 <div class="author-info">
                                     {{ $review->name }}
                                 </div>
