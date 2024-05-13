@@ -80,51 +80,6 @@ We may release future updates so it will overwrite this file. it's better and sa
         $('form').parsley();
 
 
-        /* 05: Smooth scroll for comment reply
-        ==============================================*/
-
-        var $commentContent = $('.comment-content > a');
-
-        $commentContent.on('click', function(event){
-            event.preventDefault();
-            var $target = $('.comment-form');
-
-            if ( $target.length ) {
-                $('html, body').animate({
-                    scrollTop: $target.offset().top - 120
-                }, 500);
-
-                $target.find('textarea').focus();
-            }
-        });
-
-
-        /* 06: Pricing slider
-        ==============================================*/
-
-        var pricingSlider = new Swiper('.pricing-slider', {
-            slidesPerView: 3,
-            loop: true,
-            centeredSlides: true,
-            spaceBetween: 2,
-            allowTouchMove: false,
-            speed: 500,
-            autoplay: {
-                delay: 5000,
-                disableOnInteraction: true,
-            },
-            pagination: {
-                el: '.pricing-pagination',
-                clickable: true,
-            },
-            breakpoints: {
-
-                575: {
-                    slidesPerView: 1
-                }
-            }
-        });
-
 
         /* 07: Review slider
         ==============================================*/
@@ -177,18 +132,6 @@ We may release future updates so it will overwrite this file. it's better and sa
         });
 
 
-        /* 08: Video popup
-        ==============================================*/
-
-        var $youtubePopup = $('.youtube-popup');
-
-        if($youtubePopup.length) {
-
-            $youtubePopup.magnificPopup({
-                type:'iframe'
-            });
-        }
-
 
         /* 09: Back to top button
         ==============================================*/
@@ -221,35 +164,7 @@ We may release future updates so it will overwrite this file. it's better and sa
         }
 
 
-        /* 10: Changing svg color
-        ==============================================*/
 
-        jQuery('img.svg').each(function(){
-            var $img = jQuery(this);
-            var imgID = $img.attr('id');
-            var imgClass = $img.attr('class');
-            var imgURL = $img.attr('src');
-
-            jQuery.get(imgURL, function(data) {
-
-                var $svg = jQuery(data).find('svg');
-
-                if(typeof imgID !== 'undefined') {
-                    $svg = $svg.attr('id', imgID);
-                }
-                if(typeof imgClass !== 'undefined') {
-                    $svg = $svg.attr('class', imgClass+' replaced-svg');
-                }
-
-                $svg = $svg.removeAttr('xmlns:a');
-                if(!$svg.attr('viewBox') && $svg.attr('height') && $svg.attr('width')) {
-                    $svg.attr('viewBox', '0 0 ' + $svg.attr('height') + ' ' + $svg.attr('width'));
-                }
-
-                $img.replaceWith($svg);
-
-            }, 'xml');
-        });
 
 
         /* 11: Typed JS
@@ -291,7 +206,7 @@ We may release future updates so it will overwrite this file. it's better and sa
             var preLoader = $('.preLoader');
             preLoader.fadeOut();
         }
-        setTimeout(removePreloader, 250);
+        setTimeout(removePreloader, 25);
     });
 
 

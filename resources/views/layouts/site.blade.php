@@ -25,36 +25,33 @@
 
     <!-- CSS Files -->
 
-    {{-- <link href="https://fonts.googleapis.com/css?family=Cabin:400,400i,500i,700%7CRoboto:400,500,700" rel="stylesheet" async> --}}
+    <link href="{{ asset('css/fonts.min.css') }}" rel="stylesheet">
+    <link rel="stylesheet" href="{{ asset('home/css/all.min.css') }}">
+
+    {{-- <link href="https://fonts.googleapis.com/css?family=Cabin:400,400i,500i,700%7CRoboto:400,500,700" rel="stylesheet" async>
     <link rel="stylesheet" href="{{ asset('home/css/bootstrap-rtl.min.css') }}" media="print"
         onload="this.media='all'">
     <link rel="stylesheet" href="{{ asset('home/plugins/swiper/swiper.min.css') }}">
-    {{-- <link rel="stylesheet" href="{{ asset('home/plugins/magnific-popup/magnific-popup.min.css') }}"> --}}
-    <link rel="stylesheet" href="{{ asset('home/css/style.css') }}">
-    <link rel="stylesheet" href="{{ asset('home/css/responsive.css') }}">
-    <link rel="stylesheet" href="{{ asset('home/css/style-rtl.css') }}">
-    <link rel="stylesheet" href="{{ asset('home/css/colors/theme-color-12.css') }}">
-    <link rel="stylesheet" href="{{ asset('home/css/custom.css') }}">
+    <link rel="stylesheet" href="{{ asset('home/css/style.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('home/css/responsive.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('home/css/style-rtl.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('home/css/colors/theme-color-12.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('home/css/custom.min.css') }}">
 
     <link rel="stylesheet" href="{{ asset('css/owl.carousel.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/owl.theme.default.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/owl.theme.default.min.css') }}"> --}}
 
-
-    <link href="{{ asset('css/fonts.css') }}" rel="stylesheet">
 
      {{-- non critical css --}}
-    <link href="{{ asset('fonts/fontawesome-free-6.4.2-web/css/all.css') }}" rel="stylesheet" media="print"
+    <link href="{{ asset('fonts/fontawesome-free-6.4.2-web/css/all.min.css') }}" rel="stylesheet" media="print"
         onload="this.media='all'">
-    
+
     {{-- icons --}}
     {{-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" async/> --}}
     {{-- noty --}}
-    <link rel="stylesheet" href="{{ asset('noty/noty.css') }}">
+    <link rel="stylesheet" href="{{ asset('noty/noty.min.css') }}">
     @yield('styles')
 
-    {{-- aos --}}
-    <link rel="stylesheet" href="{{ asset('css/aos.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/animate.css') }}">
     <style>
         html {
             scroll-behavior: smooth;
@@ -310,35 +307,33 @@
     </div>
 
     <!-- JS Files -->
-    <script src="{{ asset('home/js/jquery-3.2.1.min.js') }}"></script>
+    <script src="{{ asset('home/js/all.min.js') }}"></script>
+
+    {{-- <script src="{{ asset('home/js/jquery-3.2.1.min.js') }}"></script>
     <script src="{{ asset('home/js/fontawesome-all.min.js') }}"></script>
     <script src="{{ asset('home/js/bootstrap.bundle.min.js') }}"></script>
     <script src="{{ asset('home/plugins/typed.js/typed.min.js') }}?v=v=51120241" defer></script>
     <script src="{{ asset('home/plugins/waypoints/jquery.waypoints.min.js') }}" ></script>
     <script src="{{ asset('home/plugins/waypoints/sticky.min.js') }}" defer></script>
-    <script src="{{ asset('home/plugins/swiper/swiper.min.js') }}" defer></script>
+    <script src="{{ asset('home/plugins/swiper/swiper.min.js') }}" defer></script> --}}
 
-
+{{--
     <div class="no-mobile">
         <script src="{{ asset('home/plugins/particles.js/particles.min.js?v=v=51120241') }}" defer></script>
         <script src="{{ asset('home/plugins/particles.js/particles.settings.js?v=v=51120241') }}" defer></script>
     </div>
 
 
-    {{-- <script src="{{ asset('home/plugins/magnific-popup/jquery.magnific-popup.min.js') }}"></script> --}}
     <script src="{{ asset('home/plugins/parsley/parsley.min.js') }}" defer></script>
     <script src="{{ asset('home/plugins/parallax/parallax.min.js') }}"></script>
-    {{-- <script src="{{ asset('home/plugins/retinajs/retina.min.js') }}"></script> --}}
-    <script src="{{ asset('home/js/menu.min.js') }}" defer></script>
+    <script src="{{ asset('home/js/menu.min.js') }}" defer></script> --}}
     <script src="{{ asset('home/js/scripts.js?v=v=51120241') }}"></script>
-    <script src="{{ asset('home/js/custom.js') }}" defer></script>
+    {{-- <script src="{{ asset('home/js/custom.js') }}" defer></script>
 
-    <script src="{{ asset('js/owl.carousel.min.js') }}" defer></script>
+    <script src="{{ asset('js/owl.carousel.min.js') }}" defer></script> --}}
     <script src="{{ asset('js/jquery.countup.js') }}"></script>
 
-    {{-- aos --}}
-    <script src="{{ asset('js/aos.js') }}" defer></script>
-    <script src="{{ asset('noty/noty.min.js') }}" defer></script>
+    {{-- <script src="{{ asset('noty/noty.min.js') }}" defer></script> --}}
     <script defer>
         jQuery(document).ready(function($) {
 

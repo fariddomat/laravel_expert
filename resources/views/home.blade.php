@@ -1418,17 +1418,6 @@
             }
         }
 
-        .headsection {
-            background: url("{{ asset('/') }}/home/img/travel.jpg");
-            background-attachment: fixed;
-            position: relative;
-            background-repeat: no-repeat;
-            opacity: 1;
-            transition: opacity 0.5s, transform 0.5s;
-            z-index: 1;
-            background-size: cover;
-        }
-
         .section1 {
             /* background-image: url('{{ asset('/') }}photos/home/icon.png'); */
 
@@ -1801,7 +1790,7 @@
 @endsection
 @section('content')
 
-    <div class="section-wrapper headsection" id="headsection">
+    <section class="section-wrapper headsection" id="headsection">
         <div class="shielding-layer"></div>
         <div class="">
             <div class="content">
@@ -1828,90 +1817,19 @@
                                 </div>
                                 </h2>
 
-                                {{-- <ul class="list-inline" data-animate="fadeInUp" data-delay="1.4">
-                                    <li><a href="{{ route('about') }}" class="btn btn-secondary"
-                                            style="padding: 10px 25px !important; margin-top: 25px !important;">@lang('site.about_me')</a>
-                                    </li>
-                                    <li><a href="#ServicesSection" class="btn btn-secondary"
-                                            style="padding: 10px 25px !important; margin-top: 25px !important;">خدماتنا</a>
-                                    </li>
-
-                                </ul> --}}
 
                             </div>
                         </div>
-                        {{-- <div class="col-lg-2 offset-lg-3 homeAirplains" style="" data-animate="fadeInUp"
-                            data-delay="1.4">>
-                            <div class="template-wall">
-                                <div class="column index-0">
-                                    <div class="wall-box">
-                                        <img alt="perfectcod" class="icon hoverable" src="{{ asset('home/icon/1.png') }}"
-                                            style="width: 75px; height: 92px; margin-right: 5px;">
-                                        <div class="shelter"></div>
-                                    </div>
-                                    <div class="wall-box">
-                                        <img alt="perfectcod" class="icon hoverable" src="{{ asset('home/icon/2.png') }}"
-                                            style="width: 75px; height: 92px; margin-right: 5px;">
-                                        <div class="shelter"></div>
-                                    </div>
-                                    <div class="wall-box">
-                                        <img alt="perfectcod" class="icon hoverable" src="{{ asset('home/icon/3.png') }}"
-                                            style="width: 75px; height: 92px; margin-right: 5px;">
-                                        <div class="shelter"></div>
-                                    </div>
-                                    <div class="wall-box">
-                                        <img alt="perfectcod" class="icon hoverable" src="{{ asset('home/icon/4.png') }}"
-                                            style="width: 75px; height: 92px; margin-right: 5px;">
-                                        <div class="shelter"></div>
-                                    </div>
-                                    <div class="wall-box">
-                                        <img alt="perfectcod" class="icon hoverable" src="{{ asset('home/icon/5.png') }}"
-                                            style="width: 75px; height: 92px; margin-right: 5px;">
-                                        <div class="shelter"></div>
-                                    </div>
-                                    <div class="wall-box">
-                                        <img alt="perfectcod" class="icon hoverable" src="{{ asset('home/icon/11.png') }}"
-                                            style="width: 75px; height: 92px; margin-right: 5px;">
-                                        <div class="shelter"></div>
-                                    </div>
-                                    <div class="wall-box">
-                                        <img alt="perfectcod" class="icon hoverable" src="{{ asset('home/icon/7.png') }}"
-                                            style="width: 75px; height: 92px; margin-right: 5px;">
-                                        <div class="shelter"></div>
-                                    </div>
-                                    <div class="wall-box">
-                                        <img alt="perfectcod" class="icon hoverable" src="{{ asset('home/icon/8.png') }}"
-                                            style="width: 75px; height: 92px; margin-right: 5px;">
-                                        <div class="shelter"></div>
-                                    </div>
-                                    <div class="wall-box">
-                                        <img alt="perfectcod" class="icon hoverable" src="{{ asset('home/icon/9.png') }}"
-                                            style="width: 75px; height: 92px; margin-right: 5px;">
-                                        <div class="shelter"></div>
-                                    </div>
-                                </div>
-
-
-
-                            </div>
-                        </div> --}}
                     </div>
                 </div>
             </div>
         </div>
-    </div>
+    </section>
     <!-- End of Banner -->
 
     <!-- about us -->
     <section class="pb-5-5 ">
-        {{-- <div style="background: #E2E2E2">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320" style="  margin-bottom: -15px;">
-                <path fill="#fff" fill-opacity="1"
-                    d="M0,192L34.3,208C68.6,224,137,256,206,250.7C274.3,245,343,203,411,192C480,181,549,203,617,192C685.7,181,754,139,823,138.7C891.4,139,960,181,1029,170.7C1097.1,160,1166,96,1234,74.7C1302.9,53,1371,75,1406,85.3L1440,96L1440,320L1405.7,320C1371.4,320,1303,320,1234,320C1165.7,320,1097,320,1029,320C960,320,891,320,823,320C754.3,320,686,320,617,320C548.6,320,480,320,411,320C342.9,320,274,320,206,320C137.1,320,69,320,34,320L0,320Z">
-                </path>
-            </svg>
 
-        </div> --}}
         <div class="container">
 
             <div class="container-fluid">
@@ -1938,14 +1856,7 @@
 
     {{-- Start Counter --}}
     <section class="counter_section" data-animate="fadeInUp" data-delay=".6">
-        {{-- <div style="background: #fff">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320" style="  margin-bottom: -15px;">
-                <path fill="#E2E2E2" fill-opacity="1"
-                    d="M0,192L34.3,208C68.6,224,137,256,206,250.7C274.3,245,343,203,411,192C480,181,549,203,617,192C685.7,181,754,139,823,138.7C891.4,139,960,181,1029,170.7C1097.1,160,1166,96,1234,74.7C1302.9,53,1371,75,1406,85.3L1440,96L1440,320L1405.7,320C1371.4,320,1303,320,1234,320C1165.7,320,1097,320,1029,320C960,320,891,320,823,320C754.3,320,686,320,617,320C548.6,320,480,320,411,320C342.9,320,274,320,206,320C137.1,320,69,320,34,320L0,320Z">
-                </path>
-            </svg>
 
-        </div> --}}
         <section class="container sectionCounter">
             <div class="circleWrapper">
                 <div class="circle" data-animate="fadeInUp" data-delay=".8">
