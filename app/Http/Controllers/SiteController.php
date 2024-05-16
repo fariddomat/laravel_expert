@@ -76,7 +76,7 @@ class SiteController extends Controller
         $blogCategories = BlogCategory::where('showed', 1)->orderBy('position', 'asc')->get();
         $blogs = Blog::latest()->with(['category'])->where('showed', 1)->where('show_at_home', 1)->get();
         $clients = Client::all();
-        $services = Service::where('showed', 1)->where('show_at_home', 1)->get();
+        $services = Service::where('showed', 1)->where('show_at_home', 1)->orderBy('id','asc')->get();
         $contactInfo = ContactInfo::find(1);
         $allServices = Service::where('showed', 1)->orderBy('position')->get();
         $contactInfo = ContactInfo::find(1);
@@ -132,8 +132,8 @@ class SiteController extends Controller
         // 1. Validate the request data
         $validatedData = $request->validate([
             'full_name' => 'required|string',
-            'gender' => 'required|in:male,female',
-            'date_of_birth' => 'required|date',
+            'gender' => 'required',
+            // 'date_of_birth' => 'required|date',
             'email' => 'required|email|unique:work_with_us',
             'mobile_number' => 'required|numeric',
             'address' => 'required|string',
@@ -150,10 +150,19 @@ class SiteController extends Controller
         // 2. Create a new WorkWithUs instance
         $workWithUs = new WorkWithUs();
 
+
+        $dob = $request->year . "-" . $request->month . "-" . $request->day;
+
         // 3. Assign validated data to the model
         $workWithUs->full_name = $validatedData['full_name'];
-        $workWithUs->gender = $validatedData['gender'];
-        $workWithUs->date_of_birth = $validatedData['date_of_birth'];
+
+        if ($request->gender == 'male') {
+
+            $workWithUs->gender = $validatedData['gender'] . ' - الخدمة العسكرية :' . $request->military_service;
+        } else {
+            $workWithUs->gender = $validatedData['gender'];
+        }
+        $workWithUs->date_of_birth =  $dob;
         $workWithUs->email = $validatedData['email'];
         $workWithUs->mobile_number = $validatedData['mobile_number'];
         $workWithUs->address = $validatedData['address'];
@@ -277,25 +286,35 @@ class SiteController extends Controller
 
     public function appointmentTime(Request $request)
     {
-
         try {
             $date = $request->appointment_date;
             $d    = new DateTime($date);
-            $d->format('l');  //pass l for lion aphabet in format
-            // dd($d->format('l'));
-            $day = DayOfWork::where('day', $d->format('l'))->first();
-            // dd($day);
-            $time = DailyAppointment::where('day_of_work_id', $day->id)->get();
+            $dayName = $d->format('l');  // Get the day of the week
+            $day = DayOfWork::where('day', $dayName)->first();
+
+            if (!$day) {
+                return response()->json(['time' => []]);
+            }
+
+            // Fetch all times for the given day
+            $times = DailyAppointment::where('day_of_work_id', $day->id)->get();
+
+            // Filter out times that are already booked
+            $availableTimes = $times->filter(function ($time) use ($date) {
+                $startAt = $date . ' ' . $time->time;
+                return !ContactUs::where('start_at', $startAt)->exists();
+            });
 
             return response()->json([
-                'time' => $time
+                'time' => $availableTimes
             ]);
         } catch (\Throwable $th) {
             return response()->json([
-                'time' => null
+                'time' => []
             ]);
         }
     }
+
 
     public function postContact(Request $request)
     {
@@ -304,12 +323,16 @@ class SiteController extends Controller
             'appointment_time' => 'required',
         ]);
         $date = $request->appointment_date;
-        $d    = new DateTime($date);
+        $dateParts = explode('/', $date);
+        $formattedDate = $dateParts[2] . '-' . $dateParts[1] . '-' . $dateParts[0];
+
+        $d    = new DateTime($formattedDate);
+        // dd($d);
         $d->format('l');  //pass l for lion aphabet in format
         // dd($d->format('l'));
         $day = DayOfWork::where('day', $d->format('l'))->first();
         $time = DailyAppointment::findOrFail($request->appointment_time);
-        $start_At = $request->appointment_date . ' ' . $time->time;
+        $start_At = $formattedDate . ' ' . $time->time;
         session()->put('start_at', $start_At);
         $a = ContactUs::where('start_at', $start_At)->count();
         if ($a > 0) {
@@ -355,7 +378,7 @@ class SiteController extends Controller
             return redirect()->back();
         }
 
-        $dob= $request->day."/".$request->month."/".$request->year;
+        $dob = $request->day . "/" . $request->month . "/" . $request->year;
         // dd($dob);
         $contact = new ContactUs();
         $contact->name = $validatedData['name'];
@@ -478,14 +501,15 @@ class SiteController extends Controller
         return view('faq', compact('faqs', 'info'));
     }
 
-    public function postComment(Request $request){
+    public function postComment(Request $request)
+    {
         $request->validate([
-            'service_id'=> 'required',
-            'name'=> 'required',
-            'email'=> 'required|email',
-            'name'=> 'required',
+            'service_id' => 'required',
+            'name' => 'required',
+            'email' => 'required|email',
+            'name' => 'required',
         ]);
-        $comment=ServiceComment::create($request->all());
+        $comment = ServiceComment::create($request->all());
 
         $info = array(
             'name' => $request->name,
@@ -495,13 +519,13 @@ class SiteController extends Controller
         );
         try {
             //code...
-            Mail::send('mail', $info, function ($message)  {
+            Mail::send('mail', $info, function ($message) {
                 $message->to("almohtarif.contact.form@gmail.com", "Almohtarif")
                     ->subject('تم إضافة تعليق جديد');
                 $message->from('support@almohtarif-office.com', 'Almohtarif');
             });
 
-            Mail::send('mail_comment', $info, function ($message) use($info)  {
+            Mail::send('mail_comment', $info, function ($message) use ($info) {
                 $message->to($info['email'], $info['name'])
                     ->subject('شركة المحترف للسياحة والسفر');
                 $message->from('support@almohtarif-office.com', 'Almohtarif');
@@ -513,5 +537,4 @@ class SiteController extends Controller
         session()->flash('success', trans('تم إضافة التعليق بنجاح'));
         return redirect()->back();
     }
-
 }

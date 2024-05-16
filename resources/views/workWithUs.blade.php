@@ -270,20 +270,102 @@
                             </div>
 
                             <div class="col-md-6" data-animate="fadeInUp" data-delay=".2">
-                                <div class="form-group">
-                                    <label for="gender">الجنس*</label>
-                                    <select name="gender" class="form-control" required>
-                                        <option value="male" @if (old('gender') == 'male') selected @endif>ذكر</option>
-                                        <option value="female" @if (old('gender') == 'female') selected @endif>أنثى</option>
-                                    </select>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="gender">الجنس*</label>
+                                            <select id="gender" name="gender" class="form-control" required>
+                                                <option value="male" @if (old('gender') == 'male') selected @endif>ذكر</option>
+                                                <option value="female" @if (old('gender') == 'female') selected @endif>أنثى</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6" data-animate="fadeInUp" data-delay=".2" id="military_service_container">
+                                        <div class="form-group">
+                                            <label for="military_service">الخدمة العسكرية</label>
+                                            <select name="military_service" id="military_service" class="form-control">
+                                                <option value="مكتملة">مكتملة</option>
+                                                <option value="معفى">معفى</option>
+                                                <option value="مؤجل">مؤجل</option>
+                                            </select>
+                                        </div>
+                                    </div>
                                 </div>
+                                <script>
+                                    $(document).ready(function() {
+                                        $('#gender').on('change', function() {
+                                            if ($(this).val() == 'male') {
+                                                $('#military_service_container').show();
+                                            } else {
+                                                $('#military_service_container').hide();
+                                                $('#military_service').val(''); // Clear the military service value
+                                            }
+                                        });
+
+                                        // Trigger change event on page load to handle the initial state
+                                        $('#gender').trigger('change');
+                                    });
+                                </script>
                             </div>
 
                             <div class="col-md-6" data-animate="fadeInUp" data-delay=".3">
-                                <div class="form-group">
-                                    <label for="date_of_birth">تاريخ الميلاد*</label>
-                                    <input type="date" name="date_of_birth" value="{{ old('date_of_birth') }}" class="form-control" required>
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label for="day">تاريخ الميلاد - اليوم:</label>
+                                            <select class="form-control" id="day" name="day">
+                                                @for ($i = 1; $i <= 31; $i++)
+                                                    <option value="{{ $i }}">{{ $i }}
+                                                    </option>
+                                                @endfor
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label for="month">الشهر:</label>
+                                            <select class="form-control" id="month" name="month"
+                                                onchange="updateDays()">
+                                                @foreach (range(1, 12) as $month)
+                                                    <option value="{{ $month }}">{{ $month }}
+                                                    </option>
+                                                @endforeach
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label for="year">السنة:</label>
+                                            <select class="form-control" id="year" name="year">
+                                                @for ($year = date('Y'); $year >= 1900; $year--)
+                                                    <option value="{{ $year }}">
+                                                        {{ $year }}</option>
+                                                @endfor
+                                            </select>
+                                        </div>
+                                    </div>
                                 </div>
+                                <script>
+                                    function updateDays() {
+                                        const month = document.getElementById('month').value;
+                                        const year = document.getElementById('year').value;
+                                        const daySelect = document.getElementById('day');
+                                        const lastDay = new Date(year, month, 0).getDate(); // Get the last day of the month
+
+                                        // Clear existing options
+                                        while (daySelect.options.length > 0) {
+                                            daySelect.remove(0);
+                                        }
+
+                                        // Add days according to the selected month and year
+                                        for (let i = 1; i <= lastDay; i++) {
+                                            const option = document.createElement('option');
+                                            option.value = i;
+                                            option.textContent = i;
+                                            daySelect.appendChild(option);
+                                        }
+                                    }
+                                </script>
                             </div>
 
                             <div class="col-md-6" data-animate="fadeInUp" data-delay=".4">
