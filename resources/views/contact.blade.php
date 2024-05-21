@@ -576,7 +576,7 @@
                                                     class="form-control" placeholder="@lang('contact.name')"
                                                     data-parsley-required="true"
                                                     data-parsley-required-message="الاسم مطلوب."
-                                                    data-parsley-pattern="^[\u0621-\u064A\u0660-\u0669a-zA-Z\s]+$"
+                                                    data-parsley-pattern="^[\u0621-\u064Aa-zA-Z\s]+$"
                                                     data-parsley-pattern-message="يجب أن يحتوي الاسم على حروف عربية أو إنجليزية فقط"
                                                     data-parsley-trigger="change">
 

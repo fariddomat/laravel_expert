@@ -31,9 +31,12 @@
             font-size: 25px;
         }
 
-        img {
+       img {
             width: 100% !important;
             /* height: auto !important; */
+        }
+        .header img{
+            width: auto !important;
         }
 
         p {
@@ -528,7 +531,7 @@
 
 
                             <div class="disquss-comment mt-50" data-animate="fadeInUp" data-delay=".5">
-                               
+
                             </div>
 
                             {{-- aside --}}
