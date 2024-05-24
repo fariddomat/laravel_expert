@@ -1,6 +1,6 @@
 @extends('layouts.site')
 @php
-    $metaDescription = Str::limit(strip_tags($blog->description ?? ''), 160);
+    $metaDescription = Str::limit(strip_tags($blog->description ?? ''), 159);
 @endphp
 @section('title')
     {{ $blog->title }}
@@ -22,7 +22,8 @@
                 max-width: 100%;
             }
 
-            .post-content h2 {
+            .post-content h2,
+            .post-content h1 {
                 font-size: 1.5rem !important;
             }
         }
@@ -456,7 +457,7 @@
                                         href="#">{{ $blog->author_name }}</a>
                                     <br> التصنيف: <a
                                         href="{{ route('blogs', $blog->category->slug) }}">{{ $blog->category->name }}</a></span>
-                                <img class="img-thumbnail" src="{{ asset($blog->index_image) }}" alt=""
+                                <img class="img-thumbnail" src="{{ asset($blog->index_image) }}" alt=" {{ $blog->title }}"
                                     data-animate="fadeInUp" data-delay=".6" style="aspect-ratio: 3/2; margin-top: 25px">
 
                                 <div class="pt-2 pb-2 mt-3 blog-d" data-animate="fadeInUp" data-delay=".1">
@@ -491,7 +492,7 @@
 
                             <!-- Author info -->
                             <div class="d-flex align-items-center author-info-wrap">
-                                <img class="img-thumbnail mr-3" src="{{ asset($blog->author_image) }}" alt=""
+                                <img class="img-thumbnail mr-3" src="{{ asset($blog->author_image) }}" alt=" {{ $blog->title }}"
                                     data-animate="fadeInUp" data-delay=".1" style="max-width: 100px;aspect-ratio: 3/3;">
                                 <div class="author-info">
                                     <h4 data-animate="fadeInUp" data-delay=".2">كتب المقال بواسطة: <a
@@ -593,11 +594,6 @@
                                     </ul>
                                 </div>
 
-
-                                {{-- <div class="single-widget text-center" data-animate="fadeInUp" data-delay=".1">
-                                <h3 data-animate="fadeInUp" data-delay=".2">Advertisement</h3>
-                                <img src="img/camera.jpg" alt="" data-animate="fadeInUp" data-delay=".25">
-                            </div> --}}
                             </aside>
 
                             <span class="sspan top"></span>
