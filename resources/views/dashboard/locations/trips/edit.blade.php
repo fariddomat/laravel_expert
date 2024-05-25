@@ -22,14 +22,6 @@
                     removeButtons: "About",
                     contentsLangDirection: 'rtl'
                 });
-                CKEDITOR.replace("content", {
-                    filebrowserBrowseUrl: imageGalleryBrowseUrl,
-                    filebrowserUploadUrl: imageGalleryUploadUrl +
-                        "?_token=" +
-                        $("meta[name=csrf-token]").attr("content"),
-                    removeButtons: "About",
-                    contentsLangDirection: 'rtl'
-                });
 
             });
         </script>
@@ -39,7 +31,7 @@
 @section('content')
 
 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-    <div class="card-header">تعديل موقع  </div>
+    <div class="card-header">تعديل رحلة  </div>
 </div>
 <div>
     @include('partials._errors')
@@ -48,37 +40,34 @@
 
     <div class="row justify-content-center">
         <div class="card-block">
-            <form action="{{ route('dashboard.locations.update', $location) }}" method="post" enctype="multipart/form-data">
+            <form action="{{ route('dashboard.locations.trips.update', [$location, $trip]) }}" method="post" enctype="multipart/form-data">
                 @csrf()
                 @method('PUT')
+                <input type="hidden" name="location_id" value="{{ $location->id }}">
                 <div class="form-group mb-3">
                     <label>الاسم</label>
-                    <input type="text" name="name" class="form-control " value="{{ old('name', $location->name) }}">
+                    <input type="text" name="title" class="form-control " value="{{ old('title', $trip->title) }}">
                 </div>
                 <div class="form-group mb-3">
                     <label>الوصف</label>
                     <textarea name="description" class="form-control" id="" cols="30" rows="10">
-                        {{ old('description', $location->description)}}
+                        {{ old('description', $trip->description)}}
                     </textarea>
                 </div>
 
-                <hr>
+
                 <div class="form-group mb-3">
-                    <label>الرابط (اختياري)</label>
-                    <input type="text" name="slug" class="form-control " value="{{ old('slug',$location->slug) }}">
-                <div class="form-group mb-3">
-                    <label>الاسم للمحتوى (اختياري)</label>
-                    <input type="text" name="title" class="form-control " value="{{ old('title', $location->title) }}">
+                    <label>الصورة</label>
+                    <br>
+                    <img src="{{ asset($trip->img) }}" class="img-thumbnail " style="max-width: 300px" alt="">
+                    <br>
+                    <input type="file" name="img" class="form-control">
                 </div>
-                <div class="form-group mb-3">
-                    <label>المحتوى (اختياري)</label>
-                    <textarea name="content" class="form-control" id="" cols="30" rows="10">{{ old('content', $location->content) }}</textarea>
-                </div>
+
+
 
                 <div class="form-group mb-3">
                     <button type="submit" class="btn btn-primary"><i class="fa fa-plus"></i> إضافة </button>
-                    <a href="{{ route('dashboard.locations.trips.index', $location) }}"  class="btn btn-primary" style="margin-right: 5px"><strong>الرحلات</strong></a>
-                    <a href="{{ route('dashboard.locations.socials.index', $location) }}"  class="btn btn-primary" style="margin-right: 5px"><strong>مواقع التواصل</strong></a>
                 </div>
             </form>
         </div>

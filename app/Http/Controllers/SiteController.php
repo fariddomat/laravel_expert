@@ -537,4 +537,10 @@ class SiteController extends Controller
         session()->flash('success', trans('تم إضافة التعليق بنجاح'));
         return redirect()->back();
     }
+
+    public function location(Location $location){
+
+        $info = Info::first();
+        return view('location', compact('location', 'info'));
+    }
 }

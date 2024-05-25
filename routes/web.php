@@ -52,6 +52,7 @@ Route::group(
         Route::get('/services/{service:slug}/order', 'SiteController@orderService')->name('service.order');
         Route::post('/services/{service:slug}/order', 'SiteController@storeOrderService')->name('service.order.store');
 
+
         Route::get('/works/{work:slug}', 'SiteController@work')->name('work');
         Route::get('/blogs', 'SiteController@blogs')->name('blogs');
         Route::get('/blogs/{blog:slug}', 'SiteController@blog')->name('blog');
@@ -62,6 +63,8 @@ Route::group(
 
         Route::get('/download/blog/{blog:slug}', 'PDFController@downloadBlog')->name('downloadBlog');
 
+
+        Route::get('/{location:slug}', 'SiteController@location')->name('location');
 
         // fix redirect for old links
         Route::get('/service', 'SiteController@services')->name('service.index');
@@ -84,6 +87,9 @@ Route::group(['prefix' => '/dashboard', 'middleware' => ['auth', 'setArLocale'],
     Route::resource('service_comments', 'Dashboard\ServiceCommentController');
     Route::resource('visitors', 'Dashboard\VisitorController');
     Route::resource('locations', 'Dashboard\LocationController');
+
+    Route::resource('locations.trips', 'Dashboard\LocationTripController');
+    Route::resource('locations.socials', 'Dashboard\LocationSocialMediaController');
 
     Route::resource('counters', 'Dashboard\CounterController');
     Route::resource('reviews', 'Dashboard\ReviewController');

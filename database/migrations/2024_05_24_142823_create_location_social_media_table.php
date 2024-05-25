@@ -11,14 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('locations', function (Blueprint $table) {
+        Schema::create('location_social_media', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('location_id')->constrained()->onDelete('cascade'); // Foreign key linking to locations
             $table->string('name');
-            $table->text('description');
-
-            $table->string('slug')->nullable();
-            $table->string('title')->nullable();
-            $table->text('content')->nullable();
+            $table->string('icon');
+            $table->text('link');
             $table->timestamps();
         });
     }
@@ -28,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('locations');
+        Schema::dropIfExists('location_social_media');
     }
 };
