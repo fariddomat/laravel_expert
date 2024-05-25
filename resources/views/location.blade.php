@@ -382,7 +382,9 @@
                             data-delay="1.2">
                             <li><a href="{{ route('home') }}">@lang('site.home')</a></li>
                             <li><i class="fas fa-angle-double-right"></i></li>
-                            <li><a>{{ $location->name }}</a></li>
+                            <li><a>@if ($location->slug == 'netherland')
+                                المحترف هولندا
+                            @endif</a></li>
                             {{-- <li><i class="fas fa-angle-double-right"></i></li>
                             <li><a href="">@lang('site.service_detail')</a></li> --}}
                         </ul>
@@ -409,7 +411,8 @@
                         <div data-animate="slideInRight" data-delay=".5" class="col-md-12 wow bg-image-index"
                             style="">
                             <h2 class="col-md-12 pt-2 pb-2" data-animate="fadeInDown" data-delay="1.4"
-                                style="font-size: 3rem;text-align: center">{{ $location->title }}</h2>
+                                style="font-size: 2rem;text-align: center;
+                                color: #DF1F26;">{{ $location->title }}</h2>
 
 
                             <div class="" style="">{!! $location->content !!}</div>
@@ -425,7 +428,7 @@
                             border-radius: 10px; /* Adjust spacing */">
                                 <div class="col-md-12">
                                     <h3 class="service-section-title"
-                                        style=" font-size: 24px; /* Adjust font size */
+                                        style="text-align: center; font-size: 24px; /* Adjust font size */
                                     font-weight: bold; color:#DF1F26;
                                     margin-bottom: 15px; /* Adjust spacing */">
                                         مواقع التواصل الاجتماعي</h3>
