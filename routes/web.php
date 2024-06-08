@@ -26,6 +26,8 @@ Route::get('/clear', function () {
     return "Cleared!";
 });
 
+
+Route::get('/sitemap.xml', 'SitemapXmlController@index')->name('sitemap');
 Route::group(
     [
         // 'prefix' => LaravelLocalization::setLocale(),
@@ -74,7 +76,6 @@ Route::group(
     }
 );
 
-Route::get('/sitemap.xml', 'SitemapXmlController@index')->name('sitemap');
 
 
 Route::group(['prefix' => '/dashboard', 'middleware' => ['auth', 'setArLocale'], 'as' => 'dashboard.'], function () {
