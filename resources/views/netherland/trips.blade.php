@@ -9,34 +9,10 @@
 
 
 @section('styles')
-
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
 
 
     <style>
-        .headsection {
-            background: url("{{ $homeSlider->where('type', '1')->first()->image }}");
-            background-attachment: fixed;
-            position: relative;
-            background-repeat: no-repeat;
-            opacity: 1;
-            transition: opacity 0.5s, transform 0.5s;
-            z-index: 1;
-            background-size: cover;
-        }
-
-     .banner-content h1 {
-    font-size: 3.5rem;
-    font-weight: bold;
-}
-.section-wrapper .content .feature-list {
-    margin: 18px 0 24px;
-    font-size: 14px;
-    color: rgba(0, 0, 0, 0.7);
-    line-height: 20px;
-}
-
-
         .modal {
             position: absolute;
             text-align: right;
@@ -332,58 +308,7 @@
 
             }
         }
-        @media (max-width: 480px) {
-    .headsection {
-        background: url("{{ $homeSlider->where('type', '2')->first()->image }}");
-        background-attachment: fixed;
-        position: relative;
-        background-repeat: no-repeat;
-        background-size: 100% 100% !important;
-    }
-}
-.who_we {
-            box-shadow: inset 0px -8px 8px #fff !important;
-            position: relative;
-            padding-bottom: 200px !important;
-            min-height: 600px;
-            background-image: url({{ asset($info->who_image) }});
-            background-size: 100% 100%;
-            background-repeat: no-repeat
-        }
-
-        .who_we a {
-            padding: 25px 75px !important;
-            margin-top: 25px !important;
-            position: absolute;
-            bottom: 45%;
-
-            left: 50%;
-            transform: translateX(-50%) !important;
-        }
-
-        @media (max-width: 480px) {
-            .who_we {
-
-                box-shadow: inset 0px -8px 8px #fff, inset 0px 8px 8px #f8f8f8 !important;
-                background-image: url({{ asset($info->who_image_mobile) }});
-                background-size: 100% 100%;
-                background-repeat: no-repeat
-            }
-
-            .who_we a {
-                padding: 15px 55px !important;
-                position: absolute;
-                bottom: 45%;
-                right: 10%;
-                left: 50%;
-                transform: translateX(-50%) !important;
-
-            }
-        }
-
     </style>
-
-
 @endsection
 @section('scripts')
     <script>
@@ -445,54 +370,32 @@
 @endsection
 @section('content')
 
+    <!-- Page title -->
+    <section class="page-title-wrap position-relative bg-light" data-bg-img="{{ asset($info->service_header_image) }}"
+        data-animate="fadeInUp" data-delay="1.1">
+        {{-- <div id="particles_js"></div> --}}
+        <div class="container container-top">
+            <div class="row">
+                <div class="col-11">
+                    <div class="page-title position-relative pt-5 pb-5">
+                        <ul class="custom-breadcrumb roboto list-unstyled mb-0 clearfix" data-animate="fadeInUp"
+                            data-delay="1.2">
+                            <li><a href="{{ route('home') }}">@lang('site.home')</a></li>
+                            <li><i class="fas fa-angle-double-right"></i></li>
+                            <li><a>
+                                    @if ($location->slug == 'netherland')
+                                        المحترف هولندا
+                                    @endif
+                                </a></li>
+                            {{-- <li><i class="fas fa-angle-double-right"></i></li>
+                            <li><a href="">@lang('site.service_detail')</a></li> --}}
+                        </ul>
+                        <h1 data-animate="fadeInUp" data-delay="1.3">الرحلات</h1>
+                    </div>
+                </div>
+                <div class="col-1">
+                    <div class="world-map position-relative">
 
-    <section class="section-wrapper headsection" id="headsection" style=" width: 100%;
-    height: 734px;
-    overflow: hidden;
-    position: relative;
-    background-color: #f3f4fd;">
-        <div class="shielding-layer"></div>
-        <div class="">
-            <div class="content" style="  height: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: flex-start;
-    width: 100%;
-    position: absolute;
-    top: 0;
-    right: 0;
-    z-index: 4;">
-                <div id="particles_js"></div>
-                <div class="container" style="  position: relative;">
-                    <div class=" row align-items-center" style="">
-                        <div class="col-lg-7">
-                            <!-- Banner content -->
-                            <div class="banner-content">
-                                <div id="typed-strings">
-                                    <h1 data-animate="fadeInUp" data-delay="1.2"
-                                        style="font-size: 3.5rem;
-                                font-weight: bold;color: #0D1216;margin-bottom: 1rem;line-height: 1.2;">
-                                        المحترف - هولندا</h1>
-                                </div>
-
-                                <h1 class="typed"></h1>
-
-                                <h2 data-animate="fadeInUp" data-delay="1.3" class=""><span
-                                        class="typed-second"></span>
-                                    <div id="typed-strings2">
-                                        <p
-                                            style="font-size: 1.1rem;
-                                font-weight: 700;
-                                color: #555c55;
-                                text-transform: capitalize;line-height: 1.2;">
-                                            {{ $info->description }}</p>
-                                    </div>
-                                </h2>
-
-
-                            </div>
-                        </div>
                     </div>
                 </div>
             </div>
@@ -500,47 +403,14 @@
     </section>
     <!-- End of Banner -->
 
-       <!-- Features -->
-       <section class="pt-7 pb-2 section2">
-        <div class="container">
-
-            <div class="container-fluid">
-                <div class="row">
-                    <h2 class="" data-animate="fadeIn Up" data-delay=".1"
-                        style="margin: 0 auto 75px; text-align: center;">امتيازات تجعل
-                        شركة المحترف الأفضل على الإطلاق </h2>
-                </div>
-                <div class="row">
-
-                    @foreach ($aboutFields as $aboutField)
-                        <div class="col-md-4">
-                            <div class="single-feature text-center" data-animate="fadeInUp" data-delay=".1">
-                                <i class="fa {{ $aboutField->icon }}" style="font-size: 3rem; color:#DF1F26;"></i>
-                                <h3>{{ $aboutField->title }}</h3>
-                                <p style="text-align: justify;">{{ $aboutField->value }}</p>
-                            </div>
-                        </div>
-                    @endforeach
-                </div>
-
-            </div>
-        </div>
-    </section>
-    <!-- End of Features -->
-
-
 
     <section id="section-content " class="bg-gradient pt-7" style="overflow: hidden">
         <div class="container" style="max-width: 65rem">
             <div class="row">
                 <div class="col-md-12">
-
-
-
-
                     @if ($location->location_trips->count() > 0)
                         <section id="serviceSerivces" class="testimonials blog" dir="ltr" data-animate="fadeInUp"
-                            data-delay="1" style="padding-top: 75px;">
+                            data-delay="1" style="">
                             <div class="container">
                                 <div class="row">
                                     <div class="col-sm-12">
@@ -594,8 +464,8 @@
                                                 @endforeach
                                                 <!-- Modals -->
                                                 @foreach ($location->location_trips as $index => $trip)
-                                                    <div class="modal fade" id="tripModal{{ $index }}"
-                                                        tabindex="-1" aria-labelledby="tripModalLabel{{ $index }}"
+                                                    <div class="modal fade" id="tripModal{{ $index }}" tabindex="-1"
+                                                        aria-labelledby="tripModalLabel{{ $index }}"
                                                         aria-hidden="true">
                                                         <div class="modal-dialog modal-dialog-centered">
                                                             <div class="modal-content">
@@ -613,9 +483,7 @@
                                                                 </div>
                                                                 <div class="modal-footer">
                                                                     <a href="{{ $location->location_social_media->where('name', 'whatsapp')->first()->link }}"
-                                                                        class="btn btn-primary" style="padding: 18px 55px;
-  font-size: 1rem;
-">احجز الآن</a>
+                                                                        class="btn btn-primary">احجز الآن</a>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -623,8 +491,8 @@
                                                 @endforeach
                                             </div>
                                         @else
-                                            <div id="customers-testimonials" class="owl-carousel "
-                                                data-animate="fadeInUp" data-delay="1.5">
+                                            <div id="customers-testimonials" class="owl-carousel " data-animate="fadeInUp"
+                                                data-delay="1.5">
                                                 @foreach ($location->location_trips as $index => $trip)
                                                     <!--TESTIMONIAL 1 -->
 
@@ -704,94 +572,27 @@
                                                 </div>
                                             @endforeach
                                         @endif
+                                        <
                                     </div>
                                 </div>
                             </div>
                         </section>
                     @endif
 
-                    <div class="row" style="margin-bottom: 50px">
 
-
-                        <div class="col-md-12 wow fadeInUp serviceRow" data-wow-delay=".5s" style="margin-top:50px">
-                            <div class="row mt-5 ml-5 mr-5 serviceSection" data-animate="fadeInUp" data-delay=".2"
-                                style=" border: 1px solid #e0e1e0;
-                            background: #fff;
-                            box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.5);
-                            padding: 20px; margin-bottom: 15px;
-                            border-radius: 10px; /* Adjust spacing */">
-                                <div class="col-md-12 wow fadeInUp serviceRow" data-wow-delay=".5s" style="margin-top:50px">
-                                    <h3 class="service-section-title"
-                                        style="text-align: center; font-size: 24px; /* Adjust font size */
-                                    font-weight: bold; color:#DF1F26;
-                                    margin-bottom: 15px; /* Adjust spacing */">
-                                        مواقع التواصل الاجتماعي</h3>
-                                    <div
-                                        style="  line-height: 1.6; /* Adjust line spacing */
-                                                margin-bottom: 20px;margin-top: 30px">
-                                        <ul class="list-inline mb-0 social-share list-inline mb-0 text-lg-center"
-                                            style="text-align: center;">
-                                            @foreach ($location->location_social_media as $index => $socialMedia)
-                                                <li style="margin-bottom: 10px">
-                                                    <a class="{{ $socialMedia->name }}" href="{{ $socialMedia->link }}"
-                                                        target="_blank" style="color:#E2E2E2 "><i
-                                                            class="fa-brands {{ $socialMedia->icon }}"></i></a>
-
-                                                </li>
-                                            @endforeach
-                                        </ul>
-
-                                    </div>
-
-                                    <div class="row" style="justify-content: center">
-                                            <a class="btn btn-secondary" href="{{ $location->location_social_media->where('name', 'whatsapp')->first()->link }}" style="background-color: #25D366; padding: 18px 55px;
-  font-size: 1rem;
-">التواصل السريع <i class="fa-brands fa-whatsapp"></i></a>
-
-                                    </div>
-                                </div>
-                            </div>
-
-
-                        </div>
-                    </div>
 
                 </div>
                 <!-- Sidebar -->
 
             </div>
+                <div class="row mb-5" style="justify-content: center; text-align: center">
+                    <a class="btn btn-secondary" href="{{ $location->location_social_media->where('name', 'whatsapp')->first()->link }}" style="background-color: #25D366;padding: 18px 55px;
+  font-size: 1rem;
+">التواصل السريع <i class="fa-brands fa-whatsapp"></i></a>
+
 
         </div>
     </section>
 
 
-
-    <!-- Reviews -->
-    <section class="pt-2 pb-7 bg-gradient" style="padding-bottom: 200px !important">
-        <div class="container">
-            <div class="section-title text-center">
-                <h2 data-animate="fadeInUp" data-delay=".1">أراء العملاء</h2>
-            </div>
-            <div class="swiper-container review-slider">
-                <div class="swiper-wrapper">
-                    @foreach ($reviews as $review)
-                        <div class="swiper-slide single-review-slide">
-                            <!-- Author info -->
-                            <div class="d-flex align-items-center author-info-wrap">
-                                <img class="img-thumbnail mr-3" src="{{ asset($review->image) }}" alt=""
-                                    data-animate="fadeInUp" data-delay=".1" loading="lazy" style="max-width: 100px;aspect-ratio: 3/3;" >
-                                <div class="author-info">
-                                    {{ $review->name }}
-                                </div>
-                            </div>
-                            <p>{!! $review->description !!}</p>
-                        </div>
-                    @endforeach
-
-                </div>
-            </div>
-            <div class="swiper-pagination review-pagination position-static"></div>
-        </div>
-    </section>
-    <!-- End of Reviews -->
 @endsection

@@ -541,6 +541,54 @@ class SiteController extends Controller
     public function location(Location $location){
 
         $info = Info::first();
-        return view('location', compact('location', 'info'));
+        $homeSlider = HomeSlider::all();
+        $aboutFields = AboutField::all();
+        $services = Service::where('showed', 1)->where('show_at_home', 1)->orderBy('id','asc')->get();
+
+        $reviews = Review::latest()->get();
+        return view('location', compact('location', 'info', 'homeSlider', 'aboutFields', 'services', 'reviews'));
+    }
+
+
+    public function locationServices(Location $location){
+
+        $services = Service::where('slug', $location->slug)?->first()->subServices;
+        $info = Info::first();
+        return view('netherland.services', compact('services', 'info', 'location'));
+       }
+
+
+    public function locationService(Request $request, $location, Service $service){
+        $location=Location::where('slug', $location)->first();
+        views($service)
+            ->record();
+
+        // dd(views($service)->unique()->count());
+
+        $info = Info::first();
+        $categories = BlogCategory::all();
+        $latestBlogs = Blog::where('showed', 1)->where('show_at_home', 1)->latest()->limit(5)->get();
+        $search = $request->search;
+        $tags = Tag::all();
+        switch ($service->id) {
+
+            default:
+                if (App::getLocale() == 'en') {
+                    $arrow = 'right';
+                } else { //ar
+                    $arrow = 'left';
+                }
+                $questions = $service->questions->count();
+                $halfOfQuestions = 0;
+                if ($questions > 1) {
+                    $halfOfQuestions = ceil($questions / 2);
+                }
+                $otherServices = Service::where('showed', 1)->get();
+                if ($service->slug=='netherland-trips') {
+                return view('netherland.trips', compact('location', 'service', 'halfOfQuestions', 'arrow', 'otherServices', 'info', 'categories', 'latestBlogs', 'search', 'tags'));
+
+                }
+                return view('netherland.service', compact('location', 'service', 'halfOfQuestions', 'arrow', 'otherServices', 'info', 'categories', 'latestBlogs', 'search', 'tags'));
+        }
     }
 }

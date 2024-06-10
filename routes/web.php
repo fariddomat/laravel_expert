@@ -66,8 +66,6 @@ Route::group(
         Route::get('/download/blog/{blog:slug}', 'PDFController@downloadBlog')->name('downloadBlog');
 
 
-        Route::get('/{location:slug}', 'SiteController@location')->name('location');
-
         // fix redirect for old links
         Route::get('/service', 'SiteController@services')->name('service.index');
         Route::get('/service/{service:slug}', 'SiteController@services')->name('service.show');
@@ -287,3 +285,7 @@ Route::group(['prefix' => '/dashboard', 'middleware' => ['auth', 'setArLocale'],
 
 
 
+Route::get('/{location:slug}/services/{service:slug}', 'SiteController@locationService')->name('location.service.show');
+
+Route::get('/{location:slug}', 'SiteController@location')->name('location');
+Route::get('/{location:slug}/services', 'SiteController@locationServices')->name('location.service.index');
