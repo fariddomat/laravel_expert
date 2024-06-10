@@ -543,8 +543,8 @@ class SiteController extends Controller
         $info = Info::first();
         $homeSlider = HomeSlider::all();
         $aboutFields = AboutField::all();
-        $services = Service::where('showed', 1)->where('show_at_home', 1)->orderBy('id','asc')->get();
 
+        $services = Service::where('slug', $location->slug)?->first()->subServices;
         $reviews = Review::latest()->get();
         return view('location', compact('location', 'info', 'homeSlider', 'aboutFields', 'services', 'reviews'));
     }

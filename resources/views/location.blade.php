@@ -14,6 +14,27 @@
 
 
     <style>
+            .services-title {
+            height: auto;
+            padding-bottom: 50px;
+            background-image: url({{ asset($info->service_image) }});
+            background-attachment: fixed !important;
+            background-repeat: no-repeat !important;
+            background-size: cover !important;
+        }
+
+        @media (max-width: 480px) {
+            .services-title {
+                height: auto;
+                background-image: url({{ asset($info->service_image_mobile) }});
+                background-attachment: fixed !important;
+                background-repeat: no-repeat !important;
+                background-size: 100% 100% !important;
+            }
+        }
+        .services-title {
+            background-size: contain;
+        }
         .headsection {
             background: url("{{ $homeSlider->where('type', '1')->first()->image }}");
             background-attachment: fixed;
@@ -389,7 +410,6 @@
     <script>
         jQuery(document).ready(function($) {
             "use strict";
-            //  TESTIMONIALS CAROUSEL HOOK
             var owl = $('#customers-testimonials').owlCarousel({
                 loop: true,
                 center: true,
@@ -399,7 +419,7 @@
                 dots: true,
                 autoplayTimeout: 2500,
                 responsiveRefreshRate: 10,
-                autoplayHoverPause: true, // Stops autoplay
+                autoplayHoverPause: true, 
                 smartSpeed: 450,
                 responsive: {
                     0: {
@@ -414,7 +434,7 @@
                 }
             });
             owl.on('mouseleave', function() {
-                owl.trigger('stop.owl.autoplay'); //this is main line to fix it
+                owl.trigger('stop.owl.autoplay'); 
                 owl.trigger('play.owl.autoplay', [1000]);
             });
         });
@@ -434,11 +454,11 @@
     <script>
         $(document).ready(function() {
             $('#accordion100').on('shown.bs.collapse', function(e) {
-                var target = $(e.target); // Get the target section
-                var offset = target.prev().height(); // Calculate offset based on previous section's height
+                var target = $(e.target);  
+                var offset = target.prev().height(); 
                 $('html, body').animate({
                     scrollTop: target.offset().top - offset - 90
-                }, 500); // Animate scrolling with duration (adjust as needed)
+                }, 500); 
             });
         });
     </script>
@@ -528,16 +548,73 @@
     </section>
     <!-- End of Features -->
 
+        <!-- Our services -->
+        <section class="" id="ServicesSection">
+            <div class="services-title position-relative pt-7" style="" dir="ltr">
+                <div class="container" style="max-width: 65rem">
+                    <div class="row justify-content-center">
+                        <div class="col-xl-6 col-lg-8">
+                            <!-- Section title -->
+                            <div class="section-title text-center">
+                                <h2 class="text-white" data-animate="fadeInUp" data-delay=".1">خدمات المحترف </h2>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row mt-5 mb-5  gx-5" style="margin-bottom: 50px">
+
+                                @foreach ($services as $index => $service)
+                                    <!--TESTIMONIAL 1 --> <div class="col-md-4">
+                                    <div class="col-md-12"
+                                        style="background-image: url({{ asset($service->image) }});      background-repeat: no-repeat;
+                                             background-size: 100% 100%;height: 400px;border-radius: 15px;">
+
+                                        <div class="" data-animate=""
+                                            style="padding: 0; border: unset !important; margin-bottom: 5px">
+                                            <div class="image-hover-wrap">
+
+                                                <div
+                                                    class="image-hover-content d-flex justify-content-center align-items-center text-center">
+                                                    <ul class="list-inline">
+                                                        <li><a href="{{ route('service', $service->slug) }}"><i
+                                                                    class="fas fa-link"></i></a>
+                                                        </li>
+                                                        {{-- <li><a href="#"><i class="fas fa-share-alt"></i></a></li> --}}
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                            <div style="padding: 15px; padding-bottom: 0">
+                                                <h3
+                                                    style="padding-top: 70% !important; padding-bottom: 0; padding-bottom: 8px;
+                                                margin-bottom: 0; font-weight: bold; text-align:center;">
+                                                    {{ $service->title }}</h3>
+                                                <h4 style="margin-bottom: 25px; direction: rtl;">
+                                                    {!! $service->intro !!}
+                                                </h4>
+                                            </div>
+                                        </div>
+
+                                        <div class="testimonial-name" style="background-color: #DF1F26;padding-top: 0">
+                                            <a href="{{ route('location.service.show', ['location'=> $location->slug,'service'=>$service->slug]) }}"
+                                                class="btn btn-secondary">@lang('site.read_more')<i class="fas fa-caret-right"></i></a>
+                                        </div>
+                                    </div>
+
+                                    </div>
+                                    <!--END OF TESTIMONIAL 1 -->
+                                @endforeach
+
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- End of Our services -->
+
 
 
     <section id="section-content " class="bg-gradient pt-7" style="overflow: hidden">
         <div class="container" style="max-width: 65rem">
             <div class="row">
                 <div class="col-md-12">
-
-
-
-
                     @if ($location->location_trips->count() > 0)
                         <section id="serviceSerivces" class="testimonials blog" dir="ltr" data-animate="fadeInUp"
                             data-delay="1" style="padding-top: 75px;">
