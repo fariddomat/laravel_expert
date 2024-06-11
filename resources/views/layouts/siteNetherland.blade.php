@@ -219,14 +219,14 @@
         <div class="container">
             <div class="row pb-3">
                 <!-- Footer info -->
-                <div class="col-md-4">
+                <div class="col-md-6">
                     <div class="footer-info">
-                        <h3 class="text-white">{{ $info->title }}</h3>
+                        <h3 class="text-white">المحترف - هولندا</h3>
                         <p>شركة رائدة في مجال السياحة والسفر 12 سنة من التطور المستمر والنجاحات المتتالية مع انتشار واسع حوال العالم ما بين  أربيل , الامارات وهولندا لنكون وكلاء معتمدين من قبل عدة جامعات عالمية في اسيا وأوروبا بالإضافة لأننا وكلاء رسمين لمعظم شركات الطيران حول العالم</p>
                         <ul class="footer-contacts list-unstyled">
                             <li>
                                 <i class="fas fa-phone"></i>
-                                <a href="tel:{{ $contactInfo->mobile }}">{{ $contactInfo->mobile }}</a>
+                                <a href="tel:0031685020280">0031685020280</a>
                             </li>
                             <li>
                                 <i class="fas fa-envelope"></i>
@@ -234,7 +234,7 @@
                             </li>
                             <li>
                                 <i class="fas fa-map-marker-alt"></i>
-                                <a href="{{ $contactInfo->location_link }}" target="_blank">{{ $contactInfo->location_link }}</a>
+                                <a href="https://maps.app.goo.gl/9S9bQBMpm1DXsZj3A" target="_blank">https://maps.app.goo.gl/9S9bQBMpm1DXsZj3A</a>
                             </li>
                         </ul>
                         <ul class="social-links list-inline mb-0">
@@ -246,53 +246,30 @@
                                 </li>
                             @endforeach
                         </ul>
-                        
+
                     </div>
                 </div>
                 <!-- End of Footer info -->
 
                 <!-- Footer services -->
-                <div class="col-md-4">
+                <div class="col-md-6">
                     <div class="footer-posts">
                         <h3 class="text-white">@lang('site.services') </h3>
                         @foreach ($servicesA as $index => $service)
                             <div class="single-footer-post clearfix">
 
                                 <h4 class="cabin font-weight-normal"><a
-                                        href="{{ route('service', $service->slug) }}">{{ $service->title }}</a></h4>
+                                        href="{{ route('location.service.show',  ['location' => 'netherland', 'service' => $service->slug]) }}">{{ $service->title }}</a></h4>
                                 {{-- <p>{!! Str::limit(Helper::removeSpecialCharacter($service->intro), 100) !!}</p> --}}
                             </div>
                         @endforeach
 
-                        <a href="{{ route('services') }}" class="roboto text-uppercase" >@lang('site.view_all_services') <i class="fas fa-caret-right"></i></a>
+                        <a href="{{ route('location.service.index', 'netherland') }}" class="roboto text-uppercase" >@lang('site.view_all_services') <i class="fas fa-caret-right"></i></a>
                     </div>
                 </div>
                 <!-- End of Footer services -->
 
-                <!-- Footer blog -->
-                <div class="col-md-4">
-                    <div class="footer-posts">
-                        <h3 class="text-white">@lang('site.blog') </h3>
-                        @foreach ($blogs as $index => $blog)
-                            <div class="single-footer-post clearfix">
-                                <a href="{{ route('blog', $blog->slug) }}" class="float-left">
-                                    <img class="img-fluid" src="{{ asset($blog->image) }}"
-                                        style="width: 60px !important;
-                                        height: 40px !important;"
-                                        alt="" loading="lazy">
-                                </a>
-                                <span> <a
-                                        href="{{ route('blog', $blog->slug) }}">{{ $blog->updated_at->format('d F Y') }}</a></span>
-                                <h4 class="cabin font-weight-normal"><a
-                                        href="{{ route('blog', $blog->slug) }}">{{ $blog->title }}</a></h4>
-                                {{-- <p>{!! Str::limit(Helper::removeSpecialCharacter($blog->description), 100) !!}</p> --}}
-                            </div>
-                        @endforeach
 
-                        <a href="{{ route('blogs') }}" class="roboto text-uppercase" >@lang('site.view_all_blog') <i class="fas fa-caret-right"></i></a>
-                    </div>
-                </div>
-                <!-- End of Footer blog -->
             </div>
 
             <div class="bottom-footer">
@@ -305,18 +282,7 @@
                     </div>
 
                     <!-- Footer menu -->
-                    <div class="col-md-7 order-first order-md-last">
-                        <ul class="footer-menu list-inline text-md-right mb-md-0" >
-                            <li>
-                                <a href="{{ route('privacy') }}">@lang('site.privacy')</a>
-                            </li>
-                            <li>|</li>
-                            <li><a href="{{ route('about') }}">@lang('site.about')</a></li>
 
-                            <li>|</li>
-                            <li><a href="{{ route('contact') }}">@lang('site.contact_us')</a></li>
-                        </ul>
-                    </div>
                 </div>
             </div>
         </div>
