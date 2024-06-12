@@ -9,33 +9,36 @@
 
 
 @section('styles')
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-5G0MFKDFBJ"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-5G0MFKDFBJ"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
 
-  gtag('config', 'G-5G0MFKDFBJ');
-</script>
-<!-- Event snippet for Request quote conversion page
-In your html page, add the snippet and call gtag_report_conversion when someone clicks on the chosen link or button. -->
-<script>
-function gtag_report_conversion(url) {
-  var callback = function () {
-    if (typeof(url) != 'undefined') {
-      window.location = url;
-    }
-  };
-  gtag('event', 'conversion', {
-      'send_to': 'AW-16495252403/FZ75CLXwxK0ZELOnxrk9',
-      'value': 1.0,
-      'currency': 'EUR',
-      'event_callback': callback
-  });
-  return false;
-}
-</script>
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+        gtag('js', new Date());
+
+        gtag('config', 'G-5G0MFKDFBJ');
+    </script>
+    <!-- Event snippet for Request quote conversion page
+    In your html page, add the snippet and call gtag_report_conversion when someone clicks on the chosen link or button. -->
+    <script>
+        function gtag_report_conversion(url) {
+            var callback = function() {
+                if (typeof(url) != 'undefined') {
+                    window.location = url;
+                }
+            };
+            gtag('event', 'conversion', {
+                'send_to': 'AW-16495252403/FZ75CLXwxK0ZELOnxrk9',
+                'value': 1.0,
+                'currency': 'EUR',
+                'event_callback': callback
+            });
+            return false;
+        }
+    </script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
 
 
@@ -53,7 +56,7 @@ function gtag_report_conversion(url) {
             direction: rtl;
         }
 
-        .modal-content{
+        .modal-content {
             direction: rtl;
         }
 
@@ -67,61 +70,61 @@ function gtag_report_conversion(url) {
             color: #fff;
         }
 
-                .social-share li a.instagram {
-            border-color: #fccc63 ;
-            color: #fccc63 ;
+        .social-share li a.instagram {
+            border-color: #fccc63;
+            color: #fccc63;
         }
 
         .social-share li a.instagram:hover {
-            background-color: #fccc63 ;
-            color: #fff ;
+            background-color: #fccc63;
+            color: #fff;
         }
 
 
-                .social-share li a.tiktok {
-            border-color: #FE2C55  ;
-            color: #FE2C55  ;
+        .social-share li a.tiktok {
+            border-color: #FE2C55;
+            color: #FE2C55;
         }
 
         .social-share li a.tiktok:hover {
-            background-color: #FE2C55  ;
-            color: #fff  ;
+            background-color: #FE2C55;
+            color: #fff;
         }
 
 
 
         .social-share li a.telegram {
-            border-color: #0088cc  ;
-            color: #0088cc  ;
+            border-color: #0088cc;
+            color: #0088cc;
         }
 
         .social-share li a.telegram:hover {
-            background-color: #0088cc  ;
-            color: #fff  ;
+            background-color: #0088cc;
+            color: #fff;
         }
 
 
 
         .social-share li a.youtube {
-            border-color: #CD201F   ;
-            color: #CD201F   ;
+            border-color: #CD201F;
+            color: #CD201F;
         }
 
         .social-share li a.youtube:hover {
-            background-color: #CD201F   ;
-            color: #fff  ;
+            background-color: #CD201F;
+            color: #fff;
         }
 
 
 
         .social-share li a.threads {
-            border-color: #431f2b  ;
-            color: #431f2b  ;
+            border-color: #431f2b;
+            color: #431f2b;
         }
 
         .social-share li a.threads:hover {
-            background-color: #431f2b  ;
-            color: #fff  ;
+            background-color: #431f2b;
+            color: #fff;
         }
 
         .table-responsive {
@@ -409,9 +412,11 @@ function gtag_report_conversion(url) {
                             data-delay="1.2">
                             <li><a href="{{ route('home') }}">@lang('site.home')</a></li>
                             <li><i class="fas fa-angle-double-right"></i></li>
-                            <li><a>@if ($location->slug == 'netherland')
-                                المحترف هولندا
-                            @endif</a></li>
+                            <li><a>
+                                    @if ($location->slug == 'netherland')
+                                        المحترف هولندا
+                                    @endif
+                                </a></li>
                             {{-- <li><i class="fas fa-angle-double-right"></i></li>
                             <li><a href="">@lang('site.service_detail')</a></li> --}}
                         </ul>
@@ -439,7 +444,8 @@ function gtag_report_conversion(url) {
                             style="">
                             <h2 class="col-md-12 pt-2 pb-2" data-animate="fadeInDown" data-delay="1.4"
                                 style="font-size: 2rem;text-align: center;
-                                color: #DF1F26;">{{ $location->title }}</h2>
+                                color: #DF1F26;">
+                                {{ $location->title }}</h2>
 
 
                             <div class="" style="">{!! $location->content !!}</div>
@@ -462,7 +468,8 @@ function gtag_report_conversion(url) {
                                     <div
                                         style="  line-height: 1.6; /* Adjust line spacing */
                                     margin-bottom: 20px;margin-top: 30px">
-                                        <ul class="list-inline mb-0 social-share list-inline mb-0 text-lg-center" style="text-align: center;">
+                                        <ul class="list-inline mb-0 social-share list-inline mb-0 text-lg-center"
+                                            style="text-align: center;">
                                             @foreach ($location->location_social_media as $index => $socialMedia)
                                                 <li style="margin-bottom: 10px">
                                                     <a class="{{ $socialMedia->name }}" href="{{ $socialMedia->link }}"
@@ -518,55 +525,56 @@ function gtag_report_conversion(url) {
                                                                     style="padding-top: 50% !important;padding-bottom: 50% !important; text-align: center">
                                                                     {{ $trip->title }} <br>
                                                                     <a data-toggle="modal"
-                                                                    data-target="#tripModal{{ $index }}">
+                                                                        data-target="#tripModal{{ $index }}">
 
-                                                                    <i class="fas fa-link"
-                                                                        style="  font-size: 2rem; padding-top: 15px"></i>تفاصيل
-                                                                    الرحلة
-                                                                </a></h3>
+                                                                        <i class="fas fa-link"
+                                                                            style="  font-size: 2rem; padding-top: 15px"></i>تفاصيل
+                                                                        الرحلة
+                                                                    </a>
+                                                                </h3>
                                                             </div>
                                                         </div>
 
                                                         <div class="testimonial-name"
                                                             style="background-color: #DF1F26;padding-top: 0;margin-bottom: -25px;">
                                                             <a class="btn btn-secondary"><i
-                                                                class="fa-brands fa-whatsapp"></i> احجز الآن</a>
+                                                                    class="fa-brands fa-whatsapp"></i> احجز الآن</a>
                                                         </div>
                                                     </div>
 
                                                     <!--END OF TESTIMONIAL 1 -->
                                                 @endforeach
-                                                     <!-- Modals -->
-                                            @foreach ($location->location_trips as $index => $trip)
-                                            <div class="modal fade" id="tripModal{{ $index }}" tabindex="-1"
-                                                aria-labelledby="tripModalLabel{{ $index }}"
-                                                aria-hidden="true">
-                                                <div class="modal-dialog modal-dialog-centered">
-                                                    <div class="modal-content">
-                                                        <div class="modal-header">
-                                                            <h5 class="modal-title"
-                                                                id="tripModalLabel{{ $index }}">
-                                                                {{ $trip->title }}</h5>
-                                                            <button type="button" class="close"
-                                                                data-dismiss="modal" aria-label="Close">
-                                                                <span aria-hidden="true">&times;</span>
-                                                            </button>
-                                                        </div>
-                                                        <div class="modal-body">
-                                                            {!! $trip->description !!}
-                                                        </div>
-                                                        <div class="modal-footer">
-                                                            <a href="{{ $location->location_social_media->where('name', 'whatsapp')->first()->link }}"
-                                                                class="btn btn-primary">احجز الآن</a>
+                                                <!-- Modals -->
+                                                @foreach ($location->location_trips as $index => $trip)
+                                                    <div class="modal fade" id="tripModal{{ $index }}"
+                                                        tabindex="-1" aria-labelledby="tripModalLabel{{ $index }}"
+                                                        aria-hidden="true">
+                                                        <div class="modal-dialog modal-dialog-centered">
+                                                            <div class="modal-content">
+                                                                <div class="modal-header">
+                                                                    <h5 class="modal-title"
+                                                                        id="tripModalLabel{{ $index }}">
+                                                                        {{ $trip->title }}</h5>
+                                                                    <button type="button" class="close"
+                                                                        data-dismiss="modal" aria-label="Close">
+                                                                        <span aria-hidden="true">&times;</span>
+                                                                    </button>
+                                                                </div>
+                                                                <div class="modal-body">
+                                                                    {!! $trip->description !!}
+                                                                </div>
+                                                                <div class="modal-footer">
+                                                                    <a href="{{ $location->location_social_media->where('name', 'whatsapp')->first()->link }}"
+                                                                        class="btn btn-primary">احجز الآن</a>
+                                                                </div>
+                                                            </div>
                                                         </div>
                                                     </div>
-                                                </div>
-                                            </div>
-                                        @endforeach
+                                                @endforeach
                                             </div>
                                         @else
-                                            <div id="customers-testimonials" class="owl-carousel " data-animate="fadeInUp"
-                                                data-delay="1.5">
+                                            <div id="customers-testimonials" class="owl-carousel "
+                                                data-animate="fadeInUp" data-delay="1.5">
                                                 @foreach ($location->location_trips as $index => $trip)
                                                     <!--TESTIMONIAL 1 -->
 
@@ -611,7 +619,7 @@ function gtag_report_conversion(url) {
                                                             style="background-color: #DF1F26;padding-top: 0;margin-bottom: -40px">
                                                             <a href="{{ $location->location_social_media->where('name', 'whatsapp')->first()->link }}"
                                                                 class="btn btn-secondary"> <i
-                                                                class="fa-brands fa-whatsapp"></i> احجز الآن</a>
+                                                                    class="fa-brands fa-whatsapp"></i> احجز الآن</a>
                                                         </div>
 
                                                     </div>

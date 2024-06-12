@@ -400,7 +400,25 @@
                 transform: translateX(-50%) !important;
 
             }
+
+            #typed-strings h1{
+                font-size: 2.5rem !important;
+            }
+
+            .servCol{
+                margin-bottom: 25px;
+            }
         }
+
+        .section-wrapper:before {
+  background: linear-gradient(180deg, rgba(254, 254, 255, 0), #fff);
+
+}
+
+.services-title::before {
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.61), #fff);
+
+}
 
     </style>
 
@@ -419,7 +437,7 @@
                 dots: true,
                 autoplayTimeout: 2500,
                 responsiveRefreshRate: 10,
-                autoplayHoverPause: true, 
+                autoplayHoverPause: true,
                 smartSpeed: 450,
                 responsive: {
                     0: {
@@ -434,7 +452,7 @@
                 }
             });
             owl.on('mouseleave', function() {
-                owl.trigger('stop.owl.autoplay'); 
+                owl.trigger('stop.owl.autoplay');
                 owl.trigger('play.owl.autoplay', [1000]);
             });
         });
@@ -454,11 +472,11 @@
     <script>
         $(document).ready(function() {
             $('#accordion100').on('shown.bs.collapse', function(e) {
-                var target = $(e.target);  
-                var offset = target.prev().height(); 
+                var target = $(e.target);
+                var offset = target.prev().height();
                 $('html, body').animate({
                     scrollTop: target.offset().top - offset - 90
-                }, 500); 
+                }, 500);
             });
         });
     </script>
@@ -491,24 +509,12 @@
                             <div class="banner-content">
                                 <div id="typed-strings">
                                     <h1 data-animate="fadeInUp" data-delay="1.2"
-                                        style="font-size: 3.5rem;
+                                        style="font-size: 3rem;
                                 font-weight: bold;color: #0D1216;margin-bottom: 1rem;line-height: 1.2;">
                                         المحترف - هولندا</h1>
                                 </div>
 
                                 <h1 class="typed"></h1>
-
-                                <h2 data-animate="fadeInUp" data-delay="1.3" class=""><span
-                                        class="typed-second"></span>
-                                    <div id="typed-strings2">
-                                        <p
-                                            style="font-size: 1.1rem;
-                                font-weight: 700;
-                                color: #555c55;
-                                text-transform: capitalize;line-height: 1.2;">
-                                            {{ $info->description }}</p>
-                                    </div>
-                                </h2>
 
 
                             </div>
@@ -525,6 +531,20 @@
         <div class="container">
 
             <div class="container-fluid">
+                <div class="row serviceSec pb-7" style="margin-bottom: 75px" data-animate="fadeInDown" data-delay="1.4">
+
+                    <div data-animate="slideInRight" data-delay=".5" class="col-md-12 wow bg-image-index"
+                        style="">
+                        <h2 class="col-md-12 pt-2 pb-2" data-animate="fadeInDown" data-delay="1.4"
+                            style="font-size: 2rem;text-align: center;
+                            color: #DF1F26;">
+                            {{ $location->title }}</h2>
+
+
+                        <div class="" style="">{!! $location->content !!}</div>
+
+                    </div>
+                </div>
                 <div class="row">
                     <h2 class="" data-animate="fadeIn Up" data-delay=".1"
                         style="margin: 0 auto 75px; text-align: center;">امتيازات تجعل
@@ -563,7 +583,7 @@
                     <div class="row mt-5 mb-5  gx-5" style="margin-bottom: 50px">
 
                                 @foreach ($services as $index => $service)
-                                    <!--TESTIMONIAL 1 --> <div class="col-md-4">
+                                    <!--TESTIMONIAL 1 --> <div class="col-md-4 servCol">
                                     <div class="col-md-12"
                                         style="background-image: url({{ asset($service->image) }});      background-repeat: no-repeat;
                                              background-size: 100% 100%;height: 400px;border-radius: 15px;">
