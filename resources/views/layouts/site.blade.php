@@ -10,7 +10,6 @@
     <title>المحترف - @yield('title')</title>
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="{{ $metaDescription ?? $info->description }}">
     <meta name="author" content="Almohtarif">
 
@@ -37,9 +36,9 @@
     <link rel="stylesheet" href="{{ asset('home/css/style-rtl.min.css') }}">
     <link rel="stylesheet" href="{{ asset('home/css/colors/theme-color-12.min.css') }}">
     <link rel="stylesheet" href="{{ asset('home/css/custom.min.css') }}">
-
+--}}
     <link rel="stylesheet" href="{{ asset('css/owl.carousel.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/owl.theme.default.min.css') }}"> --}}
+    <link rel="stylesheet" href="{{ asset('css/owl.theme.default.min.css') }}">
 
 
      {{-- non critical css --}}
@@ -51,7 +50,26 @@
     {{-- noty --}}
     <link rel="stylesheet" href="{{ asset('noty/noty.min.css') }}">
     @yield('styles')
+    <style>
+        .floating-button {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            z-index: 1000;
+        }
 
+        .floating-button img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s;
+        }
+
+        .floating-button img:hover {
+            transform: scale(1.1);
+        }
+    </style>
     <style>
         html {
             scroll-behavior: smooth;
@@ -306,18 +324,26 @@
         <a href="#"> <i class="fas fa-arrow-up"></i></a>
     </div>
 
-    <!-- JS Files -->
-    <script src="{{ asset('home/js/all.min.js') }}"></script>
+        <!-- Floating Button for Contact -->
+<div class="floating-button">
+    <a class="btn btn-secondary" href="{{ route('contact') }}" target="_blank">
+        الاستشارة المجانية
+    </a>
+</div>
 
-    {{-- <script src="{{ asset('home/js/jquery-3.2.1.min.js') }}"></script>
+
+    <!-- JS Files -->
+    {{-- <script src="{{ asset('home/js/all.min.js') }}"></script> --}}
+
+    <script src="{{ asset('home/js/jquery-3.2.1.min.js') }}"></script>
     <script src="{{ asset('home/js/fontawesome-all.min.js') }}"></script>
     <script src="{{ asset('home/js/bootstrap.bundle.min.js') }}"></script>
     <script src="{{ asset('home/plugins/typed.js/typed.min.js') }}?v=v=51120241" defer></script>
     <script src="{{ asset('home/plugins/waypoints/jquery.waypoints.min.js') }}" ></script>
     <script src="{{ asset('home/plugins/waypoints/sticky.min.js') }}" defer></script>
-    <script src="{{ asset('home/plugins/swiper/swiper.min.js') }}" defer></script> --}}
+    <script src="{{ asset('home/plugins/swiper/swiper.min.js') }}" defer></script>
 
-{{--
+
     <div class="no-mobile">
         <script src="{{ asset('home/plugins/particles.js/particles.min.js?v=v=51120241') }}" defer></script>
         <script src="{{ asset('home/plugins/particles.js/particles.settings.js?v=v=51120241') }}" defer></script>
@@ -326,14 +352,14 @@
 
     <script src="{{ asset('home/plugins/parsley/parsley.min.js') }}" defer></script>
     <script src="{{ asset('home/plugins/parallax/parallax.min.js') }}"></script>
-    <script src="{{ asset('home/js/menu.min.js') }}" defer></script> --}}
+    <script src="{{ asset('home/js/menu.min.js') }}" defer></script>
     <script src="{{ asset('home/js/scripts.js?v=v=51120241') }}"></script>
-    {{-- <script src="{{ asset('home/js/custom.js') }}" defer></script>
+    <script src="{{ asset('home/js/custom.js') }}" defer></script>
 
-    <script src="{{ asset('js/owl.carousel.min.js') }}" defer></script> --}}
+    <script src="{{ asset('js/owl.carousel.min.js') }}" defer></script>
     <script src="{{ asset('js/jquery.countup.js') }}"></script>
 
-    {{-- <script src="{{ asset('noty/noty.min.js') }}" defer></script> --}}
+    <script src="{{ asset('noty/noty.min.js') }}" defer></script>
     <script defer>
         jQuery(document).ready(function($) {
 

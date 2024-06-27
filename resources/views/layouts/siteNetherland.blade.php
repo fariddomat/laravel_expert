@@ -82,6 +82,27 @@
     @yield('styles')
 
     <style>
+        .floating-button {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            z-index: 1000;
+        }
+
+        .floating-button img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s;
+        }
+
+        .floating-button img:hover {
+            transform: scale(1.1);
+        }
+    </style>
+
+    <style>
         html {
             scroll-behavior: smooth;
         }
@@ -293,6 +314,14 @@
     <div class="back-to-top">
         <a href="#"> <i class="fas fa-arrow-up"></i></a>
     </div>
+
+    <!-- Floating Button for Contact -->
+<div class="floating-button">
+    <a class="btn btn-secondary" href="https://wa.me/0031685020280" target="_blank">
+        احجز رحلتك الآن <i class="fa-brands whatsapp"></i>
+    </a>
+</div>
+
 
     <!-- JS Files -->
     <script src="{{ asset('home/js/all.min.js') }}"></script>
