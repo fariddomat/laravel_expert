@@ -51,7 +51,7 @@
     <url>
         <loc>{{ route('blog',$blog->slug ) }}</loc>
         <lastmod>{{ $blog->updated_at->tz('UTC')->toAtomString() }}</lastmod>
-        <changefreq>monthly</changefreq>
+        <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
     @endforeach

@@ -6,21 +6,46 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- Document Title -->
+    <!-- Document Title -->
     <link rel="icon" href="{{ asset($info->logo_icon) }}" type="image/png" sizes="16x16">
     <title>المحترف - @yield('title')</title>
 
-    <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="{{ $metaDescription ?? $info->description }}">
     <meta name="author" content="Almohtarif">
 
-    <link href="{{ asset($info->logo) }}" rel="shortcut icon" type="image/png">
-    <link href="{{ asset($info->logo) }}" rel="apple-touch-icon">
-    <link href="{{ asset($info->logo) }}" rel="apple-touch-icon" sizes="72x72">
-    <link href="{{ asset($info->logo) }}" rel="apple-touch-icon" sizes="114x114">
-    <link href="{{ asset($info->logo) }}" rel="apple-touch-icon" sizes="144x144">
+    <link href="{{ asset($info->logo_icon) }}" rel="shortcut icon" type="image/png">
+    <link href="{{ asset($info->logo_icon) }}" rel="apple-touch-icon">
+    <link href="{{ asset($info->logo_icon) }}" rel="apple-touch-icon" sizes="72x72">
+    <link href="{{ asset($info->logo_icon) }}" rel="apple-touch-icon" sizes="114x114">
+    <link href="{{ asset($info->logo_icon) }}" rel="apple-touch-icon" sizes="144x144">
 
     <!-- Favicon -->
-    <link rel="shortcut icon" type="{{ asset($info->logo) }}" href="favicon.png">
+    <link rel="shortcut icon" type="{{ asset($info->logo_icon) }}" href="favicon.png">
+
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="المحترف - @yield('title')" />
+    <meta property="og:description" content="{{ $metaDescription ?? $info->description }}" />
+    <meta property="og:image" content="{{ asset($info->logo_icon) }}" />
+    <meta property="og:url" content="{{ url()->current() }}" />
+    <meta property="og:type" content="website" />
+
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="المحترف - @yield('title')" />
+    <meta name="twitter:description" content="{{ $metaDescription ?? $info->description }}" />
+    <meta name="twitter:image" content="{{ asset($info->logo_icon) }}" />
+
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "http://schema.org",
+      "@type": "WebPage",
+      "name": "المحترف - @yield('title')",
+      "description": "{{ $metaDescription ?? $info->description }}",
+      "image": "{{ asset($info->logo_icon) }}",
+      "url": "{{ url()->current() }}"
+    }
+    </script>
 
     <!-- CSS Files -->
 

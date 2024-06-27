@@ -8,10 +8,11 @@
 
 @section('styles')
     <style>
-         .table-responsive {
+        .table-responsive {
             display: revert !important;
             width: 100%;
         }
+
         .table-bordered td,
         .table-bordered th {
             padding-top: 20px;
@@ -25,6 +26,9 @@
             .post-content h2,
             .post-content h1 {
                 font-size: 1.5rem !important;
+                color: #000;
+                font-weight: normal;
+
             }
         }
 
@@ -32,11 +36,12 @@
             font-size: 25px;
         }
 
-       img {
+        img {
             width: 100% !important;
             /* height: auto !important; */
         }
-        .header img{
+
+        .header img {
             width: auto !important;
         }
 
@@ -187,10 +192,10 @@
         }
 
         /* .blog {
-                    background-color: transparent;
-                    background-image: linear-gradient(180deg, #FFF 30%, #0D1216 97%);
+                                background-color: transparent;
+                                background-image: linear-gradient(180deg, #FFF 30%, #0D1216 97%);
 
-                } */
+                            } */
 
         .post-details {
             background: #fff;
@@ -205,9 +210,13 @@
             max-width: 60rem;
         }
 
-        .post-content h2 {
+        .post-content h2,
+        .post-content h1 {
             font-size: 3rem;
             text-align: center;
+            color: #000;
+            font-weight: normal;
+
         }
 
         .widget-categories li::before {
@@ -403,7 +412,6 @@
 @endsection
 @section('scripts')
     <script>
-
         $(document).ready(function() {
             $("table").addClass("table table-striped table-hover table-bordered table-responsive");
 
@@ -449,9 +457,9 @@
                     <div class="col-md-12">
                         <div class="post-details" data-animate="fadeInUp" data-delay="1.1">
                             <div class="post-content">
-                                <h2 data-animate="fadeInUp" data-delay="1.4">
+                                <h1 data-animate="fadeInUp" data-delay="1.4">
                                     {{ $blog->title }}
-                                </h2>
+                                </h1>
                                 <span data-animate="fadeInUp" data-delay="1.5">تاريخ النشر: <a
                                         href="#">{{ $blog->updated_at->diffForHumans() }}</a> / بواسطة: <a
                                         href="#">{{ $blog->author_name }}</a>
@@ -460,9 +468,10 @@
                                 <img class="img-thumbnail" src="{{ asset($blog->index_image) }}" alt=" {{ $blog->title }}"
                                     data-animate="fadeInUp" data-delay=".6" style="aspect-ratio: 3/2; margin-top: 25px">
 
-                                <div class="pt-2 pb-2 mt-3 blog-d" data-animate="fadeInUp" data-delay=".1">
+
+                                <h3 class="pt-2 pb-2 mt-3 blog-d" data-animate="fadeInUp" data-delay=".1">
                                     {!! $blog->introduction !!}
-                                </div>
+                                </h3>
 
                                 <blockquote data-animate="fadeInUp" data-delay=".1">
                                     <span class="bspan"><i class="fas fa-quote-right"></i></span>
@@ -492,8 +501,9 @@
 
                             <!-- Author info -->
                             <div class="d-flex align-items-center author-info-wrap">
-                                <img class="img-thumbnail mr-3" src="{{ asset($blog->author_image) }}" alt=" {{ $blog->title }}"
-                                    data-animate="fadeInUp" data-delay=".1" style="max-width: 100px;aspect-ratio: 3/3;">
+                                <img class="img-thumbnail mr-3" src="{{ asset($blog->author_image) }}"
+                                    alt=" {{ $blog->title }}" data-animate="fadeInUp" data-delay=".1"
+                                    style="max-width: 100px;aspect-ratio: 3/3;">
                                 <div class="author-info">
                                     <h4 data-animate="fadeInUp" data-delay=".2">كتب المقال بواسطة: <a
                                             href="#">{{ $blog->author_name }}</a></h4>
