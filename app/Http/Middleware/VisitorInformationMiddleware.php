@@ -25,6 +25,12 @@ class VisitorInformationMiddleware
         $urlParts = parse_url($request->url());
         $url = $urlParts['path'] ?? '/'; // Use path if available, otherwise default to '/'
 
+        // Normalize URLs for blogs and services
+        if (preg_match('#^/blogs#', $url)) {
+            $url = '/blogs';
+        } elseif (preg_match('#^/services#', $url)) {
+            $url = '/services';
+        }
         // Get device and browser information using Jenssegers/Agent
         $agent = new Agent();
         $device = $agent->device();
