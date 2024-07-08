@@ -67,10 +67,10 @@
     <link rel="stylesheet" href="{{ asset('home/css/colors/theme-color-12.min.css') }}">
     <link rel="stylesheet" href="{{ asset('home/css/custom.min.css') }}">
 
-    <link rel="stylesheet" href="{{ asset('css/owl.carousel.min.css') }}">
     <link rel="stylesheet" href="{{ asset('css/owl.theme.default.min.css') }}"> --}}
 
 
+    <link rel="stylesheet" href="{{ asset('css/owl.carousel.min.css') }}">
      {{-- non critical css --}}
     <link href="{{ asset('fonts/fontawesome-free-6.4.2-web/css/all.css') }}" rel="stylesheet" media="print"
         onload="this.media='all'">
@@ -324,17 +324,17 @@
 
 
     <!-- JS Files -->
-    <script src="{{ asset('home/js/all.min.js') }}"></script>
+    {{-- <script src="{{ asset('home/js/all.min.js') }}"></script> --}}
 
-    {{-- <script src="{{ asset('home/js/jquery-3.2.1.min.js') }}"></script>
+    <script src="{{ asset('home/js/jquery-3.2.1.min.js') }}"></script>
     <script src="{{ asset('home/js/fontawesome-all.min.js') }}"></script>
     <script src="{{ asset('home/js/bootstrap.bundle.min.js') }}"></script>
     <script src="{{ asset('home/plugins/typed.js/typed.min.js') }}?v=v=51120241" defer></script>
     <script src="{{ asset('home/plugins/waypoints/jquery.waypoints.min.js') }}" ></script>
     <script src="{{ asset('home/plugins/waypoints/sticky.min.js') }}" defer></script>
-    <script src="{{ asset('home/plugins/swiper/swiper.min.js') }}" defer></script> --}}
+    <script src="{{ asset('home/plugins/swiper/swiper.min.js') }}" defer></script>
 
-{{--
+
     <div class="no-mobile">
         <script src="{{ asset('home/plugins/particles.js/particles.min.js?v=v=51120241') }}" defer></script>
         <script src="{{ asset('home/plugins/particles.js/particles.settings.js?v=v=51120241') }}" defer></script>
@@ -343,14 +343,14 @@
 
     <script src="{{ asset('home/plugins/parsley/parsley.min.js') }}" defer></script>
     <script src="{{ asset('home/plugins/parallax/parallax.min.js') }}"></script>
-    <script src="{{ asset('home/js/menu.min.js') }}" defer></script> --}}
+    <script src="{{ asset('home/js/menu.min.js') }}" defer></script>
     <script src="{{ asset('home/js/scripts.js?v=v=51120241') }}"></script>
-    {{-- <script src="{{ asset('home/js/custom.js') }}" defer></script>
+    <script src="{{ asset('home/js/custom.js') }}" defer></script>
 
-    <script src="{{ asset('js/owl.carousel.min.js') }}" defer></script> --}}
+    <script src="{{ asset('js/owl.carousel.min.js') }}" defer></script>
     <script src="{{ asset('js/jquery.countup.js') }}"></script>
 
-    {{-- <script src="{{ asset('noty/noty.min.js') }}" defer></script> --}}
+    <script src="{{ asset('noty/noty.min.js') }}" defer></script>
     <script defer>
         jQuery(document).ready(function($) {
 
