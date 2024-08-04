@@ -438,14 +438,7 @@
 
                             </div>
                         @endif
-                        <div class="col-md-12">
-                            <div class="row" style="justify-content: center; text-align: center">
-                                <a class="btn btn-secondary" href="{{ $location->location_social_media->where('name', 'whatsapp')->first()->link }}" style="background-color: #25D366;padding: 18px 55px;
-  font-size: 1rem;
-">التواصل السريع <i class="fa-brands fa-whatsapp"></i></a>
 
-                        </div>
-                        </div>
 
                         @if ($service->index_image_2)
                             <div class="col-md-12 pic-services wow " data-animate="fadeInUp" data-delay=".4"
@@ -491,6 +484,14 @@
                             @endforeach
                         </div>
 
+                        <div class="col-md-12">
+                            <div class="row" style="justify-content: center; text-align: center; margin-top: 25px">
+                                <a class="btn btn-secondary" href="{{ $location->location_social_media->where('name', 'whatsapp')->first()->link }}" style="background-color: #25D366;padding: 18px 55px;
+  font-size: 1rem;
+">التواصل السريع <i class="fa-brands fa-whatsapp"></i></a>
+
+                        </div>
+                        </div>
 
                     </div>
 

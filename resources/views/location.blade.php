@@ -580,13 +580,13 @@
                             </div>
                         </div>
                     </div>
-                    <div class="row mt-5 mb-5  gx-5" style="margin-bottom: 50px">
+                    <div class="row mt-5 mb-5  gx-5" style="margin-bottom: 50px; justify-content: center">
 
                                 @foreach ($services as $index => $service)
-                                    <!--TESTIMONIAL 1 --> <div class="col-md-4 servCol">
+                                    <!--TESTIMONIAL 1 --> <div class="col-md-4 servCol" style="margin-bottom: 25px;">
                                     <div class="col-md-12"
                                         style="background-image: url({{ asset($service->image) }});      background-repeat: no-repeat;
-                                             background-size: 100% 100%;height: 400px;border-radius: 15px;">
+                                             background-size: 100% 100%;height: 400px;border-radius: 15px; ">
 
                                         <div class="" data-animate=""
                                             style="padding: 0; border: unset !important; margin-bottom: 5px">
