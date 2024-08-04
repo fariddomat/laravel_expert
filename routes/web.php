@@ -286,6 +286,7 @@ Route::group(['prefix' => '/dashboard', 'middleware' => ['auth', 'setArLocale'],
 
 
 Route::get('/{location:slug}/services/{service:slug}', 'SiteController@locationService')->name('location.service.show');
+Route::get('/{location:slug}/trips/{trip}', 'SiteController@locationTrip')->name('location.trip.show');
 
 Route::get('/{location:slug}', 'SiteController@location')->name('location');
 Route::get('/{location:slug}/services', 'SiteController@locationServices')->name('location.service.index');

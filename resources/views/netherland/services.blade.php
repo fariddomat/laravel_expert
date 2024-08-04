@@ -153,29 +153,7 @@
 @endsection
 @section('content')
 
-    <!-- Page title -->
-    <section class="page-title-wrap position-relative bg-light" data-bg-img="{{ asset($info->service_header_image) }}"
-        data-animate="fadeInUp" data-delay="1.1">
-        {{-- <div id="particles_js"></div> --}}
-        <div class="container container-top">
-            <div class="row">
-                <div class="col-12">
-                    <div class="page-title position-relative pt-5 pb-5">
-                        <ul class="custom-breadcrumb roboto list-unstyled mb-0 clearfix" data-animate="fadeInUp"
-                            data-delay="1.2">
-                            <li><a href="{{ route('home') }}/netherland">@lang('site.home')</a></li>
-                            <li><i class="fas fa-angle-double-right"></i></li>
-                            <li><a href="#">@lang('site.services')</a></li>
-                        </ul>
-                        <h1 data-animate="fadeInUp" data-delay="1.3">@lang('site.services')</h1>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-    </section>
-    <!-- End of Banner -->
-
+  
     <!-- Service -->
     <section class="testimonials blog bg-gradient pb-7" dir="ltr">
         <div class="container" style="max-width: 65rem">

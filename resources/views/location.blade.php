@@ -669,10 +669,7 @@
                                                                 <h3
                                                                     style="padding-top: 50% !important;padding-bottom: 50% !important; text-align: center">
                                                                     {{ $trip->title }} <br>
-                                                                    <a data-toggle="modal"
-                                                                        data-target="#tripModal{{ $index }}">
-
-                                                                        <i class="fas fa-link"
+                                                                    <a href="{{ route('location.trip.show', ['location'=>$location, 'trip'=> $trip  ]) }}">                                <i class="fas fa-link"
                                                                             style="  font-size: 2rem; padding-top: 15px"></i>تفاصيل
                                                                         الرحلة
                                                                     </a>
@@ -749,13 +746,10 @@
                                                                 color: #DF1F26;">
                                                                     {{ $trip->title }} <br>
 
-                                                                    <a data-toggle="modal"
-                                                                        data-target="#tripModal{{ $index }}">
-
-                                                                        <i class="fas fa-link"
-                                                                            style="  font-size: 2rem; padding-top: 15px"></i>تفاصيل
-                                                                        الرحلة
-                                                                    </a>
+                                                                    <a href="{{ route('location.trip.show', ['location'=>$location, 'trip'=> $trip  ]) }}">                                <i class="fas fa-link"
+                                                                        style="  font-size: 2rem; padding-top: 15px"></i>تفاصيل
+                                                                    الرحلة
+                                                                </a>
                                                                 </h3>
 
 

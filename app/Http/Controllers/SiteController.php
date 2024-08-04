@@ -28,6 +28,7 @@ use App\Models\SMS;
 use App\Helpers\SMS as SMSHelper;
 use App\Models\HomeSlider;
 use App\Models\Location;
+use App\Models\LocationTrip;
 use App\Models\Packagee;
 use App\Models\PartnerSlider;
 use App\Models\Privacy;
@@ -590,5 +591,11 @@ class SiteController extends Controller
                 }
                 return view('netherland.service', compact('location', 'service', 'halfOfQuestions', 'arrow', 'otherServices', 'info', 'categories', 'latestBlogs', 'search', 'tags'));
         }
+    }
+
+    public function locationTrip(Request $request, $location, LocationTrip $trip){
+        $location=Location::where('slug', $location)->first();
+        $info = Info::first();
+        return view('netherland.trip' , compact('trip', 'info', 'location'));
     }
 }
