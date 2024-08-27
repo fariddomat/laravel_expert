@@ -7,18 +7,18 @@
         <changefreq>weekly</changefreq>
         <priority>1.0</priority>
     </url>
-    <url>
+    {{-- <url>
         <loc>{{ route('about') }}</loc>
         <lastmod>{{ $about->updated_at->tz('UTC')->toAtomString() }}</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
-    </url>
-    <url>
+    </url> --}}
+    {{-- <url>
         <loc>{{ route('contact') }}</loc>
         <lastmod>{{ $contact->updated_at->tz('UTC')->toAtomString() }}</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
-    </url>
+    </url> --}}
     <url>
         <loc>{{ route('services') }}</loc>
         <lastmod>{{ $info->updated_at->tz('UTC')->toAtomString() }}</lastmod>

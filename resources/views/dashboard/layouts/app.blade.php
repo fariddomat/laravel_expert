@@ -236,6 +236,12 @@
                     </li> --}}
 
                     <li class="nav-item">
+                        <a class="nav-link @yield('passwordEditActive')" href="{{ route('dashboard.users.index') }}">
+                            المستخدمين
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
                         <a class="nav-link @yield('passwordEditActive')" href="{{ route('dashboard.password.edit') }}">
                             تغيير كلمة السر
                         </a>

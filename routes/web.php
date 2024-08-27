@@ -35,10 +35,10 @@ Route::group(
     ],
     function () {
         Route::get('/', 'SiteController@home')->name('home');
-        Route::get('/about', 'SiteController@about')->name('about');
+        // Route::get('/about', 'SiteController@about')->name('about');
         Route::get('/privacy', 'SiteController@privacy')->name('privacy');
-        Route::get('/contact-us', 'SiteController@contact')->name('contact');
-        Route::post('/contact-us', 'SiteController@postContact')->name('contact.post');
+        // Route::get('/contact-us', 'SiteController@contact')->name('contact');
+        // Route::post('/contact-us', 'SiteController@postContact')->name('contact.post');
 
         // postComment
         Route::post('/postComment', 'SiteController@postComment')->name('postComment');
@@ -92,6 +92,7 @@ Route::group(['prefix' => '/dashboard', 'middleware' => ['auth', 'setArLocale'],
 
     Route::resource('counters', 'Dashboard\CounterController');
     Route::resource('reviews', 'Dashboard\ReviewController');
+    Route::resource('users', 'Dashboard\UserController');
 
     Route::get('/package_services/{service}', 'Dashboard\PackageServiceController@index')->name('package_services.index');
     Route::get('/package_services/{service}/create', 'Dashboard\PackageServiceController@create')->name('package_services.create');

@@ -204,11 +204,11 @@
                                 <ul>
 
                                     <li><a href="{{ route('home') }}">@lang('site.home')</a></li>
-                                    <li><a href="{{ route('about') }}">@lang('site.about')</a></li>
+                                    {{-- <li><a href="{{ route('about') }}">@lang('site.about')</a></li> --}}
                                     <li><a href="{{ route('services') }}">@lang('site.services')</a></li>
                                     <li><a href="{{ route('blogs') }}">@lang('site.blog')</a></li>
                                     {{-- <li><a href="{{ route('home') }}#portfolio">@lang('site.my_works')</a></li> --}}
-                                    <li><a href="{{ route('contact') }}">@lang('site.contact')</a></li>
+                                    {{-- <li><a href="{{ route('contact') }}">@lang('site.contact')</a></li> --}}
                                     <li><a href="{{ route('workWithUs') }}">انضم الآن</a></li>
                                     <li><a href="{{ route('faq') }}">@lang('site.FAQ')</a></li>
 
@@ -221,7 +221,7 @@
                         <!-- Client area -->
                         <ul class="client-area text-right list-inline m-0" data-animate="fadeInUp" data-delay="1.1">
 
-                            <li><a class="btn btn-secondary" href="{{ route('contact') }}">أحجز استشارتك الآن</a></li>
+                            {{-- <li><a class="btn btn-secondary" href="{{ route('contact') }}">أحجز استشارتك الآن</a></li> --}}
                         </ul>
                     </div>
                 </div>
@@ -331,11 +331,11 @@
                             <li>
                                 <a href="{{ route('privacy') }}">@lang('site.privacy')</a>
                             </li>
-                            <li>|</li>
-                            <li><a href="{{ route('about') }}">@lang('site.about')</a></li>
+                            {{-- <li>|</li> --}}
+                            {{-- <li><a href="{{ route('about') }}">@lang('site.about')</a></li> --}}
 
-                            <li>|</li>
-                            <li><a href="{{ route('contact') }}">@lang('site.contact_us')</a></li>
+                            {{-- <li>|</li> --}}
+                            {{-- <li><a href="{{ route('contact') }}">@lang('site.contact_us')</a></li> --}}
                         </ul>
                     </div>
                 </div>
@@ -350,11 +350,11 @@
     </div>
 
         <!-- Floating Button for Contact -->
-<div class="floating-button">
+{{-- <div class="floating-button">
     <a class="btn btn-secondary" href="{{ route('contact') }}" target="_blank">
         الاستشارة المجانية
     </a>
-</div>
+</div> --}}
 
 
     <!-- JS Files -->

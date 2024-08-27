@@ -20,8 +20,8 @@ class SitemapXmlController extends Controller
     {
         $services = Service::where('showed', 1)->get();
         $info = Info::first();
-        $about = About::first();
-        $contact = ContactInfo::first();
+        // $about = About::first();
+        // $contact = ContactInfo::first();
         $works = Work::where('showed', 1)->get();
         $blogs = Blog::where('showed', 1)->get();
         $languages = ['en', 'ar'];
@@ -29,8 +29,8 @@ class SitemapXmlController extends Controller
         return response()->view('sitemap', [
             'services' => $services,
             'info' => $info, 
-            'about' => $about,
-            'contact' => $contact,
+            // 'about' => $about,
+            // 'contact' => $contact,
             'works' => $works,
             'blogs' => $blogs,
             'languages' => $languages,

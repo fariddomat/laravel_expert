@@ -285,9 +285,9 @@
         <div class="row">
             <div class="col-lg-5">
                 <div class="section-title">
-                    <h2 data-animate="fadeInUp" data-delay=".1">الاستشارات المجانية</h2>
+                    {{-- <h2 data-animate="fadeInUp" data-delay=".1">الاستشارات المجانية</h2>
                     <p data-animate="fadeInUp" data-delay=".2">وحتى نبقى مستشاركم الأول منذ اللحظة الأولى نقدم لكم خدمة الاستشارات المجانية التي تحصلون من خلالها على إجابات كاملة لأسئلتكم واستفساراتكم عن كل ما يتعلق بالسفر والدراسة بالخارج</p>
-                    <span data-animate="fadeInUp" data-delay=".2"><a class="btn btn-secondary" href="{{ route('contact') }}">أحجز موعدك الآن</a></span>
+                    <span data-animate="fadeInUp" data-delay=".2"><a class="btn btn-secondary" href="{{ route('contact') }}">أحجز موعدك الآن</a></span> --}}
                     <div class="col-md-12">
                         <p data-animate="fadeInUp" data-delay="1.5">
                         <h2 style="margin-bottom: 25px"><i class="fa fa-map-marker-alt" style="font-size: 30px; margin-left: 15px"></i>أفرع شركة المحترف:</h2>
@@ -324,9 +324,9 @@
 <!-- End Servers -->
 
 {{-- who --}}
-<section class="pt-2 pb-7 bg-light who_we lazy" data-bg-desktop="{{ asset($info->who_image) }}" data-bg-mobile="{{ asset($info->who_image_mobile) }}">
+{{-- <section class="pt-2 pb-7 bg-light who_we lazy" data-bg-desktop="{{ asset($info->who_image) }}" data-bg-mobile="{{ asset($info->who_image_mobile) }}">
     <a data-animate="fadeInUp" data-delay=".1" href="{{ route('about') }}" class="btn btn-secondary">@lang('site.about_me')</a>
-</section>
+</section> --}}
 {{-- end who --}}
 
 <!-- Reviews -->
