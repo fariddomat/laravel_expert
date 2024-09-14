@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Dashboard;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class PasswordController extends Controller
 {
@@ -19,15 +20,24 @@ class PasswordController extends Controller
 
     public function update(Request $request)
     {
-        $rules = [
-            'current_password' => 'password',
+        // التحقق من صحة المدخلات
+        $request->validate([
+            'current_password' => ['required'],
             'new_password' => ['required', 'min:8', 'confirmed'],
-        ];
-        $validatedData = $request->validate($rules);
+        ]);
+
         $user = auth()->user();
-        $user->password = bcrypt($validatedData['new_password']);
+
+        // التحقق من كلمة المرور الحالية
+        if (!Hash::check($request->current_password, $user->password)) {
+            return back()->withErrors(['current_password' => 'كلمة المرور الحالية غير صحيحة.']);
+        }
+
+        // تحديث كلمة المرور
+        $user->password = Hash::make($request->new_password);
         $user->save();
-        session()->flash('success', 'Password Changed Successfully');
+
+        session()->flash('success', 'تم تغيير كلمة المرور بنجاح');
         return redirect()->route('dashboard.home');
     }
 }
